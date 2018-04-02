@@ -1,0 +1,253 @@
+0.9.9.6 -
+. fixed bug where viewing NSB Standings under certain conditions crashed gtknsbclient
+. corrected pitching statistics (R & BFP) for 1908 Tex Pruiett, Boston Red Sox
+. minor editorial improvements
+
+0.9.9.5 -
+. added 2017 Real Life data
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.9.4 -
+. added 2016 Real Life data
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.9.3 -
+. added game scores to Real Life Post Season results
+. added Post Season run differential factor to finding the best Real Life teams
+. added function to show Hall of Fame members
+. added 2015 Real Life data
+. added 2014 Real Life data
+. fixed bug which occurred when running multiple sessions with same NSB league/season
+  (specifically the post-season)
+. fixed bug which occurred when playing a season consisting of 2 leagues, 2 divisions,
+  and two wild card teams (specifically the post-season)
+. improved docs (runtime Help)
+. restore terminal settings when executed from command line
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.9.2 -
+. added 2012 Real Life data
+. added 2013 Real Life data
+. changed post-season set-up to be more versatile and more MLB-like
+. cleaned up "This Day in Baseball"
+. added ability to see team totals for all user-created teams
+. audio play depends upon sox being installed (mplayer dependency removed)
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.9.1 -
+Marshall Lake <nsb@mlake.net>
+. added capability to speak play-by-play during game-play
+. added a user preference
+. added some audio
+. improved input (Real Life) data
+. added data to player record for Date of Birth
+  NOTE - if upgrading from a previous version of NetStatsBaseball all
+  Lifetime teams and user-created teams need to be removed before running
+  this version (see the INSTALL file)
+. added headshot pics for all players for all years
+  this caused a change to the filename format for the player pics (see the file
+  Notes2Users for further info in case you're supplying your own player pics)
+. added ability to auto-create a team based upon user-created formulas
+. added ability to run NSB season/league games non-interactively (meaning
+  gameplay may be initiated via the command line or in cron) - see the file
+  Notes2Users or the manual
+. added players to some short rosters (less than 25 players) of Real Life teams
+. corrected 2011 data (catchers, PB)
+. fixed the stats for several teams in 1997 which kept that year from being
+  auto-setup as a season
+. corrected 1936 Philadelphia Phillies data
+. corrected 1904 New York Giants data
+. fixed a bug which sometimes screwed the results of "Evaluate Team Seasons" computations
+  and user-created formula computations
+. removed experimental email client from development tree
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.9 -
+Marshall Lake <nsb@mlake.net>
+. added 2011 Real Life data
+. added help for abbreviations
+. added ability to view real life category leaders across multiple years
+. added feature to show pics of the current pitcher and current batter during
+  gameplay
+  suggested by Keith Jefferson <keithjefferson@users.sourceforge.net>
+  see the file Notes2Users for further info
+. added a "This Day in Baseball" feature
+. added ability to generate stat rankings based upon user-created formulas
+. added some user preferences
+. improved input (Real Life) data
+. improved AI
+. corrected 2008 Real Life data for Chin-Lung Hu
+. corrected 1971 Real Life data for George Foster
+. added a factor to finding the best Real Life teams
+. Lifetime stats for User-Created teams are no longer accumulated
+. added some audio
+. added install statements for HELP file and for manual pages (were they always
+  missing?)
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.8 -
+Marshall Lake <nsb@mlake.net>
+. added ability to find the best Real Life teams for given years
+. added ability to auto-establish a league based upon a real life year
+. added ability to auto-establish a league consisting of random teams
+. added ability to auto-establish a league consisting of the same team name
+  across multiple years
+. added ability to establish a series between two teams
+. added a user preference for initial gameplay speed
+. added 2010 Real Life data
+. corrected 2009 Real Life data
+. corrected 2006 Arizona Diamondbacks data
+. increased maximum number of teams in a league from 50 to 100
+. increased maximum number of teams in any one division from 30 to 50
+. improved input (Real Life) data
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.7 -
+Marshall Lake <nsb@mlake.net>
+. added ability to see Real Life stats for a player across years
+. added ability to see team total stats for current league and for Real Life
+. added menu item - Notable Accomplishments (Real Life stats)
+. added menu item - Awards (Real Life stats: MVPs, Cy Youngs, Gold Gloves &
+  Silver Sluggers)
+. added menu item - Awards (current league: MVP, Cy Young, Gold Gloves &
+  Silver Sluggers)
+. spruced up play-by-play
+. improved input (Real Life) data
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.6 -
+Marshall Lake <nsb@mlake.net>
+. implemented processing to handle team ties at ends of seasons
+. re-implemented autoconf
+. added user preference settings
+. added ability to create/edit teams
+. added 2009 Real Life data
+. tiredness factor for pitchers introduced
+. adjusted AI decision to steal
+. adjusted determination of results when attempting to steal a base
+. improved leaders display for percentage categories (batting average,
+  earned run average, etc)  NOTE - if upgrading from a previous version
+  of NetStatsBaseball all Records files need to be removed before running
+  this version (see the INSTALL file)
+. fixed printing bug with multiple stats windows open
+. improved input data
+. corrected 1936 Philadelphia Phillies data
+. added the ability to play audio via sox (play) if installed
+. changed rules to allowing a "hit & run" in that firstbase must be occupied
+  and thirdbase must be unoccupied
+. altered AI for intentionally walking batter when pitcher is the next hitter
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.5 -
+Marshall Lake <nsb@mlake.net>
+. filled (short) rosters of Real Life teams to 25 players where possible
+. implemented human versus human play over a network
+. implemented deleting an NSBID
+. implemented changing an NSBID
+. added 2008 Real Life data
+. added an experimental email client with limited capability
+. removed autoconf implementation (I could not get it to work with this version)
+. fixed a stack smashing bug
+. fixed several play-by-play bugs
+. fixed a bug in sound playback which occurred on some systems
+. fixed a season scheduling bug which occurred on some systems
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+Steve Baughman <sbaughman@dialup4less.com>
+. fixed a processing bug
+. improved batting order selection process
+. corrected bad Real Life data for the 1971 Cincinnati Reds
+
+
+0.9.4 -
+Marshall Lake <nsb@mlake.net>
+. changed printing of team stats to use less paper
+. changed Category Leaders and Records to show top 25
+. added scrollbars to stat category chooser dialog (it was too large to
+  show in it's entirety for low resolution displays)
+. spruced up play-by-play slightly
+. added ability to play a non-league game with 2 randomly selected teams
+. adjusted AI decision to steal
+. adjusted AI decision to sacrifice and squeeze
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
+0.9.3 -
+Marshall Lake <nsb@mlake.net>
+. development tree changed
+. installation tree changed
+. communication protocol between client and server changed
+. GTK client replaced curses client and the edit stats program
+. added Real Life data for all years from 1901 through 2007
+. fixed server dieing from accept() being called one more time (see
+  comments in common/net.c)
+. squashed several bugs in the retained code
+. various minor improvements
+
+
+0.9.2 -
+Marshall Lake <nsb@mlake.net>
+. minor editorial changes
+. correct processing of pick-off attempts/successes
+
+David Cornette <david@davidcornette.com>
+. correct processing for long hostnames at the welcome screen
+
+
+0.9.1 - 
+Ted Turocy <arbiter@econmail.tamu.edu>
+. Separate two compound assignments where 'x' and 'x++' were used;
+  this technically isn't well-defined in C and could cause portability
+  problems.
+. Fix a call of strncpy() to strcpy()
+. Remove prototypes for string.h functions in editdata/glob.h; replace
+  with an include of the standard header (causes potential portability
+  problems since these aren't declared the same way on all systems).
+
+David Cornette <david@davidcornette.com>
+. correct possible segfault after the welcome screen
+
+Marshall Lake <nsb@mlake.net>
+. code cleanup
+. include current half inning on game-play display
+. no parameters now acceptable with client (playbb) ... in this case
+  client connects to localhost
+. "help" is printable
+. real-life season results are available
+. implement autoconf
+
+
+0.9.0 -
+Marshall Lake <nsb@mlake.net>
+. initial release
+

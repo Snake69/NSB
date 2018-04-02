@@ -1,0 +1,111 @@
+                            Most Valuable Player Awards
+
+      American League                       National League
+
+2017  Jose Altuve       Houston       2B    Giancarlo Stanton Miami         OF
+2016  Mike Trout        Los Angeles   OF    Kris Bryant       Chicago       3B
+2015  Josh Donaldson    Toronto       3B    Bryce Harper      Washington    OF
+2014  Mike Trout        Los Angeles   OF    Clayton Kershaw   Los Angeles    P
+2013  Miguel Cabrera    Detroit       3B    Andrew McCutchen  Pittsburgh    OF
+2012  Miguel Cabrera    Detroit       3B    Buster Posey      San Francisco  C
+2011  Justin Verlander  Detroit        P    Ryan Braun        Milwaukee     LF
+2010  Josh Hamilton     Texas         OF    Joey Votto        Cincinnati    1B
+2009  Joe Mauer         Minnesota      C    Albert Pujols     St. Louis     1B
+2008  Dustin Pedroia    Boston        2B    Albert Pujols     St. Louis     1B
+2007  Alex Rodriguez    New York      3B    Jimmy Rollins     Philadelphia  SS
+2006  Justin Morneau    Minnesota     1B    Ryan Howard       Philadelphia  1B
+2005  Alex Rodriguez    New York      3B    Albert Pujols     St. Louis     1B
+2004  Vladimir Guerrero Anaheim       RF    Barry Bonds       San Francisco LF
+2003  Alex Rodriguez    Texas         SS    Barry Bonds       San Francisco LF
+2002  Miguel Tejada     Oakland       SS    Barry Bonds       San Francisco LF
+2001  Ichiro Suzuki     Seattle       RF    Barry Bonds       San Francisco LF
+2000  Jason Giambi      Oakland       1B    Jeff Kent         San Francisco 2B
+1999  Ivan Rodriguez    Texas          C    Chipper Jones     Atlanta       3B
+1998  Juan Gonzalez     Texas         OF    Sammy Sosa        Chicago       OF
+1997  Ken Griffey, Jr.  Seattle       OF    Larry Walker      Colorado      OF
+1996  Juan Gonzalez     Texas         OF    Ken Caminiti      San Diego     3B
+1995  Mo Vaughn         Boston        1B    Barry Larkin      Cincinnati    SS
+1994  Frank Thomas      Chicago       1B    Jeff Bagwell      Houston       1B
+1993  Frank Thomas      Chicago       1B    Barry Bonds       San Francisco OF
+1992  Dennis Eckersley  Oakland        P    Barry Bonds       Pittsburgh    OF
+1991  Cal Ripken, Jr.   Baltimore     SS    Terry Pendleton   Atlanta       3B
+1990  Rickey Henderson  Oakland       OF    Barry Bonds       Pittsburgh    OF
+1989  Robin Yount       Milwaukee     OF    Kevin Mitchell    San Francisco OF
+1988  Jose Canseco      Oakland       OF    Kirk Gibson       Los Angeles   OF
+1987  George Bell       Toronto       OF    Andre Dawson      Chicago       OF
+1986  Roger Clemens     Boston         P    Mike Schmidt      Philadelphia  3B
+1985  Don Mattingly     New York      1B    Willie McGee      St. Louis     OF
+1984  Willie Hernandez  Detroit        P    Ryne Sandberg     Chicago       2B
+1983  Cal Ripken, Jr.   Baltimore     SS    Dale Murphy       Atlanta       OF
+1982  Robin Yount       Milwaukee     SS    Dale Murphy       Atlanta       OF
+1981  Rollie Fingers    Milwaukee      P    Mike Schmidt      Philadelphia  3B
+1980  George Brett      Kansas City   3B    Mike Schmidt      Philadelphia  OF
+1979  Don Baylor        California    OF    Keith Hernandez   St. Louis     1B
+                                            Willie Stargell   Pittsburgh    1B
+1978  Jim Rice          Boston        OF    Dave Parker       Pittsburgh    OF
+1977  Rod Carew         Minnesota     1B    George Foster     Cincinnati    OF
+1976  Thurman Munson    New York       C    Joe Morgan        Cincinnati    2B
+1975  Fred Lynn         Boston        OF    Joe Morgan        Cincinnati    2B
+1974  Jeff Burroughs    Texas         OF    Steve Garvey      Los Angeles   1B
+1973  Reggie Jackson    Oakland       OF    Pete Rose         Cincinnati    OF
+1972  Richie Allen      Chicago       1B    Johnny Bench      Cincinnati     C
+1971  Vida Blue         Oakland        P    Joe Torre         St. Louis     3B
+1970  Boog Powell       Baltimore     1B    Johnny Bench      Cincinnati     C
+1969  Harmon Killebrew  Minnesota     1B/3B Willie McCovey    San Francisco 1B
+1968  Denny McLain      Detroit        P    Bob Gibson        St. Louis      P
+1967  Carl Yastrzemski  Boston        OF    Orlando Cepeda    St. Louis     1B
+1966  Frank Robinson    Baltimore     OF    Roberto Clemente  Pittsburgh    OF
+1965  Zoilo Versalles   Minnesota     SS    Willie Mays       San Francisco OF
+1964  Brooks Robinson   Baltimore     3B    Ken Boyer         St. Louis     3B
+1963  Elston Howard     New York       C    Sandy Koufax      Los Angeles    P
+1962  Mickey Mantle     New York      OF    Maury Wills       Los Angeles   SS
+1961  Roger Maris       New York      OF    Frank Robinson    Cincinnati    OF
+1960  Roger Maris       New York      OF    Dick Groat        Pittsburgh    SS
+1959  Nellie Fox        Chicago       2B    Ernie Banks       Chicago       SS
+1958  Jackie Jensen     Boston        OF    Ernie Banks       Chicago       SS
+1957  Mickey Mantle     New York      OF    Hank Aaron        Milwaukee     OF
+1956  Mickey Mantle     New York      OF    Don Newcombe      Brooklyn       P
+1955  Yogi Berra        New York       C    Roy Campanella    Brooklyn       C
+1954  Yogi Berra        New York       C    Willie Mays       New York      OF
+1953  Al Rosen          Cleveland     3B    Roy Campanella    Brooklyn       C
+1952  Bobby Shantz      Philadelphia   P    Hank Sauer        Chicago       OF
+1951  Yogi Berra        New York       C    Roy Campanella    Brooklyn       C
+1950  Phil Rizzuto      New York      SS    Jim Konstanty     Philadelphia   P
+1949  Ted Williams      Boston        OF    Jackie Robinson   Brooklyn      2B
+1948  Lou Boudreau      Cleveland     SS    Stan Musial       St. Louis     OF
+1947  Joe DiMaggio      New York      OF    Bob Elliott       Boston        3B
+1946  Ted Williams      Boston        OF    Stan Musial       St. Louis     1B
+1945  Hal Newhouser     Detroit        P    Phil Cavarretta   Chicago       1B
+1944  Hal Newhouser     Detroit        P    Marty Marion      St. Louis     SS
+1943  Spud Chandler     New York       P    Stan Musial       St. Louis     OF
+1942  Joe Gordon        New York      2B    Mort Cooper       St. Louis      P
+1941  Joe DiMaggio      New York      OF    Dolph Camilli     Brooklyn      1B
+1940  Hank Greenberg    Detoit        OF    Frank McCormick   Cincinnati    1B
+1939  Joe DiMaggio      New York      OF    Bucky Walters     Cincinnati     P
+1938  Jimmie Foxx       Boston        1B    Ernie Lombardi    Cincinnati     C
+1937  Charlie Gehringer Detroit       2B    Joe Medwick       St. Louis     OF
+1936  Lou Gehrig        New York      1B    Carl Hubbell      New York       P
+1935  Hank Greenberg    Detroit       1B    Gabby Hartnett    Chicago        C
+1934  Mickey Cochrane   Detroit        C    Dizzy Dean        St. Louis      P
+1933  Jimmie Foxx       Philadelphia  1B    Carl Hubbell      New York       P
+1932  Jimmie Foxx       Philadelphia  1B    Chuck Klein       Philadelphia  OF
+1931  Lefty Grove       Philadelphia   P    Frankie Frisch    St. Louis     2B
+
+Pre-official (League Award):
+
+1929                                        Rogers Hornsby    Chicago       2B
+1928  Mickey Cochrane   Philadelphia   C    Jim Bottomley     St. Louis     1B
+1927  Lou Gehrig        New York      1B    Paul Waner        Pittsburgh    OF
+1926  George Burns      Cleveland     1B    Bob O'Farrell     St. Louis      C
+1925  Roger Peckinpaugh Washington    SS    Rogers Hornsby    St. Louis     2B
+1924  Walter Johnson    Washington     P    Dazzy Vance       Brooklyn       P
+1923  Babe Ruth         New York      OF
+1922  George Sisler     St. Louis     1B
+
+Pre-official (Chalmer's Award):
+
+1914  Eddie Collins     Philadelphia  2B    Johnny Evers      Boston        2B
+1913  Walter Johnson    Washington     P    Jake Daubert      Brooklyn      1B
+1912  Tris Speaker      Boston        OF    Larry Doyle       New York      2B
+1911  Ty Cobb           Detroit       OF    Frank Schulte     Chicago       OF
+

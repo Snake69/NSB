@@ -1,0 +1,179 @@
+.\" gtknsbclient man page
+.TH gtknsbclient 6 "April 15, 2018" "v0.9.9.6" "Players' Guide"
+.SH "NAME"
+gtknsbclient \-\- a GTK client for the NetStats Baseball (NSB) server
+.SH "SYNOPSIS"
+gtknsbclient [host]
+.SH "OPTIONS"
+.B no options
+.SH "DESCRIPTION"
+.P
+gtknsbclient is a GTK client which communicates with the NSB baseball
+server program.  The audio playback depends upon sox being installed.
+Speech depends upon espeak being installed.
+
+host = the IP address (or hostname) where the baseball server program
+is running (DEFAULT = localhost)
+
+gtknsbclient allows a user to play games of the following varieties:
+.br
+  play a game against the computer
+.br
+  play a game against another person on the same computer
+.br
+  play a network game against another person
+.br
+  watch a game computer versus computer
+.br
+  play a portion of a season or series
+
+.br
+There are also administrative type actions where a user can, for example:
+.br
+  establish a season or series automatically or by hand
+.br
+  see an injury report for your current season or series
+.br
+  see a list of users on this baseball server
+.br
+  create and/or edit your own team
+.br
+  rate real life teams based upon various criteria
+.br
+  rate individual real life player seasons based upon a user-created formula
+
+.br
+There is also a Waiting Pool function to facilitate playing a game against another person across a network.
+.br
+
+You may also view various types of statistics (among others):
+.br
+  season standings
+.br
+  series status and other series-related statistics
+.br
+  real life category leaders
+.br
+  real life season results
+.br
+  NSB category leaders (for regular season, post-season and lifetime)
+.br
+  NSB regular season records
+.br
+  by team
+.br
+  team totals
+.br
+  awards for real life or current season
+
+.br
+There is also a help function.
+.br
+
+If a user chooses to manage a team against the computer or another user
+gtknsbclient will look for offensive and defensive commands with each new
+batter (and other certain situations).  gtknsbclient will issue a prompt
+in the form of a dialog looking for user input for each new situation.
+
+Offensive Commands:
+
+see lineups and make changes
+.br
+hit and run
+.br
+sacrifice bunt
+.br
+squeeze play
+.br
+steal second
+.br
+steal third
+.br
+steal home
+.br
+steal second and third
+.br
+steal second and home
+.br
+steal third and home
+.br
+steal second, third, and home
+.br
+normal, batter swings away
+.br
+switch to autogame (the user's management of this team ceases)
+.br
+
+
+Defensive Commands:
+
+infield in at corners
+.br
+entire infield in
+.br
+hold runner on first base
+.br
+outfield in
+.br
+guard the first base line
+.br
+guard the third base line
+.br
+pitch to batter
+.br
+intentionally walk batter
+.br
+see lineups and make changes
+.br
+pitchout
+.br
+pickoff attempt at first base
+.br
+pickoff attempt at second base
+.br
+pickoff attempt at third base
+.br
+switch to autogame (the user's management of this team ceases)
+.br
+
+
+gtknsbclient may also be executed from the command line (i.e.,
+run non-interactively) to play games in an established league.
+(The league/season must be established via running an interactive
+session of gtknsbclient and selecting Administration->Establish Season.)
+This gives the user the ability to play games in his/her league/season from the
+command line or from cron.  Each running plays 1 day's worth of games in
+the league/season.  The results of each running will be sent to the user
+in the form of an email.  The contents of the email is controlled by the
+user via running an interactive session of gtknsbclient and selecting
+the options via Administration->Season Autoplay->Set-up.
+
+The command line format is:
+.br
+gtknsbclient LEAGUEAUTOPLAY <nsbid> <nsbserver>
+
+All parameters must be present.  "nsbserver" = the name of the host
+to which to connect ("localhost" is acceptable).  "nsbid" = the user's NSB ID
+on the NSB server to which the user is connecting (case sensitive).
+
+Note - if you run the NSB client non-interactively from cron you must
+su to your login as part of the cron entry.
+
+Examples from command line:
+.br
+gtknsbclient LEAGUEAUTOPLAY Snake localhost
+.br
+gtknsbclient LEAGUEAUTOPLAY Albert myhost.cox.net
+.br
+
+Example line in cron:
+.br
+0 3 * * *               su - mlake -c "gtknsbclient LEAGUEAUTOPLAY Snake localhost"
+
+
+.br
+.SH "AUTHOR"
+Marshall Lake <mlake@mlake.net> or <nsb@mlake.net> (the latter is better)
+.SH SEE ALSO
+.BR nsbpoolmngr (6),
+.BR nsbserver (6).

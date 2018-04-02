@@ -1,0 +1,26 @@
+.\" nsbpoolmngr man page
+.TH nsbpoolmngr 6 "April 15, 2018" "v0.9.9.6" "Administrator's Guide"
+.SH "NAME"
+nsbpoolmngr \-\- a server which controls the waiting pool for human versus human network play for NetStats Baseball
+.SH "SYNOPSIS"
+nsbpoolmngr [\-v]
+.SH "OPTIONS"
+
+.TP
+.B \-v
+Show version of program and exit.
+.SH "DESCRIPTION"
+.P
+nsbpoolmngr is a server program which controls the waiting pool for human versus human network play for NetStats Baseball.
+This program is intended to be executed by the nsbserver program.  However, it may be called directly with the -v option to
+show the version.
+
+Add the following line to the file /etc/services:
+nsbpoolmngr  49998/tcp
+
+.SH "AUTHOR"
+Marshall Lake <mlake@mlake.net> or <nsb@mlake.net> (the latter is better)
+.SH SEE ALSO
+.BR gtknsbclient (6),
+.BR nsbserver (6).
+

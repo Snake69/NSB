@@ -1,0 +1,86 @@
+
+             Allowable Characters & Acronyms in Formulas
+
+
+Used in both offensive and pitching formulas:
+
+     0-9
+     +                       addition
+     -                       subtraction
+     *                       multiplication
+     /                       division
+     ( )                     parentheses, used for setting precedence
+     space
+     G                       games
+     SG                      singles
+     DB                      doubles
+     TP                      triples
+     HR                      homers
+     H                       hits
+     R                       runs
+     RBI                     runs batted in
+     K                       strike outs
+     BB                      bases on balls
+     IBB                     intententional bases on balls
+     HBP                     hit by pitch
+     SB                      stolen bases
+     CS                      caught stealing
+     SF                      sacrifice flies
+     SH                      sacrifice hits
+
+
+Used in offensive formulas only:
+
+     AB                      at bats
+     TB                      total bases
+     BA                      batting average
+     SA                      slugging average
+     OBA                     on-base average
+     GIDP                    grounded into double plays
+     A                       assists
+     E                       errors
+     PO                      put outs
+     PB                      passed balls
+     FA                      fielding average
+
+
+Used in pitching formulas only:
+
+     B                       balks
+     BFP                     batters facing pitcher
+     CG                      complete games
+     ER                      earned runs
+     ERA                     earned run average
+     GF                      games finished
+     GS                      games started
+     IP                      innings pitched
+     W                       wins
+     L                       losses
+     OPAB                    opponent at bats
+     OPBA                    opponent batting average
+     PCT                     won/loss percentage
+     S                       saves
+     SOPP                    save opportunities
+     SHO                     shutouts
+     WP                      wild pitches
+
+
+NOTES - All Stat Acronyms may be prefixed with "LA" to indicate League
+        Average.  For example, LAHR would be interpreted to mean the
+        league average for homers hit by batters in the year in question
+        in an offensive formula (or homers given up in a pitching
+        formula).  For calculations, the lower the league average in
+        this case (in an offensive formula) the better an individual's
+        homer output would be extrapolated.
+
+        Stat Acronyms may be upper case, lower case, or mixed case.
+
+        The formula is evaluated from left to right.  Use parentheses to
+        enforce precedence.
+
+        Many of the pitching stats are not available for most years, to
+        wit:  SG, DB, TP, RBI, IBB, SB, CS, SF, SH, OPAB, OPBA, SOPP.
+
+        Some of the offensive stats are not available for many years, to
+        wit:  IBB, K, GIDP, CS, SF.
+

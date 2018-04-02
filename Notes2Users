@@ -1,0 +1,67 @@
+
+PLAYER PICS
+
+Users may add/replace/delete their own player pics.  The player
+pics are located in the /usr/local/share/NSB/PlayerPics directory
+(after installation).  The name of the file which contains the pic
+must match exactly the player's name as it appears in NSB (first name
+first, last name last) including upper and lower case and with no
+embedded spaces.  A hyphen and the player's Date of Birth (mmddyyyy)
+must be appended to the name.  Additionally, the filename extension
+must be ".jpg" without the quotes.  (Even though the format of the
+image doesn't need to be a jpeg, NSB expects a .jpg file extension.)
+So, for example, the player pic file for Jarrod Saltalamacchia must
+be named "JarrodSaltalamacchia-05021985.jpg" without the quotes.
+In another example, the player pic file for J.D. Drew must be named
+"J.D.Drew-11201975.jpg" without the quotes.  (You may see a player's
+Date of Birth with the Statistics->Real Life->By Player drop-down menu
+item in NSB.  In some cases the month and/or day and/or even the year
+may be unknown.  Substitute zeros for any unknown data.)
+
+The display of the player pics can be turned on or off in preferences
+(see Game->Preferences).
+
+The player pics will not display (even if they are turned on in
+preferences) if gameplay speed is at the fastest setting and there are
+no human managers.
+
+A few player pics could not be located.  If anyone finds a pic for any
+player who is pic-less please send it to me at <nsb@mlake.net>.
+
+
+REAL LIFE STATS
+
+Sometimes players are traded to another team in the middle of a real life
+season which means their stats are spread out over more than one team for
+that season.  The intent with the real life player stats in NSB is to have
+any one player appear only once in any one season.  In the case where a
+player played for more than one team in any one season the stats for that
+player have been combined so that his stats for the entire season show up
+on whichever team for which he played the most games (most of the time).
+
+Please advise me if you see where I may have missed some cases, or if
+you see any other problems with the stats.
+
+Other notes with regard to the real life stats:
+  .some stats are not always known either because they are not available
+   with the means I used to acquire them (see next bullet) or because
+   MLB did not record them (in a few cases the stat in question did
+   not exist due to rule changes, e.g. from 1901 through 1953 a SF was
+   charged as an AB in some years and in other years it was not ... in
+   1954 SF was permanently accepted as not being an AB)
+  .more real life stats for the year 1998 are included in NSB than for
+   other years ... the 1998 stats were input by hand from multiple
+   books, the stats for all the other years were downloaded from
+   www.baseball-reference.com and programmically reformatted
+  .the complete fielding stats for outfielders are split among the three
+   outfield positions only for the more recent years, however games
+   played at the three outfield positions are available for all years
+
+Send any questions or comments to nsb@mlake.net
+
+
+Marshall Lake
+nsb@mlake.net          (best email address)
+mlake@mlake.net
+MarshallELake@gmail.com
+

@@ -1,0 +1,32 @@
+
+NSB v0.9.9.6
+15 Apr 2018
+
+NetStats Baseball (NSB) is a simulation of Major League Baseball.
+NSB is a client/server application.
+
+There are plenty of improvements to be made, and I know there are lots
+of bugs to be fixed and adjustments to be made.
+
+Network play is supported, however be advised that I'm certain there
+are security faults present in the program.  Making NSB accessible over
+a network currently is risky business.  Future releases of NSB will pay
+more attention to security.
+
+The text file "todo.txt" lists items to be done in future releases.
+
+If anyone needs help, finds any bugs or has any comments, questions,
+or suggestions for improvements feel free to send me an email at
+<nsb@mlake.net>.  I'm open to _any_ feedback, good or bad.
+
+See the text file "INSTALL" for installation instructions.
+
+See the file "Notes2Users" for a few ..... notes to users.
+
+Have fun.
+
+Marshall Lake
+nsb@mlake.net                 (best email address)
+mlake@mlake.net
+MarshallELake@gmail.com
+

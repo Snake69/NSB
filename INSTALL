@@ -1,0 +1,94 @@
+
+NSB v0.9.9.6
+15 Apr 2018
+
+If you downloaded from github then from the NSB root directory (after
+unzipping) you may just need to enter:
+sudo make install
+
+If gtknsbclient fails to execute (unable to find system libraries) then
+from the NSB root directory do:
+make clean
+make
+sudo make install
+
+
+If you downloaded a tgz file (from sourceforge.net et al) do the following
+after extracting the tgz file:
+To make and install NSB, change directory to the NSB root directory,
+enter the commands:
+./configure
+make
+sudo make install
+
+
+Whether you downloaded NSB from github or you downloaded the tgz file,
+read the remainder of this INSTALL file and perform steps as needed.
+
+
+Programs installed include:
+nsbserver - the NSB server program
+nsbpoolmngr - a controller for human versus human play over a network
+gtknsbclient - a GTK client used to connect to the server program and
+               play the game
+
+After installation add the following two lines to the /etc/services file:
+nsbpoolmngr  49998/tcp
+nsbserver    49999/tcp
+
+If upgrading from version 0.9.5 of NSB or older you will need to remove
+the Records files in order to avoid any unspecified results since the
+Records file format has changed since then.  The Records files exist in
+the directories /var/NSB and /var/NSB/<user directory> and /var/NSB/<user
+directory>/Lifetime
+
+If upgrading from version 0.9.9 of NSB or older you will need to remove
+old team files in order to avoid any unspecified results since the
+player file format (comprising the team files) has changed since then.
+Old team files exist in the directories /var/NSB/<user directory>/Lifetime
+and /var/NSB/<user directory>/UserTeams
+
+Enter the command "nsbserver &" to start the server in the background.
+(See the man page for available options.)  The server must be started by a
+user (more than likely the superuser) which has read and write permissions
+in /var.  After starting the server enter the command "gtknsbclient
+[ip-address-of-server]" to run the NSB client.  The default server to
+which gtknsbclient will connect is localhost.  (Note - the nsbpoolmngr
+program will be started by nsbserver.)
+
+The first time you use gtknsbclient to connect to an nsbserver you
+will be asked to input an NSB ID.  The NSB ID is simply a means for
+the nsbserver program to which you are connected to identify you.
+Most anything can be entered up to a maximum of 50 characters.
+
+Much of gtknsbclient is self-explanatory.  See the man page for some
+info.  There is also a HELP menu item available during the execution
+of gtknsbclient.
+
+All three programs (nsbserver, nsbpoolmngr and gtknsbclient) will be
+installed into /usr/local/bin.  Also included in the installation are
+all the various team statistic files for the years 1901 through 2017, and
+short manuals for the three programs.  The stats files will be installed
+into /var/NSB.  The manuals will be installed into /usr/local/man/man6.
+Some additional files will be installed into /usr/local/share/NSB.
+During play the server program will write into the stats area (/var/NSB/)
+in order to keep track of the progress of the leagues for all the human
+players.
+
+It should be all right to install the executables into a different
+location if you so desire but the statistic files need to go into
+/var/NSB (specifically /var/NSB/RealLifeStats) since the calls to the
+data are hardcoded in the NSB source code.  This will be changed in a
+future release.
+
+All the work has been done on an Intel Linux system.  If you get it
+working on another platform let me know.
+
+Send any questions or comments to nsb@mlake.net
+
+
+Marshall Lake
+nsb@mlake.net               (best email address)
+mlake@mlake.net
+MarshallELake@gmail.com
+

@@ -1,0 +1,272 @@
+     Some Good Individual Seasons
+
+C -  Gabby Hartnett, 1930 Chicago Cubs
+     Mickey Cochrane, 1930 Philadelphia Athletics
+     Bill Dickey, 1936 New York Yankees
+     Ernie Lombardi, 1938 Cincinnati Reds
+     Yogi Berra, 1950 New York Yankees
+     Roy Campanella, 1953 Brooklyn Dodgers
+     Elston Howard, 1961 New York Yankees
+     Johnny Bench, 1970 Cincinati Reds
+     Johnny Bench, 1972 Cincinati Reds
+     Carlton Fisk, 1977 Boston Red Sox
+     Brad Ausmus, 1995 San Diego Padres
+     Mike Piazza, 1997 Los Angeles Dodgers
+     Ivan Rodriguez, 2000 Texas Rangers
+     Jorge Posada, 2007 New York Yankees
+     Joe Mauer, 2009 Minnesota Twins
+1B - George Sisler, 1922 St Louis Browns
+     Lou Gehrig, 1927 New York Yankees
+     Bill Terry, 1930 New York Giants
+     Lou Gehrig, 1930 New York Yankees
+     Jimmie Foxx, 1932 Philadelphia Athletics
+     Lou Gehrig, 1934 New York Yankees
+     Jimmie Foxx, 1938 Boston Red Sox
+     Phil Cavarretta, 1945 Chicago Cubs
+     Gil Hodges, 1954 Brooklyn Dodgers
+     Norm Cash, 1961 Detroit Tigers
+     Willie McCovey, 1969 San Francisco Giants
+     Wes Parker, 1970 Los Angeles Dodgers
+     Rod Carew, 1977 Minnesota Twins
+     Keith Hernandez, 1979 St Louis Cardinals
+     Don Mattingly, 1986 New York Yankees
+     Jeff Bagwell, 1994 Houston Astros
+     Frank Thomas, 1994 Chicago White Sox
+     Mark McGwire, 1996 Oakland Athletics
+     Mark McGwire, 1998 St Louis Cardinals
+     Todd Helton, 2000 Colorado Rockies
+     Jason Giambi, 2001 Oakland Athletics
+     Jim Thome, 2002 Cleveland Indians
+     Albert Pujols, 2003 St Louis Cardinals
+     Derrek Lee, 2005 Chicago Cubs
+     Ryan Howard, 2006 Philadelphia Phillies
+2B - Nap Lajoie, 1901 Philadelphia Athletics
+     Eddie Collins, 1914 Philadelphia Athletics
+     Rogers Hornsby, 1922 St Louis Cardinals
+     Rogers Hornsby, 1924 St Louis Cardinals
+     Rogers Hornsby, 1925 St Louis Cardinals
+     Charlie Gehringer, 1934 Detroit Tigers
+     Billy Herman, 1935 Chicago Cubs
+     Charlie Gehringer, 1937 Detroit Tigers
+     Jackie Robinson, 1949 Brooklyn Dodgers
+     Joe Morgan, 1975 Cincinnati Reds
+     Joe Morgan, 1976 Cincinnati Reds
+     Ryne Sanberg, 1990 Chicago Cubs
+     Chuck Knoblauch, 1996 Minnesota Twins
+     Craig Biggio, 1998 Houston Astros
+     Jeff Kent, 2000 San Francisco Giants
+     Roberto Alomar, 2001 Cleveland Indians
+     Bret Boone, 2001 Seattle Mariners
+     Robinson Cano, 2006 New York Yankees
+3B - Pie Traynor, 1930 Pittsburgh Pirates
+     Al Rosen, 1953 Cleveland Indians
+     Eddie Mathews, 1953 Milwaukee Braves
+     Brooks Robinson, 1964 Baltimore Orioles
+     Joe Torre, 1971 St Louis Cardinals
+     George Brett, 1980 Kansas City Royals
+     Mike Schmidt, 1980 Philadelphia Phillies
+     Buddy Bell, 1980 Texas Rangers
+     Mike Schmidt, 1981 Philadelphia Phillies
+     Wade Boggs, 1987 Boston Red Sox
+     Ken Caminiti, 1996 San Diego Padres
+     Chipper Jones, 1999 Atlanta Braves
+     Adrian Beltre, 2004 Los Angeles Dodgers
+     Scott Rolen, 2004 St Louis Cardinals
+     Mike Lowell, 2007 Boston Red Sox
+     Alex Rodriguez, 2007 New York Yankees
+SS - Honus Wagner, 1908 Pittsburgh Pirates
+     Joe Sewell, 1923 Cleveland Indians
+     Arky Vaughan, 1935 Pittsburgh Pirates
+     Luke Appling, 1936 Chicago White Sox
+     Cecil Travis, 1941 Washington Senators
+     Lou Boudreau, 1948 Cleveland Indians
+     Luis Aparicio, 1970 Chicago White Sox
+     Larry Bowa, 1975 Philadelphia Phillies
+     Robin Yount, 1982 Milwaukee Brewers
+     Ozzie Smith, 1987 St Louis Cardinals
+     Cal Ripken, 1991 Baltimore Orioles
+     Barry Larkin, 1995 Cincinnati Reds
+     Alex Rodriguez, 1996 Seattle Mariners
+     Derek Jeter, 1999 New York Yankees
+     Nomar Garciaparra, 2000 Boston Red Sox
+     Alex Rodriguez, 2001 Texas Rangers
+     Alex Rodriguez, 2002 Texas Rangers
+     Jimmy Rollins, 2007 Philadelphia Phillies
+     Hanley Ramirez, 2009 Florida Marlins
+LF - Babe Ruth, 1921 New York Yankees
+     Babe Ruth, 1926 New York Yankees
+     Goose Goslin, 1928 Washington Senators
+     Heinie Manush, 1928 St Louis Browns
+     Lefty O'Doul, 1929 Philadelphia Phillies
+     Al Simmons, 1930 Philadelphia Athletics
+     Lefty O'Doul, 1930 Philadelphia Phillies
+     Joe Medwick, 1937 St Louis Cardinals
+     Ted Williams, 1941 Boston Red Sox
+     Ralph Kiner, 1949 Pittsburgh Pirates
+     Ted Williams, 1957 Boston Red Sox
+     Carl Yastrzemski, 1967 Boston Red Sox
+     Rickey Henderson, 1990 Oakland Athletics
+     Albert Belle, 1994 Cleveland Indians
+     Ellis Burks, 1996 Colorado Rockies
+     Manny Ramirez, 1999 Cleveland Indians
+     Gary Sheffield, 2000 Los Angeles Dodgers
+     Luis Gonzalez, 2001 Arizona Diamonbacks
+     Barry Bonds, 2001 San Francisco Giants
+     Barry Bonds, 2002 San Francisco Giants
+     Barry Bonds, 2003 San Francisco Giants
+     Barry Bonds, 2004 San Francisco Giants
+CF - Cy Seymour, 1905 Cincinnati Reds
+     Ty Cobb, 1911 Detroit Tigers
+     Tris Speaker, 1923 Cleveland Indians
+     Hack Wilson, 1930 Chicago Cubs
+     Joe DiMaggio, 1937 New York Yankees
+     Joe DiMaggio, 1939 New York Yankees
+     Harry Walker, 1947 Philadephia Phillies
+     Willie Mays, 1954 New York Giants
+     Mickey Mantle, 1956 New York Yankees
+     Mickey Mantle, 1957 New York Yankees
+     Richie Ashburn, 1958 Philadelphia Phillies
+     Jim Piersall, 1961 Cleveland Indians
+     Curt Flood, 1967 St Louis Cardinals
+     Garry Maddox, 1976 Philadelphia Phillies
+     Fred Lynn, 1979 Boston Red Sox
+     Willie McGee, 1985 St Louis Cardinals
+     Ken Griffey, 1997 Seattle Mariners
+RF - Ty Cobb, 1909 Detroit Tigers
+     Joe Jackson, 1911 Cleveland Naps
+     Joe Jackson, 1912 Cleveland Naps
+     Babe Ruth, 1920 New York Yankees
+     Harry Heilmann, 1923 Detroit Tigers
+     Babe Ruth, 1923 New York Yankees
+     Harry Heilmann, 1923 Detroit Tigers
+     Babe Ruth, 1924 New York Yankees
+     Babe Ruth, 1927 New York Yankees
+     Harry Heilmann, 1927 Detroit Tigers
+     Chuck Klein, 1930 Philadelphia Phillies
+     Babe Ruth, 1930 New York Yankees
+     Babe Herman, 1930 Brooklyn Robins
+     Tommy Holmes, 1945 Boston Braves
+     Stan Musial, 1948 St Louis Cardinals
+     Al Kaline, 1955 Detroit Tigers
+     Frank Robinson, 1962 Cincinnati Reds
+     Frank Robinson, 1966 Baltimore Orioles
+     Roberto Clemente, 1967 Pittsburgh Pirates
+     Pete Rose, 1969 Cincinnati Reds
+     Tony Gwynn, 1994 San Diego Padres
+     Larry Walker, 1997 Colorado Rockies
+     Larry Walker, 1999 Colorado Rockies
+     Vladimir Guerrero, 2000 Montreal Expos
+     Sammy Sosa, 2001 Chicago Cubs
+     Ichiro Suzuki, 2004 Seattle Mariners
+     Magglio Ordonez, 2007 Detroit Tigers
+DH - Hal McRae, 1976 Kansas City Royals
+     Don Baylor, 1983 New York Yankees
+     Paul Molitor, 1987 Milwaukee Brewers
+     Harold Baines, 1999 Baltimore Orioles
+     Edgar Martinez, 1995 Seattle Mariners
+     Edgar Martinez, 2000 Seattle Mariners
+     David Ortiz, 2005 Boston Red Sox
+     David Ortiz, 2006 Boston Red Sox
+SP - Rube Waddell, 1905 Philadelphia Athletics
+     Cy Young, 1908 Boston Red Sox
+     Ed Walsh, 1908 Chicago White Sox
+     Addie Joss, 1908 Cleveland Naps
+     Christy Mathewson, 1909 New York Giants
+     Ed Walsh, 1910 Chicago White Sox
+     Joe Wood, 1912 Boston Red Sox
+     Walter Johnson, 1912 Washington Senators
+     Walter Johnson, 1913 Washington Senators
+     Dutch Leonard, 1914 Boston Red Sox
+     Pete Alexander, 1915 Philadephia Phillies
+     Babe Ruth, 1916 Boston Red Sox
+     Lefty Grove, 1931 Philadelphia Athletics
+     Carl Hubbell, 1933 New York Giants
+     Hal Newhouser, 1945 Detroit Tigers
+     Bob Feller, 1946 Cleveland Indians
+     Bobby Shantz, 1952 Philadelphia Athletics
+     Warren Spahn, 1953 Milwaukee Braves
+     Billy Pierce, 1955 Chicago White Sox
+     Sandy Koufax, 1963 Los Angeles Dodgers
+     Dean Chance, 1964 Los Angeles Angels
+     Sandy Koufax, 1965 Los Angeles Dodgers
+     Juan Marichal, 1965 San Francisco Giants
+     Sandy Koufax, 1966 Los Angeles Dodgers
+     Juan Marichal, 1966 San Francisco Giants
+     Jim Kaat, 1966 Minnesota Twins
+     Bob Gibson, 1968 St Louis Cardinals
+     Denny McLain, 1968 Detroit Tigers
+     Dave McNally, 1968 Baltimore Orioles
+     Luis Tiant, 1968 Cleveland Indians
+     Phil Niekro, 1969 Atlanta Braves
+     Tom Seaver, 1971 New York Mets
+     Vida Blue, 1971 Oakland Athletics
+     Steve Carlton, 1972 Philadelphia Phillies
+     Catfish Hunter, 1972 Oakland Athletics
+     Roger Nelson, 1972 Kansas City Royals
+     Fergie Jenkins, 1974 Texas Rangers 
+     Jim Palmer, 1975 Baltimore Orioles
+     Ron Guidry, 1978 New York Yankees
+     Fernando Valenzuela, 1985 Los Angeles Dodgers
+     Dwight Gooden, 1985 New York Mets
+     John Tudor, 1985 St Louis Cardinals
+     Orel Hershiser, 1988 Los Angeles Dodgers
+     Roger Clemens, 1990 Boston Red Sox
+     Greg Maddux, 1994 Atlanta Braves
+     Greg Maddux, 1995 Atlanta Braves
+     Kevin Brown, 1996 Florida Marlins
+     Mike Hampton, 1999 Houston Astros
+     Pedro Martinez, 1999 Boston Red Sox
+     Pedro Martinez, 2000 Boston Red Sox
+     Randy Johnson, 2002 Arizona Diamondbacks
+     Clayton Kershaw, 2014 Los Angeles Dodgers
+     Jake Arrieta, 2015 Chicago Cubs
+RP - Ferdie Schupp, 1916 New York Giants
+     Roy Face, 1959 Pittsburgh Pirates
+     Dick Radatz, 1963 Boston Red Sox
+     Ron Perranoski, 1963 Los Angeles Dodgers
+     Harvey Haddix, 1964 Baltimore Orioles
+     Hoyt Wilhelm, 1966 Chicago White Sox
+     Phil Regan, 1966 Los Angeles Dodgers
+     Mike Marshall, 1972 Montreal Expos
+     Sparky Lyle, 1972 New York Yankees
+     John Hiller, 1973 Detroit Tigers
+     Bruce Sutter, 1979 Chicago Cubs
+     Jim Kern, 1979 Texas Rangers
+     Tug McGraw, 1980 Philadelphia Phillies
+     Rollie Fingers, 1981 Milwaukee Brewers
+     Rich Gossage, 1981 New York Yankees
+     Jeff Reardon, 1982 Montreal Expos
+     Lee Smith, 1983 Chicago Cubs
+     Dan Quisenberry, 1983 Kansas City Royals
+     Tim Burke, 1987 Montreal Expos
+     John Franco, 1988 Cincinnati Reds 
+     Randy Myers, 1988 New York Mets
+     Jeff Montgomery, 1989 Kansas City Royals
+     Tom Henke, 1989 Toronto Blue Jays
+     Dennis Eckersley, 1990 Oakland Athletics
+     Bobby Thigpen, 1990 Chicago White Sox
+     Roberto Hernandez, 1992 Chicago White Sox
+     John Wetteland, 1993 Montreal Expos
+     Jose Mesa, 1995 Cleveland Indians
+     Trevor Hoffman, 1998 San Diego Padres
+     Billy Wagner, 1999 Houston Astros
+     Robb Nen, 2000 San Francisco Giants
+     John Smoltz, 2003 Atlanta Braves
+     Eric Gagne, 2003 Los Angeles Dodgers
+     Keith Foulke, 2003 Oakland Athletics
+     Armando Benitez, 2004 Florida Marlins
+     Mariano Rivera, 2005 New York Yankees
+     Billy Wagner, 2005 Philadelphia Phillies
+     Jonathan Papelbon, 2006 Boston Red Sox
+     Rafael Betancourt, 2007 Cleveland Indians
+     Troy Percival, 2007 St Louis Cardinals
+     Takashi Saito, 2007 Los Angeles Dodgers
+     Francisco Rodriguez, 2008 Los Angeles Angels of Anaheim
+     Mariano Rivera, 2008 New York Yankees
+     Brad Lidge, 2008 Philadelphia Phillies
+     Craig Kimbrel, 2012 Atlanta Braves
+     Fernando Rodney, 2012 Tampa Bay Rays
+     Wade Davis, 2014 Kansas City Royals
+     Wade Davis, 2015 Kansas City Royals
+     Kenley Jansen, 2017 Los Angeles Dodgers
+

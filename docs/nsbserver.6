@@ -1,0 +1,33 @@
+.\" nsbserver man page
+.TH nsbserver 6 "April 15, 2018" "v0.9.9.6" "Administrator's Guide"
+.SH "NAME"
+nsbserver \-\- NetStats Baseball (NSB), a server for a baseball simulation
+.SH "SYNOPSIS"
+nsbserver [\-hlv]
+.SH "OPTIONS"
+
+.TP
+.B \-h
+Show summary of options
+.TP 
+.B \-v
+Show version of program and exit
+.TP 
+.B \-l
+Output log entries to syslog
+.SH "DESCRIPTION"
+.P
+nsbserver is a server program which will play baseball games and entire
+seasons.  It will keep statistics for the individual players and the
+teams.  It will keep track of the season schedule as well as seasonal
+and lifetime records.
+
+Add the following line to the file /etc/services:
+nsbserver    49999/tcp
+
+.SH "AUTHOR"
+Marshall Lake <mlake@mlake.net> or <nsb@mlake.net> (the latter is better)
+.SH SEE ALSO
+.BR nsbpoolmngr (6),
+.BR gtknsbclient (6).
+

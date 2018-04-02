@@ -1,0 +1,463 @@
+provide an option to nsbserver to kill any running processes
+  https://stackoverflow.com/questions/6744979/kill-a-process-from-linux-application
+  https://www.linuxquestions.org/questions/programming-9/c-program-to-kill-process-4175444948/
+add option to display results Worst-2-Best in Evaluate Team Seasons
+add ability to view lifetime real life category leaders
+it seems players with a low amount of stats (like closers) do not perform
+  as they should
+  try this:  add a factor to action logic so that real life stats are
+    pro-rated equally ... based upon 500 PAs & 200 BFPs? ... or maybe bigger
+    numbers like 1000 PAs & 500 BFPs? ... so, each player's stats would be
+    factored up to the bigger numbers before determining action outcome
+add NSB to repositories
+  https://gist.github.com/mindplace/b4b094157d7a3be6afd2c96370d39fad
+include a progress bar when playing portion of league (it appears the only way
+  to do this is for the client to send commands to the server one at a time for
+  each day/game in a loop so that the client gets control back after each day/game;
+  but then the server algorithm would need to be changed)
+    maybe display a box showing "Day xxx in schedule, Game: xxx" where xxx changes
+      after each day and each game
+add a "List U-C Teams" button to the Create Team dialog
+add post-season game scores to Results files for NSB play
+auto-play - allow ability to get post-season category leaders
+allow user to see the NSB regular season schedule at any time, and game scores for games already played
+any playoff games which are part of the regular season should be added dynamically
+  to the schedule file and as such will be the next day/game on the schedule after
+  the [standard] regular season ends (i.e., when the user plays the entire regular
+  season there will still be playoff game(s) to play as part of the regular season);
+  that means the standings should reflect that there are playoff game(s) to be played
+  and regular season hasn't quite ended completely
+
+program to compare NSB real life stats to stats on baseball-reference.com and/or mlb.com
+in Establish Season (auto) allow user to use teams in results from running of Extras->Evaluate Team Seasons
+can certain items in the drop down menu (e.g., the audio) be moved to pop-up menus
+    so as to be able to execute them at any time?
+improve Stats->Real Life->By Player selection process (allow user to input a
+  partial name and then offer the user a list of players to choose from)
+  also, for near-miss matches provide a list of names as "Did you mean?"
+  if user inputs one name assume it is a surname and display list of complete
+  names for which the user can click on one
+allow multiple teams to be used as a source for auto-creating team
+allow user to use lifetime stats when determining players to add to team when auto-creating a team (same team, multiple years)
+allow user to edit/create stats/players
+think about leaving the stats for traded players broken up on the teams
+  they played on rather than all the player's stats on one team
+    give user option of playing with player real-life stats split on multiple teams
+      (because of real-life trades which occurred) or player stats combined onto one team
+    splitting up stats may be weird if going to a "bring up player when there's an injury" system
+    there will be times where position players pitched; those pitching (and fielding) stats should remain in the 25-man roster
+improve/redo schedule algorithm
+  MLB constraints:
+        Each club plays 162 games and 52 series, including 13 at home on weekends.
+        Games within each month and during summer dates should be reasonably balanced between teams.
+        Single-series and four-series home stands and road trips should be minimized; two- and three-series home stands and road trips are preferred.
+        No more than four-series home stands or road trips should be scheduled
+        No doubleheaders in original schedule.
+        No team should travel in excess of 50,000 miles over the course of the season.
+        Three-game series are optimal (minimize number of two- or four-game series).
+        No team can play more than 20 consecutive days without an off day (this is a hard-and-fast rule, because it's in the Collective Bargaining Agreement).
+        The schedule must fit within a window of between 178 and 183 days, with the exception of any season-opening series outside of the US (this is also in the CBA).
+
+        In cold-weather cities, MLB tries to schedule the home opener with
+        a day off following, in case the first game has to be postponed
+        due to weather. Teams also make special requests; the Red Sox are
+        always home on Patriots' Day (and have special permission in the
+        CBA to play an 11 AM game), the Dodgers are always home on Jackie
+        Robinson Day (April 15), the Blue Jays want to be home on Canada
+        Day, the Nationals (and most other teams, but it's particularly
+        important in DC) want to be home on July 4, and so on. MLB does
+        its best to accommodate as many of those requests as possible.
+
+        In addition to the rules previously mentioned here, there must be an equal amount of inner-divisional games played as well, for standings balance.
+
+change over to GTK3
+whenever there is a playoff round where the teams are unknown (usually the 2nd round
+  when there are 2 WC teams), after the previous round completes, the next round teams
+  should be shown in the standings display
+auto-creation of league by year - 1981, special case:  split season + special
+  post-season
+add to league set-up file:  number of games each team plays in season
+  also, auto-creating a league by season, the number of games each team plays should be dictated by the number of games they played that season in real life
+allow user to generate team lifetime stats based upon Season Results factors:
+    team or city
+    years
+    AL, NL or both leagues (some teams have switched leagues through the years)
+    regular season, total post-season, World Series only, or all
+  output:
+    number of years in MLB
+    average finish
+    average number of wins and/or losses
+      regular season
+      post-season
+    total wins and/or losses over all years
+      regular season
+      post-season
+    total finishes by place over all years
+    total years not making post-season
+incorporate off-days into NSB schedule ... off-days will impact pitcher rest days
+  and injury recuperation
+when a sock_gets in gtknsbc returns < 0 it indicates we've lost the
+  connection with the server process ... tell the user we've lost the
+  connection and then call DisconnectFromServer() to close the socket
+  (what about sock_puts?)
+when there is a three-way tie for a division there is a 2-game playoff;
+  with wild card teams involved the post-season set-up may not be right
+auto-create team
+  add a selection for results of formula "best to worst" or "worst to best"
+  allow separate formulas for each Position Player
+  allow formulas for minimum requirements
+  validate "years to include" against years team is available if user selecting
+    1 team to use
+Evaluate Player Seasons ...
+  .allow to be qualified by teamname, by player name + DOB, by position, or any
+   combination
+  .if formula consists of "LA" Stat Acronyms and there are no non-LA Stat
+   Acronyms then return league averages only
+  .allow user to specify minimums based upon stats other than PAs or IPs -
+   allow user to input a formula where the results of that formula act as a
+   minimum
+  .by single season or lifetime
+  .allow results to be returned "by player" (as is already being done),
+   "by team", or "by year" (season)
+  .allow user to factor in if the player's team won the division, made the
+   post-season, player's team's won/loss record, games behind division leader
+  .allow user to factor in player's position (user can assign a value to the
+   different positions)
+  .allow user to skip player records where a divide-by-0 error occurs
+add the ability to replay exactly a real game & produce boxscore
+  also, save NSB game play-by-play (and boxscore?) data in the same
+    format as Retrosheet data and allow for replay of game and/or to
+    show any boxscore (can create boxscore from play-by-play data)
+    (might be able to use this data to figure multi-game records)
+allow a real-life season to be replayed optionally including the trades
+  when they happened and injuries when they happened
+improve display of "batter pic" during gameplay (not all pics are displayed
+  because of the way GTK works)
+give user ability to play a single-elimination, double-elimination or
+  round-robin tournament with any number of teams (randomly selected or
+  user-selected teams) (would not be able to use the same team twice)
+  also, allow the user to mix different styles in one tournament e.g,
+    a round-robin segment followed by a double-elimination segment
+    comprised of the teams with the best records in the round-robin
+allow user to follow/track a team and/or individual players
+if there are two leagues in a user's set-up then there should be two sets of
+  awards
+make available players' post-season stats by year and give user the option
+  to use them for NSB post-season play
+allow users to create their own formulas for MVP, Cy Young & Silver Slugger
+change day selection for TDIB so that only valid days are choosable depending
+  upon the month (e.g., 29 days in Feb, 30 days in Sep, etc)
+add STOP PLAY and CONTINUE PLAY buttons to gameplay dialog (user needs to be
+  able to scroll through play-by-play while play is stopped)
+add STOP SPEECH and START SPEECH buttons to gameplay dialog
+enhance computer play with true AI (use fann?)
+allow stats to be sorted dynamically by any particular field for "By Team" and
+  "Team Totals" (user clicks on a column heading to re-sort and re-display)
+calculating "Evaluate Team Seasons":
+  "number of games finishing ahead of the second-place team in the
+    division/league" - adjust for number of games played and number of teams in
+    the division/league
+  allow user to include or exclude certain teamnames
+add menu items for saving (loading will be done from season set-up dialog)
+  a league set-up ... change the way the client and server communicate
+  when setting up a league (now the server sends team names rather than team
+  IDs, and the client sends back info on every team based upon the order in
+  which it received the info from the server ... the client should only return
+  the team IDs and years for the teams in the league)
+insert/add a dialog when setting up a league asking the user:
+  use saved set-up
+  number of games the teams play:
+    number of games against teams in other divisions in same league (if there
+      are multiple divisions)
+    number of games against teams in other league (if there is 2 leagues)
+  auto set-up:
+    by "Evaluate Team Seasons"
+    form a league of real life teams (user selects a span of years):
+      World Series winners (all, just NL teams, just AL teams)
+      division winners (all, just NL teams, just AL teams)
+      post season teams (all, just NL teams, just AL teams)
+  league options:
+    give user option of setting starting lineup by G or by best stats
+      also, allow user to select the starting lineup of his choosing for a
+      number of games (or through the regular season, or through regular
+      season plus post season) after which alert user to revisit ... in this
+      case allow user to be alerted if there is an injury to a starter
+    allow user to designate certain players to be the primary candidate for a
+      certain position in the starting lineup in an autoplayed season
+    allow user to see odds to win after a league is setup and before any games
+      are played (calculate the odds based upon how the teams fared in real
+      life ... what about a league made up of teams from different years?)
+    when computer selects starting lineup rather than selecting each player
+      based upon most games played at each position, pro-rate a player's
+      chance of playing based upon games played at that position taking into
+      account all the players who played that position
+    alert user of certain events (check real life MLB records to get an idea as
+      to what to look for concerning certain items):
+        no-hitter
+        perfect game
+        batter hits for cycle
+        game longer than 20 innings (allow user to set # of innings)
+        forfeit
+        5 hits or more in a game by one hitter
+        4 homers or more in a game by one hitter
+        20 or more runs in one game (allow user to set # of runs)
+        10 or runs in one inning (allow user to set # of runs)
+        more than 1 hit in the same inning by the same player
+        walk-off hit
+        no-assist game
+        20+ Ks
+        when any game record has been broken, and as a season record gets
+          broken
+    provide option for user to play multiple seasons for his league
+    give user option of various styles of selecting a batting order
+    give user option of basing post-season play upon players' NSB regular
+      season stats
+    allow user to select the number of games in a season but in doing so the
+      stats for that season do not count towards lifetime stats or season
+      records
+    allow a user to "lock-on" to a team in a league with many teams so that any
+      time that team is scheduled to play the user can elect to manage them
+if the pitcher is injured while pitching for the third out of the half inning
+  (or the final out of the game) it may not be handled correctly
+add option of playing a series game with Play->1 Game Against Computer,
+  Play->1 Game Against Human & Play->Watch 1 Game Computer vs Computer
+add code to check for up-to-date version numbers (server & client version
+  numbers matching ?)
+correct error-checking for freads & fwrites by using ferror (see HELP file
+  loader)
+for user-created teams allow an incomplete team to be saved, but don't allow
+  that team to be used in games
+allow career stats for players to be used in game-play
+may need to stop the same user from logging into the same NSB server more than
+  once simultaneously (it may cause problems)
+    to do this add a "logged in" field to the userinfo file (or expand the
+      "status" field)
+    also, show which users are logged in and which are not in
+      Administration->Users on Connected Server
+put a time limit on response to "Accept Challenge?" dialog and tell
+  challenger that challengee has a certain time to reply, and then tell
+  challenger when time expires (if it does)
+put nofork socket connection ports (2) in network byte order
+get rid of nsbpoolnet.c
+run NSB under Valgrind
+when there are multiple changes to one batting order position (e.g.,
+  PH then PR) after the forced change dialog after the half-inning is
+  completed the play-by-play text is wrong (e.g., it says "Player Y is
+  now hitting for Player X." when it should say "Player Y is now playing
+  center field.")
+if a pitcher is batting and a reliever is coming in the next inning no
+  matter what then pinch hit for the pitcher no matter the score
+when the batter gets injured and gets on base NSB always replaces him
+  at the beginning the next inning - sometimes there should be a need
+  for a pinch runner
+lineup display during game play ... allow user to see stats on either
+  team
+outfielders should have occasional assists from more than just failed
+  sacrifice flies ... runners attempting to stretch singles into doubles
+  and doubles into triples
+if hit & run is on and the batter lines out to an infielder with less
+  than 2 outs then the runner should be doubled up
+  also, if batter strikes out then baserunner(s) will attempt a steal
+comparison of real life stats and stats produced from NSB - too many
+  total ABs in NSB (is that because players don't miss games?)
+  too many total IPs in NSB (this may account for the previous
+    mis-comparison)
+  too many runs scored in NSB (caused by too many IPs and ABs above?)
+  stats need to be spread out (standard deviation) a little (good players
+    need to be better and bad players need to be worse)
+  need further comparison for various years
+add button to gameplay dialog to allow user to take over managing from
+  computer
+add a PAUSE button to the gameplay dialog which will be sensitive only
+  when the user is watching a game (no user managers)
+make error alerts look nicer
+change strcpy's & strcat's to buffer to sprintf's
+change GTK itemfactory menu to manual menu
+use memcpy instead of strcpy and strncpy ?
+add options to client to specify port number, and to display version
+add option to server to specify port number
+make the server run as nobody ... allow user to set up the data files
+  anywhere accessible to nobody
+if a runner gets on base via error and then is erased (via a CS or pick
+  off or DP) then any runs scored afterwards should be earned
+not all errors would have been an out otherwise (e.g., pickoff attempts,
+  outfielder misplays a single so that baserunners advance a base on
+  the flub)
+refine error calculation ... allow more than just "whereto" to get an
+  error, check for errors for hits too, allow for 1, 2, or 3 base errors,
+  allow for multiple errors in the same play
+when setting line-ups position should be a combo_box in certain cases
+implement better regular season scheduling
+in the play-by-play the beginning of the inning string (xth inning)
+  doesn't always show (only happens at 9th inning?)
+in network game show (and interact with) both lineup dialogs
+  simultaneously
+  also, an alert message should be displayed for one human as the other
+    human is selecting his lineup, and while challengee is selecting the
+    teams
+computer AI should check players already in game for possible replacements
+  (by shuffling positions around) as well as the bench players (there
+  are times when a pinch hitter remains in the game playing out of
+  position because there is no one on the bench to play the position
+  being replaced)
+allow a user not to have his name and email address included in a
+  ADMIN->USERS command display
+add option to server to disallow certain users, or to allow only
+  certain users
+more records ... total bases, extra base hits
+add context help
+if user quits client while sound is playing the terminal needs resetting
+  (if executed from the command line) - may have to fork and kill the
+  mplayer or sox process before quitting
+category leaders - if a player does not have the minimum requirement to
+  qualify for the lead in BA, SLGPCT or OBA but if a number of hitless
+  ABs is added to qualify and the player still leads in the category
+  then he qualifies
+add for user preferences:
+  don't stop at end of regular season (if there are games left to play
+    according to the number user selected to play)
+  auto-save league set-up when playing league
+combine the 3 or 4 dialogs which come up when playing a game into 1
+  dialog, also allow player to set the lineup even when just watching
+  a game & add another selection for "quick play" where the user is not
+  allowed to set lineup
+offer safety squeeze and suicide squeeze for offense
+allow user to create new stats for individuals and for teams (e.g., BB Pct
+  (BB per 100 AB), BB per G, Game-Winning RBIs, an avg based upon league
+  performance, W PCT (pct of a team's W that an individual pitcher won),
+  RBI Opportunities, situational stats (how does a batter perform with
+  the bases loaded, after the 7th inn when team is tied or trailing,
+  with no one on base, BA RISP (both batters and pitchers), BA RISP with
+  2 outs, etc), stats per 162 games, etc)
+offer an abbreviated scoresheet-style of play-by-play for viewing and
+  printing
+add stat "Holds" for pitcher - defined as non-starter who enters the game
+  in a save situation, records at least 1 out, and leaves the game never
+  having relinquished the lead ... cannot be credited to the winning
+  pitcher, a pitcher earning a save, or a pitcher finishing a game
+Category Leaders, fielding - add categories for LF, CF & RF (retain OF)
+stat - "Quality Start" - starting pitcher, 6 (or more) IP, 3 (or less) ER
+stat - walk-off hits
+stat - games injured
+stat - Hit into DP (HIDP) which is GIDP + all other DPs
+add OPS (OBA + SLGAVG) to batting stats
+add WHIP (walks + hits per inning) to pitching stats
+display trivia quiz questions
+incorporate split data for pitchers and hitters & emplement logic:
+  lefty/righty
+  RISP
+  what else?
+provide lots of sounds and allow user to associate certain sounds with
+  certain events
+implement algorithm that platoons the players during the automated play
+  of a season (based upon ABs & Gs played in a position or positions)
+improve scheduling for post-season play ... when multiple teams from the
+  same division go to the post-season they should never play each other
+  in the first round of the playoffs (unless there is only one division
+  in the league)
+when client & server conversing never pass team names or player names,
+  always pass team IDs + year, or player IDs
+allow any player to pitch (as opposed to allowing just pitchers to pitch)
+team rosters should not be limited to 11 pitchers
+  also, NSB should allow one of the position players to have pitching stats
+    which would keep the # of players on the team at 25 and the number of
+    pitchers to be 12
+allow NSB to use an alternate port to 49999
+include a glossary of baseball terms
+when asking user to select a team for "By Team" stats for Lifetime
+  teams break up the text view by year (ala Real Life teams)
+allow user to select teams to play from the season results display
+allow players to play multiple positions in the same game (sometimes
+  pitchers are position players and vice-versa)
+allow user to create/edit/view/delete reports
+allow trading of players (only in user-created teams?)
+enable user to select a partial line-up, in this case the computer will
+  finish the line-up 
+allow computer to recommend to user:
+  starting line-up batting order
+  a player at any of the positions
+  pinch hitter
+  pinch runner
+allow for pitch-by-pitch game-play and decision-making as well as
+  batter-by-batter decision-making
+rewrite player replacement routine ... put possible substitute players
+  in groups by position:  group #1 players who play same position as the
+  player being substituted for, group #2-5 3rd-ss-2b, 1b-c, lf-cf-rf,
+  p ... if there are no more players to substitute for an injured player
+  then team forfiets (?)
+allow baserunners to "lean" one way or the other or not at all
+offer bullpen management
+  factor in pitchers warming up before coming into a game
+allow catcher interferences, baserunners interfering with fielders, fielders
+  interfering with baserunners
+allow baserunners to get hit by a batted ball
+allow user to save a game in progress, and to load a saved game
+the field "statsind" should be part of the id section rather than the
+  stats section
+in "Lineup - <team year & name>" dialog (SeeLineup) when user expands
+  the dialog to full screen while on defense the lineup remains centered,
+  but while on offense the lineup is not centered
+when selecting the lineup, if the user selects the NSB AI to do the
+  lineup then that lineup should be displayed before continuing
+stats to add:
+  fielding (for catchers & pitchers) - SB & CS against (for pitchers,
+    these two stats are currently in pitching - move them)
+  ejections
+  team DPs
+  triple plays
+  successful pickoffs for pitchers (and catchers?)
+  picked off for baserunners
+  integrate appropriate stats into gameplay results decisions
+  missing stats, some of which may be available on baseball-reference.com
+    (batting:  GIDP (1901-32, 1933-38 AL), CS (1901-19, 1926-50 NL),
+    IBB (1901-54), SF (1901-53), SO (1901-09, 1910-12 AL), pitching:
+    IBB (1901-54), SOPP, 2B, 3B, RBI, SB, CS, SH, SF, OPAB (1901-97,
+    1999-2011))
+allow category leaders:
+  by league
+  by division
+  by team
+improve upon input of series length when establishing a series - possibly
+  have two radio buttons:  random and a spin button for number of games
+offer a scoresheet as well as a boxscore and play-by-play
+provide the ability to un-highlight a player on the Team Roster (when
+  creating a team)
+keep records that traverse multiple games in the player db such as:
+  hitting streak, scoreless streak, winning streak (for pitchers), etc.
+records should include team records, game records (longest by inning,
+  longest by time, etc)
+keep team winning streaks and losing streaks
+records:
+  add post-season records for 4-game series, 5-game series, 6-game series &
+  7-game series
+increase maximum allowable size of NSB leagues
+one time - immediately after initial installation, played 2013 season (latest
+  season at the time) in one running, the "season completed" dialog did not
+  go away after clicking OK
+  in same session there was a tie for 1st place in the AL east ...
+    the tie did not show in the standings although the playoff game was
+    played (the bug must be here which didn't allow the "season completed"
+    dialog to go away)
+make WWW interface to stats
+make WWW interface to game
+allow pickoff attempts by catchers
+allow third strike wild pitches and third strike passed balls
+  (note - catcher does NOT get a put-out for the K if batter reaches base)
+have rundowns
+allow triple plays
+allow defensive indifference
+institute an all-star game
+run its4, flawfinder, rats, pscan & splint against the C source
+change all "atoi" to "strtol"
+make all strxxx calls strnxxx calls
+
+
+from Keith Jefferson <keithjefferson@users.sourceforge.net>
+.it would be nice if the textual descriptions of each play could be even
+ more detailed (perhaps several lines long, with variable delays between
+ each line) ... this would allow the game to optionally be slowed down
+ to a point where suspense becomes a factor ... reading like a good
+ radio broadcast
+.add customizable statistical display to pitcher pics and batter pics with
+ choices of today's stats, current series, current season, real-life, etc
+

@@ -1,0 +1,1303 @@
+
+                  GTK NSB Client for NetStatsBaseball Server
+                                 v0.9.9.6
+
+
+                                 Overview  
+
+GTK NSB Client is a program used to connect to a NetStatsBaseball (NSB) server
+program.  The client and server programs working together allow users to play
+individual baseball games (from a managerial point of view) and entire seasons.
+(An entire season can be played in a matter of seconds if desired.)  The game
+is a simulation of Major League Baseball and play is based upon the real-life
+statistics of the individual players (1901 - current year).  Resulting
+statistics from games and entire seasons are kept.  Seasonal records and
+lifetime statistics are kept.  Users may create their own teams consisting of
+real life players from various years.  (Note - lifetime statistics for
+user-created teams are NOT kept.)
+
+
+                               General Info
+
+The GTK NSB Client program accepts one optional parameter ... the host to which
+to try to connect.  (The default is localhost.)  The top portion of the main
+window (the window which displays when the program first executes) shows
+current connection status information.  If currently connected to an NSB server
+then the info in the top portion of the main window will show your NSB ID, your
+local identification (usually your email address), the name of the host to
+which you are connected (localhost and the actual name of your machine may or
+may not act as two different NSB servers except in the case of two humans
+playing a game over a network when localhost and the actual name of your
+machine are always treated as the same NSB server), and the number of times you
+have been connected to the NSB server program running on that particular host
+using this particular NSBID.  The bottom portion of the main window will show
+error-type messages and info-type messages which do not normally need user
+intervention as processing progresses.
+
+
+                           Details of Each Menu Item
+
+  Game->Connect to a Server
+
+Select this menu item to connect to a host running the NSB server program.  If
+the client is already connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Disconnect from Current Server to
+disconnect from the current NSB server.)  After clicking on this menu item the
+client will ask for the name of the host to which to connect.  The default
+entry is localhost.  If the NSB server program is not running on the selected
+host or there is some other sort of error, a message will show in the message
+area (bottom half) of the client main window.
+
+  Game->Disconnect from Current Server
+
+Use this menu item to disconnect from the NSB server to which the client is
+currently connected.  If the client is not connected to a NSB server then this
+menu item will be de-sensitized and unselectable.  (Use
+Game->Connect to a Server to connect to a host running the NSB server program.)
+
+  Game->Play->One Game Against Computer
+
+Click on this menu item to play a game versus the computer.  If the client is
+not connected to a NSB server then this menu item will be de-sensitized and
+unselectable.  (Use Game->Connect to a Server to connect to a host running the
+NSB server program.)  Upon selecting this menu item, if there is a season
+currently in progress you will be asked if you would like to play a season game
+or a non-season game.  If you elect to play a non-season game (or if there is
+no season in progress) you will be asked to randomly select the teams or to
+manually select the teams.
+
+If playing a season game the next game on the schedule will be selected.  After
+that you will be asked whether to manage the home team or the visiting team.
+After that you will be asked to set the lineup.  Setting the lineup is
+described below in "Miscellaneous Info".
+
+If random is selected you will then be asked whether or not to use a designated
+hitter.  After that you will be asked whether to manage the home team or the
+visiting team.  After that you will be asked to set the lineup.  Setting the
+lineup is described below in "Miscellaneous Info".
+
+If you choose to manually select the teams then you will be asked whether to
+manage the home team or the visiting team.  Next you will choose the teams to
+use in the game.  That process is described below in "Miscellaneous Info".
+After selecting the teams you will be asked to set the lineup.  Setting the
+lineup is described below in "Miscellaneous Info".
+
+See "Miscellaneous Info" for information on watching/playing a game and making
+managerial decisions.
+
+  Game->Play->One Game Against Human->Same Computer
+
+Click on this menu item to play a game versus another human with both humans
+using the same computer.  If the client is not connected to a NSB server then
+this menu item will be de-sensitized and unselectable.  (Use
+Game->Connect to a Server to connect to a host running the NSB server program.)
+Upon selecting this menu item, if there is a season currently in progress you
+will be asked if you would like to play a season game or a non-season game.  If
+you elect to play a non-season game (or if there is no season in progress) you
+will be asked to randomly select the teams or to manually select the teams.
+
+If playing a season game the next game on the schedule will be selected.  After
+that you will be asked whether to manage the home team or the visiting team.
+After that you will be asked to set the lineup.  Setting the lineup is
+described below in "Miscellaneous Info".
+
+If random is selected you will then be asked whether to use a designated hitter
+or not.  After that you will be asked whether to manage the home team or the
+visiting team.  After that you will be asked to set the lineup.  Setting the
+lineup is described below in "Miscellaneous Info".
+
+If you choose to manually select the teams then you will be asked whether to
+manage the home team or the visiting team.  Next you will choose the teams to
+use in the game.  That process is described below in "Miscellaneous Info".
+After that you will be asked to set the lineup.  Setting the lineup is
+described below in "Miscellaneous Info".
+
+See "Miscellaneous Info" for information on watching/playing a game and making
+managerial decisions.
+
+  Game->Play->One Game Against Human->Over Network
+
+Click on this menu item to play a game versus another human with the two humans
+using two different computers.  If the client is not connected to a NSB server
+then this menu item will be de-sensitized and unselectable.  (Use
+Game->Connect to a Server to connect to a host running the NSB server program.)
+To use this menu item the other human must already have his name in the Waiting
+Pool (see Waiting Pool->Add Name).  The general steps for playing a network
+game are described below in "Miscellaneous Info".
+
+After clicking this menu item you will be asked to specify who you would like
+to play (see Waiting Pool->Who is Waiting).  Next the challengee (the user
+whose name was specified) will be asked whether or not to accept the challenge.
+After accepting, if the challengee has a season in progress he/she will be
+given the option whether to play a season game or a non-season game.  Otherwise
+the challengee will be asked whether to randomly select the teams or to
+manually select the teams.  The challengee will choose both teams.  If a season
+game is selected then the next game in the schedule will be played.
+
+If random is selected, the challengee will then be asked whether or not to use
+a designated hitter.  (This selection will apply to both teams.)  After that
+the challenger and the challengee will set their lineups.  Setting the lineup
+is described below in "Miscellaneous Info".
+
+If manually selecting the teams, the challengee will choose both teams to use
+in the game.  That process is described below in "Miscellaneous Info".  After
+that the challenger and the challengee will set their lineups.  Setting the
+lineup is described below in "Miscellaneous Info".
+
+In any case the challengee will always manage the home team.
+
+See "Miscellaneous Info" for information on watching/playing a game and making
+managerial decisions.
+
+  Game->Play->Watch One Game Computer vs Computer
+
+Click on this menu item to watch a game where both teams are managed by the
+computer.  If the client is not connected to a NSB server then this menu item
+will be de-sensitized and unselectable.  (Use Game->Connect to a Server to
+connect to a host running the NSB server program.)
+
+Upon selecting this menu item, if there is a season currently in progress you
+will be asked if you would like to play a season game or a non-season game.  If
+you elect to play a non-season game (or if there is no season in progress) you
+will be asked to randomly select the teams or to manually select the teams.
+
+If playing a season game the next game on the schedule will be selected.
+
+If random is selected you will then be asked whether or not to use a designated
+hitter.
+
+Manually selecting teams is described below in "Miscellaneous Info".
+
+See "Miscellaneous Info" for information on watching/playing a game.
+
+  Game->Play->Portion of Season
+
+Click on this menu item to play a portion of a season.  If there is no season
+currently established this menu item will be de-sensitized and unselectable.
+(Use Administration->Establish Season to establish a season.) If the client is
+not connected to a NSB server then this menu item will be de-sensitized and
+unselectable.  (Use Game->Connect to a Server to connect to a host running the
+NSB server program.)
+
+Upon clicking on this menu item you will be asked for the number of days or
+games in your season to play.  Playing 999 days in your season will ensure that
+the entire season will be played.  If within the regular season this process
+will always stop at the end of the regular season even when the number of
+days/games being played is more than necessary.  To play out the entire
+post-season this menu item may be selected again.
+
+This process may take some time depending upon the number of days/games being
+played.
+
+  Game->Play->Game(s) in a Series
+
+Click on this menu item to play a portion of a series.  If there is no series
+currently established this menu item may be de-sensitized and unselectable.
+(Use Administration->Establish a Series to establish a series.) If the client
+is not connected to a NSB server then this menu item will be de-sensitized and
+unselectable.  (Use Game->Connect to a Server to connect to a host running the
+NSB server program.)
+
+Upon clicking on this menu item you will be asked for the number of games to
+play in your series.  Playing 999 games will ensure that the entire series is
+played.
+
+  Game->Preferences
+
+Click on this menu item to set some NSB preferences.  To change the value of
+any preference (except Gameplay Speed) click on that particular preference.
+Save the preferences in order to use the same settings in subsequent runnings
+of NSB.
+
+Preference explanations:
+
+Show Starting Lineups Before Any Single Game
+or
+Do Not Show Starting Lineups Before Any Single Game
+
+When a single game is played via one of these four menu items:
+Game->Play->One Game Against Computer
+Game->Play->One Game Against Human->Same Computer
+Game->Play->One Game Against Human->Over Network
+Game->Play->Watch One Game Computer vs Computer
+
+after the lineup is set and before the game actually starts the starting
+lineups for both teams will or will not be displayed depending upon the
+setting of this preference.
+
+Include User-Created Teams in Random Team-Selection Pools
+or
+Do Not Include User-Created Teams in Random Pools
+
+Any time teams are randomly selected to play in a game, user-created teams may
+or may not be included in the pool from which the teams are randomly selected
+based upon the setting of this preference.  If user-created teams are not
+included then only real-life teams will be included in the selection pool.
+
+Play Sounds
+or
+Do Not Play Sounds
+
+NSB will or will not produce sounds based upon the setting of this preference.
+sox <http://sox.sourceforge.net/> must be installed for sound to be produced.
+
+Speak Play-By-Play
+or
+Do Not Speak Play-By-Play
+
+NSB will or will not speak the play-by-play while playing a game based upon the
+setting of this preference.  espeak <http://espeak.sourceforge.net/> must be
+installed for speech to function.
+
+The Gameplay Speed must be set to 3 seconds or greater for speech to function.
+Gameplay Speed may be set in Game->Preferences.  It may also be adjusted during
+gameplay (see "Miscellaneous Info" below).
+
+Show Player Pics During Gameplay
+or
+Do Not Show Player Pics During Gameplay
+
+Profile pictures of the current pitcher and the current batter will or will not
+be shown during gameplay based upon the setting of this preference.
+
+The player pics will not display (even if they are turned on in preferences) if
+gameplay speed is at the fastest setting (Seconds and Quarter-Seconds are both
+set to 0) and there are no human managers.
+
+It is possible to add your own Player Pics.  See the text file Notes2Users.
+
+Show "This Day in Baseball" at Boot
+or
+Do Not Show "This Day in Baseball" at Boot
+
+"This Day in Baseball" for today will or will not display when the GTK NSB
+Client is executed based upon the setting of this preference.
+
+"This Day in Baseball" may also be displayed via Xtras->This Day in Baseball.
+
+Make Player Pics Moveable During Gameplay
+or
+Each New Player Pic During Gameplay Will Display in the Same Location
+
+Profile pictures of the current pitcher and the current batter will or will not
+be moveable during gameplay based upon the setting of this preference.
+
+If the pictures are not moveable then each new pic will display in the same
+location on the screen determined by NSB.  If the pics are moveable then they
+may be moved via the mouse during gameplay.  After any pic is moved to a new
+location all following pics will appear in that new location.
+
+Ask to "assume all years" when "Include Year(s)" field is empty
+or
+Don't ask to "assume all years" when "Include Year(s)" field is empty
+
+Certain menu items (i.e., Administration->Establish Season (auto-create, same
+team/multiple years); Administration->Create, Edit, Rename or Delete Team;
+Statistics->Real Life->Category Leaders; Xtras->Evaluate Team Seasons; and
+Xtras->Evaluate Player Seasons) allow the user to enter "years to include" when
+determining the output.  If the "years to include" entry is blank NSB will
+assume all years.  An are-you-sure dialog will or will not appear based upon
+the setting of this preference.
+
+Gameplay Speed
+
+The gameplay speed of games being played on the screen (as opposed to playing a
+portion of a season or a portion of a series) may be set here.  The speed may
+also be adjusted during gameplay (see "Miscellaneous Info" below).
+
+The Gameplay Speed must be set for 3 seconds or greater for play-by-play speech
+to function.  (See Speak Play-By-Play or Do Not Speak Play-By-Play above.)
+
+The player pics will not display if gameplay speed is at the fastest setting
+(Seconds and Quarter-Seconds are both set to 0) and there are no human
+managers.  (See Show Player Pics During Gameplay or Do Not Show Player Pics
+During Gameplay above.)
+
+  Game->Quit
+
+Click this menu item to quit the GTK NSB Client.
+
+  Administration->Establish Season
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Upon selecting this menu item, first
+choose to set up the season by hand or automatically.  If you would like
+complete control click on By Hand and then click OK.  Otherwise click Auto
+Set-Up.  Lifetime statistics for players are accumulated in seasonal play.
+Lifetime statistics are NOT accumulated for user-created teams.  There can be
+only one season or one series at one time, not both.  (See
+Administration->Establish a Series.)
+
+If creating by hand the next dialog takes you through the process.  Choose how
+to establish the Designated Hitter.  Choose the Number of Wild Card Teams in
+the post-season.  Choose the maximum number of games in each post-season round.
+Choose each team to compete in the season.  In the upper-half scrollable area
+of the dialog click on the +/- to the left of each year to expand/compact that
+year.  When expanded, all the teams for that year will be shown.  Click on the
+appropriate box next to each team to place that team in the AL-East,
+AL-Central, AL-West, NL-East, NL-Central or NL-West.  Each individual team can
+be added to the season only one time, however teams may be mixed and matched
+from various years including User-Created teams.  There is a maximum of 50
+teams in any one division, and a maximum of 100 teams in the entire season.
+
+At any time click on Show Season Creation Status to display the current status
+of the season set-up.
+
+After completing the set-up click OK.
+
+If automatically creating a season then all the possible options will be shown.
+There are three general themes to auto-setup a league:  By Real Life Year, Same
+Team, Multiple Years, or Random.  Select one of these general themes on the
+left-hand side of the dialog.
+
+If choosing By Real Life Year then choose which year you would like on the
+right.  After that click OK.
+
+If choosing Same Team, Multiple Years then choose the team you would like.  In
+this case one team from each year of the team's existence will be included in
+the season.  All the teams (50 maximum) will be placed in the same division in
+one league.  You may also choose to include and/or exclude certain years.  (See
+"Miscellaneous Info" below for an explanation on including and excluding
+years.)  Also, for this general theme you may choose whether or not to use a
+Designated Hitter, the number of wild card teams, and the maximum number of
+games to play in each round of the post-season.  (The maximum number of
+post-season rounds is two for this general theme.)  After making all the
+choices click OK.
+
+As an example for using this general theme, say you want to play all the Boston
+Red Sox teams from every year in order to find the best team.  The Boston Red
+Sox span the years 1908 through present day making for 108 teams (through
+2015).  Since the most teams that can be included in any one setup is 50,
+multiple seasons would need to be played.  So, play one season including the
+Boston Red Sox from years 1908 through 1942, another season including the
+Boston Red Sox from years 1943 through 1978, and a third season playing the
+Boston Red Sox from years 1979 through 2015.  Then play a fourth season with,
+say, the top five Boston Red Sox teams from each of the first three seasons.
+
+If choosing Random you may choose to randomize or specify various factors in
+the season shown on the right side of the dialog.  After making the choices
+click OK.
+
+  Administration->Establish a Series
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Choose this menu item to set up a series
+between two teams.  Lifetime statistics for players are NOT accumulated in
+series play.  There is no post-season play in a series.  There can be only one
+season or one series at one time, not both.  (See
+Administration->Establish Season.)
+
+Upon choosing this menu item the set-up dialog will display.  Choose to select
+the two teams randomly or manually.
+
+If you choose to manually select the teams the process is described below in
+"Miscellaneous Info".  The same team may play itself in a series.
+
+Choose the Series Length (1 to 999 maximum games).  Choose whether or not to
+use the Designated Hitter.
+
+After completing the set-up click OK.
+
+  Administration->Injury Report
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to show an injury
+report for players in either the current on-going season or the current
+on-going series.
+
+  Administration->Season Autoplay->Set-up
+
+Use this menu item to set up season autoplay.  Autoplay may be executed via
+Administration->Season Autoplay->Execute Once Now or from the command line (see
+"Miscellaneous Info" below).  Autoplay allows you to play games in a current
+on-going season non-interactively.  The results of running autoplay will be
+sent in the form of an email.
+
+Upon selecting this menu item a dialog will appear allowing you to select
+various reports/statistics to be sent when executing autoplay.  After making
+your selections click SAVE so the settings may be used in subsequent runnings
+of autoplay either via Administration->Season Autoplay->Execute Once Now or via
+the command line.
+
+  Administration->Season Autoplay->Activation
+
+Use this menu item to activate autoplay.  Autoplay must be activated whether
+executing it via Administration->Season Autoplay->Execute Once Now or via the
+command line.
+
+After clicking on this menu item click on ACTIVATE AutoPlay to activate it or
+SUSPEND AutoPlay to suspend it.
+
+  Administration->Season Autoplay->Execute Once Now
+
+Use this menu item to execute season autoplay one time.  Autoplay will play one
+day's worth of games in a current on-going season.  If autoplay is not
+activated (see Administration->Season Autoplay->Activation) then an error will
+occur and notification will be sent in the form of an email.  If the client is
+not currently connected to the correct NSB server then an error will occur.
+However, autoplay may be executed from the command line without the client
+being connected to the correct NSB server (see "Miscellaneous Info" below).
+
+The results of autoplay will be sent in the form of an email.
+
+  Administration->Users on Connected Server
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to show all users who
+have accounts on the currently connected NSB server.  The users shown may or
+may not be currently logged into the NSB server.
+
+  Administration->Create, Edit, Rename or Delete Team
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to create your own
+team from a variety of real life player seasons.  You may also edit, rename, or
+delete a team which has already been created.  First choose "by hand" (and
+click Go) or "auto create".  If you want to perform actions to any teams
+already created then choose "by hand".
+
+If choosing "by hand" you may create, edit, rename, or delete a team.  To
+delete a team already created click on Delete Team and then enter the name of
+the team to delete and click OK.  If the team which was entered does not exist
+you will be presented with a list of teams which do exist.  To rename a team
+click Rename Team and then enter the current name of the team and the new name
+of the team.  If the current team name which was entered does not exist you
+will be presented with a list of teams which do exist.
+
+To create a new team you must (1) enter a name for the team and (2) select all
+the players to include on the team.  In order to select a player:  click on the
++/- to the left of each year to expand/compact that year.  When expanded, all
+the teams for that year will be shown.  Click on a team name to load its roster
+into the players and pitchers lists at the bottom of the dialog.  Now click on
+a player to add him to the team near the top-right of the dialog.  A player may
+be removed from the team by clicking on (highlighting) his name in the team's
+list and then clicking Remove.  At any time click on Check Team.  The ensuing
+messages will alert you if your team is lacking in any way.  After finished
+creating the team click on Save Team to save it.  If the team is totally
+invalid it will not be able to be saved.  If the team is just lacking in some
+way it will still be able to be saved.
+
+To edit a team which already exists click Load Team and enter the name of the
+team.  If the name which was entered does not exist you will be presented with
+a list of teams which do exist, otherwise the team you entered will be loaded
+and the roster will be shown near the top-right of the dialog.  After loading,
+the team may be edited as described above.
+
+If choosing "auto create" a team may be created automatically based upon
+various factors.  Enter a team name.  Determine the formulas to use to select
+the position players, the starting pitchers, and the relief pitchers.  (See
+"Miscellaneous Info" below for a discussion on formulas.)  You may choose
+whether or not to allow the same player from different years be used.  You may
+choose to allow only 1 or multiple closer-type pitchers.  You may elect to
+limit the team to players from only one team (across multiple years) or all
+teams.  (For example, you may want to create an all-time Boston Red Sox team.)
+You can elect what to do with real life statistics which are not available.
+You may enter a minimum requirement for choosing position players, starting
+pitchers, and relief pitchers.  And you may include and exclude specific years
+from which to draw players.  (See "Miscellaneous Info" below for notes on
+including and excluding years.)  After making all the choices click Go.
+
+When a team is auto-created the selection process will include at least 1
+closer, 6 starting pitchers, 4 relief pitchers, and 14 position players.  Each
+position will be covered by at least two players.  Taking these requirements
+into consideration it's likely that the 25 very best players (according to the
+supplied formulas) will NOT be chosen.  After a team is auto-created and saved,
+players may be removed and added to the roster (see above).
+
+  Administration->Some Good Individual Seasons
+
+Click on this menu item to show a list of very good seasons by players at the
+different positions.  This list may come in handy when creating your own team
+(see Administration->Create, Edit, Rename or Delete Team).
+
+  Administration->Change My NSBID on Connected Server
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to change the
+NSBID you are using on the NSB server to which you are currently connected.
+
+  Administration->Delete My NSBID on Connected Server
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to delete the
+NSBID you are using on the NSB server to which you are currently connected.
+
+  Statistics->Current Season->Standings
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the standings for the current on-going season.
+
+  Statistics->Current Season->Category Leaders->Regular Season
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the leaders in various statistic categories for the current
+on-going regular season.  There are many hitting, pitching and fielding
+categories from which to select.  Click on the appropriate button to see the
+associated top-25 list.
+
+  Statistics->Current Season->Category Leaders->Post-Season
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the leaders in various statistic categories for the post-season for
+the current on-going season.  There are many hitting, pitching and fielding
+categories from which to select.  Click on the appropriate button to see the
+associated top-25 list.
+
+  Statistics->Current Season->By Team
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the statistics for an entire team for the current on-going season.
+Upon clicking on this menu item you will be presented with a list of teams in
+the current season.  Click on a team name to see the stats.  If the regular
+season has completed then included in the team list will be selections for
+those teams in the post-season.  Any post-season teams will have their team
+names suffixed with "-PS" (without the quotes).
+
+  Statistics->Current Season->Team Totals->Regular Season
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the total statistics for all the teams in the current on-going
+regular season.
+
+  Statistics->Current Season->Team Totals->Post-Season
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the total statistics for all the teams in the post-season of the
+current on-going season/league.
+
+  Statistics->Current Season->Awards->Most Valuable Player
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the ranking list for Most Valuable Player for the current season.
+The regular season must have completed for this menu item to function.  The
+ranking score is calculated based upon the formula:  
+
+(TB + SB + BB + HBP - CS) / (AB - H + CS + GIDP)
+plus:
+.050 points for playing on a playoff team
+.025 points for playing an up-the-middle position (C, SS, 2B, CF)
+
+See Help->Abbreviations for an explanation of the various abbreviations.
+
+In order to qualify for the MVP there is a minimum requirement which is the
+same as qualifying for the batting title (see "Miscellaneous Info" below).
+
+  Statistics->Current Season->Awards->Cy Young
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the ranking list for the Cy Young Award for the current season.
+The regular season must have completed for this menu item to function.  The
+ranking score is calculated based upon the formula:  
+
+((5 * IP / 9) - ER) + (SO / 12) + (SV * 2.5) + SHO + ((W * 6) - (L * 2)) + VB
+VB: Victory Bonus - 12-point bonus awarded for playing on a playoff team
+
+See Help->Abbreviations for an explanation of the various abbreviations.
+
+In order to qualify for the Cy Young there is a minimum requirement which is
+the same as qualifying for the ERA title (see "Miscellaneous Info" below).
+
+  Statistics->Current Season->Awards->Gold Glove
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the winners of the Gold Glove Awards at each position for the
+current season.  The regular season must have completed for this menu item to
+function.
+
+Gold Glove winners at each position is simply the highest fielding percentage
+among players who meet the minimum playing-time requirements.
+
+The minimum playing-time requirement is:
+pitchers, IP >= G team played
+catchers, G >= G team played / 2
+all other positions, G (at the position in question) >= G team played * 2 / 3
+
+See Help->Abbreviations for an explanation of the various abbreviations.
+
+  Statistics->Current Season->Awards->Silver Slugger
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+season then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish Season to establish a season.)  Click on this menu
+item to see the winners of the Silver Slugger Awards at each position for the
+current season.  The regular season must have completed for this menu item to
+function.  The winners are calculated based upon the formula:
+
+(TB + SB + BB + HBP - CS) / (AB - H + CS + GIDP)
+
+There is also a minimum playing-time requirement for players to qualify for the
+Silver Slugger Award.
+
+The minimum playing-time requirement is:
+pitchers, IP >= G team played
+catchers, G >= G team played / 2
+all other positions, G (at the position in question) >= G team played * 2 / 3
+
+See Help->Abbreviations for an explanation of the various abbreviations.
+
+  Statistics->All NSB Seasons->Regular Season Records->Just Your Seasons->
+    Game Records
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+single-game leaders in various statistic categories for all seasons that you
+have played on the currently connected NSB server.  There are many hitting,
+pitching and fielding categories from which to select.  Click on the
+appropriate button to see the associated top-25 list.  Some non-applicable
+buttons will be de-sensitized and unselectable.
+
+  Statistics->All NSB Seasons->Regular Season Records->Just Your Seasons->
+    Season Records
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+single-season leaders in various statistic categories for all seasons that you
+have played on the currently connected NSB server.  There are many hitting,
+pitching and fielding categories from which to select.  Click on the
+appropriate button to see the associated top-25 list.
+
+  Statistics->All NSB Seasons->Regular Season Records->
+    All Seasons for All Users->Game Records
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+single-game leaders in various statistic categories for all seasons that all
+users have played on the currently connected NSB server.  There are many
+hitting, pitching and fielding categories from which to select.  Click on the
+appropriate button to see the associated top-25 list.  Some non-applicable
+buttons will be de-sensitized and unselectable.
+
+  Statistics->All NSB Seasons->Regular Season Records->
+    All Seasons for All Users->Season Records
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+single-season leaders in various statistic categories for all seasons that all
+users have played on the currently connected NSB server.  There are many
+hitting, pitching and ielding categories from which to select.  Click on the
+appropriate button to see the associated top-25 list.
+
+  Statistics->All NSB Seasons->Lifetime Leaders->Regular Season
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+lifetime leaders in various statistic categories for all seasons that you have
+played on the currently connected NSB server.  There are many hitting, pitching
+and fielding categories from which to select.  Click on the appropriate button
+to see the associated top-25 list.
+
+  Statistics->All NSB Seasons->Lifetime Leaders->Post-Season
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+lifetime leaders in various statistic categories for all post-seasons that you
+have played on the currently connected NSB server.  There are many hitting,
+pitching and fielding categories from which to select.  Click on the
+appropriate button to see the associated top-25 list.
+
+  Statistics->All NSB Seasons->By Team
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the total
+statistics for an entire team for all seasons that you have played on the
+currently connected NSB server.  Upon clicking on this menu item you will be
+presented with a list of teams.  Click on a team name to see the stats for that
+team.  Any post-season teams will have their team names suffixed with "-PS"
+(without the quotes).
+
+  Statistics->Real Life->Season Results
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the final
+standings and post-season results for any real-life season (1901 - current).
+After clicking on this menu item select a year and then click Get Results.
+
+  Statistics->Real Life->Category Leaders
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+leaders in various statistic categories for Real Life players.  There are many
+hitting, pitching and fielding categories from which to select.  Certain years
+may be included and/or excluded.  (See "Miscellaneous Info" below for an
+explanation on including and excluding years.)  Click on the appropriate button
+to see the associated top-25 list.
+
+  Statistics->Real Life->By Team
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+statistics for an entire Real Life team in any year from 1901 through the
+current year.  Upon clicking on this menu item you will be presented with a
+scrollable list of years.  Click on the +/- to the left of each year to
+expand/compact that year.  When expanded, all the teams for that year will be
+shown.  Click on a team name to see the stats for that team.  NOTE - These
+stats do not include players who may have played in real life but are not
+included in these NSB rosters.  Each team's combined wins and losses in the
+pitching stats may not equal the number of games the team played during the 
+regular season.
+
+  Statistics->Real Life->Team Totals
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the total
+statistics for all the Real Life teams in any year from 1901 through the
+current year.  After clicking on this menu item select the year and then click
+on Get Team Totals.  NOTE - These stats do not include players who may have
+played in real life but are not included in these NSB rosters.  Each team's
+combined wins and losses in the pitching stats may not equal the number of
+games the team played during the regular season.
+
+  Statistics->Real Life->By Player
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see all Real
+Life statistics for a particular player.  After clicking on this menu item
+enter the player's name (first name first) and click OK.  The player's name
+must match exactly to how the name is recorded by NSB.  Case doesn't matter.
+NOTE - These stats (including totals) do not include any years where the player
+may not have played enough games in real life to be included on an NSB roster
+for that year.
+
+  Statistics->Real Life->Notable Accomplishments
+
+Click on this menu item to view a list of various notable accomplishments by
+Real Life players from 1901 through the current year.
+
+  Statistics->Real Life->Awards->Most Valuable Player
+
+Click on this menu item to view a list of all the Real Life Most Valuable
+Player award winners since the award's inception.
+
+  Statistics->Real Life->Awards->Cy Young
+
+Click on this menu item to view a list of all the Real Life Cy Young award
+winners since the award's inception.
+
+  Statistics->Real Life->Awards->Gold Glove
+
+Click on this menu item to view a list of all the Real Life Gold Glove award
+winners since the award's inception.
+
+  Statistics->Real Life->Awards->Silver Slugger
+
+Click on this menu item to view a list of all the Real Life Silver Slugger
+award winners since the award's inception.
+
+  Statistics->Real Life->Awards->Rookie of the Year
+
+Click on this menu item to view a list of all the Real Life Rookie of the Year
+award winners since the award's inception.
+
+  Statistics->User-Created Teams->By Team
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the
+statistics for an entire user-created team.  Upon clicking on this menu item
+you will be presented with a scrollable list of teams.  Click on the +/- to the
+left of User-Created to expand/compact the group.  When expanded, all the
+user-created teams will be shown.  Click on a team name to see the stats for 
+that team.
+
+  Statistics->User-Created Teams->Team Totals
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Click on this menu item to see the total
+statistics for all the user-created teams.  Upon clicking on this menu item the
+team totals will be shown.
+
+  Statistics->Current Series->Series Status
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+series then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish a Series to establish a series.)  Click on this menu
+item to see the status of the current on-going series.  Note - lifetime
+statistics are not accumulated during series play.
+
+  Statistics->Current Series->Category Leaders
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+series then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish a Series to establish a series.)  Click on this menu
+item to see the leaders in various statistic categories for the current
+on-going series.  There are many hitting, pitching and fielding categories from
+which to select.  Click on the appropriate button to see the associated top-25
+list.
+
+  Statistics->Current Series->By Team
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+series then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish a Series to establish a series.)  Click on this menu
+item to see the statistics for an entire team in the current on-going series.
+Upon clicking on this menu item you will be presented with the teams in the
+current series.  Click on the +/- to the left of Current Series to
+expand/compact the group.  When expanded, the teams in the series will be
+shown.  Click on a team name to see the stats for that team.
+
+  Statistics->Current Series->Team Totals
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  If there is not a current on-going
+series then this menu item will be de-sensitized and unselectable.  (Use
+Administration->Establish a Series to establish a series.)  Click on this menu
+item to see the total statistics for the teams in the current on-going series.
+
+  Waiting Pool->Who is Waiting
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to show a list of
+users waiting to be challenged to play a game over a network.  (See
+"Miscellaneous Info" below for an explanation of playing a game over a
+network.)
+
+  Waiting Pool->Add Name
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to add your name (NSB
+ID) to the list of users waiting to be challenged to play a game over a
+network.  (See "Miscellaneous Info" below for an explanation of playing a game
+over a network.)  Quitting NSB (see Game->Quit) will remove your name (NSB ID)
+from the pool.
+
+  Waiting Pool->Remove Name
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to remove your name
+(NSB ID) from the list of users waiting to be challenged to play a game over a
+network.  (See "Miscellaneous Info" below for an explanation of playing a game
+over a network.)  Quitting NSB (see Game->Quit) will also remove your name (NSB
+ID) from the pool.
+
+  Waiting Pool->Request to Play
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to challenge another
+user to a game played over a network.  Upon selecting this menu item you will
+be asked to enter the NSB ID of the user to be challenged (the NSB ID must be
+entered exactly including case).  Use Waiting Pool->Who is Waiting to see a
+list of users waiting for a challenge.  (See "Miscellaneous Info" below for an
+explanation of playing a game over a network.)
+
+  Xtras->Play "Take Me Out to the Ballgame"
+
+Click on this menu item to play a pleasant rendition of "Take Me Out to the
+Ballgame".  NSB must be set to produce sound for this menu item to function
+(see Game->Preferences).  Also, sox <http://sox.sourceforge.net/> must be
+installed for sound to be produced.
+
+  Xtras->Play Abbott & Costello's "Who's on First?"
+
+Click on this menu item to play Abbott & Costello's "Who's on First?".  NSB
+must be set to produce sound for this menu item to function (see
+Game->Preferences).  Also, sox <http://sox.sourceforge.net/> must be installed
+for sound to be produced.
+
+  Xtras->Play Jackie Gleason's "Casey at the Bat"
+
+Click on this menu item to play Jackie Gleason's "Casey at the Bat".  NSB must
+be set to produce sound for this menu item to function (see Game->Preferences).
+Also, sox <http://sox.sourceforge.net/> must be installed for sound to be
+produced.
+
+  Xtras->Play John Fogerty's "Centerfield"
+
+Click on this menu item to play John Fogerty's "Centerfield".  NSB must be set
+to produce sound for this menu item to function (see Game->Preferences).  Also,
+sox <http://sox.sourceforge.net/> must be installed for sound to be produced.
+
+  Xtras->This Day in Baseball
+
+Click on this menu item to view a list of Real Life baseball-related events
+which occurred on a particular date (month and day) from 1901 through the
+current year.  After clicking on this menu item enter a month and day and click
+Get This Day in Baseball.  A list may also be auto-output upon execution of
+NSB.  In this case the month and day used is the month and day NSB is executed.
+See Game->Preferences.
+
+  Extras->Evaluate Team Seasons
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to output a ranking
+list of teams based upon the combination of six factors:  regular season
+winning percentage, post-season winning percentage, regular season run
+differential, runs scored above league average, number of games finishing above
+the second place team in the regular season, and post-season run differential
+(optionally taking into account the number of post-season games played).  Upon
+selecting this menu item a dialog will appear allowing values to be set for
+each of these factors.  The values for each factor represent a percentage
+effect on the final result.  The total of the values for the five factors must
+be 100.  Additionally, particular years may be included and excluded.  (See
+"Miscellaneous Info" below for an explanation on including and excluding
+years.)
+
+After all the values are entered click Go.
+
+  Xtras->Evaluate Player Seasons
+
+If the client is not connected to a NSB server then this menu item will be
+de-sensitized and unselectable.  (Use Game->Connect to a Server to connect to a
+host running the NSB server program.)  Use this menu item to display a rating
+list of individual player seasons (offensive or pitching) based upon a
+user-created formula.  After clicking this menu item a dialog of various
+factors and settings will show.  Enter a formula to use if the standard
+supplied formulas are not what is wanted.  View a list of acceptable acronyms
+by clicking Valid Formula Characters.  Validate the formula by clicking
+Validate Formula.  A formula may be saved by clicking Save Formula and a
+formula may be loaded by clicking Load Formula.
+
+Certain statistics are not always available.  Select what to do with those
+stats which are not available.
+
+There are times when 0 may be a divisor in a formula.  Select what to do when
+that happens.
+
+Determine the length of the list (1 - 500).
+
+Select whether the list should be highest to lowest or lowest to highest.
+
+Determine the minimum requirements which a player must meet in order to qualify
+for the list.  If the minimum requirements is empty then all players qualify.
+
+Choose to include and/or exclude certain years.  (See "Miscellaneous Info"
+below for an explanation on including and excluding years.) 
+
+After making all the selections click on Evaluate Offensive Seasons for offense
+or Evaluate Pitching Seasons for pitching.
+
+  Help->Help
+
+Click on this menu item to show this documentation.
+
+  Help->Abbreviations
+
+Click on this menu item to show a list of abbreviations used throughout NSB
+along with a decription of each abbreviation.
+
+  Help->About GTK Client for NSB
+
+Click on this menu item to show a short description of NSB.
+
+
+                               Miscellaneous Info
+
+The audio portions depend upon sox <http://sox.sourceforge.net/> being
+installed.
+
+The play-by-play speech depends upon espeak <http://espeak.sourceforge.net/>
+being installed.  Gameplay speed must be set for 3 seconds or greater for
+speech to function.  Gameplay speed may be set/changed in Game->Preferences
+and/or during actual gameplay.
+
+There can be only one season or one series at one time, not both.
+
+Lifetime statistics are accumulated in seasonal play only.  Lifetime statistics
+are NOT accumulated for user-created teams.
+
+User-created teams may or may not be included as candidates when selecting
+teams randomly under Game->Play (see Game->Preferences).
+
+  Include Year(s) and Exclude Year(s)
+
+Certain menu items (i.e., Administration->Establish Season (auto-create, same 
+team/multiple years); Administration->Create, Edit, Rename or Delete Team;
+Statistics->Real Life->Category Leaders; Xtras->Evaluate Team Seasons; and
+Xtras->Evaluate Player Seasons) allow single years or spans of years to be
+input as part of the process.  These areas are labeled "Exclude Year(s)" and
+"Include Year(s)".  Enter years separated by either a space or a dash/hyphen.
+A dash/hyphen indicates to use the entire span of years.  For example, entering
+"1910 1920" (without the quotes) will use the years 1910 and 1920.  Entering
+"1910-1920" (without the quotes) will use years 1910 through 1920 inclusive.
+In another example, in the Include Year(s) box you might enter "1910-1930"
+(without the quotes) and in the Exclude Year(s) box you might enter
+"1915 1922-1925" (without the quotes).  In this case NSB will use years 1910
+through 1914, 1916 through 1921, and 1926 through 1930.
+
+  Watching/Playing a Game
+
+The gameplay speed may be sped up or slowed down while the game is in progress.
+When the game begins the gameplay speed is based upon the user preferences (see
+Game->Preferences).  Clicking on the "Speed Up Game" or "Slow Down Game"
+buttons will decrease or increase gameplay actions by about 1/4 of a second per
+click.  The current time between gameplay actions is shown at the top of the
+gameplay dialog.
+
+While the game is being played, player pics will display for the pitcher and for
+each batter depending upon whether this feature is turned on or off in
+Game->Preferences.  The player pics will not display (even if they are turned
+on in preferences) if gameplay speed is at the fastest setting and there are no
+human managers.
+
+After the game is completed the entire play-by-play may be reviewed in the
+scrollable window in the bottom half of the gameplay dialog.  The entire
+play-by-play may be printed by clicking on Print Play-By-Play.  A boxscore may
+be displayed by clicking on Boxscore.  Once the gameplay dialog is dismissed
+the boxscore will no longer be viewable.
+
+  Managing a Team, Making Gameplay Decisions
+
+A team may be managed by selecting one of the following menu items:
+Game->Play->One Game Against Computer
+Game->Play->One Game Against Human->Same Computer
+Game->Play->One Game Against Human->Over Network
+
+When managing a team there are managerial decisions you may make with each new
+batter.  All the possibilities are presented in the form of a dialog.  Those
+decisions which are not warranted because of the current status of the gameplay
+will be de-sensitized and unselectable.
+
+Offensive (at bat) Choices:
+Swing Away
+Hit & Run
+Sacrifice Bunt
+Squeeze Play
+Steal Second
+Steal Third
+Steal Home
+Steal Second & Third
+Steal Second & Home
+Steal Third & Home
+Steal Second, Third & Home
+See Lineup
+Computer Takes Over
+
+A Hit & Run is normally used when there is a runner on first base with less
+than two outs and you want to avoid a double play.  Also, the runner has a
+better chance of advancing an extra base when there is a base hit.  However,
+if the batter does not make contact with the ball the baserunner has a
+chance of being "hung up" on the basepaths.
+
+A Squeeze Play is when the batter bunts with a runner on third base with less
+than two outs.  This is an attempt to score the runner on third base by giving
+up an out.
+
+A Sacrifice Bunt is used when there are base runners on second and/or first
+with less than two outs.  This is an attempt to advance the base runner(s) by
+giving up an out.
+
+Use See Lineup to insert a pinch hitter or pinch runner.
+
+Defensive (in the field) Settings/Choices:
+Infield In at Corners
+Entire Infield In
+Hold Runner on First
+Outfield In
+Guard the First Base Line
+Guard the Third Base Line
+Pitch to Batter
+Intentionally Walk Batter
+Pitchout
+Pickoff Attempt at First
+Pickoff Attempt at Second
+Pickoff Attempt at Third
+See Lineup
+Computer Takes Over
+
+Use the first six settings to position the defensive players on the field.
+
+If the infield is in with less than two outs there is a better chance of
+stopping a bunt attempt, and stopping a runner on third from scoring on a
+ground ball.  However, with the infield in there is a better chance of the
+batter getting a base hit.
+
+Holding a runner on first base lessens the chance of a successful steal of
+second base.  Also, there cannot be a pickoff attempt at first base if the
+runner is not being held on.  If holding a runner on first base there is a
+slightly better chance of the batter getting a base hit.
+
+The Outfield In is normally used with less than two outs and any long out by
+the batter will win the game (sacrifice fly) in walk-off fashion.
+
+Guarding a base line lessens the chance of the batter getting an extra-base
+hit but increases the chance of the batter getting a single.  This defensive
+set is usually used in the late innings of a close game.
+
+A Pitchout will affect the action if the offense chooses to attempt a steal,
+to hit & run, or to bunt (squeeze play or sacrifice).  With each pitchout to
+the same batter his chance of walking will increase significantly.
+
+Use See Lineup to change pitchers or to change any other player on the field.
+
+  Setting the Lineup
+
+Clicking on a player in the roster (top half of the display) will place that
+player into the lineup (bottom half of the display) into whichever slot is
+checkmarked.  If no slot is checkmarked then the player will be placed into the
+first open slot if an open slot exists.  If a second lineup slot is checkmarked
+then the two checkmarked lineup slots will be exchanged.  Clicking (either left
+or right mouse button) on the position marker will rotate through the
+positions.  Clicking on a pitcher in the roster (defined as a player who
+appeared as the pitcher more than half his total games) will auto-place that
+pitcher either into slot nine in the batting order or, if using a DH, the
+Starting Pitcher slot.  If the game is a season game then any players who are
+currently injured will be unselectable in the roster.  Any players playing out
+of position (any position they did not play in real life that year) will make
+many more errors than normal.
+
+  Statistics->All Seasons->Regular Season Records
+
+These do not include any records which may have been broken or set during the
+currently running season (if there is one).  Records are updated after the
+regular season and post-season both complete.
+
+  Statistics->Current Season->By Team
+  Statistics->All Seasons->By Team
+  Statistics->User-Created Teams->By Team
+
+Statistics for teams which have participated in post-season play are identified
+by the string "-PS" at the end of the file name (year and team name, or
+user-created team name).
+
+  Playing a Game Over a Network
+
+In order to play a network game one human should connect to an NSB server and
+then click on Waiting Pool->Add Name to add their NSBID to the pool of IDs
+waiting for a challenge.  The other human should connect to the same NSB server
+and click on Waiting Pool->Request to Play and in the resulting dialog enter
+the NSBID of the human he/she wants to play.  Both humans should follow the
+ensuing prompts.  The challengee in a network game (the human whose NSBID was
+in the waiting pool) always selects which teams will be playing and always
+manages the home team.
+
+  Season Autoplay Non-Interactively
+
+If a season is currently established (see Administration->Establish Season)
+league/season games may be played non-interactively either via the command line
+or via cron.
+
+Before this can be accomplished the league/season must still be established via
+running an interactive session of the GTK NSB Client and selecting
+Administration->Establish Season.  Also, autoplay must first be set up via
+Administration->Season Autoplay->Set-up and autoplay must be activated via
+Administration->Season Autoplay->Activation.
+
+This gives the user the ability to play league/season games without needing to
+execute the GTK NSB Client program.  Also, this offers the ability to auto-play
+league games on a timed basis (daily, hourly, etc).  Each running plays 1 day's
+worth of games in your league/season.  The results of each running will be sent
+to the user in the form of an email.  The contents of the email is controlled
+by running an interactive session of the GTK NSB Client and setting the options
+via Administration->Season Autoplay->Set-up.
+
+The command line format is:
+gtknsbclient LEAGUEAUTOPLAY nsbid nsbserver
+
+All parameters must be present.  "nsbserver" = the name of the host to which to
+connect ("localhost" without the quotes is acceptable).  "nsbid" = your NSB ID
+on the NSB server to which you are connecting (case sensitive).
+
+Note - if you run the GTK NSB Client non-interactively from cron you must su to
+your login as part of the cron entry.
+
+Examples from the command line:
+gtknsbclient LEAGUEAUTOPLAY Snake localhost
+gtknsbclient LEAGUEAUTOPLAY Albert myhost.cox.net
+
+Example line in cron:
+0 3 * * *           su - mlake -c "gtknsbclient LEAGUEAUTOPLAY Snake localhost"
+
+  Manually Selecting Teams to Play a Game
+
+When manually selecting the teams to play in a game you will be presented with
+a scrollable list of years.  Click on the +/- to the left of each year to
+expand/compact that year.  When expanded, all the teams available for that year
+will be shown.  Click on a team name to select it.  The selected team will
+always be placed in the visiting team area.  If a team is already in the
+visiting team area that team will be moved to the home team area replacing any
+team already in the home team area.  The visiting team and the home team may be
+switched by clicking Exchange.  After selecting the teams select whether or not
+to use a designated hitter.  After finishing click OK.
+
+  Formulas
+
+There are two functions where devising and using formulas are part of the
+process.  Those two functions are auto-creating a team in
+Administration->Create, Edit, Rename or Delete Team and
+Xtras->Evaluate Player Seasons.  In both functions click on
+Valid Formula Characters to view (and optionally print) all valid characters
+and acronyms which may be used in formulas.  Formulas may be loaded, saved, and
+validated (to a limited degree; formulas are fully validated at usage time).
+Some acronyms are not valid in offensive formulas and some acronyms are not
+valid in pitching formulas (see the viewable list).  Case is disregarded in the
+formulas.  Each formula is evaluated from left to right.  Use parentheses to
+enforce precedence.
+
+  Qualification Minimum Requirements
+
+In order to qualify for a batting title or the MVP Award a player's plate
+appearances must be equal to or greater than 3.1 X the number of games his team
+has played.
+
+In order to qualify for an ERA title or the Cy Young Award a pitcher's IP must
+be equal to or greater than the number of games his team has played.
+
