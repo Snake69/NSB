@@ -1,3 +1,5 @@
+bug - established a totally random season, no PS, after season completed establishing a new season got msg "season is currently
+  proceding" and trying to play portion of season got communication error
 provide an option to nsbserver to kill any running processes
   https://stackoverflow.com/questions/6744979/kill-a-process-from-linux-application
   https://www.linuxquestions.org/questions/programming-9/c-program-to-kill-process-4175444948/
@@ -28,10 +30,13 @@ any playoff games which are part of the regular season should be added dynamical
   that means the standings should reflect that there are playoff game(s) to be played
   and regular season hasn't quite ended completely
 
+double-check all season ending possibilities are handled properly (in one example, currently if 3 teams tie for 2 WC slots,
+  team x plays team y & winner plays team z; it should be loser plays team z)
 program to compare NSB real life stats to stats on baseball-reference.com and/or mlb.com
 in Establish Season (auto) allow user to use teams in results from running of Extras->Evaluate Team Seasons
 can certain items in the drop down menu (e.g., the audio) be moved to pop-up menus
-    so as to be able to execute them at any time?
+  so as to be able to execute them at any time?
+add all teams (i.e., teams before 1901)
 improve Stats->Real Life->By Player selection process (allow user to input a
   partial name and then offer the user a list of players to choose from)
   also, for near-miss matches provide a list of names as "Did you mean?"
@@ -182,6 +187,8 @@ insert/add a dialog when setting up a league asking the user:
       number of games (or through the regular season, or through regular
       season plus post season) after which alert user to revisit ... in this
       case allow user to be alerted if there is an injury to a starter
+
+      allow user to input a formula to be used to select starting lineup (show formula currently used by computer)
     allow user to designate certain players to be the primary candidate for a
       certain position in the starting lineup in an autoplayed season
     allow user to see odds to win after a league is setup and before any games
@@ -210,6 +217,7 @@ insert/add a dialog when setting up a league asking the user:
           broken
     provide option for user to play multiple seasons for his league
     give user option of various styles of selecting a batting order
+      allow user to input a formula to be used to select batting order (show formula currently used by computer)
     give user option of basing post-season play upon players' NSB regular
       season stats
     allow user to select the number of games in a season but in doing so the
