@@ -2984,10 +2984,9 @@ DoAutoStandings () {
         }
         fputs (sp, sfp);
 
-        strcpy (buf, "\n\n     Team                           W    L     PCT   Games Back\n\n");
+        strcpy (buf, "\n\n     Team                           W      L      PCT   Games Back\n\n");
         fputs (sp, sfp);
 
-        buf[0] = '\0';
         for (x = 0; teams[loop][x].id != 0; x++) {
             /* move Team Year and Name */
             if (teams[loop][x].id < 900) {
@@ -2998,7 +2997,7 @@ DoAutoStandings () {
                     }
             }
             else
-                strcat (buf, "    ");
+                strcpy (buf, "    ");
             strcat (buf, " ");
             if (teams[loop][x].id < 900) {
                 strcat (buf, &teaminfo[y].teamname[0]);
@@ -3015,15 +3014,15 @@ DoAutoStandings () {
                 strcat (buf, " ");
             /* move wins and losses */
             strcat (buf, (char *) cnvt_int2str ((teams[loop][x].wins), 'l'));
-            if (teams[loop][x].wins < 10)
-                strcat (buf, "    ");
-            else
-                strcat (buf, "   ");
-            strcat (buf, (char *) cnvt_int2str ((teams[loop][x].losses), 'l'));
+            strcat (buf, "   ");
             if (teams[loop][x].losses < 10)
-                strcat (buf, "   ");
-            else
                 strcat (buf, "  ");
+            else
+                strcat (buf, " ");
+            if (teams[loop][x].losses < 100)
+                strcat (buf, " ");
+            strcat (buf, (char *) cnvt_int2str ((teams[loop][x].losses), 'l'));
+            strcat (buf, "   ");
             /* move Pct */
             strcat (buf, (char *) do_average (teams[loop][x].wins, (teams[loop][x].wins + teams[loop][x].losses)));
             if ((teams[loop][x].gb / 2) < 10 && (teams[loop][x].gb / 2))
@@ -3033,8 +3032,12 @@ DoAutoStandings () {
             /* move Games Back */
             if (teams[loop][x].gb / 2)
                 strcat (buf, (char *) cnvt_int2str ((teams[loop][x].gb / 2), 'l'));
-            if (teams[loop][x].gb % 2)
-                strcat (buf, ".5");
+            if (teams[loop][x].gb % 2) {
+                if (teams[loop][x].gb / 2)
+                    strcat (buf, ".5");
+                else
+                    strcat (buf, "  .5");
+            }
             if (!(teams[loop][x].gb / 2) && !(teams[loop][x].gb % 2))
                 strcat (buf, " -");
             strcat (buf, "\n");

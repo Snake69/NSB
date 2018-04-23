@@ -1,3 +1,4 @@
+computer might choose starting position players randomly based upon percentage of games played at a position
 bug - established a totally random season, no PS, after season completed establishing a new season got msg "season is currently
   proceding" and trying to play portion of season got communication error
 provide an option to nsbserver to kill any running processes
@@ -36,7 +37,7 @@ program to compare NSB real life stats to stats on baseball-reference.com and/or
 in Establish Season (auto) allow user to use teams in results from running of Extras->Evaluate Team Seasons
 can certain items in the drop down menu (e.g., the audio) be moved to pop-up menus
   so as to be able to execute them at any time?
-add all teams (i.e., teams before 1901)
+add all real life teams (i.e., teams before 1901)
 improve Stats->Real Life->By Player selection process (allow user to input a
   partial name and then offer the user a list of players to choose from)
   also, for near-miss matches provide a list of names as "Did you mean?"
@@ -236,6 +237,7 @@ correct error-checking for freads & fwrites by using ferror (see HELP file
 for user-created teams allow an incomplete team to be saved, but don't allow
   that team to be used in games
 allow career stats for players to be used in game-play
+allow career stats for players to be used when auto-creating a team (for a particular team, or for all teams?)
 may need to stop the same user from logging into the same NSB server more than
   once simultaneously (it may cause problems)
     to do this add a "logged in" field to the userinfo file (or expand the

@@ -1,6 +1,7 @@
 0.9.9.6 -
 . fixed bug where viewing NSB Standings under certain conditions crashed gtknsbclient
 . corrected pitching statistics (R & BFP) for 1908 Tex Pruiett, Boston Red Sox
+. various bugs squashed
 . minor editorial improvements
 
 0.9.9.5 -

@@ -50,7 +50,6 @@ NSBStandings (gpointer callback_data, guint callback_action, GtkWidget *widget) 
         return;
     }
 
-printf("\n>%s<\n",buffer);
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_size_request (window, 650, 500);
     g_signal_connect (G_OBJECT (window), "destroy", G_CALLBACK (DestroyDialog), window);
@@ -334,7 +333,7 @@ FillStandings () {
                     strcat (&stats[0], ", Western Division");
         }
 
-        strcat (&stats[0], "\n\n     Team                           W    L     PCT   Games Back\n\n");
+        strcat (&stats[0], "\n\n     Team                           W      L      PCT   Games Back\n\n");
 
         for (x = 0; teams[loop][x].id != 0; x++) {
             /* move Team Year and Name */
@@ -362,17 +361,15 @@ FillStandings () {
                 strcat (&stats[0], " ");
             /* move wins and losses */
             strcat (&stats[0], (char *) cnvt_int2str ((teams[loop][x].wins), 'l'));
-            if (teams[loop][x].wins < 10)
-                strcat (&stats[0], "   ");
-            else
+            strcat (&stats[0], "   ");
+            if (teams[loop][x].losses < 10)
                 strcat (&stats[0], "  ");
+            else
+                strcat (&stats[0], " ");
             if (teams[loop][x].losses < 100)
                 strcat (&stats[0], " ");
             strcat (&stats[0], (char *) cnvt_int2str ((teams[loop][x].losses), 'l'));
-            if (teams[loop][x].losses < 10)
-                strcat (&stats[0], "   ");
-            else
-                strcat (&stats[0], "  ");
+            strcat (&stats[0], "   ");
             /* move Pct */
             strcat (&stats[0], (char *) do_average (teams[loop][x].wins, (teams[loop][x].wins + teams[loop][x].losses)));
             if ((teams[loop][x].gb / 2) < 10 && (teams[loop][x].gb / 2))
@@ -382,8 +379,13 @@ FillStandings () {
             /* move Games Back */
             if (teams[loop][x].gb / 2)
                 strcat (&stats[0], (char *) cnvt_int2str ((teams[loop][x].gb / 2), 'l'));
-            if (teams[loop][x].gb % 2)
-                strcat (&stats[0], ".5");
+
+            if (teams[loop][x].gb % 2) {
+                if (teams[loop][x].gb / 2)
+                    strcat (&stats[0], ".5");
+                else
+                    strcat (&stats[0], "  .5");
+            }
             if (!(teams[loop][x].gb / 2) && !(teams[loop][x].gb % 2))
                 strcat (&stats[0], " -");
             strcat (&stats[0], "\n");
