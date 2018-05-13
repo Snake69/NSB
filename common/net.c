@@ -77,11 +77,11 @@ struct in_addr
 int
 get_connection (int socket_type, u_short port, int *listener) {
     struct sockaddr_in address;
-    struct hostent *newhost;
     int listening_socket;
     int connected_socket = -1;
     int new_process;
     int reuse_addr = 1;
+    char hbuf[NI_MAXHOST];
     socklen_t addrsize;
 
     /* Setup internet address information.  This is used with the bind() call */
@@ -113,11 +113,11 @@ get_connection (int socket_type, u_short port, int *listener) {
         while (connected_socket < 0) {
             addrsize = sizeof (address);
             connected_socket = accept (listening_socket, (struct sockaddr *) &address, &addrsize);
-            newhost = gethostbyaddr ((char *) &address.sin_addr.s_addr, 4, AF_INET);
-            if (newhost)
-                strcpy (&hname[0], newhost->h_name);
+            if (getnameinfo ((struct sockaddr *) &address, addrsize, hbuf, sizeof (hbuf), NULL, 0, NI_NAMEREQD))
+                strcpy (&hname[0], inet_ntoa (address.sin_addr));
             else
-                strcpy (&hname[0], "unknown");
+                strcpy (&hname[0], hbuf);
+
             if (connected_socket < 0) {
 
                 /* for some reason accept() returns one more time after the client closes with a -1
@@ -212,7 +212,7 @@ make_connection (char *service, int type, char *netaddress, int ind) {
 }
 
 /*
-   This is just like the read() system call, except that it will make sure that all your data goes through the socket.
+   This is just like the read() system call, except that it will make sure that all the data goes through the socket.
 */
 int
 sock_read (int sockfd, char *buf, size_t count) {

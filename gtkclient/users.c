@@ -55,7 +55,7 @@ Users (gpointer callback_data, guint callback_action, GtkWidget *widget) {
 
     dlgUsers = gtk_dialog_new ();
     gtk_window_set_title (GTK_WINDOW (dlgUsers), "Users");
-    gtk_window_set_default_size (GTK_WINDOW (dlgUsers), 630, 250);
+    gtk_window_set_default_size (GTK_WINDOW (dlgUsers), 650, 250);
     gtk_signal_connect (GTK_OBJECT (dlgUsers), "delete_event", GTK_SIGNAL_FUNC (donot_delete_event), 0);
 
     box1 = gtk_vbox_new (FALSE, 0);
@@ -119,7 +119,7 @@ FillUserInfo () {
     strcpy (&userinfo[0], "\n                       Users on ");
     strcat (&userinfo[0], &hs[0]);
     strcat (&userinfo[0], "\n\n\n");
-    strcat (&userinfo[0], "  NSB ID                   email addr            Connect Count\n\n");
+    strcat (&userinfo[0], "  NSB ID               add'l ID info             Connect Count\n\n");
 
     for (cc = &buffer[0]; cc < (&buffer[0] + strlen (&buffer[0])); ) {
         strcat (&userinfo[0], "  ");

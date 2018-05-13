@@ -152,7 +152,7 @@ usage () {
     fprintf (stderr, "\nUsage:  nsbserver [-hlv]\n");
     fprintf (stderr, "Use the -h option to get this message\n");
     fprintf (stderr, "Use the -l option if syslog entries are desired\n");
-    fprintf (stderr, "Use the -v option to print version info and exit\n\n");
+    fprintf (stderr, "Use the -v option to show version info and exit\n\n");
 }
 
 /*
@@ -1379,11 +1379,13 @@ main (int argc, char *argv[]) {
         p = index (&buffer[0], '@');
         strncpy (&name[0], &buffer[13], (p - &buffer[13]));
         name[p - &buffer[13]] = '\0';
-        /* overwrite host name picked up in get_connection() */
-        if (!strcmp (p + 1, "localhost.localdomain"))
-            strcpy (&hname[0], "localhost");
-        else
-            strcpy (&hname[0], p + 1);
+        if (!strncmp (&buffer[0], "XXeBaseballXX", 13)) {
+            /* overwrite host name picked up in get_connection() */
+            if (!strcmp (p + 1, "localhost.localdomain"))
+                strcpy (&hname[0], "localhost");
+            else
+                strcpy (&hname[0], p + 1);
+        }
         if (!strncmp (&buffer[0], "XXaBaseballXX", 13))
             abb = 1;
     }

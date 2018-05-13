@@ -1241,13 +1241,13 @@ Administration->Establish Season.  Also, autoplay must first be set up via
 Administration->Season Autoplay->Set-up and autoplay must be activated via
 Administration->Season Autoplay->Activation.
 
-This gives the user the ability to play league/season games without needing to
-execute the GTK NSB Client program.  Also, this offers the ability to auto-play
-league games on a timed basis (daily, hourly, etc).  Each running plays 1 day's
-worth of games in your league/season.  The results of each running will be sent
-to the user in the form of an email.  The contents of the email is controlled
-by running an interactive session of the GTK NSB Client and setting the options
-via Administration->Season Autoplay->Set-up.
+This gives the user the ability to play league/season games in a
+non-interactive way from the command line.  Also, this offers the ability to
+auto-play league games on a timed basis (daily, hourly, etc).  Each running
+plays 1 day's worth of games in your league/season.  The results of each
+running will be sent to the user in the form of an email.  The contents of the
+email is controlled by running an interactive session of the GTK NSB Client and
+setting the options via Administration->Season Autoplay->Set-up.
 
 The command line format is:
 gtknsbclient LEAGUEAUTOPLAY nsbid nsbserver

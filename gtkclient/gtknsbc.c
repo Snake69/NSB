@@ -662,7 +662,7 @@ static GtkItemFactoryEntry menu_items[] = {
    { "/Game/Play/Game(s) in a Series", NULL, PlaySeries, 0 },
    { "/Game/separator2", NULL, NULL, 0, "<Separator>" },
    { "/Game/Preferences", NULL, Preferences, 0 },
-   { "/Game/separator2", NULL, NULL, 0, "<Separator>" },
+   { "/Game/separator3", NULL, NULL, 0, "<Separator>" },
    { "/Game/Quit", "<control>Q", Quit, 0 },
 
    { "/Administration", NULL, 0, 0, "<Branch>" },
@@ -673,10 +673,10 @@ static GtkItemFactoryEntry menu_items[] = {
    { "/Administration/Season Autoplay/Activation", NULL, SeasonAutoplayAS, 0 },
    { "/Administration/Season Autoplay/Execute Once Now", NULL, SeasonAutoplayEx, 0 },
    { "/Administration/Users on Connected Server", NULL, Users, 0 },
-   { "/Administration/separator3", NULL, NULL, 0, "<Separator>" },
+   { "/Administration/separator4", NULL, NULL, 0, "<Separator>" },
    { "/Administration/Create, Edit, Rename or Delete Team", NULL, SetUpTeamChoices, 0 },
    { "/Administration/Some Good Individual Seasons", NULL, GIndS, 0 },
-   { "/Administration/separator4", NULL, NULL, 0, "<Separator>" },
+   { "/Administration/separator5", NULL, NULL, 0, "<Separator>" },
    { "/Administration/Change My NSB ID on Connected Server", NULL, ChangeNSBID, 0 },
    { "/Administration/Delete My NSB ID on Connected Server", NULL, DeleteNSBID, 0 },
 
@@ -728,9 +728,9 @@ static GtkItemFactoryEntry menu_items[] = {
    { "/Xtras/Play Abbott & Costello's \"Who's On First?\"", NULL, PlayAbbottAndCostello, 0 },
    { "/Xtras/Play Jackie Gleason's \"Casey at the Bat\"", NULL, PlayJackieGleason, 0 },
    { "/Xtras/Play John Fogerty's \"Centerfield\"", NULL, PlayCenterfield, 0 },
-   { "/Xtras/separator1", NULL, NULL, 0, "<Separator>" },
+   { "/Xtras/separator6", NULL, NULL, 0, "<Separator>" },
    { "/Xtras/This Day in Baseball", NULL, TDIBFromMenu, 0 },
-   { "/Xtras/separator1", NULL, NULL, 0, "<Separator>" },
+   { "/Xtras/separator7", NULL, NULL, 0, "<Separator>" },
    { "/Xtras/Evaluate Team Seasons", NULL, BestRLTeams, 0 },
    { "/Xtras/Evaluate Player Seasons", NULL, ScoreSeasons, 0 },
 

@@ -939,6 +939,8 @@ ValidateText3 () {
     gchar yrdata[2][1000], work[10];
 
     errors = 0;
+    for (x = 0; x < YEAR_SPREAD; x++)
+        yrs[x] = 0;
 
     if (!strlen (&inentry_text[0])) {
         /* using all years */

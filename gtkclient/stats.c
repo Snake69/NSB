@@ -5580,7 +5580,7 @@ FillCategoryLeaders () {
     }
     if (whichstats == 5) {
         if (wri == 1)
-            strcat (&buf[0], " (Lifetime - ");
+            strcat (&buf[0], " (");
         if (wri == 2)
             strcat (&buf[0], " (All Users - ");
 

@@ -30,7 +30,7 @@ void
 usage () {
     fprintf (stderr, "\nUsage:  nsbpoolmngr -v\n");
     fprintf (stderr, "The -v option prints version info and exits.\n\n");
-    fprintf (stderr, "This program should be invoked only by nsbserver.\n\n");
+    fprintf (stderr, "Otherwise, this program should be invoked only by nsbserver.\n\n");
 }
 
 /*
