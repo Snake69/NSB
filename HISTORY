@@ -1,6 +1,7 @@
 0.9.9.6 -
 . fixed bug where viewing NSB Standings under certain conditions crashed gtknsbclient
 . fixed bug where remote NSB server was not identifying user correctly
+. fixed bug with team alignment in end-of-season 3-team tie for division, league and/or wild card
 . corrected pitching statistics (R & BFP) for 1908 Tex Pruiett, Boston Red Sox
 . various other bugs squashed
 . minor editorial improvements

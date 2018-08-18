@@ -8457,7 +8457,7 @@ setup_postseason () {
                             ht = holdteams[0];
                             holdteams[0] = holdteams[2];
                             holdteams[2] = holdteams[1];
-                            holdteams[2] = ht;
+                            holdteams[1] = ht;
                             break;
                         case 5:
                             ht = holdteams[0];
@@ -8922,7 +8922,7 @@ setup_postseason () {
                                 ht = holdteams[0];
                                 holdteams[0] = holdteams[2];
                                 holdteams[2] = holdteams[1];
-                                holdteams[2] = ht;
+                                holdteams[1] = ht;
                                 break;
                             case 5:
                                 ht = holdteams[0];
@@ -9498,7 +9498,7 @@ setup_postseason () {
                             ht = holdteams[0];
                             holdteams[0] = holdteams[2];
                             holdteams[2] = holdteams[1];
-                            holdteams[2] = ht;
+                            holdteams[1] = ht;
                             break;
                         case 5:
                             ht = holdteams[0];
