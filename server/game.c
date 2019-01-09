@@ -18,8 +18,8 @@ char *grounders[] = { "taps the ball to", "grounds to", "hits a high bounder to"
      *airball2[] = { "pops up to", "smacks a hot liner to", "foul pops to", "hits a line drive to", "pops softly to" },
      *airball3[] = { "pops to", "foul pops to", "pops softly to", "pops up and down the chimney to" },
      *airball4[] = { "hits a flyball to", "flies in foul ground to", "lines to", "hits a liner to", "lines out to", "flies out to",
-                     "hits a can of corn to", "hits a big fly to", "lifts the ball to", "hits a long out to", "flies softly to" },
-     *airball5[] = { "lines to", "hits a fly ball to", "hits a can of corn to", "hits a big fly to", "lifts the ball to", "hits a long out to" },
+                     "hits a can of corn to", "hits a big fly to", "lifts the ball to", "hits a long out to", "flies softly to", "skies the ball to" },
+     *airball5[] = { "lines to", "hits a fly ball to", "hits a can of corn to", "hits a big fly to", "lifts the ball to", "hits a long out to", "skies the ball to" },
      *singles1[] = { "gets an infield hit to", "chops a slow roller to", "hits a squibbler to", "gets a scratch hit to" },
      *singles2[] = { "smacks the ball to", "hits a texas leaguer to", "hits a shot just over the infielder's head to", "hits a screamer to",
                      "grounds in the hole to", "rips one to", "bloops the ball to", "flares a single to", "ropes a single to", "punches the ball to",
@@ -31,7 +31,7 @@ char *grounders[] = { "taps the ball to", "grounds to", "hits a high bounder to"
                     "whacks a ball that's one bounce and over the wall" },
                   /* that last value should remain last in the doubles[] list if more entries are added */
      *triples[] = { "hits a ball that goes all the way to the wall", "smacks a ball that gets past the outfielder" },
-     *homers[] = { "hits a shot ... going ... going ... gone", "gets hold of one ... it's outa here",
+     *homers[] = { "hits a shot ... going ... going ... gone", "gets hold of one ... it's outa here", "rockets the ball into the bleachers",
                    "clobbers the ball ... back ... back ... back ... out of here", "slugs the ball over the fence",
                    "tears the cover off the ball ... gone", "smashes the ball out of the ballpark", "clouts the ball over the fence",
                    "gets hold of one ... out of the ballpark", "got all of that ... a homerun", "gives the ball a ride over the fence",
@@ -40,7 +40,8 @@ char *grounders[] = { "taps the ball to", "grounds to", "hits a high bounder to"
                    "drives the ball a country mile", "hammers the ball and it finds the seats", "pounds the cowhide ... See Ya",
                    "launches the ball out of the park", "makes good contact ... it's high ... it's far ... it's gone",
                    "hits a tape measure home run", "rips it ... kiss it goodbye", "plants it in the stands", "crushes it ... gone", "mashes a homer",
-                   "nails the ball into the cheap seats", "blasts the ball over the fence", "gives the cowhide a ride ... it's not coming back" };
+                   "nails the ball into the cheap seats", "blasts the ball over the fence", "gives the cowhide a ride ... it's not coming back",
+                   "... get up! Get up! Get outa here! Gone!", "connects ... no doubt", "tags the ball ... just over the fence" };
 
 void
 playthegame () {
@@ -1933,7 +1934,7 @@ send_bothalf () {
             move_runners (3, &action[0]);
         }
         if (action_ind == 5) {
-            strcat (&action[0], homers[(int) ((float) 30 * rand () / (RAND_MAX + 1.0))]);
+            strcat (&action[0], homers[(int) ((float) 34 * rand () / (RAND_MAX + 1.0))]);
             move_runners (4, &action[0]);
         }
         if (action_ind == 9) {
@@ -2079,9 +2080,9 @@ send_bothalf () {
             if (whereto == 2)
                 strcat (&action[0], airball3[(int) ((float) 4 * rand () / (RAND_MAX + 1.0))]);
             if (whereto == 7 || whereto == 9)
-                strcat (&action[0], airball4[(int) ((float) 11 * rand () / (RAND_MAX + 1.0))]);
+                strcat (&action[0], airball4[(int) ((float) 12 * rand () / (RAND_MAX + 1.0))]);
             if (whereto == 8)
-                strcat (&action[0], airball5[(int) ((float) 6 * rand () / (RAND_MAX + 1.0))]);
+                strcat (&action[0], airball5[(int) ((float) 7 * rand () / (RAND_MAX + 1.0))]);
 
             x = (int) ((float) 2 * rand () / (RAND_MAX + 1.0));
             switch (whereto) {
@@ -2214,9 +2215,9 @@ send_bothalf () {
 
         if (action_ind == 12 || action_ind == 23) {
             if (whereto == 7 || whereto == 9)
-                strcat (&action[0], airball4[(int) ((float) 11 * rand () / (RAND_MAX + 1.0))]);
+                strcat (&action[0], airball4[(int) ((float) 12 * rand () / (RAND_MAX + 1.0))]);
             if (whereto == 8)
-                strcat (&action[0], airball5[(int) ((float) 6 * rand () / (RAND_MAX + 1.0))]);
+                strcat (&action[0], airball5[(int) ((float) 7 * rand () / (RAND_MAX + 1.0))]);
 
             x = (int) ((float) 2 * rand () / (RAND_MAX + 1.0));
             switch (whereto) {

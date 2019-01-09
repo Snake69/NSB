@@ -1,0 +1,16 @@
+
+user clicks on various buttons to form queries ...
+
+BUTTON - "how many times", "what is the record", "what is the run differential", "what is the winning percentage"
+
+BUTTON - "have the", "of the", "has"
+
+BUTTON - team names, player names
+
+BUTTON - "won the", "been to the", "in the", "led MLB in"
+
+BUTTON - "world series", "post season", "league", "division", stats
+
+
+Query:
+

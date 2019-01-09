@@ -2,6 +2,7 @@
 
         American League                   National League
 
+2018   Shohei Ohtani       Los Angeles    Ronald Acuna         Atlanta
 2017   Aaron Judge         New York       Cody Bellinger       Los Angeles
 2016   Michael Fulmer      Detroit        Corey Seager         Los Angeles
 2015   Carlos Correa       Houston        Kris Bryant          Chicago

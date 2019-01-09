@@ -303,7 +303,7 @@ SetUpTeamChoices (gpointer callback_data, guint callback_action, GtkWidget *widg
     label = gtk_label_new ("Pitching");
     gtk_container_add (GTK_CONTAINER (vbox), label);
 
-    label = gtk_label_new ("IBB - not available 1901-54\nSOPP, 2B, 3B, RBI, SB, CS, SH, SF & OPAB -\n         not available 1901-97, 1999-2017");
+    label = gtk_label_new ("IBB - not available 1901-54\nSOPP, 2B, 3B, RBI, SB, CS, SH, SF & OPAB -\n         not available 1901-97, 1999-2018");
     gtk_container_add (GTK_CONTAINER (vbox), label);
 
     button0 = gtk_radio_button_new_with_label (NULL, "Substitute 0 for Unavailable Stats");
@@ -401,7 +401,7 @@ SetUpTeamChoices (gpointer callback_data, guint callback_action, GtkWidget *widg
     gtk_entry_set_max_length (GTK_ENTRY (inentry), 100);
     gtk_table_attach_defaults (GTK_TABLE (table), inentry, 1, 2, 1, 2);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), inentry);
-    gtk_entry_set_text (GTK_ENTRY (inentry), "2017");
+    gtk_entry_set_text (GTK_ENTRY (inentry), "2018");
     gtk_signal_connect (GTK_OBJECT (inentry), "insert_text", GTK_SIGNAL_FUNC (CheckEntryBS), NULL);
     gtk_window_set_focus (GTK_WINDOW (dlgFile), inentry);
 
@@ -430,7 +430,7 @@ CTeam (GtkWidget *widget, gpointer *pdata) {
     gint x, y, z, err, decpt, terr, fatalerr;
     gchar NoYrs[256] = "No years to search.", holdt[100], NoTName[256] = "You need to enter a name for your team.\n\n",
           NoYears[256] = "The Real Life team from which you are creating your team has \"no years\" available.",
-          NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2017)?\n\n",
+          NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2018)?\n\n",
           FourPos[256] = "The team name cannot be exactly 4 positions long.  Crazy, huh?\n\n",
           TwoDP[256] = "There can't be more than one decimal point in the minimum requirements.\n", min[3][256],
           InvPPForm[256] = "The Position Player Formula is in error.", InvSPForm[256] = "The Starting Pitcher Formula is in error.",
@@ -525,7 +525,7 @@ CTeam (GtkWidget *widget, gpointer *pdata) {
         gchar ExMsg[256] = "In excluded years ...", InMsg[256] = "In included years ...",
               YrAfterHy[256] = "The year after a hyphen must be equal to or greater than the year before that same hyphen.",
               NoYr[256] = "There must be a year after a hyphen.", InitYr[256] = "A year must be the first data.",
-              InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2017).";
+              InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2018).";
 
         /* first four bits (leftmost) inentry, second four bits (rightmost) exentry
            0000 0000

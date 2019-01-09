@@ -9,6 +9,7 @@ provide an option to nsbserver to kill any running processes
   https://www.linuxquestions.org/questions/programming-9/c-program-to-kill-process-4175444948/
 add option to display results Worst-2-Best in Evaluate Team Seasons
 add ability to view lifetime real life category leaders
+batting averages too low, ERA too high
 it seems players with a low amount of stats (like closers) do not perform
   as they should
   try this:  add a factor to action logic so that real life stats are
@@ -33,14 +34,21 @@ any playoff games which are part of the regular season should be added dynamical
   season there will still be playoff game(s) to play as part of the regular season);
   that means the standings should reflect that there are playoff game(s) to be played
   and regular season hasn't quite ended completely
+double-check all season ending possibilities are handled properly (in one example, currently if 3 teams tie for 2 WC slots,
+  team x plays team y & winner plays team z; it should be loser plays team z)
+allow user to formulate queries (see queryplan.txt)
 
+allow user to create a season comprised of:
+  teams in results from running of Extras->Evaluate Team Seasons
+  best teams of all time based upon regular season wins
 change File->Connect to a Server so that it brings up a list of choices including:  localhost, 68.109.143.57
   allow user to add sites to this list
   add "NSB server available at 68.109.143.57 (no Waiting Pool)" to README.txt file
-double-check all season ending possibilities are handled properly (in one example, currently if 3 teams tie for 2 WC slots,
-  team x plays team y & winner plays team z; it should be loser plays team z)
+add inside the park homer
+  usually a fast runner
+  real life, 1951-2000 - 1 in 158 HRs were inside-the-park
+  before 1951 the percentage is higher
 program to compare NSB real life stats to stats on baseball-reference.com and/or mlb.com
-in Establish Season (auto) allow user to use teams in results from running of Extras->Evaluate Team Seasons
 can certain items in the drop down menu (e.g., the audio) be moved to pop-up menus
   so as to be able to execute them at any time?
 add all real life teams (i.e., teams before 1901)
@@ -237,6 +245,7 @@ insert/add a dialog when setting up a league asking the user:
         when any game record has been broken, and as a season record gets
           broken
     provide option for user to play multiple seasons for his league
+    allow user to repeat last league
     give user option of various styles of selecting a batting order
       allow user to input a formula to be used to select batting order (show formula currently used by computer)
     give user option of basing post-season play upon players' NSB regular

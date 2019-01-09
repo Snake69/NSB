@@ -2,6 +2,7 @@
 
         American League                   National League
 
+2018    Blake Snell      Tampa Bay        Jacob deGrom        New York
 2017    Corey Kluber     Cleveland        Max Scherzer        Washington
 2016    Rick Porcello    Boston           Max Scherzer        Washington
 2015    Dallas Keuchel   Houston          Jake Arrieta        Chicago

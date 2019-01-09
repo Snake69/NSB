@@ -159,6 +159,7 @@ RF - Ty Cobb, 1909 Detroit Tigers
      Sammy Sosa, 2001 Chicago Cubs
      Ichiro Suzuki, 2004 Seattle Mariners
      Magglio Ordonez, 2007 Detroit Tigers
+     Mookie Betts, 2018 Boston Red Sox
 DH - Hal McRae, 1976 Kansas City Royals
      Don Baylor, 1983 New York Yankees
      Paul Molitor, 1987 Milwaukee Brewers
@@ -220,6 +221,7 @@ SP - Rube Waddell, 1905 Philadelphia Athletics
      Randy Johnson, 2002 Arizona Diamondbacks
      Clayton Kershaw, 2014 Los Angeles Dodgers
      Jake Arrieta, 2015 Chicago Cubs
+     Jacob deGrom, 2018 New York Mets
 RP - Ferdie Schupp, 1916 New York Giants
      Roy Face, 1959 Pittsburgh Pirates
      Dick Radatz, 1963 Boston Red Sox

@@ -2,6 +2,18 @@
 
      American League                 National League
 
+2018
+P    Dallas Keuchel     Houston      Zack Greinke      Arizona
+C    Salvador Perez     Kansas City  Yadier Molina     St. Louis
+1B   Matt Olson         Oakland      Anthony Rizzo     Chicago
+                                     Freddie Freeman   Atlanta
+2B   Ian Kinsler        Boston       DJ LeMahieu       Colorado
+3B   Matt Chapman       Oakland      Nolan Arenado     Colorado
+SS   Andrelton Simmons  Los Angeles  Nick Ahmed        Arizona
+LF   Alex Gordon        Kansas City  Corey Dickerson   Pittsburgh
+CF   Jackie Bradley     Boston       Ender Inciarte    Atlanta
+RF   Mookie Betts       Boston       Nick Markakis     Atlanta
+
 2017
 P    Marcus Stroman     Toronto      Zack Greinke      Arizona
 C    Martin Maldonado   Los Angeles  Tucker Barnhart   Cincinnati

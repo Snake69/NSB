@@ -202,7 +202,7 @@ SetUpLeagueChoices (gpointer callback_data, guint callback_action, GtkWidget *wi
     gtk_entry_set_max_length (GTK_ENTRY (inentry), 100);
     gtk_table_attach_defaults (GTK_TABLE (table), inentry, 1, 2, 1, 2);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), inentry);
-    gtk_entry_set_text (GTK_ENTRY (inentry), "1901-2017");
+    gtk_entry_set_text (GTK_ENTRY (inentry), "1901-2018");
     gtk_signal_connect (GTK_OBJECT (inentry), "insert_text", GTK_SIGNAL_FUNC (CheckEntry), NULL);
 
     gtk_entry_set_activates_default (GTK_ENTRY (inentry), TRUE);
@@ -491,7 +491,7 @@ RunSetUp:
                 gint x, y, err;
                 gchar *msg[5], NoYrs[256] = "No years to search.", holdt[100], *comma,
                       OneYr[256] = "\nA team with this name happened in only 1 year.  There needs to be at least 2 teams to form a league.\n\n",
-                      NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2017)?\n\n";
+                      NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2018)?\n\n";
 
                 for (x = 0; x < 5; x++)
                     msg[x] = NULL;
@@ -512,7 +512,7 @@ RunSetUp:
                     gchar ExMsg[256] = "In excluded years ...", InMsg[256] = "In included years ...",
                           YrAfterHy[256] = "The year after a hyphen must be equal to or greater than the year before that same hyphen.",
                           NoYr[256] = "There must be a year after a hyphen.", InitYr[256] = "A year must be the first data.",
-                          InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2017).";
+                          InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2018).";
 
                     /* first four bits (leftmost) inentry, second four bits (rightmost) exentry
                        0000 0000

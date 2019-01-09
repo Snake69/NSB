@@ -2,6 +2,17 @@
 
     American League         National League
 
+2018
+1B  Jose Abreu              Paul Goldschmidt
+2B  Jose Altuve             Javier Baez
+3B  Jose Ramirez            Nolan Arenado
+SS  Francisco Lindor        Trevor Story
+OF  Mookie Betts            Christian Yelich
+OF  Mike Trout              David Peralta
+OF  J.D. Martinez           Nick Markakis
+C   Salvador Perez          J.T. Realmuto
+DH  J.D. Martinez        P  German Marquez
+
 2017
 1B  Eric Hosmer             Paul Goldschmidt
 2B  Jose Altuve             Daniel Murphy
