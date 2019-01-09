@@ -1026,12 +1026,10 @@ replace_pitcher (int ha, int i1, int i2, int i3, int r1, int r2, int reppit1, in
                     if (visitor.pitchers[work[x].pitcher].pitching.games_started > (visitor.pitchers[work[x].pitcher].pitching.games / 5))
                         continue;
                     if ((visitor_season.pitchers[work[x].pitcher].id.ip_last4g[0] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[1] +
-                           visitor_season.pitchers[work[x].pitcher].id.ip_last4g[2] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[3] -
-                                                     visitor_season.pitchers[work[x].pitcher].id.inn_target) < tempip)
+                           visitor_season.pitchers[work[x].pitcher].id.ip_last4g[2] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[3]) < tempip)
                         if (!visitor_season.pitchers[work[x].pitcher].id.injury && !visitor_cur.pitchers[work[x].pitcher].id.injury) {
                             tempip = visitor_season.pitchers[work[x].pitcher].id.ip_last4g[0] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[1] +
-                                     visitor_season.pitchers[work[x].pitcher].id.ip_last4g[2] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[3] -
-                                                           visitor_season.pitchers[work[x].pitcher].id.inn_target;
+                                     visitor_season.pitchers[work[x].pitcher].id.ip_last4g[2] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[3];
                             tempx = x;
                         }
                 }
@@ -1039,12 +1037,10 @@ replace_pitcher (int ha, int i1, int i2, int i3, int r1, int r2, int reppit1, in
                     if (home.pitchers[work[x].pitcher].pitching.games_started > (home.pitchers[work[x].pitcher].pitching.games / 5))
                         continue;
                     if ((home_season.pitchers[work[x].pitcher].id.ip_last4g[0] + home_season.pitchers[work[x].pitcher].id.ip_last4g[1] +
-                                  home_season.pitchers[work[x].pitcher].id.ip_last4g[2] + home_season.pitchers[work[x].pitcher].id.ip_last4g[3] -
-                                                        home_season.pitchers[work[x].pitcher].id.inn_target) < tempip)
+                         home_season.pitchers[work[x].pitcher].id.ip_last4g[2] + home_season.pitchers[work[x].pitcher].id.ip_last4g[3]) < tempip)
                         if (!home_season.pitchers[work[x].pitcher].id.injury || !home_cur.pitchers[work[x].pitcher].id.injury) {
                             tempip = home_season.pitchers[work[x].pitcher].id.ip_last4g[0] + home_season.pitchers[work[x].pitcher].id.ip_last4g[1] +
-                                     home_season.pitchers[work[x].pitcher].id.ip_last4g[2] + home_season.pitchers[work[x].pitcher].id.ip_last4g[3] -
-                                                               home_season.pitchers[work[x].pitcher].id.inn_target;
+                                     home_season.pitchers[work[x].pitcher].id.ip_last4g[2] + home_season.pitchers[work[x].pitcher].id.ip_last4g[3];
                             tempx = x;
                         }
                 }
@@ -1060,23 +1056,19 @@ replace_pitcher (int ha, int i1, int i2, int i3, int r1, int r2, int reppit1, in
             else
                 if (!ha) {
                     if ((visitor_season.pitchers[work[x].pitcher].id.ip_last4g[0] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[1] +
-                           visitor_season.pitchers[work[x].pitcher].id.ip_last4g[2] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[3] -
-                                                     visitor_season.pitchers[work[x].pitcher].id.inn_target) < tempip)
+                           visitor_season.pitchers[work[x].pitcher].id.ip_last4g[2] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[3]) < tempip)
                         if (!visitor_season.pitchers[work[x].pitcher].id.injury && !visitor_cur.pitchers[work[x].pitcher].id.injury) {
                             tempip = visitor_season.pitchers[work[x].pitcher].id.ip_last4g[0] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[1] +
-                                     visitor_season.pitchers[work[x].pitcher].id.ip_last4g[2] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[3] -
-                                                           visitor_season.pitchers[work[x].pitcher].id.inn_target;
+                                     visitor_season.pitchers[work[x].pitcher].id.ip_last4g[2] + visitor_season.pitchers[work[x].pitcher].id.ip_last4g[3];
                             tempx = x;
                         }
                 }
                 else
                     if ((home_season.pitchers[work[x].pitcher].id.ip_last4g[0] + home_season.pitchers[work[x].pitcher].id.ip_last4g[1] +
-                         home_season.pitchers[work[x].pitcher].id.ip_last4g[2] + home_season.pitchers[work[x].pitcher].id.ip_last4g[3] -
-                                                        home_season.pitchers[work[x].pitcher].id.inn_target) < tempip)
+                         home_season.pitchers[work[x].pitcher].id.ip_last4g[2] + home_season.pitchers[work[x].pitcher].id.ip_last4g[3]) < tempip)
                         if (!home_season.pitchers[work[x].pitcher].id.injury || !home_cur.pitchers[work[x].pitcher].id.injury) {
                             tempip = home_season.pitchers[work[x].pitcher].id.ip_last4g[0] + home_season.pitchers[work[x].pitcher].id.ip_last4g[1] +
-                                     home_season.pitchers[work[x].pitcher].id.ip_last4g[2] + home_season.pitchers[work[x].pitcher].id.ip_last4g[3] -
-                                                               home_season.pitchers[work[x].pitcher].id.inn_target;
+                                     home_season.pitchers[work[x].pitcher].id.ip_last4g[2] + home_season.pitchers[work[x].pitcher].id.ip_last4g[3];
                             tempx = x;
                         }
         }
