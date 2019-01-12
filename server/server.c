@@ -160,7 +160,7 @@ usage () {
 */
 void
 version () {
-    fprintf (stderr, "\nVersion info:  nsbserver v0.9.9.6\n\n");
+    fprintf (stderr, "\nVersion info:  nsbserver v0.9.9.7\n\n");
 }
 
 int

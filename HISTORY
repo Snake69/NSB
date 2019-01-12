@@ -1,3 +1,7 @@
+0.9.9.7 -
+. minor editorial improvements
+
+
 0.9.9.6 -
 . added 2018 Real Life data
 . fixed bug where viewing NSB Standings under certain conditions crashed gtknsbclient

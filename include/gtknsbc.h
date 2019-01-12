@@ -16,7 +16,7 @@
 #define WINSIZEY 480
 
 #define APPTITLE "GTK NetStatsBaseball Client"
-#define APPVERSION "V0.9.9.6"
+#define APPVERSION "V0.9.9.7"
 #define APPAUTHOR "Marshall Lake"
 
 gchar hs[256];  /* name of NSB server */
