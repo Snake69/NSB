@@ -32,16 +32,17 @@ char *grounders[] = { "taps the ball to", "grounds to", "hits a high bounder to"
                   /* that last value should remain last in the doubles[] list if more entries are added */
      *triples[] = { "hits a ball that goes all the way to the wall", "smacks a ball that gets past the outfielder" },
      *homers[] = { "hits a shot ... going ... going ... gone", "gets hold of one ... it's outa here", "rockets the ball into the bleachers",
-                   "clobbers the ball ... back ... back ... back ... out of here", "slugs the ball over the fence",
+                   "clobbers the ball ... back ... back ... back ... out of here", "slugs the ball over the fence", "hits a big fly out of the park",
                    "tears the cover off the ball ... gone", "smashes the ball out of the ballpark", "clouts the ball over the fence",
                    "gets hold of one ... out of the ballpark", "got all of that ... a homerun", "gives the ball a ride over the fence",
                    "hits the ball into souvenir city", "wallops the ball into the upper deck", "hits a moonshot into the stands",
-                   "rips the ball ... Goodbye Mr. Spaulding", "goes yard", "goes deep ... gone", "unloads ... what a shot",
+                   "rips the ball ... Goodbye Mr. Spaulding", "goes yard", "goes deep ... gone", "unloads ... what a shot", "hits a bombpop",
                    "drives the ball a country mile", "hammers the ball and it finds the seats", "pounds the cowhide ... See Ya",
-                   "launches the ball out of the park", "makes good contact ... it's high ... it's far ... it's gone",
+                   "launches the ball out of the park", "makes good contact ... it's high ... it's far ... it's gone", "hits a bomb out of the park",
                    "hits a tape measure home run", "rips it ... kiss it goodbye", "plants it in the stands", "crushes it ... gone", "mashes a homer",
                    "nails the ball into the cheap seats", "blasts the ball over the fence", "gives the cowhide a ride ... it's not coming back",
-                   "... get up! Get up! Get outa here! Gone!", "connects ... no doubt", "tags the ball ... just over the fence" };
+                   "... get up! Get up! Get outa here! Gone!", "connects ... no doubt", "tags the ball ... just over the fence", "blasts a towering homerun",
+                   "hits a tater out of the park", "tattooes the ball out" };
 
 void
 playthegame () {
@@ -1934,7 +1935,7 @@ send_bothalf () {
             move_runners (3, &action[0]);
         }
         if (action_ind == 5) {
-            strcat (&action[0], homers[(int) ((float) 34 * rand () / (RAND_MAX + 1.0))]);
+            strcat (&action[0], homers[(int) ((float) 40 * rand () / (RAND_MAX + 1.0))]);
             move_runners (4, &action[0]);
         }
         if (action_ind == 9) {

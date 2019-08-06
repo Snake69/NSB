@@ -1,3 +1,5 @@
+WAR formula - https://en.wikipedia.org/wiki/Wins_Above_Replacement#Calculation
+add stat: +/-, runs/opp runs while player is in game
 sometimes pitchers (only starting pitchers ?) pitch too many innings
 add option to nsbserver command line to disallow Waiting Pool
 allow computer to choose starting position players randomly based upon percentage of games played at a position
