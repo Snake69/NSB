@@ -32,12 +32,12 @@ Pitchers With Multiple No-Hitters Since 1900 ...
 Nolan Ryan (7) - 15 May 1973, 15 Jul 1973, 28 Sep 1974, 1 Jun 1975, 26 Sep 1981, 11 Jun 1990, 1 May 1991
 Sandy Koufax (4) - 30 Jun 1962, 11 May 1963, 4 Jun 1964, 9 Sep 1965
 Bob Feller (3) - 16 Apr 1940, 30 Apr 1946, 1 Jul 1951
+Justin Verlander (3) - 12 Jun 2007, 7 May 2011, 1 Sep 2019
 Cy Young (2) - 5 May 1904, 30 Jun 1908 (Note - Cy Young had a third no-hitter prior to 1900)
 Jake Arrieta (2) - 30 Aug 2015, 21 Apr 2016
 Max Scherzer (2) - 20 Jun 2015, 3 Oct 2015
 Tim Lincecum (2) - 13 Jul 2013, 25 Jun 2014
 Homer Bailey (2) - 28 Sep 2012, 2 Jul 2013
-Justin Verlander (2) - 12 Jun 2007, 7 May 2011
 Roy Halladay (2) - 29 May 2010, 6 Oct 2010
 Mark Buehrle (2) - 18 Apr 2007, 23 Jul 2009
 Randy Johnson (2) - 2 Jun 1990, 18 May 2004
@@ -213,6 +213,14 @@ Ian Kinsler, 2009, Texas Rangers, 31 HR, 30 SB
              2011, Texas Rangers, 32 HR, 30 SB
 Ryan Braun, 2011, Milwaukee Brewers, 33 HR, 33 SB
             2012, Milwaukee Brewers, 41 HR, 30 SB
+
+
+Players Since 1900 With 20+ Doubles, 20+ Triples, 20+ Home Runs and 20+ Stolen Bases in Same Season ...
+
+Frank Schulte, 1911, Chicago Cubs, 30 2B, 21 3B, 21 HR, 23 SB
+Willie Mays, 1957, San Francisco Giants, 26 2B, 20 3B, 35 HR, 38 SB
+Curtis Granderson, 2007, Detroit Tigers, 28 2B, 23 3B, 23 HR, 26 SB
+Jimmy Rollins, 2007, Philadelphia Phillies, 38 2B, 20 3B, 30 HR, 41 SB
 
 
 Unassisted Triple Plays Since 1900 ...
