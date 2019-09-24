@@ -25,7 +25,7 @@ gchar helptext[70000];  /* holds help info */
 gchar abbrtext[50000];  /* holds abbreviations info */
 gchar gpstext[50000];  /* holds good player season info */
 gchar formchtext[50000];  /* holds valid formula characters info */
-gchar tdibtext[50000];  /* holds This Day in Baseball info */
+gchar tdibtext[100000];  /* holds This Day in Baseball info */
 gchar mvptext[50000];  /* holds MVP info */
 gchar hoftext[50000];  /* holds Hall of Fame info */
 gchar nacctext[50000];  /* holds Notable Accomplishments info */

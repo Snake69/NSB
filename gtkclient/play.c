@@ -599,7 +599,7 @@ HowMuchLeague () {
     adj = (GtkAdjustment *) gtk_adjustment_new (100.0, 1.0, 999.0, 25.0, 100.0, 0.0);
     spinner = gtk_spin_button_new (adj, 0, 0);
     gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (spinner), FALSE);
-    gtk_widget_set_size_request (spinner, 55, -1);
+    gtk_widget_set_size_request (spinner, 65, -1);
     gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (spinner), TRUE);
     gtk_container_add (GTK_CONTAINER (hbox), spinner);
 

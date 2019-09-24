@@ -124,7 +124,7 @@ TDIB (int boot, int m, int d) {
     strcat (&fname[0], &day[0]);
 
     /* clear data area */
-    for (b = 0; b < 50000; b++)
+    for (b = 0; b < 100000; b++)
         tdibtext[b] = '\0';
 
     strcpy (&tdibtext[0], "\n                            This Day in Baseball\n\n");
