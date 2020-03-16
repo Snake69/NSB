@@ -41,7 +41,7 @@ NSBStandings (gpointer callback_data, guint callback_action, GtkWidget *widget) 
 
         strcpy (&work[0], "No season established on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoDir[0];
@@ -948,7 +948,7 @@ RealLifeSeasonResults (gpointer callback_data, guint callback_action, GtkWidget 
         else {
             strcpy (&work[0], "Encountered error when talking to server ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &Error[0];
@@ -2639,7 +2639,7 @@ NSBLifetimeByTeam (gpointer callback_data, guint callback_action, GtkWidget *wid
 
         strcpy (&work[0], "No lifetime teams on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
 
         msg[0] = &NoLT[0];
 
@@ -2666,7 +2666,7 @@ NSBLifetimeByTeam (gpointer callback_data, guint callback_action, GtkWidget *wid
         else {
             strcpy (&work[0], "Encountered error when talking to server ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &Error[0];
@@ -2696,7 +2696,7 @@ NSBByTeam (gpointer callback_data, guint callback_action, GtkWidget *widget) {
 
         strcpy (&work[0], "No season established on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
 
         msg[0] = &NoDir[0];
 
@@ -2723,7 +2723,7 @@ NSBByTeam (gpointer callback_data, guint callback_action, GtkWidget *widget) {
         else {
             strcpy (&work[0], "Encountered error when talking to server ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &Error[0];
@@ -2750,7 +2750,7 @@ NSBSeriesByTeam (gpointer callback_data, guint callback_action, GtkWidget *widge
 
         strcpy (&work[0], "No series established on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoLeague[0];
@@ -2780,7 +2780,7 @@ NSBSeriesByTeam (gpointer callback_data, guint callback_action, GtkWidget *widge
         else {
             strcpy (&work[0], "Encountered error when talking to server ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &Error[0];
@@ -2886,7 +2886,7 @@ NSBSeriesTeamTotals (gpointer callback_data, guint callback_action, GtkWidget *w
 
         strcpy (&work[0], "No series established on "); 
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1); 
 
         msg[0] = &NoLeague[0];
@@ -3729,7 +3729,7 @@ GetPlayerName:
                 else {
                     strcpy (&work[0], "Encountered error when talking to server ");
                     strcat (&work[0], &hs[0]);
-                    strcat (&work[0], ".\n");
+                    strcat (&work[0], "\n");
                     Add2TextWindow (&work[0], 1);
 
                     msg[0] = &Error[0];
@@ -3759,7 +3759,7 @@ GetPlayerName:
                 strcat (&work[0], &name[0]);
                 strcat (&work[0], " on ");
                 strcat (&work[0], &hs[0]);
-                strcat (&work[0], ".\n");
+                strcat (&work[0], "\n");
                 Add2TextWindow (&work[0], 1);
 
                 msg[0] = &work[0];
@@ -3850,7 +3850,7 @@ CategoryLeaders (gint which) {
 
             strcpy (&work[0], "No season established on ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &NoLeague[0];
@@ -3873,7 +3873,7 @@ CategoryLeaders (gint which) {
 
             strcpy (&work[0], "No series established on ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &NoLeague[0];
@@ -3902,7 +3902,7 @@ CategoryLeaders (gint which) {
             else
                 strcpy (&work[0], "No records for all users on ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &NoRecords[0];
@@ -3959,7 +3959,7 @@ CategoryLeaders (gint which) {
             else {
                 strcpy (&work[0], "Encountered error when talking to server ");
                 strcat (&work[0], &hs[0]);
-                strcat (&work[0], ".\n");
+                strcat (&work[0], "\n");
                 Add2TextWindow (&work[0], 1);
 
                 msg[0] = &Error[0];
@@ -4007,7 +4007,7 @@ CategoryLeaders (gint which) {
             gtk_entry_set_max_length (GTK_ENTRY (inentry), 100);
             gtk_table_attach_defaults (GTK_TABLE (table), inentry, 1, 2, 1, 2);
             gtk_label_set_mnemonic_widget (GTK_LABEL (label), inentry);
-            gtk_entry_set_text (GTK_ENTRY (inentry), "2018");
+            gtk_entry_set_text (GTK_ENTRY (inentry), "2019");
             gtk_signal_connect (GTK_OBJECT (inentry), "insert_text", GTK_SIGNAL_FUNC (CheckEntry), NULL);
             gtk_window_set_focus (GTK_WINDOW (scatwindow), inentry);
 
@@ -5001,7 +5001,7 @@ ShowCategoryLeaders () {
     w[0] = '\0';
     if (whichstats == 2) {
         gint x, y, err;
-        gchar *msg[5], NoYrs[256] = "No years to search.", NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2018)?\n\n";
+        gchar *msg[5], NoYrs[256] = "No years to search.", NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2019)?\n\n";
 
         for (x = 0; x < 5; x++)
             msg[x] = NULL;
@@ -5022,7 +5022,7 @@ ShowCategoryLeaders () {
             gchar ExMsg[256] = "In excluded years ...", InMsg[256] = "In included years ...",
                   YrAfterHy[256] = "The year after a hyphen must be equal to or greater than the year before that same hyphen.",
                   NoYr[256] = "There must be a year after a hyphen.", InitYr[256] = "A year must be the first data.",
-                  InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2018).";
+                  InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2019).";
 
             /* first four bits (leftmost) inentry, second four bits (rightmost) exentry
                0000 0000
@@ -5139,7 +5139,7 @@ ShowCategoryLeaders () {
         else {
             strcpy (&work[0], "Encountered error when talking to server ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &Error[0];

@@ -2273,7 +2273,7 @@ main (int argc, char *argv[]) {
                 closedir (fnames);
                 buffer1[0] = '\0';
 
-                if (buffer[1] == 'M')
+                if (buffer[1] == 'M') {
                     for (x = 0; x < 20; x++)
                         if (strlen (&mvp[x].name[0])) {
                             strcat (&buffer1[0], &mvp[x].name[0]);
@@ -2290,8 +2290,9 @@ main (int argc, char *argv[]) {
                         }
                         else
                             break;
+                }
 
-                if (buffer[1] == 'C')
+                if (buffer[1] == 'C') {
                     for (x = 0; x < 20; x++)
                         if (strlen (&cyyoung[x].name[0])) {
                             strcat (&buffer1[0], &cyyoung[x].name[0]);
@@ -2308,8 +2309,9 @@ main (int argc, char *argv[]) {
                         }
                         else
                             break;
+                }
 
-                if (buffer[1] == 'G')
+                if (buffer[1] == 'G') {
                     for (x = 1; x < 10; x++)
                         if (strlen (&goldglove[x].name[0])) {
                             strcat (&buffer1[0], &goldglove[x].name[0]);
@@ -2326,8 +2328,9 @@ main (int argc, char *argv[]) {
                         }
                         else
                             strcat (&buffer1[0], "NONAME??1111000000000000");
+                }
 
-                if (buffer[1] == 'S')
+                if (buffer[1] == 'S') {
                     for (x = 0; x < 10; x++)
                         if (strlen (&silverslugger[x].name[0])) {
                             strcat (&buffer1[0], &silverslugger[x].name[0]);
@@ -2344,6 +2347,7 @@ main (int argc, char *argv[]) {
                         }
                         else
                             strcat (&buffer1[0], "NONAME??1111000000000000");
+                }
 
                 strcat (&buffer1[0], "\n");
                 sock_puts (sock, &buffer1[0]);
@@ -2365,7 +2369,7 @@ main (int argc, char *argv[]) {
                 yrs[x] = 0;
 
             for (x = 0; x < 101; x++)
-                teams[x].score = 0.0;
+                teams[x].score = 1.0;
 
             /* get regular season won/loss percentage strength */
             for (x = 0, pos = 1; buffer[pos] != ' '; x++, pos++)
@@ -2582,7 +2586,7 @@ main (int argc, char *argv[]) {
                                 for (pos = 0; pos < strlen (&results[0]); pos++)
                                     if (!strncmp (&results[pos], &tname[0], strlen (&tname[0]))) {
                                         if (rspct > 0.0) {
-                                            period = index (&results[pos + 3], '.');   /* need to start past a possible "St." start to team name */
+                                            period = index (&results[pos + 3], '.');  /* need to start past a possible "St." start to team name */
                                             strncpy (&work[0], period + 1, 3);
                                             work[3] = '\0';
                                             z = atoi (&work[0]);
@@ -5448,8 +5452,9 @@ figure_schedule:
                 r3g = buffer[10] - '0';
                 r4g = buffer[11] - '0';
 
-                /* ensure supplied max games per PS round are correct - make them sane if need be
-                   (NOTE - the round-1 value will always be correct) */
+                /* ensure supplied max games per PS round are correct - make them sane if need be */
+                if (!r1g)
+                    r1g = 7;
                 if (numl == 1) {
                     if ((numl + numd + numwc) == 2 || (numl + numd + numwc) == 3)
                         /* 1 round and 1 round only */
@@ -5470,12 +5475,9 @@ figure_schedule:
                     }
                 }
                 else {
-                    if ((numl + numd + numwc) == 2) {
+                    if ((numl + numd + numwc) == 2)
                         /* 1 round and 1 round only */
-                        if (!r1g)
-                            r1g = 7;
                         r2g = r3g = r4g = 0;
-                    }
                     if ((numl + numd + numwc) == 3 || (numl + numd + numwc) == 4) {
                         /* 2 rounds and 2 rounds only */
                         if (!r2g)
@@ -5558,7 +5560,7 @@ figure_schedule:
                         numwc = 0;
                         league_setup.nummaxgames[1] = league_setup.nummaxgames[2] = league_setup.nummaxgames[3] = 0;
                         if (yr == 1901 || yr == 1902 || yr == 1904)
-                            league_setup.nummaxgames[0] = 0;      /* no WS in these years */
+                            league_setup.nummaxgames[0] = 0;      /* no PS in these years */
                         else
                             if (yr == 1903 || yr == 1919 || yr == 1920 || yr == 1921)
                                 league_setup.nummaxgames[0] = 9;      /* best of 9 WS in these years */

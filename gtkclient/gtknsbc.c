@@ -257,7 +257,7 @@ DeleteNSBID (gpointer callback_data, guint callback_action, GtkWidget *widget) {
         strcat (&work[0], &nsbid[0]);
         strcat (&work[0], " removed from server ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 0);
 
         strcpy (&work[0], "Connection to server ");
@@ -672,7 +672,7 @@ static GtkItemFactoryEntry menu_items[] = {
    { "/Administration/Season Autoplay/Set-up", NULL, SeasonAutoplayEst, 0 },
    { "/Administration/Season Autoplay/Activation", NULL, SeasonAutoplayAS, 0 },
    { "/Administration/Season Autoplay/Execute Once Now", NULL, SeasonAutoplayEx, 0 },
-   { "/Administration/Users on Connected Server", NULL, Users, 0 },
+   { "/Administration/Users With Accounts on Connected Server", NULL, Users, 0 },
    { "/Administration/separator4", NULL, NULL, 0, "<Separator>" },
    { "/Administration/Create, Edit, Rename or Delete Team", NULL, SetUpTeamChoices, 0 },
    { "/Administration/Some Good Individual Seasons", NULL, GIndS, 0 },

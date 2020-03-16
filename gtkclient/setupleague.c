@@ -70,7 +70,7 @@ SetUpLeague () {
 
         strcpy (&work[0], "Encountered error when talking to server ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n\n");
+        strcat (&work[0], "\n\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoDir[0];
@@ -89,7 +89,7 @@ SetUpLeague () {
 
         strcpy (&work[0], "No groups of teams available in order to set up a season on server ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n\n");
+        strcat (&work[0], "\n\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoTeams[0];
@@ -997,7 +997,7 @@ TellServerAboutLeague (GtkWidget *widget, gpointer data) {
 
         strcpy (&work[0], "Season established on server ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 0);
         SetLeagueUnderWay (1);
         SetSeriesUnderWay (0);

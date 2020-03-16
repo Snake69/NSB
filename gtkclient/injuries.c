@@ -31,7 +31,7 @@ LeagueInjuryReport (gpointer callback_data, guint callback_action, GtkWidget *wi
 
             strcpy (&work[0], "No season nor series established on ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 1);
 
             msg[0] = &NoLeague[0];
@@ -234,7 +234,7 @@ PrintInjuryReport (GtkWidget *widget, gpointer *pdata) {
 
     strcpy (&work[0], "Print Injury Report in season on ");
     strcat (&work[0], &hs[0]);
-    strcat (&work[0], ".\n");
+    strcat (&work[0], "\n");
     Add2TextWindow (&work[0], 0);
 
     for (x = 0; x < 5; x++)

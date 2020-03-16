@@ -2,6 +2,7 @@
 
       American League                       National League
 
+2019  Mike Trout        Los Angeles   CF    Cody Bellinger    Los Angeles   RF
 2018  Mookie Betts      Boston        OF    Christian Yelich  Milwaukee     OF
 2017  Jose Altuve       Houston       2B    Giancarlo Stanton Miami         OF
 2016  Mike Trout        Los Angeles   OF    Kris Bryant       Chicago       3B

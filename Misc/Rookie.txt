@@ -2,6 +2,7 @@
 
         American League                   National League
 
+2019   Yordan Alvarez      Houston        Pete Alonso          New York
 2018   Shohei Ohtani       Los Angeles    Ronald Acuna         Atlanta
 2017   Aaron Judge         New York       Cody Bellinger       Los Angeles
 2016   Michael Fulmer      Detroit        Corey Seager         Los Angeles

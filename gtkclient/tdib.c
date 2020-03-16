@@ -157,7 +157,7 @@ TDIB (int boot, int m, int d) {
         strcat (&work[0], &month[0]);
         strcat (&work[0], "/");
         strcat (&work[0], &day[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
 
         strcat (&NoTDIBAvailable[0], &month[0]);
@@ -302,7 +302,7 @@ PrintTDIB (GtkWidget *widget, gpointer cnt) {
 
     strcpy (&work[0], "Printing This Day in Baseball for ");
     strcat (&work[0], &prtbuttdibcmd[icnt][0]);
-    strcat (&work[0], ".\n");
+    strcat (&work[0], "\n");
     Add2TextWindow (&work[0], 0);
 
     for (x = 0; x < 5; x++)

@@ -1205,7 +1205,7 @@ sortpitching (int gs, int st) {
                 }
                 else
                     if (records[gs].pitching[st][x].stat[0] == records[gs].pitching[st][y].stat[0])
-                        if (gs == 29 && records[gs].pitching[st][x].stat[1] < records[gs].pitching[st][y].stat[1]) {
+                        if (st == 29 && records[gs].pitching[st][x].stat[1] < records[gs].pitching[st][y].stat[1]) {
                             temp = records[gs].pitching[st][x];
                             records[gs].pitching[st][x] = records[gs].pitching[st][y];
                             records[gs].pitching[st][y] = temp;
@@ -1258,7 +1258,7 @@ sortlpitching (int gs, int st) {
                 }
                 else
                     if (lrecords[gs].pitching[st][x].stat[0] == lrecords[gs].pitching[st][y].stat[0])
-                        if (gs == 29 && lrecords[gs].pitching[st][x].stat[1] < lrecords[gs].pitching[st][y].stat[1]) {
+                        if (st == 29 && lrecords[gs].pitching[st][x].stat[1] < lrecords[gs].pitching[st][y].stat[1]) {
                             temp = lrecords[gs].pitching[st][x];
                             lrecords[gs].pitching[st][x] = lrecords[gs].pitching[st][y];
                             lrecords[gs].pitching[st][y] = temp;
@@ -1311,7 +1311,7 @@ sortspitching (int gs, int st) {
                 }
                 else
                     if (srecords[gs].pitching[st][x].stat[0] == srecords[gs].pitching[st][y].stat[0])
-                        if (gs == 29 && srecords[gs].pitching[st][x].stat[1] < srecords[gs].pitching[st][y].stat[1]) {
+                        if (st == 29 && srecords[gs].pitching[st][x].stat[1] < srecords[gs].pitching[st][y].stat[1]) {
                             temp = srecords[gs].pitching[st][x];
                             srecords[gs].pitching[st][x] = srecords[gs].pitching[st][y];
                             srecords[gs].pitching[st][y] = temp;

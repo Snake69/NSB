@@ -1,23 +1,19 @@
-WAR formula - https://en.wikipedia.org/wiki/Wins_Above_Replacement#Calculation
-add stat: +/-, runs/opp runs while player is in game
+add Preference ... specify NSB server to connect to at startup
+auto-play - allow ability to get post-season category leaders
+add play-by-play option to AutoPlay setup (this will make for large emails; maybe allow it only for post-season games?)
 sometimes pitchers (only starting pitchers ?) pitch too many innings
 add option to nsbserver command line to disallow Waiting Pool
+write program to check if there's a more suitable player available for 25-man roster for each team
+for 2020 the real-life roster is increasing to 26 players
+         pitcher must face at least 3 batters or end half-inning
+         max 13 pitchers on roster
+WAR formula - https://en.wikipedia.org/wiki/Wins_Above_Replacement#Calculation
 allow computer to choose starting position players randomly based upon percentage of games played at a position
 when user deletes a UC team check if it is involved in a currently ongoing season & if so delete season (warn user first)
-bug - established a totally random season, no PS, after season completed establishing a new season got msg "season is currently
-  proceding" and trying to play portion of season got communication error
 provide an option to nsbserver to kill any running processes
   https://stackoverflow.com/questions/6744979/kill-a-process-from-linux-application
   https://www.linuxquestions.org/questions/programming-9/c-program-to-kill-process-4175444948/
-add option to display results Worst-2-Best in Evaluate Team Seasons
 add ability to view lifetime real life category leaders
-batting averages too low, ERA too high
-it seems players with a low amount of stats (like closers) do not perform
-  as they should
-  try this:  add a factor to action logic so that real life stats are
-    pro-rated equally ... based upon 500 PAs & 200 BFPs? ... or maybe bigger
-    numbers like 1000 PAs & 500 BFPs? ... so, each player's stats would be
-    factored up to the bigger numbers before determining action outcome
 add NSB to repositories
   https://gist.github.com/mindplace/b4b094157d7a3be6afd2c96370d39fad
 include a progress bar when playing portion of league (it appears the only way
@@ -28,7 +24,6 @@ include a progress bar when playing portion of league (it appears the only way
       after each day and each game
 add a "List U-C Teams" button to the Create Team dialog
 add post-season game scores to Results files for NSB play
-auto-play - allow ability to get post-season category leaders
 allow user to see the NSB regular season schedule at any time, and game scores for games already played
 any playoff games which are part of the regular season should be added dynamically
   to the schedule file and as such will be the next day/game on the schedule after
@@ -36,6 +31,7 @@ any playoff games which are part of the regular season should be added dynamical
   season there will still be playoff game(s) to play as part of the regular season);
   that means the standings should reflect that there are playoff game(s) to be played
   and regular season hasn't quite ended completely
+auto-playing a season with no PS (e.g., 1901), 2 teams end up tied for 1st, there's no tie-breaker game; should there be?
 double-check all season ending possibilities are handled properly (in one example, currently if 3 teams tie for 2 WC slots,
   team x plays team y & winner plays team z; it should be loser plays team z)
 allow user to formulate queries (see queryplan.txt)
@@ -43,9 +39,8 @@ allow user to formulate queries (see queryplan.txt)
 allow user to create a season comprised of:
   teams in results from running of Extras->Evaluate Team Seasons
   best teams of all time based upon regular season wins
-change File->Connect to a Server so that it brings up a list of choices including:  localhost, 68.109.143.57
+change File->Connect to a Server so that it brings up a list of choices including:  localhost, mlake.net
   allow user to add sites to this list
-  add "NSB server available at 68.109.143.57 (no Waiting Pool)" to README.txt file
 add inside the park homer
   usually a fast runner
   real life, 1951-2000 - 1 in 158 HRs were inside-the-park
@@ -63,12 +58,17 @@ improve Stats->Real Life->By Player selection process (allow user to input a
 allow multiple teams to be used as a source for auto-creating team
 allow user to use lifetime stats when determining players to add to team when auto-creating a team (same team, multiple years)
 allow user to edit/create stats/players
-think about leaving the stats for traded players broken up on the teams
+add date of first connection to nsbdb[] and USERS display
+  include a conversion program to convert the old format to the new format so a user doesn't have to lose his USER file
+think about leaving the stats for traded players broken up on the teams (or perhaps give the user the option of one or the other)
   they played on rather than all the player's stats on one team
     give user option of playing with player real-life stats split on multiple teams
       (because of real-life trades which occurred) or player stats combined onto one team
     splitting up stats may be weird if going to a "bring up player when there's an injury" system
+        see for 40-man roster - https://www.baseball-almanac.com/articles/baseball_rosters.shtml
     there will be times where position players pitched; those pitching (and fielding) stats should remain in the 25-man roster
+some stats too far off, especially ERA (moreso pitchers with low IPs like closers)
+  maybe factor out stats to a base (like 1000 PA & 2000 BFP)
 improve/redo schedule algorithm
   MLB constraints:
         Each club plays 162 games and 52 series, including 13 at home on weekends.
@@ -98,10 +98,13 @@ change over to GTK3
 whenever there is a playoff round where the teams are unknown (usually the 2nd round
   when there are 2 WC teams), after the previous round completes, the next round teams
   should be shown in the standings display
-auto-creation of league by year - 1981, special case:  split season + special
-  post-season
+auto-creation of league by year - 1981, special case:  split season + special post-season
+add option to display results Worst-2-Best in Evaluate Team Seasons
+  (would need to change some factors in dialog, and would need to change calculations)
 add to league set-up file:  number of games each team plays in season
-  also, auto-creating a league by season, the number of games each team plays should be dictated by the number of games they played that season in real life
+  active roster size by years - https://www.baseball-almanac.com/articles/baseball_rosters.shtml
+  also, auto-creating a league by season, the number of games each team plays should be dictated by the number of games they played
+    that season in real life
     https://en.wikipedia.org/wiki/Major_League_Baseball_schedule
 allow user to generate team lifetime stats based upon Season Results factors:
     team or city
@@ -271,8 +274,7 @@ allow career stats for players to be used in game-play
 allow career stats for players to be used when auto-creating a team (for a particular team, or for all teams?)
 may need to stop the same user from logging into the same NSB server more than
   once simultaneously (it may cause problems)
-    to do this add a "logged in" field to the userinfo file (or expand the
-      "status" field)
+    to do this add a "logged in" field to the userinfo file (or expand the "status" field)
     also, show which users are logged in and which are not in
       Administration->Users on Connected Server
 put a time limit on response to "Accept Challenge?" dialog and tell
@@ -400,7 +402,7 @@ when client & server conversing never pass team names or player names,
   always pass team IDs + year, or player IDs
 allow any player to pitch (as opposed to allowing just pitchers to pitch)
 team rosters should not be limited to 11 pitchers
-  also, NSB should allow one of the position players to have pitching stats
+  also, NSB should allow position players to have pitching stats
     which would keep the # of players on the team at 25 and the number of
     pitchers to be 12
 allow NSB to use an alternate port to 49999
@@ -441,10 +443,12 @@ in "Lineup - <team year & name>" dialog (SeeLineup) when user expands
 when selecting the lineup, if the user selects the NSB AI to do the
   lineup then that lineup should be displayed before continuing
 stats to add:
+  +/-, runs/opp runs while player is in game
   fielding (for catchers & pitchers) - SB & CS against (for pitchers,
     these two stats are currently in pitching - move them)
   ejections
   team DPs
+  team strength of schedule - keep a running score of opponents' W/L record at time of playing for each game
   triple plays
   successful pickoffs for pitchers (and catchers?)
   picked off for baserunners

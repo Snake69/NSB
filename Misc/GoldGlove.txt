@@ -2,6 +2,17 @@
 
      American League                 National League
 
+2019
+P    Mike Leake         Seattle      Zack Greinke      Arizona
+C    Roberto Perez      Cleveland    JT Realmuto       Philadelphia
+1B   Matt Olson         Oakland      Anthony Rizzo     Chicago
+2B   Yolmer Sanchez     Chicago      Kolten Wong       St Louis
+3B   Matt Chapman       Oakland      Nolan Arenado     Colorado
+SS   Francisco Lindor   Cleveland    Nick Ahmed        Arizona
+LF   Alex Gordon        Kansas City  David Peralta     Arizona
+CF   Kevin Kiermaier    Tampa Bay    Lorenzo Cain      Milwaukee
+RF   Mookie Betts       Boston       Cody Bellinger    Los Angeles
+
 2018
 P    Dallas Keuchel     Houston      Zack Greinke      Arizona
 C    Salvador Perez     Kansas City  Yadier Molina     St. Louis

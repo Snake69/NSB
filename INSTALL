@@ -1,6 +1,6 @@
 
 NSB v0.9.9.7
-11 Jan 2019
+15 Mar 2020
 
 If you downloaded from github then from the NSB root directory (after
 unzipping) you may just need to enter:
@@ -52,9 +52,10 @@ Enter the command "nsbserver &" to start the server in the background.
 (See the man page for available options.)  The server must be started by a
 user (more than likely the superuser) which has read and write permissions
 in /var.  After starting the server enter the command "gtknsbclient
-[ip-address-of-server]" to run the NSB client.  The default server to
-which gtknsbclient will connect is localhost.  (Note - the nsbpoolmngr
-program will be started by nsbserver.)
+[ip-address-of-server]" to run the NSB client.  The default server to which
+gtknsbclient will connect is localhost.  (Note1 - An open NSB server may
+be running at mlake.net) (Note2 - the nsbpoolmngr program will be started
+by nsbserver)
 
 The first time you use gtknsbclient to connect to an nsbserver you
 will be asked to input an NSB ID.  The NSB ID is simply a means for
@@ -67,7 +68,7 @@ of gtknsbclient.
 
 All three programs (nsbserver, nsbpoolmngr and gtknsbclient) will be
 installed into /usr/local/bin.  Also included in the installation are
-all the various team statistic files for the years 1901 through 2017, and
+all the various team statistic files for the years 1901 through 2019, and
 short manuals for the three programs.  The stats files will be installed
 into /var/NSB.  The manuals will be installed into /usr/local/man/man6.
 Some additional files will be installed into /usr/local/share/NSB.
@@ -84,11 +85,11 @@ future release.
 All the work has been done on an Intel Linux system.  If you get it
 working on another platform let me know.
 
-Send any questions or comments to nsb@mlake.net
+Send any questions or comments to marshallelake@gmail.com
 
 
 Marshall Lake
-nsb@mlake.net               (best email address)
+MarshallELake@gmail.com (best email address)
 mlake@mlake.net
-MarshallELake@gmail.com
+nsb@mlake.net
 

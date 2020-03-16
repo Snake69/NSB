@@ -237,7 +237,7 @@ Play1Game (char which) {
 
                 strcpy (&work[0], "Problem with server ");
                 strcat (&work[0], &hs[0]);
-                strcat (&work[0], ".\n");
+                strcat (&work[0], "\n");
                 Add2TextWindow (&work[0], 1);
 
                 msg[0] = &NoDir[0];
@@ -255,7 +255,7 @@ Play1Game (char which) {
 
                 strcpy (&work[0], "No teams available on server ");
                 strcat (&work[0], &hs[0]);
-                strcat (&work[0], ".\n");
+                strcat (&work[0], "\n");
                 Add2TextWindow (&work[0], 1);
 
                 msg[0] = &NoTeams[0];
@@ -454,7 +454,7 @@ PlayNSBPortionOfLeague (gpointer callback_data, guint callback_action, GtkWidget
     if (!strcmp (&buffer[0], "NOLEAGUE")) {
         strcpy (&work[0], "No season established on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoDir[0];
@@ -491,7 +491,7 @@ PlayNSBPortionOfLeague (gpointer callback_data, guint callback_action, GtkWidget
         /* this happens if the user has no season established */
         strcpy (&work[0], "No season established on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoDir[0];
@@ -507,7 +507,7 @@ PlayNSBPortionOfLeague (gpointer callback_data, guint callback_action, GtkWidget
     if (!err) {
         strcpy (&work[0], "Played games in a season on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 0);
     }
 

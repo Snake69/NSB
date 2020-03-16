@@ -62,7 +62,7 @@ GotError () {
     else {
         strcpy (&work[0], "Encountered an error when talking to server ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
         msg[0] = &Error[0];
     }
@@ -571,7 +571,7 @@ SetLeagueUnderWay (int setting) {
     gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Injury Report"), TRUE);
     gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Establish Season"), TRUE);
     gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Establish a Series"), TRUE);
-    gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Users on Connected Server"), TRUE);
+    gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Users With Accounts on Connected Server"), TRUE);
     gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Change My NSB ID on Connected Server"), TRUE);
     gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Xtras/Evaluate Team Seasons"), TRUE);
     gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Create, Edit, Rename or Delete Team"), TRUE);
@@ -629,7 +629,7 @@ SetLeagueUnderWay (int setting) {
         gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Establish Season"), FALSE);
         gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Establish a Series"), FALSE);
         gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Injury Report"), FALSE);
-        gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Users on Connected Server"), FALSE);
+        gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Administration/Users With Accounts on Connected Server"), FALSE);
         gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory,
                                          "/Statistics/All NSB Seasons/Regular Season Records/Just Your Seasons/Game Records"), FALSE);
         gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory,
@@ -786,7 +786,7 @@ PrintWP (GtkWidget *widget, gpointer *pdata) {
 
     strcpy (&work[0], "Print waiting pool on ");
     strcat (&work[0], &hs[0]);
-    strcat (&work[0], ".\n\n");
+    strcat (&work[0], "\n\n");
     Add2TextWindow (&work[0], 0);
 
     for (x = 0; x < 5; x++)

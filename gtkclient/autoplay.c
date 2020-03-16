@@ -22,7 +22,7 @@ SeasonAutoplayEst (gpointer callback_data, guint callback_action, GtkWidget *wid
     gtk_window_set_title (GTK_WINDOW (dlgFile), "Setup Autoplay");
     gtk_window_set_default_size (GTK_WINDOW (dlgFile), 750, 500);
 
-    strcpy (&labeltext[0], "Select reports to be included in emails:");
+    strcpy (&labeltext[0], "Select reports to be included in emails");
     label = gtk_label_new (labeltext);
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dlgFile)->vbox), label, TRUE, TRUE, 0);
 
@@ -43,7 +43,7 @@ SeasonAutoplayEst (gpointer callback_data, guint callback_action, GtkWidget *wid
     buttoninj = gtk_check_button_new_with_label ("Injury Report");
     gtk_box_pack_start (GTK_BOX (boxh), buttoninj, TRUE, TRUE, 0);
 
-    strcpy (&labeltext[0], "Regular Season Category Leaders:");
+    strcpy (&labeltext[0], "Regular Season Category Leaders");
     label = gtk_label_new (labeltext);
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dlgFile)->vbox), label, TRUE, TRUE, 0);
 
@@ -52,9 +52,9 @@ SeasonAutoplayEst (gpointer callback_data, guint callback_action, GtkWidget *wid
     gtk_table_set_col_spacings (GTK_TABLE (tableh), 2);
 
     /* insert the column headers */
-    hitlabel = g_object_new (GTK_TYPE_LABEL, "label", "Hitting:", NULL);
-    pitchlabel = g_object_new (GTK_TYPE_LABEL, "label", "Pitching:", NULL);
-    fieldlabel = g_object_new (GTK_TYPE_LABEL, "label", "Fielding:", NULL);
+    hitlabel = g_object_new (GTK_TYPE_LABEL, "label", "Hitting", NULL);
+    pitchlabel = g_object_new (GTK_TYPE_LABEL, "label", "Pitching", NULL);
+    fieldlabel = g_object_new (GTK_TYPE_LABEL, "label", "Fielding", NULL);
     label = g_object_new (GTK_TYPE_LABEL, "label", " ", NULL);
     gtk_table_attach_defaults (GTK_TABLE (tableh), GTK_WIDGET (hitlabel), 0, 1, 0, 1);
     gtk_table_attach_defaults (GTK_TABLE (tableh), GTK_WIDGET (pitchlabel), 1, 2, 0, 1);

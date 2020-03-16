@@ -1,5 +1,8 @@
 0.9.9.7 -
+. added 2019 Real Life data
+. introduced availability of an open NSB server
 . various bugs squashed
+. various minor improvements
 . minor editorial improvements
 
 
@@ -11,6 +14,7 @@
 . corrected pitching statistics (R & BFP) for 1908 Tex Pruiett, Boston Red Sox
 . various other bugs squashed
 . minor editorial improvements
+
 
 0.9.9.5 -
 . added 2017 Real Life data
@@ -55,7 +59,7 @@
 
 
 0.9.9.1 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . added capability to speak play-by-play during game-play
 . added a user preference
 . added some audio
@@ -86,7 +90,7 @@ Marshall Lake <nsb@mlake.net>
 
 
 0.9.9 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . added 2011 Real Life data
 . added help for abbreviations
 . added ability to view real life category leaders across multiple years
@@ -112,7 +116,7 @@ Marshall Lake <nsb@mlake.net>
 
 
 0.9.8 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . added ability to find the best Real Life teams for given years
 . added ability to auto-establish a league based upon a real life year
 . added ability to auto-establish a league consisting of random teams
@@ -132,7 +136,7 @@ Marshall Lake <nsb@mlake.net>
 
 
 0.9.7 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . added ability to see Real Life stats for a player across years
 . added ability to see team total stats for current league and for Real Life
 . added menu item - Notable Accomplishments (Real Life stats)
@@ -148,7 +152,7 @@ Marshall Lake <nsb@mlake.net>
 
 
 0.9.6 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . implemented processing to handle team ties at ends of seasons
 . re-implemented autoconf
 . added user preference settings
@@ -174,7 +178,7 @@ Marshall Lake <nsb@mlake.net>
 
 
 0.9.5 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . filled (short) rosters of Real Life teams to 25 players where possible
 . implemented human versus human play over a network
 . implemented deleting an NSBID
@@ -197,7 +201,7 @@ Steve Baughman <sbaughman@dialup4less.com>
 
 
 0.9.4 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . changed printing of team stats to use less paper
 . changed Category Leaders and Records to show top 25
 . added scrollbars to stat category chooser dialog (it was too large to
@@ -212,7 +216,7 @@ Marshall Lake <nsb@mlake.net>
 
 
 0.9.3 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . development tree changed
 . installation tree changed
 . communication protocol between client and server changed
@@ -225,7 +229,7 @@ Marshall Lake <nsb@mlake.net>
 
 
 0.9.2 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . minor editorial changes
 . correct processing of pick-off attempts/successes
 
@@ -246,7 +250,7 @@ Ted Turocy <arbiter@econmail.tamu.edu>
 David Cornette <david@davidcornette.com>
 . correct possible segfault after the welcome screen
 
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . code cleanup
 . include current half inning on game-play display
 . no parameters now acceptable with client (playbb) ... in this case
@@ -257,6 +261,6 @@ Marshall Lake <nsb@mlake.net>
 
 
 0.9.0 -
-Marshall Lake <nsb@mlake.net>
+Marshall Lake <marshallelake@gmail.com>
 . initial release
 

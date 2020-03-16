@@ -55,7 +55,7 @@ Users (gpointer callback_data, guint callback_action, GtkWidget *widget) {
 
     dlgUsers = gtk_dialog_new ();
     gtk_window_set_title (GTK_WINDOW (dlgUsers), "Users");
-    gtk_window_set_default_size (GTK_WINDOW (dlgUsers), 650, 250);
+    gtk_window_set_default_size (GTK_WINDOW (dlgUsers), 800, 250);
     gtk_signal_connect (GTK_OBJECT (dlgUsers), "delete_event", GTK_SIGNAL_FUNC (donot_delete_event), 0);
 
     box1 = gtk_vbox_new (FALSE, 0);
@@ -116,10 +116,10 @@ FillUserInfo () {
     gchar *cc, *cc1, *cc2, *ns;
     gint x;
 
-    strcpy (&userinfo[0], "\n                       Users on ");
+    strcpy (&userinfo[0], "\n                               Users With Accounts on ");
     strcat (&userinfo[0], &hs[0]);
     strcat (&userinfo[0], "\n\n\n");
-    strcat (&userinfo[0], "  NSB ID               add'l ID info             Connect Count\n\n");
+    strcat (&userinfo[0], "  NSB ID               add'l ID info                               Connect Count\n\n");
 
     for (cc = &buffer[0]; cc < (&buffer[0] + strlen (&buffer[0])); ) {
         strcat (&userinfo[0], "  ");
@@ -127,7 +127,7 @@ FillUserInfo () {
         /* move NSB ID */
         ns = (char *) index (cc, '\t');
         strncat (&userinfo[0], cc, (ns - cc));
-        strncat (&userinfo[0], "                ", (21 - (ns - cc)));
+        strncat (&userinfo[0], "                     ", (21 - (ns - cc)));
         cc = ns + 1;
 
         /* move user */
@@ -140,7 +140,7 @@ FillUserInfo () {
         /* move site */
         ns = (char *) index (cc, '\t');
         strncat (&userinfo[0], cc, (ns - cc));
-        strncat (&userinfo[0], "                               ", (31 - (ns - cc1 + 1)));
+        strncat (&userinfo[0], "                                               ", (47 - (ns - cc1 + 1)));
         cc = ns + 1;
 
         /* move connect count */
@@ -163,7 +163,7 @@ PrintUsers (GtkWidget *widget, gpointer *pdata) {
 
     strcpy (&work[0], "Print Users on server ");
     strcat (&work[0], &hs[0]);
-    strcat (&work[0], ".\n\n");
+    strcat (&work[0], "\n\n");
     Add2TextWindow (&work[0], 0);
 
     for (x = 0; x < 5; x++)

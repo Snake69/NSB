@@ -159,6 +159,7 @@ RF - Ty Cobb, 1909 Detroit Tigers
      Sammy Sosa, 2001 Chicago Cubs
      Ichiro Suzuki, 2004 Seattle Mariners
      Magglio Ordonez, 2007 Detroit Tigers
+     Bryce Harper, 2015 Washington Nationals
      Mookie Betts, 2018 Boston Red Sox
 DH - Hal McRae, 1976 Kansas City Royals
      Don Baylor, 1983 New York Yankees

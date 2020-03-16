@@ -2790,7 +2790,7 @@ GotEOError () {
     else {
         strcpy (&work[0], "Encountered an error when talking to server ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &Error[0];

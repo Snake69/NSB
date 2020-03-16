@@ -444,8 +444,12 @@ Year  Name               Primary  Team inducted as       Career  Induction Vote%
 2018  Jim Thome             1B   Cleveland Indians       1991-2012  BBWAA 89.8%
 2019  Mariano Rivera        P    New York Yankees        1995-2013  BBWAA 100%
 2019  Roy Halladay          P    Toronto Blue Jays       1998-2013  BBWAA 85.4%
-2019  Edgar Martínez        DH   Seattle Mariners        1987-2004  BBWAA 85.4%
+2019  Edgar Martinez        DH   Seattle Mariners        1987-2004  BBWAA 85.4%
 2019  Mike Mussina          P    Baltimore Orioles       1991-2008  BBWAA 76.7%
 2019  Harold Baines         DH   Chicago White Sox       1980-2001  VC    75%
 2019  Lee Smith             P    Chicago Cubs            1980-1997  VC    100%
+2020  Derek Jeter           SS   New York Yankees        1995-2014  BBWAA 99.75%
+2020  Larry Walker          RF   Colorado Rockies        1989-2005  BBWAA 76.57%
+2020  Marvin Miller        EXEC                          1966-1982  VC    75%
+2020  Ted Simmons           C    St. Louis Cardinals     1968-1988  VC    81.3%
 

@@ -95,7 +95,7 @@ SetUpSeries (gpointer callback_data, guint callback_action, GtkWidget *widget) {
 
         strcpy (&work[0], "Encountered error when talking to server ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n\n");
+        strcat (&work[0], "\n\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoDir[0];
@@ -114,7 +114,7 @@ SetUpSeries (gpointer callback_data, guint callback_action, GtkWidget *widget) {
 
         strcpy (&work[0], "No groups of teams available in order to set up a series on server ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n\n");
+        strcat (&work[0], "\n\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoTeams[0];
@@ -584,7 +584,7 @@ PlaySeries (gpointer callback_data, guint callback_action, GtkWidget *widget) {
     if (!strcmp (&buffer[0], "NOSERIES")) {
         strcpy (&work[0], "No series established on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoDir[0];
@@ -658,7 +658,7 @@ PlaySeries (gpointer callback_data, guint callback_action, GtkWidget *widget) {
         if (!err) {
             strcpy (&work[0], "Played games in a series on ");
             strcat (&work[0], &hs[0]);
-            strcat (&work[0], ".\n");
+            strcat (&work[0], "\n");
             Add2TextWindow (&work[0], 0);
         }
 
@@ -707,7 +707,7 @@ SeriesStatus (gpointer callback_data, guint callback_action, GtkWidget *widget) 
 
         strcpy (&work[0], "No series established on ");
         strcat (&work[0], &hs[0]);
-        strcat (&work[0], ".\n");
+        strcat (&work[0], "\n");
         Add2TextWindow (&work[0], 1);
 
         msg[0] = &NoDir[0];

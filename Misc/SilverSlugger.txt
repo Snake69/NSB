@@ -2,6 +2,17 @@
 
     American League         National League
 
+2019
+1B  Carlos Santana          Freddie Freeman
+2B  D.J. LeMahieu           Ozzie Albies
+3B  Alex Bregman            Anthony Rendon
+SS  Xander Bogaerts         Trevor Story
+OF  George Springer         Christian Yelich
+OF  Mike Trout              Cody Bellinger
+OF  Mookie Betts            Ronald Acuna
+C   Mitch Garver            J.T. Realmuto
+DH  Nelson Cruz          P  Zack Greinke
+
 2018
 1B  Jose Abreu              Paul Goldschmidt
 2B  Jose Altuve             Javier Baez

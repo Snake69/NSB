@@ -5,7 +5,7 @@
 
 #define NO 0
 #define YES 1
-#define MAX_YEAR 2018
+#define MAX_YEAR 2019
 #define YEAR_SPREAD (MAX_YEAR - 1901) + 1
 
 int listensock;          /* so that we can close sockets on ctrl-c */
