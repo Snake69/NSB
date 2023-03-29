@@ -13,8 +13,7 @@
 GtkWidget *dlgBS, *exentry, *inentry, *formentry, *spinner, *offminentry, *pitminentry, *combotype;
 gint stack, offind, pitind, loadformulasw = 0, LAsw, formulachanged, yrs[YEAR_SPREAD] /* 1901 - MAX_YEAR */ ;
 gchar *inentry_text, *exentry_text, *formentry_text, *minentry_text, ifilename[512], ldformula[4096];
-gint SOPPsw, OPBAsw, OPABsw, GIDPsw, OBAsw, BFPsw, ERAsw, PCTsw, SHOsw, ABsw, TBsw, BAsw, SAsw, POsw, PBsw, FAsw, CGsw, ERsw, GFsw, GSsw, IPsw, WPsw,
-     Asw, Esw, Bsw, Wsw, Lsw, Ssw, toggle_o0, toggle_0, bypts;
+gint SOPPsw, OPBAsw, OPABsw, GIDPsw, OBAsw, BFPsw, ERAsw, PCTsw, SHOsw, ABsw, TBsw, BAsw, SAsw, POsw, PBsw, FAsw, CGsw, ERsw, GFsw, GSsw, IPsw, WPsw, Asw, Esw, Bsw, Wsw, Lsw, Ssw, toggle_o0, toggle_0, bypts;
 
 typedef enum CALC_SYMBOLS_TAG {
     OPEN,
@@ -182,8 +181,7 @@ check4stat (gchar *exp, int ind) {
         ind += 2;
     }
 
-    if (!strncasecmp (&exp[ind], "SOPP", 4) || !strncasecmp (&exp[ind], "OPAB", 4) || !strncasecmp (&exp[ind], "OPBA", 4) ||
-                                                                                         !strncasecmp (&exp[ind], "GIDP", 4)) {
+    if (!strncasecmp (&exp[ind], "SOPP", 4) || !strncasecmp (&exp[ind], "OPAB", 4) || !strncasecmp (&exp[ind], "OPBA", 4) || !strncasecmp (&exp[ind], "GIDP", 4)) {
         if (!strncasecmp (&exp[ind], "SOPP", 4))
             pitind = SOPPsw = 1; 
         if (!strncasecmp (&exp[ind], "OPBA", 4))
@@ -195,8 +193,7 @@ check4stat (gchar *exp, int ind) {
         ind += 3;
         err = 0;
     }
-    if (!strncasecmp (&exp[ind], "RBI", 3) || !strncasecmp (&exp[ind], "IBB", 3) || !strncasecmp (&exp[ind], "HBP", 3) ||
-                                           !strncasecmp (&exp[ind], "OBA", 3) || !strncasecmp (&exp[ind], "BFP", 3) ||
+    if (!strncasecmp (&exp[ind], "RBI", 3) || !strncasecmp (&exp[ind], "IBB", 3) || !strncasecmp (&exp[ind], "HBP", 3) || !strncasecmp (&exp[ind], "OBA", 3) || !strncasecmp (&exp[ind], "BFP", 3) ||
                                            !strncasecmp (&exp[ind], "ERA", 3) || !strncasecmp (&exp[ind], "PCT", 3) || !strncasecmp (&exp[ind], "SHO", 3)) {
         if (!strncasecmp (&exp[ind], "OBA", 3))
             offind = OBAsw = 1;
@@ -250,8 +247,7 @@ check4stat (gchar *exp, int ind) {
     if (!strncasecmp (&exp[ind], "G", 1) || !strncasecmp (&exp[ind], "H", 1) || !strncasecmp (&exp[ind], "R", 1) || !strncasecmp (&exp[ind], "K", 1) ||
                                             !strncasecmp (&exp[ind], "A", 1) || !strncasecmp (&exp[ind], "E", 1) || !strncasecmp (&exp[ind], "B", 1) ||
                                             !strncasecmp (&exp[ind], "W", 1) || !strncasecmp (&exp[ind], "L", 1) || !strncasecmp (&exp[ind], "S", 1))
-        if (exp[ind + 1] == ' ' || exp[ind + 1] == '+' || exp[ind + 1] == '-' || exp[ind + 1] == '*' || exp[ind + 1] == '/' ||
-                                                     exp[ind + 1] == '(' || exp[ind + 1] == ')' || (ind + 1) >= strlen (&exp[0]))
+        if (exp[ind + 1] == ' ' || exp[ind + 1] == '+' || exp[ind + 1] == '-' || exp[ind + 1] == '*' || exp[ind + 1] == '/' || exp[ind + 1] == '(' || exp[ind + 1] == ')' || (ind + 1) >= strlen (&exp[0]))
             if (!ind || (ind && (exp[ind - 1] == ' ' || exp[ind - 1] == '+' || exp[ind - 1] == '-' || exp[ind - 1] == '*' || exp[ind - 1] == '/' ||
                                                  (ind > 1 && !strncasecmp (&exp[ind - 2], "LA", 2)) || exp[ind - 1] == '(' || exp[ind - 1] == ')'))) {
                 if (!strncasecmp (&exp[ind], "A", 1))
@@ -314,8 +310,7 @@ check4stat (gchar *exp, int ind) {
 
 void
 ScoreSeasons (gpointer callback_data, guint callback_action, GtkWidget *widget) {
-    GtkWidget *box1, *box2, *hbox, *vbox, *label, *separator, *findoff, *findpit, *disbutton, *formvalbut, *formsavbut, *formloadbut, *formcharbut, *table,
-              *buttono, *button0, *button0s, *button0n, *sw;
+    GtkWidget *box1, *box2, *hbox, *vbox, *label, *separator, *findoff, *findpit, *disbutton, *formvalbut, *formsavbut, *formloadbut, *formcharbut, *table, *buttono, *button0, *button0s, *button0n, *sw;
     GSList *group, *group1;
     GtkAdjustment *adj;
     gchar *msg[5], *ERR = "You need to be connected to a NSB server in order to execute this function.", labtxt[] = "Default formula for finding the best offensive seasons:\n(TB + SB + BB + HBP - CS) / (AB - H + CS + GIDP)\n\nDefault formula for finding the best pitching seasons:\n((5 * IP / 9) - ER) + (K / 12) + (S * 3) + SHO + ((W * 6) - (L * 2))\n";
@@ -431,7 +426,7 @@ ScoreSeasons (gpointer callback_data, guint callback_action, GtkWidget *widget) 
     label = gtk_label_new ("Pitching");
     gtk_container_add (GTK_CONTAINER (vbox), label);
 
-    label = gtk_label_new ("IBB - not available 1901-54\nSOPP, 2B, 3B, RBI, SB, CS, SH, SF & OPAB -\n         not available 1901-97, 1999-2019");
+    label = gtk_label_new ("IBB - not available 1901-54\nSOPP, 2B, 3B, RBI, SB, CS, SH, SF & OPAB -\n         not available 1901-97, 1999-2022");
     gtk_container_add (GTK_CONTAINER (vbox), label);
 
     button0 = gtk_radio_button_new_with_label (NULL, "Substitute 0 for Unavailable Stats");
@@ -557,7 +552,7 @@ ScoreSeasons (gpointer callback_data, guint callback_action, GtkWidget *widget) 
     gtk_entry_set_max_length (GTK_ENTRY (inentry), 100);
     gtk_table_attach_defaults (GTK_TABLE (table), inentry, 1, 2, 1, 2);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), inentry);
-    gtk_entry_set_text (GTK_ENTRY (inentry), "2019");
+    gtk_entry_set_text (GTK_ENTRY (inentry), "2022");
     gtk_signal_connect (GTK_OBJECT (inentry), "insert_text", GTK_SIGNAL_FUNC (CheckEntryBS), NULL);
     gtk_window_set_focus (GTK_WINDOW (dlgBS), inentry);
 
@@ -592,8 +587,7 @@ ValFormula (GtkWidget *widget, gpointer *pdata) {
 
     formentry_text = (gchar *) gtk_entry_get_text (GTK_ENTRY (formentry));
 
-    if (!strlen (&formentry_text[0]) ||
-                       (!strncmp (&formentry_text[0], "Default (specified above)", strlen (&formentry_text[0])) && strlen (&formentry_text[0]) > 1)) {
+    if (!strlen (&formentry_text[0]) || (!strncmp (&formentry_text[0], "Default (specified above)", strlen (&formentry_text[0])) && strlen (&formentry_text[0]) > 1)) {
         msg[0] = &UsingDefault[0];
         outMessage (msg);
         formulachanged = 0;
@@ -726,8 +720,7 @@ SaveFormula (GtkWidget *widget, gpointer *pdata) {
 
     formentry_text = (gchar *) gtk_entry_get_text (GTK_ENTRY (formentry));
 
-    if (!strlen (&formentry_text[0]) ||
-                       (!strncmp (&formentry_text[0], "Default (specified above)", strlen (&formentry_text[0])) && strlen (&formentry_text[0]) > 1)) {
+    if (!strlen (&formentry_text[0]) || (!strncmp (&formentry_text[0], "Default (specified above)", strlen (&formentry_text[0])) && strlen (&formentry_text[0]) > 1)) {
         msg[0] = &Nothing[0];
         outMessage (msg);
         formulachanged = 0;
@@ -740,8 +733,7 @@ SaveFormula (GtkWidget *widget, gpointer *pdata) {
                 return;
         }
 
-    dialog = gtk_file_chooser_dialog_new ("Save Formula", NULL, GTK_FILE_CHOOSER_ACTION_SAVE, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_SAVE,
-                                          GTK_RESPONSE_ACCEPT, NULL);
+    dialog = gtk_file_chooser_dialog_new ("Save Formula", NULL, GTK_FILE_CHOOSER_ACTION_SAVE, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT, NULL);
     gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
     if (!loadformulasw) {
         gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (dialog), g_get_home_dir ());
@@ -795,8 +787,7 @@ LoadFormula (GtkWidget *widget, gpointer *pdata) {
             return;
     }
 
-    dialog = gtk_file_chooser_dialog_new ("Load Formula", NULL, GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN,
-                                          GTK_RESPONSE_ACCEPT, NULL);
+    dialog = gtk_file_chooser_dialog_new ("Load Formula", NULL, GTK_FILE_CHOOSER_ACTION_OPEN, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT, NULL);
     gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (dialog), g_get_home_dir ());
     if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT) {
         gchar *msg[5], *filename;
@@ -880,9 +871,8 @@ FindPit (GtkWidget *widget, gpointer *pdata) {
 void
 FindBS () {
     gint x, err, usestdform, decpt, listlen;
-    gchar *msg[5], NoYrs[256] = "No years to search.", InvForm[256] = "The formula is not valid.  Make it so.",
-          TwoDP[256] = "There can't be more than one decimal point in the minimum requirements.",
-          NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2019)?\n\n";
+    gchar *msg[5], NoYrs[256] = "No years to search.", InvForm[256] = "The formula is not valid.  Make it so.", TwoDP[256] = "There can't be more than one decimal point in the minimum requirements.",
+          NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2022)?\n\n";
 
     usestdform = 0;
     for (x = 0; x < 5; x++)
@@ -906,8 +896,7 @@ FindBS () {
 
     formentry_text = (gchar *) gtk_entry_get_text (GTK_ENTRY (formentry));
 
-    if (!strlen (&formentry_text[0]) ||
-                       (!strncmp (&formentry_text[0], "Default (specified above)", strlen (&formentry_text[0])) && strlen (&formentry_text[0]) > 1)) {
+    if (!strlen (&formentry_text[0]) || (!strncmp (&formentry_text[0], "Default (specified above)", strlen (&formentry_text[0])) && strlen (&formentry_text[0]) > 1)) {
         formulachanged = 0;
         usestdform = 1;
     }
@@ -931,10 +920,8 @@ FindBS () {
     err = ValidateTextBS ();
     if (err) {
         gint errct;
-        gchar ExMsg[256] = "In excluded years ...", InMsg[256] = "In included years ...",
-              YrAfterHy[256] = "The year after a hyphen must be equal to or greater than the year before that same hyphen.",
-              NoYr[256] = "There must be a year after a hyphen.", InitYr[256] = "A year must be the first data.",
-              InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2019).";
+        gchar ExMsg[256] = "In excluded years ...", InMsg[256] = "In included years ...", YrAfterHy[256] = "The year after a hyphen must be equal to or greater than the year before that same hyphen.",
+              NoYr[256] = "There must be a year after a hyphen.", InitYr[256] = "A year must be the first data.", InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2022).";
 
         /* first four bits (leftmost) inentry, second four bits (rightmost) exentry
            0000 0000

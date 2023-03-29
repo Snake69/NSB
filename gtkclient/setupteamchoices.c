@@ -6,20 +6,16 @@
 #include "net.h"
 #include "db.h"
 
-GtkWidget *dlgFile, *vboxall, *vbox2, *checkSP, *check1CL, *sw, *formPPentry, *formSPentry, *formRPentry, *offminentry, *spitminentry, *rpitminentry,
-          *comboTN;
-gint toggle_o0, toggle_ha, swALL, useSP, use1CL, formulaPPchanged, formulaSPchanged, formulaRPchanged, loadPPformulasw = 0, loadSPformulasw = 0,
-     loadRPformulasw = 0;
-gchar ldformula[4096], ifilenamePP[512], ifilenameSP[512], ifilenameRP[512], *formentry_text, *formPPentry_text, *formSPentry_text, *formRPentry_text,
-      utname[256];
+GtkWidget *dlgFile, *vboxall, *vbox2, *checkSP, *check1CL, *sw, *formPPentry, *formSPentry, *formRPentry, *offminentry, *spitminentry, *rpitminentry, *comboTN;
+gint toggle_o0, toggle_ha, swALL, useSP, use1CL, formulaPPchanged, formulaSPchanged, formulaRPchanged, loadPPformulasw = 0, loadSPformulasw = 0, loadRPformulasw = 0;
+gchar ldformula[4096], ifilenamePP[512], ifilenameSP[512], ifilenameRP[512], *formentry_text, *formPPentry_text, *formSPentry_text, *formRPentry_text, utname[256];
 GtkWidget *exentry, *inentry, *tentry;
 gint yrs[YEAR_SPREAD] /* 1901-MAX-YEAR */ ;
 const gchar *entry_text, *inentry_text, *exentry_text;
 
 void
 SetUpTeamChoices (gpointer callback_data, guint callback_action, GtkWidget *widget) {
-    GtkWidget *vbox, *hbox, *separator, *label, *buttonh, *buttona, *buttonTN, *buttonALL, *table, *tlabel, *formvalbut, *formcharbut,
-              *formsavbut, *formloadbut, *disbutton, *okbutton, *button0, *buttono;
+    GtkWidget *vbox, *hbox, *separator, *label, *buttonh, *buttona, *buttonTN, *buttonALL, *table, *tlabel, *formvalbut, *formcharbut, *formsavbut, *formloadbut, *disbutton, *okbutton, *button0, *buttono;
     GSList *group, *group2;
     gchar *msg[5], stn[NUMBER_OF_TEAMS + 1][200];
     gint x, y;
@@ -303,7 +299,7 @@ SetUpTeamChoices (gpointer callback_data, guint callback_action, GtkWidget *widg
     label = gtk_label_new ("Pitching");
     gtk_container_add (GTK_CONTAINER (vbox), label);
 
-    label = gtk_label_new ("IBB - not available 1901-54\nSOPP, 2B, 3B, RBI, SB, CS, SH, SF & OPAB -\n         not available 1901-97, 1999-2019");
+    label = gtk_label_new ("IBB - not available 1901-54\nSOPP, 2B, 3B, RBI, SB, CS, SH, SF & OPAB -\n         not available 1901-97, 1999-2022");
     gtk_container_add (GTK_CONTAINER (vbox), label);
 
     button0 = gtk_radio_button_new_with_label (NULL, "Substitute 0 for Unavailable Stats");
@@ -401,7 +397,7 @@ SetUpTeamChoices (gpointer callback_data, guint callback_action, GtkWidget *widg
     gtk_entry_set_max_length (GTK_ENTRY (inentry), 100);
     gtk_table_attach_defaults (GTK_TABLE (table), inentry, 1, 2, 1, 2);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), inentry);
-    gtk_entry_set_text (GTK_ENTRY (inentry), "2019");
+    gtk_entry_set_text (GTK_ENTRY (inentry), "2022");
     gtk_signal_connect (GTK_OBJECT (inentry), "insert_text", GTK_SIGNAL_FUNC (CheckEntryBS), NULL);
     gtk_window_set_focus (GTK_WINDOW (dlgFile), inentry);
 
@@ -430,7 +426,7 @@ CTeam (GtkWidget *widget, gpointer *pdata) {
     gint x, y, z, err, decpt, terr, fatalerr;
     gchar NoYrs[256] = "No years to search.", holdt[100], NoTName[256] = "You need to enter a name for your team.\n\n",
           NoYears[256] = "The Real Life team from which you are creating your team has \"no years\" available.",
-          NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2019)?\n\n",
+          NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2022)?\n\n",
           FourPos[256] = "The team name cannot be exactly 4 positions long.  Crazy, huh?\n\n",
           TwoDP[256] = "There can't be more than one decimal point in the minimum requirements.\n", min[3][256],
           InvPPForm[256] = "The Position Player Formula is in error.", InvSPForm[256] = "The Starting Pitcher Formula is in error.",
@@ -525,7 +521,7 @@ CTeam (GtkWidget *widget, gpointer *pdata) {
         gchar ExMsg[256] = "In excluded years ...", InMsg[256] = "In included years ...",
               YrAfterHy[256] = "The year after a hyphen must be equal to or greater than the year before that same hyphen.",
               NoYr[256] = "There must be a year after a hyphen.", InitYr[256] = "A year must be the first data.",
-              InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2019).";
+              InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2022).";
 
         /* first four bits (leftmost) inentry, second four bits (rightmost) exentry
            0000 0000

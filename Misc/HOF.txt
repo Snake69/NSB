@@ -7,6 +7,7 @@ PIO = Pioneer contributors
 MGR = manager
 UMP = umpire
 EXEC = executive
+COB = Contemporary Baseball Era Committee 
 
                                    Hall of Fame
 
@@ -452,4 +453,15 @@ Year  Name               Primary  Team inducted as       Career  Induction Vote%
 2020  Larry Walker          RF   Colorado Rockies        1989-2005  BBWAA 76.57%
 2020  Marvin Miller        EXEC                          1966-1982  VC    75%
 2020  Ted Simmons           C    St. Louis Cardinals     1968-1988  VC    81.3%
+2022  David Ortiz           DH   Boston Red Sox          1997-2016  BBWAA 77.9%
+2022  Bud Fowler           EXEC                          1878-1898  VC    75%
+2022  Gil Hodges            1B   Brooklyn Dodgers        1943
+                                                         1947-1963  VC    75%
+2022  Jim Kaat              P    Minnesota Twins         1959-1983  VC    75%
+2022  Minnie Minoso         LF   Chicago White Sox       1946-1980  VC    87.5%
+2022  Buck O'Neil          EXEC  Kansas City Monarchs    1937-1948  VC    81.3%
+2022  Tony Oliva            RF   Minnesota Twins         1962-1976  VC    75%
+2023  Scott Rolen           3B   Philadelphia Phillies   1996-2012  BBWAA 76.3%
+2023  Fred McGriff          1B   Atlanta Braves          1986-2004  VC    100%
+                                                                    (COB)
 

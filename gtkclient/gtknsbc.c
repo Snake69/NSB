@@ -293,6 +293,12 @@ WhoIsWaiting (gpointer callback_data, guint callback_action, GtkWidget *widget) 
         return;
     }
 
+    if (poolmngr) {
+        msg[0] = "This server is not running network play. ";
+        outMessage (msg);
+        return;
+    }
+
     for (x = 0; x < 5; x ++)
         msg[x] = NULL;
 
@@ -327,6 +333,12 @@ AddName (gpointer callback_data, guint callback_action, GtkWidget *widget) {
     if (!connected) {
         msg[0] = "You are not connected to an NSB server.  ";
         msg[1] = "Connect to an NSB server before doing anything with the waiting pool.\n\n";
+        outMessage (msg);
+        return;
+    }
+
+    if (poolmngr) {
+        msg[0] = "This server is not running network play. ";
         outMessage (msg);
         return;
     }
@@ -380,6 +392,12 @@ RemoveName (gpointer callback_data, guint callback_action, GtkWidget *widget) {
         return;
     }
 
+    if (poolmngr) {
+        msg[0] = "This server is not running network play. ";
+        outMessage (msg);
+        return;
+    }
+
     for (x = 0; x < 5; x ++)
         msg[x] = NULL;
 
@@ -413,6 +431,12 @@ Request2Play (gpointer callback_data, guint callback_action, GtkWidget *widget) 
     netgame = 0;
     for (x = 0; x < 5; x++)
         msg[x] = NULL;
+
+    if (poolmngr) {
+        msg[0] = "This server is not running network play. ";
+        outMessage (msg);
+        return;
+    }
 
     /* first make sure there is a waiting pool */
     sock_puts (sock, "ZV\n");

@@ -315,7 +315,7 @@ get_stats (int sock, gchar which, int autoind) {
     sock_gets (sock, &buffer[0], sizeof (buffer));
     team.division = buffer[0];
 
-    for (x = 0; x < 25; x++) {
+    for (x = 0; x < 28; x++) {
         sock_gets (sock, &buffer[0], sizeof (buffer));
         strcpy (&team.batters[x].id.name[0], &buffer[0]);
         sock_gets (sock, &buffer[0], sizeof (buffer));
@@ -396,7 +396,7 @@ get_stats (int sock, gchar which, int autoind) {
             team.batters[x].fielding[y].e = atoi (&buffer[0]);
         }
     }
-    for (x = 0; x < 11; x++) {
+    for (x = 0; x < 13; x++) {
         sock_gets (sock, &buffer[0], sizeof (buffer));
         strcpy (&team.pitchers[x].id.name[0], &buffer[0]);
         sock_gets (sock, &buffer[0], sizeof (buffer));
@@ -654,6 +654,14 @@ SetLeagueUnderWay (int setting) {
         gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Waiting Pool/Request to Play"), FALSE);
     }
 
+    /* desensitize those menu selections dependent upon the server running network play */
+    if (poolmngr) {
+        gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Waiting Pool/Who is Waiting"), FALSE);
+        gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Waiting Pool/Add Name"), FALSE);
+        gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Waiting Pool/Remove Name"), FALSE);
+        gtk_widget_set_sensitive (gtk_item_factory_get_widget (item_factory, "/Waiting Pool/Request to Play"), FALSE);
+    }
+
     /* finally desensitize those menu selections dependent upon whether or not the user has a season going */
     switch (LeagueUnderWay) {   /* LeagueUnderWay will be 0 if connected is 0 */
         case 0:
@@ -860,7 +868,7 @@ send_stats (int sock) {
     /* send stats to server */
     sock_puts (sock, &buffer1[0]);
 
-    for (x = 0; x < 25; x++) {
+    for (x = 0; x < 28; x++) {
         sprintf (buffer1, "%s\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n", team2.batters[x].id.name, team2.batters[x].id.teamid,
                  team2.batters[x].id.batslr, team2.batters[x].id.throwslr, team2.batters[x].id.year, team2.batters[x].id.injury,
                  team2.batters[x].id.starts_rest, team2.batters[x].id.ip_last4g[0],
@@ -888,7 +896,7 @@ send_stats (int sock) {
             sock_puts (sock, &buffer1[0]);
         }
     }
-    for (x = 0; x < 11; x++) {
+    for (x = 0; x < 13; x++) {
         sprintf (buffer1, "%s\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n", team2.pitchers[x].id.name,
                  team2.pitchers[x].id.teamid, team2.pitchers[x].id.batslr, team2.pitchers[x].id.throwslr,
                  team2.pitchers[x].id.year, team2.pitchers[x].id.injury, team2.pitchers[x].id.starts_rest,
@@ -1473,14 +1481,13 @@ GETOUT:
 
 void
 do_boxscore () {
-    int innings, x, y, z, inn, bcol, iwork, previ, truns[2], thits[2], addto, terrs[2], pos, indent = 0, singles_g,
-        singles_s, ttb, prevm, line;
+    int innings, x, y, z, inn, bcol, iwork, previ, truns[2], thits[2], addto, terrs[2], pos, indent = 0, singles_g, singles_s, ttb, prevm, line;
     char work[40][500], work1[5], workcur[100], initial;
 
     strcpy (buf, "\n");
 
     /* accumulate runs and determine who won game */
-    for (x = truns[0] = truns[1] = 0; x < 25; x++) {
+    for (x = truns[0] = truns[1] = 0; x < 28; x++) {
         truns[0] += visitor_cur.batters[x].hitting.runs;
         truns[1] += home_cur.batters[x].hitting.runs;
     }
@@ -1618,7 +1625,7 @@ do_boxscore () {
     strcat (&work[line + 1][0], (char *) cnvt_int2str (truns[1], 'l'));
 
     /* move total hits */
-    for (x = thits[0] = thits[1] = 0; x < 25; x++) {
+    for (x = thits[0] = thits[1] = 0; x < 28; x++) {
         thits[0] += visitor_cur.batters[x].hitting.hits;
         thits[1] += home_cur.batters[x].hitting.hits;
     }
@@ -1634,7 +1641,7 @@ do_boxscore () {
     strcat (&work[line + 1][0], (char *) cnvt_int2str (thits[1], 'l'));
 
     /* move total errors */
-    for (x = terrs[0] = terrs[1] = 0; x < 25; x++)
+    for (x = terrs[0] = terrs[1] = 0; x < 28; x++)
         for (y = 0; y < 11; y++) {
             terrs[0] += visitor_cur.batters[x].fielding[y].e;
             terrs[1] += home_cur.batters[x].fielding[y].e;
@@ -1870,24 +1877,24 @@ dup2:
 
     /* put out totals */
     strcat (buf, "TOTALS                              ");
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.atbats;
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.runs;
     if (z > 9)
         strcat (buf, " ");
     else
         strcat (buf, "  ");
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.hits;
     if (z > 9)
         strcat (buf, " ");
     else
         strcat (buf, "  ");
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.rbi;
     if (z > 9)
         strcat (buf, " ");
@@ -1899,7 +1906,7 @@ dup2:
     else
         strcat (buf, "  ");
     strcat (buf, (char *) cnvt_int2str (ttb, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.bb;
     strcat (buf, " ");
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
@@ -1907,7 +1914,7 @@ dup2:
         strcat (buf, " ");
     else
         strcat (buf, "  ");
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.so;
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
 
@@ -2115,24 +2122,24 @@ dup4:
 
     /* put out totals */
     strcat (buf, "TOTALS                              ");
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.atbats;
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.runs;
     if (z > 9)
         strcat (buf, " ");
     else
         strcat (buf, "  ");
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.hits;
     if (z > 9)
         strcat (buf, " ");
     else
         strcat (buf, "  ");
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.rbi;
     if (z > 9)
         strcat (buf, " ");
@@ -2144,7 +2151,7 @@ dup4:
     else
         strcat (buf, "  ");
     strcat (buf, (char *) cnvt_int2str (ttb, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.bb;
     strcat (buf, " ");
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
@@ -2152,7 +2159,7 @@ dup4:
         strcat (buf, " ");
     else
         strcat (buf, "  ");
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.so;
     strcat (buf, (char *) cnvt_int2str (z, 'l'));
 
@@ -2378,14 +2385,14 @@ print_box:
 
 void
 put_details_auto (int which) {
-    int w, x, y, z, limit, perrs[4][25];
+    int w, x, y, z, limit, perrs[4][28];
     char work[80], work1[5], workcur[100];
 
     for (x = 0; x < 4; x++)
-        for (y = 0; y < 25; y++)
+        for (y = 0; y < 28; y++)
             perrs[x][y] = 0;
 
-    for (x = y = z = 0; x < 25; x++)
+    for (x = y = z = 0; x < 28; x++)
         switch (which) {
             case 2:
                 y += visitor_cur.batters[x].hitting.doubles;
@@ -2439,7 +2446,7 @@ put_details_auto (int which) {
         }
 
     if (which == 12)
-        for (x = 0; x < 11; x++) {
+        for (x = 0; x < 13; x++) {
             y += visitor_cur.pitchers[x].pitching.wp;
             z += home_cur.pitchers[x].pitching.wp;
         }
@@ -2491,9 +2498,9 @@ put_details_auto (int which) {
     if (y != 0) {
         strcat (&workcur[0], ":  ");
         if (which == 12)
-            limit = 11;
+            limit = 13;
         else
-            limit = 25;
+            limit = 28;
         for (x = 0; x < limit; x++) {
             if ((which == 2 && visitor_cur.batters[x].hitting.doubles != 0) ||
                       (which == 3 && visitor_cur.batters[x].hitting.triples != 0) ||
@@ -2628,9 +2635,9 @@ put_details_auto (int which) {
     if (z != 0) {
         strcat (&workcur[0], ":  ");
         if (which == 12)
-            limit = 11;
+            limit = 13;
         else
-            limit = 25;
+            limit = 28;
         for (x = 0; x < limit; x++) {
             if ((which == 2 && home_cur.batters[x].hitting.doubles != 0) ||
                       (which == 3 && home_cur.batters[x].hitting.triples != 0) ||

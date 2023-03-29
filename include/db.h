@@ -29,10 +29,9 @@ struct playerid {
          injury,          /* games injured (this stat is correct only in the batters section) */
          starts_rest,     /* games since last start (meaningful pertaining to pitchers only) */
          ip_last4g[4],    /* innings pitched in previous 4 games (meaningful pertaining to pitchers only)
-                             occurrence 0 is immediately previous game,
+                             occurrence 0 is the immediately previous game,
                              occurrence 1 is the previous game to that, etc */
-         inn_target;      /* the number of innings this pitcher can pitch before losing effectiveness (meaningful
-                             pertaining to pitchers only) */
+         inn_target;      /* the number of innings this pitcher can pitch before losing effectiveness (meaningful pertaining to pitchers only) */
 };
 
 /* hitting stats */
@@ -111,8 +110,7 @@ struct bttr {
     struct playerid id;
     struct DOB dob;
     struct hit hitting;
-    struct field fielding[11];   /* 10 different positions on the field
-                                    plus one for all of outfield
+    struct field fielding[11];   /* 10 different positions on the field plus one for all of outfield
                                  occurrence 0 = designated hitter
                                  occurrence 1 = pitcher
                                  occurrence 2 = catcher
@@ -124,8 +122,7 @@ struct bttr {
                                  occurrence 8 = center field
                                  occurrence 9 = right field
                                  occurrence 10 = outfield
-                                   NOTE - occurrence 10 is used if occurrences
-                                          7, 8, and 9 are not available */
+                                   NOTE - occurrence 10 is used if occurrences 7, 8, and 9 are not available */
 };
 
 #include "teams.h"

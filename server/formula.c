@@ -16,8 +16,7 @@
 
 int stack, tpit, tply, divideby0, divide0;
 int tg, tab, tr, th, t2b, t3b, thr, trbi, tbb, tk, thbp, tgidp, tsb, tcs, tibb, tsh, tsf, tpo, ta, tpb, te;
-int tpg, tgs, tip, tthirds, tw, tl, ts, tbfp, tph, tp2b, tp3b, tphr, tpr, ter, tprbi, tcg, tgf, tsho, tsvopp, tpsb, tpcs, tpbb, tpk, tpibb, tpsh, tpsf,
-    twp, tb, thb, toppab;
+int tpg, tgs, tip, tthirds, tw, tl, ts, tbfp, tph, tp2b, tp3b, tphr, tpr, ter, tprbi, tcg, tgf, tsho, tsvopp, tpsb, tpcs, tpbb, tpk, tpibb, tpsh, tpsf, twp, tb, thb, toppab;
 
 typedef enum CALC_SYMBOLS_TAG {
     OPEN,
@@ -1037,14 +1036,14 @@ formula () {
                         fread (&team.year, sizeof team.year, 1, in);
                         fread (&team.league, sizeof team.league, 1, in);
                         fread (&team.division, sizeof team.division, 1, in);
-                        for (x = 0; x < 25; x++) {
+                        for (x = 0; x < 28; x++) {
                             fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                             fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                             fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                             for (y = 0; y < 11; y++)
                                 fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                         }
-                        for (x = 0; x < 11; x++) {
+                        for (x = 0; x < 13; x++) {
                             fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                             fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                         }
@@ -1056,10 +1055,10 @@ formula () {
                         return -1;
                     }
                     /* determine the number of players and pitchers this team has */
-                    for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                    for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                         if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                             break;
-                    for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                    for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                         if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                             break;
                     /* cum total players and pitchers in league */
@@ -1225,14 +1224,14 @@ formula () {
                         fread (&team.year, sizeof team.year, 1, in);
                         fread (&team.league, sizeof team.league, 1, in);
                         fread (&team.division, sizeof team.division, 1, in);
-                        for (x = 0; x < 25; x++) {
+                        for (x = 0; x < 28; x++) {
                             fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                             fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                             fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                             for (y = 0; y < 11; y++)
                                 fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                         }
-                        for (x = 0; x < 11; x++) {
+                        for (x = 0; x < 13; x++) {
                             fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                             fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                         }
@@ -1250,10 +1249,10 @@ formula () {
                             totgames = tgames[x].games;
 
                     /* determine the number of players and pitchers this team has */
-                    for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                    for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                         if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                             break;
-                    for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                    for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                         if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                             break;
 

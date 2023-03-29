@@ -1,6 +1,6 @@
 
-NSB v0.9.9.7
-15 Mar 2020
+NSB v0.9.9.8
+1 Apr 2023
 
 If you downloaded from github then from the NSB root directory (after
 unzipping) you may just need to enter:
@@ -36,13 +36,7 @@ After installation add the following two lines to the /etc/services file:
 nsbpoolmngr  49998/tcp
 nsbserver    49999/tcp
 
-If upgrading from version 0.9.5 of NSB or older you will need to remove
-the Records files in order to avoid any unspecified results since the
-Records file format has changed since then.  The Records files exist in
-the directories /var/NSB and /var/NSB/<user directory> and /var/NSB/<user
-directory>/Lifetime
-
-If upgrading from version 0.9.9 of NSB or older you will need to remove
+If upgrading from version 0.9.9.7 of NSB or older you will need to remove
 old team files in order to avoid any unspecified results since the
 player file format (comprising the team files) has changed since then.
 Old team files exist in the directories /var/NSB/<user directory>/Lifetime
@@ -53,7 +47,7 @@ Enter the command "nsbserver &" to start the server in the background.
 user (more than likely the superuser) which has read and write permissions
 in /var.  After starting the server enter the command "gtknsbclient
 [ip-address-of-server]" to run the NSB client.  The default server to which
-gtknsbclient will connect is localhost.  (Note1 - An open NSB server may
+gtknsbclient will connect is localhost.  (Note1 - An open NSB server *may*
 be running at mlake.net) (Note2 - the nsbpoolmngr program will be started
 by nsbserver)
 
@@ -68,7 +62,7 @@ of gtknsbclient.
 
 All three programs (nsbserver, nsbpoolmngr and gtknsbclient) will be
 installed into /usr/local/bin.  Also included in the installation are
-all the various team statistic files for the years 1901 through 2019, and
+all the various team statistic files for the years 1901 through 2022, and
 short manuals for the three programs.  The stats files will be installed
 into /var/NSB.  The manuals will be installed into /usr/local/man/man6.
 Some additional files will be installed into /usr/local/share/NSB.

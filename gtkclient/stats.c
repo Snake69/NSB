@@ -932,8 +932,7 @@ RealLifeSeasonResults (gpointer callback_data, guint callback_action, GtkWidget 
     sock_puts (sock, "S62\n");  /* tell the server to send us the Real Life years available */
 
     if (sock_gets (sock, &buffer[0], sizeof (buffer)) < 0) {
-        gchar Error[256] = "An error was encountered when trying to retrieve the stats.",
-              Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
+        gchar Error[256] = "An error was encountered when trying to retrieve the stats.", Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
         gint x;
 
         for (x = 0; x < 5; x++)
@@ -1945,14 +1944,13 @@ PrintTeamStats (GtkWidget *widget, gpointer cnt) {
     if (get_stats (sock, 't', 0) == -1)
         return;
 
-    totg = tab = tr = th = t2b = t3b = thr = tbi = tbb = tso = thbp = tgidp = tpo = tpb =
-          tsb = tcs = tibb = tsf = tsh = ts = tinn = tthirds = ter = ta = te = topp_ab =
-          tw = tl = tgs = tcg = tgf = tsho = tsopp = twp = thb = tb = tbfp = 0;
+    totg = tab = tr = th = t2b = t3b = thr = tbi = tbb = tso = thbp = tgidp = tpo = tpb = tsb = tcs = tibb = tsf = tsh = ts = tinn = tthirds = ter = ta = te = topp_ab = tw = tl = tgs = tcg = tgf =
+           tsho = tsopp = twp = thb = tb = tbfp = 0;
 
-    for (maxplayers = 0; maxplayers < 25; maxplayers++)
+    for (maxplayers = 0; maxplayers < 28; maxplayers++)
         if (team.batters[maxplayers].id.name[0] == ' ' || !strlen (&team.batters[maxplayers].id.name[0]))
             break;
-    for (maxpitchers = 0; maxpitchers < 25; maxpitchers++)
+    for (maxpitchers = 0; maxpitchers < 13; maxpitchers++)
         if (team.pitchers[maxpitchers].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers].id.name[0]))
             break;
 
@@ -2650,8 +2648,7 @@ NSBLifetimeByTeam (gpointer callback_data, guint callback_action, GtkWidget *wid
     }
 
     if (x < 0) {
-        gchar Error[256] = "An error was encountered when trying to retrieve the stats.",
-              Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
+        gchar Error[256] = "An error was encountered when trying to retrieve the stats.", Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
         gint x;
 
         for (x = 0; x < 5; x++)
@@ -2707,8 +2704,7 @@ NSBByTeam (gpointer callback_data, guint callback_action, GtkWidget *widget) {
     }
 
     if (x < 0) {
-        gchar Error[256] = "An error was encountered when trying to retrieve the stats.",
-              Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
+        gchar Error[256] = "An error was encountered when trying to retrieve the stats.", Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
         gint x;
 
         for (x = 0; x < 5; x++)
@@ -2764,8 +2760,7 @@ NSBSeriesByTeam (gpointer callback_data, guint callback_action, GtkWidget *widge
     x = sock_gets (sock, &buffer[0], sizeof (buffer));
 
     if (x < 0) {
-        gchar Error[256] = "An error was encountered when trying to retrieve the stats.",
-              Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
+        gchar Error[256] = "An error was encountered when trying to retrieve the stats.", Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
         gint x;
 
         for (x = 0; x < 5; x++)
@@ -3033,11 +3028,9 @@ FillTeamTotals (GtkTextBuffer *buf) {
             }
         }
 
-    teamdata[301].batters.hitting.games = teamdata[301].batters.hitting.atbats = teamdata[301].batters.hitting.runs =
-      teamdata[301].batters.hitting.hits = teamdata[301].batters.hitting.doubles = teamdata[301].batters.hitting.triples =
-      teamdata[301].batters.hitting.homers = teamdata[301].batters.hitting.rbi = teamdata[301].batters.hitting.bb = 
-      teamdata[301].batters.hitting.so = teamdata[301].batters.hitting.hbp = teamdata[301].batters.hitting.gidp =
-      teamdata[301].batters.hitting.sb = teamdata[301].batters.hitting.cs = teamdata[301].batters.hitting.ibb =
+    teamdata[301].batters.hitting.games = teamdata[301].batters.hitting.atbats = teamdata[301].batters.hitting.runs = teamdata[301].batters.hitting.hits = teamdata[301].batters.hitting.doubles =
+      teamdata[301].batters.hitting.triples = teamdata[301].batters.hitting.homers = teamdata[301].batters.hitting.rbi = teamdata[301].batters.hitting.bb = teamdata[301].batters.hitting.so =
+      teamdata[301].batters.hitting.hbp = teamdata[301].batters.hitting.gidp = teamdata[301].batters.hitting.sb = teamdata[301].batters.hitting.cs = teamdata[301].batters.hitting.ibb =
       teamdata[301].batters.hitting.sh = teamdata[301].batters.hitting.sf = tsingles = 0;
 
     for (totg = x = 0; x < nteams; x++) {
@@ -3062,8 +3055,7 @@ FillTeamTotals (GtkTextBuffer *buf) {
                 strncat (&stats[0], "                       ", 18 - strlen (&uctname[x][0]));
         }
 
-        singles = teamdata[x].batters.hitting.hits - (teamdata[x].batters.hitting.homers +
-                  teamdata[x].batters.hitting.triples + teamdata[x].batters.hitting.doubles);
+        singles = teamdata[x].batters.hitting.hits - (teamdata[x].batters.hitting.homers + teamdata[x].batters.hitting.triples + teamdata[x].batters.hitting.doubles);
         tsingles += singles;
 
         if (urind == 'U') {
@@ -3135,8 +3127,7 @@ FillTeamTotals (GtkTextBuffer *buf) {
             y = teamdata[x].batters.hitting.sf;
         y += teamdata[x].batters.hitting.sh;
         strcat (&stats[0], (char *) do_average ((teamdata[x].batters.hitting.hits + teamdata[x].batters.hitting.bb + teamdata[x].batters.hitting.hbp),
-                                                 (teamdata[x].batters.hitting.atbats + teamdata[x].batters.hitting.bb + y +
-                                                  teamdata[x].batters.hitting.hbp)));
+                                                 (teamdata[x].batters.hitting.atbats + teamdata[x].batters.hitting.bb + y + teamdata[x].batters.hitting.hbp)));
         strcat (&stats[0], check_stats (teamdata[x].batters.hitting.bb, 'r'));
         teamdata[301].batters.hitting.bb += teamdata[x].batters.hitting.bb;
         strcat (&stats[0], check_stats (teamdata[x].batters.hitting.so, 'r'));
@@ -3225,10 +3216,8 @@ FillTeamTotals (GtkTextBuffer *buf) {
     /* sort team data by earned run average */
     for (x = 0; x < (nteams - 1); x++)
         for (y = x + 1; y < nteams; y++) {
-            fnum1 = (float) (teamdata[x].pitchers.pitching.er * 9.0) / ((float) teamdata[x].pitchers.pitching.innings +
-                                                   (float) teamdata[x].pitchers.pitching.thirds / 3.0);
-            fnum2 = (float) (teamdata[y].pitchers.pitching.er * 9.0) / ((float) teamdata[y].pitchers.pitching.innings +
-                                                   (float) teamdata[y].pitchers.pitching.thirds / 3.0);
+            fnum1 = (float) (teamdata[x].pitchers.pitching.er * 9.0) / ((float) teamdata[x].pitchers.pitching.innings + (float) teamdata[x].pitchers.pitching.thirds / 3.0);
+            fnum2 = (float) (teamdata[y].pitchers.pitching.er * 9.0) / ((float) teamdata[y].pitchers.pitching.innings + (float) teamdata[y].pitchers.pitching.thirds / 3.0);
 
             if (fnum1 > fnum2) {
                 teamdata[300] = teamdata[x];
@@ -3241,16 +3230,12 @@ FillTeamTotals (GtkTextBuffer *buf) {
             }
         }
 
-    teamdata[301].pitchers.pitching.innings = teamdata[301].pitchers.pitching.thirds = teamdata[301].pitchers.pitching.hits =
-      teamdata[301].pitchers.pitching.runs = teamdata[301].pitchers.pitching.er = teamdata[301].pitchers.pitching.wins =
-      teamdata[301].pitchers.pitching.losses = teamdata[301].pitchers.pitching.so = teamdata[301].pitchers.pitching.walks =
-      teamdata[301].pitchers.pitching.games_started = teamdata[301].pitchers.pitching.cg = teamdata[301].pitchers.pitching.gf =
-      teamdata[301].pitchers.pitching.sho = teamdata[301].pitchers.pitching.saves = teamdata[301].pitchers.pitching.svopp =
-      teamdata[301].pitchers.pitching.ibb = teamdata[301].pitchers.pitching.wp = teamdata[301].pitchers.pitching.hb =
-      teamdata[301].pitchers.pitching.balks = teamdata[301].pitchers.pitching.bfp = teamdata[301].pitchers.pitching.doubles =
-      teamdata[301].pitchers.pitching.triples = teamdata[301].pitchers.pitching.homers = teamdata[301].pitchers.pitching.rbi =
-      teamdata[301].pitchers.pitching.sb = teamdata[301].pitchers.pitching.cs = teamdata[301].pitchers.pitching.sh =
-      teamdata[301].pitchers.pitching.sf = teamdata[301].pitchers.pitching.opp_ab = 0;
+    teamdata[301].pitchers.pitching.innings = teamdata[301].pitchers.pitching.thirds = teamdata[301].pitchers.pitching.hits = teamdata[301].pitchers.pitching.runs = teamdata[301].pitchers.pitching.er =
+      teamdata[301].pitchers.pitching.wins = teamdata[301].pitchers.pitching.losses = teamdata[301].pitchers.pitching.so = teamdata[301].pitchers.pitching.walks = teamdata[301].pitchers.pitching.games_started =
+      teamdata[301].pitchers.pitching.cg = teamdata[301].pitchers.pitching.gf = teamdata[301].pitchers.pitching.sho = teamdata[301].pitchers.pitching.saves = teamdata[301].pitchers.pitching.svopp =
+      teamdata[301].pitchers.pitching.ibb = teamdata[301].pitchers.pitching.wp = teamdata[301].pitchers.pitching.hb = teamdata[301].pitchers.pitching.balks = teamdata[301].pitchers.pitching.bfp =
+      teamdata[301].pitchers.pitching.doubles = teamdata[301].pitchers.pitching.triples = teamdata[301].pitchers.pitching.homers = teamdata[301].pitchers.pitching.rbi = teamdata[301].pitchers.pitching.sb =
+      teamdata[301].pitchers.pitching.cs = teamdata[301].pitchers.pitching.sh = teamdata[301].pitchers.pitching.sf = teamdata[301].pitchers.pitching.opp_ab = 0;
 
     for (totg = x = 0; x < nteams; x++) {
         for (y = 0; y <= NUMBER_OF_TEAMS; y++)
@@ -3340,14 +3325,12 @@ FillTeamTotals (GtkTextBuffer *buf) {
         teamdata[301].pitchers.pitching.wins += teamdata[x].pitchers.pitching.wins;
         strcat (&stats[0], check_stats (teamdata[x].pitchers.pitching.losses, 'r'));
         teamdata[301].pitchers.pitching.losses += teamdata[x].pitchers.pitching.losses;
-        strcat (&stats[0], (char *) do_average (teamdata[x].pitchers.pitching.wins, (teamdata[x].pitchers.pitching.wins +
-                                           teamdata[x].pitchers.pitching.losses)));
+        strcat (&stats[0], (char *) do_average (teamdata[x].pitchers.pitching.wins, (teamdata[x].pitchers.pitching.wins + teamdata[x].pitchers.pitching.losses)));
         strcat (&stats[0], check_stats (teamdata[x].pitchers.pitching.so, 'r'));
         teamdata[301].pitchers.pitching.so += teamdata[x].pitchers.pitching.so;
         strcat (&stats[0], check_stats (teamdata[x].pitchers.pitching.walks, 'r'));
         teamdata[301].pitchers.pitching.walks += teamdata[x].pitchers.pitching.walks;
-        strcat (&stats[0], (char *) do_era (teamdata[x].pitchers.pitching.er * 9, teamdata[x].pitchers.pitching.innings,
-                                                   teamdata[x].pitchers.pitching.thirds));
+        strcat (&stats[0], (char *) do_era (teamdata[x].pitchers.pitching.er * 9, teamdata[x].pitchers.pitching.innings, teamdata[x].pitchers.pitching.thirds));
         strcat (&stats[0], check_stats (teamdata[x].pitchers.pitching.games_started, 'r'));
         teamdata[301].pitchers.pitching.games_started += teamdata[x].pitchers.pitching.games_started;
         strcat (&stats[0], check_stats (teamdata[x].pitchers.pitching.cg, 'r'));
@@ -3444,12 +3427,10 @@ FillTeamTotals (GtkTextBuffer *buf) {
     strcat (&stats[0], check_stats (teamdata[301].pitchers.pitching.er, 'r'));
     strcat (&stats[0], check_stats (teamdata[301].pitchers.pitching.wins, 'r'));
     strcat (&stats[0], check_stats (teamdata[301].pitchers.pitching.losses, 'r'));
-    strcat (&stats[0], (char *) do_average (teamdata[301].pitchers.pitching.wins, (teamdata[301].pitchers.pitching.wins +
-                                            teamdata[301].pitchers.pitching.losses)));
+    strcat (&stats[0], (char *) do_average (teamdata[301].pitchers.pitching.wins, (teamdata[301].pitchers.pitching.wins + teamdata[301].pitchers.pitching.losses)));
     strcat (&stats[0], check_stats (teamdata[301].pitchers.pitching.so, 'r'));
     strcat (&stats[0], check_stats (teamdata[301].pitchers.pitching.walks, 'r'));
-    strcat (&stats[0], (char *) do_era (teamdata[301].pitchers.pitching.er * 9, teamdata[301].pitchers.pitching.innings,
-                                        teamdata[301].pitchers.pitching.thirds));
+    strcat (&stats[0], (char *) do_era (teamdata[301].pitchers.pitching.er * 9, teamdata[301].pitchers.pitching.innings, teamdata[301].pitchers.pitching.thirds));
     strcat (&stats[0], check_stats (teamdata[301].pitchers.pitching.games_started, 'r'));
     strcat (&stats[0], check_stats (teamdata[301].pitchers.pitching.cg, 'r'));
     strcat (&stats[0], check_stats (teamdata[301].pitchers.pitching.gf, 'r'));
@@ -3646,8 +3627,7 @@ RealLifeByPlayer (gpointer callback_data, guint callback_action, GtkWidget *widg
 
     name[0] = '\0';
 
-    swin = gtk_dialog_new_with_buttons ("Enter Player Name", GTK_WINDOW (mainwin),
-           GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT, GTK_STOCK_OK, GTK_RESPONSE_OK, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
+    swin = gtk_dialog_new_with_buttons ("Enter Player Name", GTK_WINDOW (mainwin), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT, GTK_STOCK_OK, GTK_RESPONSE_OK, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
     g_signal_connect (G_OBJECT (swin), "destroy", G_CALLBACK (DestroyDialog), swin);
     gtk_container_set_border_width (GTK_CONTAINER (swin), 0);
 
@@ -3683,10 +3663,8 @@ GetPlayerName:
     if (response == GTK_RESPONSE_CLOSE)
         DestroyDialog (swin, swin);
     else {
-        gchar NoTName[256] = "You need to enter a name.\n\n", work[512],
-              Error[256] = "An error was encountered when trying to retrieve the stats.",
-              NoSpace[256] = "There needs to be at least 1 space character within the player name.",
-              Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
+        gchar NoTName[256] = "You need to enter a name.\n\n", work[512], Error[256] = "An error was encountered when trying to retrieve the stats.",
+              NoSpace[256] = "There needs to be at least 1 space character within the player name.", Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
         gint x, fatalerr;
 
         fatalerr = 0;
@@ -3802,20 +3780,11 @@ extern GtkWidget *exentry, *inentry;
 /* prepare to show category leaders or records */
 void
 CategoryLeaders (gint which) {
-    GtkWidget *box1, *box2, *hbox, *table, *separator, *sw, *lab,
-              *butbg, *butbab, *butbr, *butbh, *butb2b, *butb3b, *butbhr, *butbbi, *butbbb, *butbso, *butbhp, *butbdp,
-              *butbsb, *butbcs, *butbibb, *butbs, *butbsf, *butbba, *butbsa, *butboba,
-              *butpg, *butpgs, *butpip, *butpw, *butpl, *butps, *butpbfp, *butph, *butp2b, *butp3b, *butphr, *butpr,
-              *butper, *butpbi, *butpcg, *butpgf, *butpsho, *butpsopp, *butpsb, *butpcs, *butpbb, *butpso, *butpibb,
-              *butpsh, *butpsf, *butpwp, *butpb, *butphb, *butpab, *butpera, *butppct, *butpba,
-              *butfog, *butfopo, *butfodp, *butfoa, *butfoe, *butfoavg,
-              *butf1g, *butf1po, *butf1dp, *butf1a, *butf1e, *butf1avg,
-              *butf2g, *butf2po, *butf2dp, *butf2a, *butf2e, *butf2avg,
-              *butf3g, *butf3po, *butf3dp, *butf3a, *butf3e, *butf3avg,
-              *butfsg, *butfspo, *butfsdp, *butfsa, *butfse, *butfsavg,
-              *butfpg, *butfppo, *butfpdp, *butfpa, *butfpe, *butfpavg,
-              *butfcg, *butfcpo, *butfcdp, *butfca, *butfce, *butfcavg, *butfcpb, *butfdhg,
-              *dbutton;
+    GtkWidget *box1, *box2, *hbox, *table, *separator, *sw, *lab, *butbg, *butbab, *butbr, *butbh, *butb2b, *butb3b, *butbhr, *butbbi, *butbbb, *butbso, *butbhp, *butbdp, *butbsb, *butbcs, *butbibb, *butbs,
+              *butbsf, *butbba, *butbsa, *butboba, *butpg, *butpgs, *butpip, *butpw, *butpl, *butps, *butpbfp, *butph, *butp2b, *butp3b, *butphr, *butpr, *butper, *butpbi, *butpcg, *butpgf, *butpsho, *butpsopp,
+              *butpsb, *butpcs, *butpbb, *butpso, *butpibb, *butpsh, *butpsf, *butpwp, *butpb, *butphb, *butpab, *butpera, *butppct, *butpba, *butfog, *butfopo, *butfodp, *butfoa, *butfoe, *butfoavg,
+              *butf1g, *butf1po, *butf1dp, *butf1a, *butf1e, *butf1avg, *butf2g, *butf2po, *butf2dp, *butf2a, *butf2e, *butf2avg, *butf3g, *butf3po, *butf3dp, *butf3a, *butf3e, *butf3avg, *butfsg, *butfspo,
+              *butfsdp, *butfsa, *butfse, *butfsavg, *butfpg, *butfppo, *butfpdp, *butfpa, *butfpe, *butfpavg, *butfcg, *butfcpo, *butfcdp, *butfca, *butfce, *butfcavg, *butfcpb, *butfdhg, *dbutton;
     GtkLabel *hitlabel, *pitchlabel, *fieldlabel;
     gchar Unconnected[256] = "You need to connect to an NSB server.", *msg[5];
     gint x;
@@ -4007,7 +3976,7 @@ CategoryLeaders (gint which) {
             gtk_entry_set_max_length (GTK_ENTRY (inentry), 100);
             gtk_table_attach_defaults (GTK_TABLE (table), inentry, 1, 2, 1, 2);
             gtk_label_set_mnemonic_widget (GTK_LABEL (label), inentry);
-            gtk_entry_set_text (GTK_ENTRY (inentry), "2019");
+            gtk_entry_set_text (GTK_ENTRY (inentry), "2022");
             gtk_signal_connect (GTK_OBJECT (inentry), "insert_text", GTK_SIGNAL_FUNC (CheckEntry), NULL);
             gtk_window_set_focus (GTK_WINDOW (scatwindow), inentry);
 
@@ -5001,7 +4970,7 @@ ShowCategoryLeaders () {
     w[0] = '\0';
     if (whichstats == 2) {
         gint x, y, err;
-        gchar *msg[5], NoYrs[256] = "No years to search.", NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2019)?\n\n";
+        gchar *msg[5], NoYrs[256] = "No years to search.", NoInYears[256] = "\nThe years to include is empty.  Assume all years (1901-2022)?\n\n";
 
         for (x = 0; x < 5; x++)
             msg[x] = NULL;
@@ -5022,7 +4991,7 @@ ShowCategoryLeaders () {
             gchar ExMsg[256] = "In excluded years ...", InMsg[256] = "In included years ...",
                   YrAfterHy[256] = "The year after a hyphen must be equal to or greater than the year before that same hyphen.",
                   NoYr[256] = "There must be a year after a hyphen.", InitYr[256] = "A year must be the first data.",
-                  InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2019).";
+                  InvYr[256] = "A year is not valid (must be 4 positions and must be 1901-2022).";
 
             /* first four bits (leftmost) inentry, second four bits (rightmost) exentry
                0000 0000
@@ -6093,13 +6062,11 @@ void
 FillTeamStats (GtkTextBuffer *buf) {
     GtkTextIter pos;
     gint x, y, z, pib, totg, w, l, newpl, singles, ts, tab, tr, th, t2b, t3b, thr, tbi, tbb, tso, thbp, tgidp, tsb, tcs, tibb, tsf, tsh,
-         tinn, tthirds, ter, tw, tl, tgs, tcg, tgf, tsho, tsopp, twp, thb, tb, tbfp, tpo, ta, te, tpb, topp_ab,
-         maxplayers, maxpitchers;
+         tinn, tthirds, ter, tw, tl, tgs, tcg, tgf, tsho, tsopp, twp, thb, tb, tbfp, tpo, ta, te, tpb, topp_ab, maxplayers, maxpitchers;
     gchar work1[100], work2[100], tname[100];
 
-    totg = tab = tr = th = t2b = t3b = thr = tbi = tbb = tso = thbp = tgidp = tpo = tpb =
-          tsb = tcs = tibb = tsf = tsh = ts = tinn = tthirds = ter = ta = te = topp_ab =
-          tw = tl = tgs = tcg = tgf = tsho = tsopp = twp = thb = tb = tbfp = 0;
+    totg = tab = tr = th = t2b = t3b = thr = tbi = tbb = tso = thbp = tgidp = tpo = tpb = tsb = tcs = tibb = tsf = tsh = ts = tinn = tthirds = ter = ta = te = topp_ab =
+           tw = tl = tgs = tcg = tgf = tsho = tsopp = twp = thb = tb = tbfp = 0;
 
     gtk_text_buffer_get_iter_at_offset (buf, &pos, 0);
     gtk_text_buffer_create_tag (buf, "monospace", "family", "monospace", NULL);
@@ -6108,10 +6075,10 @@ FillTeamStats (GtkTextBuffer *buf) {
         if (teaminfo[x].id == team.id)
             break;
 
-    for (maxplayers = 0; maxplayers < 25; maxplayers++)
+    for (maxplayers = 0; maxplayers < 28; maxplayers++)
         if (team.batters[maxplayers].id.name[0] == ' ' || !strlen (&team.batters[maxplayers].id.name[0]))
             break;
-    for (maxpitchers = 0; maxpitchers < 25; maxpitchers++)
+    for (maxpitchers = 0; maxpitchers < 13; maxpitchers++)
         if (team.pitchers[maxpitchers].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers].id.name[0]))
             break;
 
@@ -6237,8 +6204,7 @@ FillTeamStats (GtkTextBuffer *buf) {
         strcat (&stats[0], check_stats (team.batters[x].hitting.homers, 'r'));
         strcat (&stats[0], check_stats (team.batters[x].hitting.rbi, 'r'));
         strcat (&stats[0], (char *) do_average (team.batters[x].hitting.hits, team.batters[x].hitting.atbats));
-        strcat (&stats[0], (char *) do_average (((team.batters[x].hitting.homers * 4) + (team.batters[x].hitting.triples * 3) +
-                                                 (team.batters[x].hitting.doubles * 2) + singles), team.batters[x].hitting.atbats));
+        strcat (&stats[0], (char *) do_average (((team.batters[x].hitting.homers * 4) + (team.batters[x].hitting.triples * 3) + (team.batters[x].hitting.doubles * 2) + singles), team.batters[x].hitting.atbats));
         if (team.batters[x].hitting.sf == -1)
             y = 0;
         else
@@ -6314,8 +6280,7 @@ FillTeamStats (GtkTextBuffer *buf) {
 
     strcat (&stats[0], "\n\n\n\n");
 
-    tab = tr = th = t2b = t3b = thr = tbi = tbb = tso = thbp = tgidp = tpo = tpb =
-          tsb = tcs = tibb = tsf = tsh = ts = tinn = tthirds = ter = ta = te = topp_ab =
+    tab = tr = th = t2b = t3b = thr = tbi = tbb = tso = thbp = tgidp = tpo = tpb = tsb = tcs = tibb = tsf = tsh = ts = tinn = tthirds = ter = ta = te = topp_ab =
           tw = tl = tgs = tcg = tgf = tsho = tsopp = twp = thb = tb = tbfp = 0;
 
     if (urind == 'C')
@@ -6975,8 +6940,7 @@ FillRLPlayerStats (GtkTextBuffer *buf, char *name, int nbat, int npit) {
     gint x, y, newyr, singles, ts, tg, tab, tr, th, t2b, t3b, thr, tbi, tbb, tso, thbp, tgidp, tsb, tcs, tibb, tsf, tsh, tdp,
          tinn, tthirds, ter, tw, tl, tgs, tcg, tgf, tsho, tsopp, twp, thb, tb, tbfp, tpo, ta, te, tpb, topp_ab;
 
-    tg = tab = tr = th = t2b = t3b = thr = tbi = tbb = tso = thbp = tgidp = tpo = tpb = tdp =
-          tsb = tcs = tibb = tsf = tsh = ts = tinn = tthirds = ter = ta = te = topp_ab =
+    tg = tab = tr = th = t2b = t3b = thr = tbi = tbb = tso = thbp = tgidp = tpo = tpb = tdp = tsb = tcs = tibb = tsf = tsh = ts = tinn = tthirds = ter = ta = te = topp_ab =
           tw = tl = tgs = tcg = tgf = tsho = tsopp = twp = thb = tb = tbfp = 0;
 
     gtk_text_buffer_get_iter_at_offset (buf, &pos, 0);
@@ -7016,8 +6980,7 @@ FillRLPlayerStats (GtkTextBuffer *buf, char *name, int nbat, int npit) {
     strcat (&stats[0], "Year Team                    G     AB      R      H     2B     3B     HR    RBI    BA    SA   OBA     BB     SO    HBP   GIDP     SB     CS    IBB     SH     SF\n\n");
 
     for (x = 0; x < nbat; x++) {
-        singles = teamdata[x].batters.hitting.hits - (teamdata[x].batters.hitting.homers +
-                  teamdata[x].batters.hitting.triples + teamdata[x].batters.hitting.doubles);
+        singles = teamdata[x].batters.hitting.hits - (teamdata[x].batters.hitting.homers + teamdata[x].batters.hitting.triples + teamdata[x].batters.hitting.doubles);
 
         for (y = 0; y <= NUMBER_OF_TEAMS; y++)
             if (teaminfo[y].id == teamdata[x].batters.id.teamid)

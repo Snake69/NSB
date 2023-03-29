@@ -110,8 +110,7 @@ TeamSelected (GtkTreeSelection *selection) {
 
     gtk_tree_model_get (model, &iter, NAME_COLUMN, &teamname, -1);
 
-    if (strlen (teamname) == 4 || !strcmp (teamname, "Current Season") || !strcmp (teamname, "Lifetime Stats") || !strcmp (teamname, "Current Series") ||
-                                                                                                                        !strcmp (teamname, "User-Created"))
+    if (strlen (teamname) == 4 || !strcmp (teamname, "Current Season") || !strcmp (teamname, "Lifetime Stats") || !strcmp (teamname, "Current Series") || !strcmp (teamname, "User-Created"))
         /* user clicked on a toplevel line */
         return;
 
@@ -317,19 +316,15 @@ add_columns1 (GtkTreeView *treeview) {
         col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1, "Current Series->Teams", renderer, "text", NAME_COLUMN, NULL);
     else
         if (urind == 'U')
-            col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1,
-                                       "Current Season->Teams", renderer, "text", NAME_COLUMN, NULL);
+            col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1, "Current Season->Teams", renderer, "text", NAME_COLUMN, NULL);
         else
             if (urind == 'L')
-                col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1,
-                                                 "Lifetime->Teams", renderer, "text", NAME_COLUMN, NULL);
+                col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1, "Lifetime->Teams", renderer, "text", NAME_COLUMN, NULL);
             else
                 if (urind == 'C')
-                    col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1,
-                                                     "User-Created->Teams", renderer, "text", NAME_COLUMN, NULL);
+                    col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1, "User-Created->Teams", renderer, "text", NAME_COLUMN, NULL);
                 else
-                    col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1, "Year->Teams",
-                                                                                       renderer, "text", NAME_COLUMN, NULL);
+                    col_offset = gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (treeview), -1, "Year->Teams", renderer, "text", NAME_COLUMN, NULL);
     column = gtk_tree_view_get_column (GTK_TREE_VIEW (treeview), col_offset - 1);
     gtk_tree_view_column_set_clickable (GTK_TREE_VIEW_COLUMN (column), TRUE);
 }

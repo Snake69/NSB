@@ -117,16 +117,15 @@ CreateTeam () {
 
     PopulateTopLevel3 ();
     PopulateChildren3 ();
-    for (x = 0; x < 25; x++)
+    for (x = 0; x < 28; x++)
         team2.batters[x].id.name[0] = '\0';
-    for (x = 0; x < 11; x++)
+    for (x = 0; x < 13; x++)
         team2.pitchers[x].id.name[0] = '\0';
     team2.id = team2.year = 0;
     team2.league = team2.division = ' ';
     changesw = 0;
 
-    swin = gtk_dialog_new_with_buttons ("Create Team", NULL, GTK_DIALOG_MODAL,
-           "Check Team", 1, "Cancel", 2, "Save Team", 3, "Load U-C Team", 4, "Rename U-C Team", 6, "Delete U-C Team", 5, NULL);
+    swin = gtk_dialog_new_with_buttons ("Create Team", NULL, GTK_DIALOG_MODAL, "Check Team", 1, "Cancel", 2, "Save Team", 3, "Load U-C Team", 4, "Rename U-C Team", 6, "Delete U-C Team", 5, "List U-C Teams", 7, NULL);
     gtk_window_set_default_size (GTK_WINDOW (swin), 750, 400);
     gtk_signal_connect (GTK_OBJECT (swin), "delete_event", GTK_SIGNAL_FUNC (donot_delete_event), 0);
 
@@ -158,21 +157,17 @@ CreateTeam () {
 
     treeview2 = gtk_tree_view_new ();
     setup_tree_view (treeview2);
-    store = gtk_list_store_new (COLUMNS, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT,
-                                         G_TYPE_STRING);
+    store = gtk_list_store_new (COLUMNS, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING);
     treeview3 = gtk_tree_view_new ();
     setup_tree_view3 (treeview3);
-    store3 = gtk_list_store_new (COLUMNS3, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT,
-                                           G_TYPE_INT, G_TYPE_INT);
+    store3 = gtk_list_store_new (COLUMNS3, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT);
 
     utv1 = gtk_tree_view_new ();
     setup_tree_uview1 (utv1);
-    ustore1 = gtk_list_store_new (UCOLUMNS1, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT, G_TYPE_STRING, G_TYPE_STRING,
-                                             G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING);
+    ustore1 = gtk_list_store_new (UCOLUMNS1, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING);
     utv2 = gtk_tree_view_new ();
     setup_tree_uview2 (utv2);
-    ustore2 = gtk_list_store_new (UCOLUMNS2, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT, G_TYPE_STRING, G_TYPE_INT,
-                                             G_TYPE_INT, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT);
+    ustore2 = gtk_list_store_new (UCOLUMNS2, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT, G_TYPE_INT);
 
     /* Add the tree model to the tree view and unreference it so that the model will be destroyed along with the tree view. */
     gtk_tree_view_set_model (GTK_TREE_VIEW (treeview2), GTK_TREE_MODEL (store));
@@ -265,8 +260,8 @@ ContinueCreateTeam:
     if (response == 1 || response == 3) {
         gchar NoTName[256] = "You need to enter a name for your team.\n\n", NoPit[256] = "There are no pitchers on your team.\n\n",
               NoPly[256] = "There are not enough players (at least 9) on your team.\n\n",
-              LessPit[256] = "There can be up to 11 pitchers on a team.  There are only    on your team.\n\n",
-              LessPly[256] = "There can be up to 25 players on a team.  There are only    on your team.\n\n",
+              LessPit[256] = "There can be up to 13 pitchers on a team.  There are only    on your team.\n\n",
+              LessPly[256] = "There can be up to 28 players on a team.  There are only    on your team.\n\n",
               LessSPit[256], NoCloser[256] = "There is no true closer on your team.\n\n",
               NoPos[256] = "There is no one on your team who played ", Dup[256],
               OnePos[256] = "There is only one player on your team who can play ",
@@ -302,17 +297,17 @@ ContinueCreateTeam:
         for (x = 0; x < 5; x++)
             msg[x] = NULL;
 
-        for (x = 0; x < 11; x++)
+        for (x = 0; x < 13; x++)
             if (team2.pitchers[x].id.name[0] == ' ' || !strlen (&team2.pitchers[x].id.name[0]))
                 break;
-        if (x < 11) {
+        if (x < 13) {
             if (x > 9)
                 LessPit[58] = '1';
             LessPit[59] = (x % 10) + '0';
             msg[err] = LessPit;
             err++;
         }
-        for (numpit = x = 0; x < 11; x++)
+        for (numpit = x = 0; x < 13; x++)
             if (team2.pitchers[x].pitching.games_started && (team2.pitchers[x].id.name[0] != ' ' && strlen (&team2.pitchers[x].id.name[0])))
                 numpit++;
         if (numpit < 5) {
@@ -341,17 +336,17 @@ ContinueCreateTeam:
             msg[err] = LessSPit;
             err++;
         }
-        for (x = 0; x < 11; x++)
+        for (x = 0; x < 13; x++)
             if (team2.pitchers[x].pitching.saves > 10 && (team2.pitchers[x].id.name[0] != ' ' && strlen (&team2.pitchers[x].id.name[0])))
                 break;
-        if (x == 11) {
+        if (x == 13) {
             msg[err] = NoCloser;
             err++;
         }
-        for (x = 0; x < 25; x++)
+        for (x = 0; x < 28; x++)
             if (team2.batters[x].id.name[0] == ' ' || !strlen (&team2.batters[x].id.name[0]))
                 break;
-        if (x < 25) {
+        if (x < 28) {
             if (x > 9)
                 LessPly[57] = (x / 10) + '0';
             LessPly[58] = (x % 10) + '0';
@@ -366,7 +361,7 @@ ContinueCreateTeam:
 
         for (x = 0; x < 10; x++)
             pos[x] = 0;
-        for (x = 0; x < 25; x++)
+        for (x = 0; x < 28; x++)
             for (y = 0; y < 10; y++)
                 if (team2.batters[x].fielding[y].games > 0)
                     pos[y]++;
@@ -395,8 +390,8 @@ ContinueCreateTeam:
             moreerr++;
         }
 
-        for (Dup[0] = '\0', duperr = x = 0; x < 24; x++)
-            for (y = x + 1; y < 25; y++)
+        for (Dup[0] = '\0', duperr = x = 0; x < 27; x++)
+            for (y = x + 1; y < 28; y++)
                 if (!strcmp (&team2.batters[x].id.name[0], &team2.batters[y].id.name[0]) && team2.batters[x].id.year == team2.batters[y].id.year &&
                                 (team2.batters[x].id.name[0] != ' ' && strlen (&team2.batters[x].id.name[0]))) {
                     if (duperr)
@@ -496,8 +491,7 @@ ContinueCreateTeam:
 
     /* load a user team */
     if (response == 4) {
-        if ((strlen (&team2.batters[0].id.name[0]) && team2.batters[0].id.name[0] != ' ') ||
-                               (strlen (&team2.pitchers[0].id.name[0]) && team2.pitchers[0].id.name[0] != ' ')) {
+        if ((strlen (&team2.batters[0].id.name[0]) && team2.batters[0].id.name[0] != ' ') || (strlen (&team2.pitchers[0].id.name[0]) && team2.pitchers[0].id.name[0] != ' ')) {
             gchar AD[256] = "Current data will be overwritten and lost.  Do you wish to continue?\n\n", *msg[5];
             gint x;
 
@@ -569,24 +563,22 @@ ContinueCreateTeam:
                 get_stats (sock, 'u', 0);
 
                 /* fill in data store and display */
-                for (ply = 0; team2.batters[ply].id.name[0] != ' ' && strlen (&team2.batters[ply].id.name[0]) && ply < 25; ply++) {
+                for (ply = 0; team2.batters[ply].id.name[0] != ' ' && strlen (&team2.batters[ply].id.name[0]) && ply < 28; ply++) {
                     gtk_tree_model_iter_nth_child (GTK_TREE_MODEL (ustore1), &uiter1, NULL, ply);
 
                     strcpy (&tname[0], (char *) GetTeamName (team2.batters[ply].id.teamid));
-                    singles = team2.batters[ply].hitting.hits - (team2.batters[ply].hitting.homers +
-                              team2.batters[ply].hitting.triples + team2.batters[ply].hitting.doubles);
+                    singles = team2.batters[ply].hitting.hits - (team2.batters[ply].hitting.homers + team2.batters[ply].hitting.triples + team2.batters[ply].hitting.doubles);
                     if (team2.batters[ply].hitting.sf == -1)
                         sf = 0;
                     else
                         sf = team2.batters[ply].hitting.sf;
-                    for (pos[0] = '\0', y = 0; y < 11; y++)
+                    for (pos[0] = '\0', y = 0; y < 13; y++)
                         if (team2.batters[ply].fielding[y].games > 0) {
                             if (strlen (&pos[0]))
                                 strcat (&pos[0], ", ");
                             if (y == 10) {
                                 /* don't show OF if there are games in LF, CF or RF */
-                                if (team2.batters[ply].fielding[7].games <= 0 && team2.batters[ply].fielding[8].games <= 0 &&
-                                                                                    team2.batters[ply].fielding[9].games <= 0)
+                                if (team2.batters[ply].fielding[7].games <= 0 && team2.batters[ply].fielding[8].games <= 0 && team2.batters[ply].fielding[9].games <= 0)
                                     strcat (&pos[0], "OF");
                                 else {
                                     /* remove the last comma */
@@ -606,23 +598,19 @@ ContinueCreateTeam:
                                                   (team2.batters[ply].hitting.atbats + team2.batters[ply].hitting.bb + sf + team2.batters[ply].hitting.hbp)));
 
                     gtk_list_store_append (ustore1, &uiter1);
-                    gtk_list_store_set (ustore1, &uiter1, UPNAME, team2.batters[ply].id.name, UTNAME1, tname,
-                                        UYEAR1, team2.batters[ply].id.year, UHOMERUNS, team2.batters[ply].hitting.homers,
+                    gtk_list_store_set (ustore1, &uiter1, UPNAME, team2.batters[ply].id.name, UTNAME1, tname, UYEAR1, team2.batters[ply].id.year, UHOMERUNS, team2.batters[ply].hitting.homers,
                                         UBAVG, bavg, USAVG, savg, UOBAVG, oba, USB, team2.batters[ply].hitting.sb, UPOS, pos, -1);
                 }
 
-                for (pit = 0; team2.pitchers[pit].id.name[0] != ' ' && strlen (&team2.pitchers[pit].id.name[0]) && pit < 11; pit++) {
+                for (pit = 0; team2.pitchers[pit].id.name[0] != ' ' && strlen (&team2.pitchers[pit].id.name[0]) && pit < 13; pit++) {
                     gtk_tree_model_iter_nth_child (GTK_TREE_MODEL (ustore2), &uiter2, NULL, pit);
 
                     strcpy (&tname[0], (char *) GetTeamName (team2.pitchers[pit].id.teamid));
                     gtk_list_store_append (ustore2, &uiter2);
-                    gtk_list_store_set (ustore2, &uiter2, UPITNAME, team2.pitchers[pit].id.name, UTNAME2, tname,
-                                        UYEAR2, team2.pitchers[pit].id.year, UIP, team2.pitchers[pit].pitching.innings,
-                                 UERA, (char *) do_era (team2.pitchers[pit].pitching.er * 9, team2.pitchers[pit].pitching.innings,
-                                                               team2.pitchers[pit].pitching.thirds),
+                    gtk_list_store_set (ustore2, &uiter2, UPITNAME, team2.pitchers[pit].id.name, UTNAME2, tname, UYEAR2, team2.pitchers[pit].id.year, UIP, team2.pitchers[pit].pitching.innings,
+                                 UERA, (char *) do_era (team2.pitchers[pit].pitching.er * 9, team2.pitchers[pit].pitching.innings, team2.pitchers[pit].pitching.thirds),
                                         USO, team2.pitchers[pit].pitching.so, UBB, team2.pitchers[pit].pitching.walks,
-                                UGAMES, team2.pitchers[pit].pitching.games, UGSTARTED, team2.pitchers[pit].pitching.games_started,
-                                        USAVES, team2.pitchers[pit].pitching.saves, -1);
+                                UGAMES, team2.pitchers[pit].pitching.games, UGSTARTED, team2.pitchers[pit].pitching.games_started, USAVES, team2.pitchers[pit].pitching.saves, -1);
                 }
             }
 
@@ -718,8 +706,7 @@ ContinueCreateTeam:
     if (response == 6) {
         /* get names */
         if (GetTeamFileName (3)) {
-            gchar NoTeams[256] = "You have no user-created teams on the currently connected server.\n\n",
-                  NoMatch[256] = "There is no match to the team/file name you entered.  The available team/file names are:\n\n",
+            gchar NoTeams[256] = "You have no user-created teams on the currently connected server.\n\n", NoMatch[256] = "There is no match to the team/file name you entered.  The available team/file names are:\n\n",
                   *msg[5];
             gint x;
 
@@ -767,8 +754,7 @@ ContinueCreateTeam:
                 outMessage (msg);
             }
             if (!strncmp (&buffer[0], "MATCH", 5)) {
-                gchar TR[256] = "Team renamed.\n\n",
-                      *msg[5];
+                gchar TR[256] = "Team renamed.\n\n", *msg[5];
                 gint x;
 
                 for (x = 0; x < 5; x++)
@@ -780,6 +766,41 @@ ContinueCreateTeam:
         }
 
         goto ContinueCreateTeam;
+    }
+
+    /* list existing user teams */
+    if (response == 7) {
+        gchar NoTeams[256] = "You have no user-created teams on the currently connected server.\n\n", List[2048] = "Teams you've created:\n\n", fname[256], *fnpnt, *msg[5];
+        gint x;
+
+        for (x = 0; x < 5; x++)
+            msg[x] = NULL;
+
+        strcpy (&buffer[0], "u");
+        strcat (&buffer[0], "\n");
+
+        sock_puts (sock, &buffer[0]);  /* send command */
+        sock_gets (sock, &buffer[0], sizeof (buffer));
+        if (!strcmp (&buffer[0], "NONE") || strlen (&buffer[0]) < 2) {
+            msg[0] = &NoTeams[0];
+            outMessage (msg);
+
+            goto ContinueCreateTeam;
+        }
+
+        /* add available team/file names to message */
+        for (fnpnt = &buffer[0], x = 0; fnpnt < (&buffer[0] + strlen (&buffer[0])); fnpnt++, x++)
+            if (*fnpnt != ' ')
+                fname[x] = *fnpnt;
+            else {
+                fname[x] = '\0';
+                x = -1;
+                strcat (&List[0], &fname[0]);
+                strcat (&List[0], "\n");
+            }
+
+        msg[0] = &List[0];
+        outMessage (msg);
     }
 
     if (response == 2 && changesw) {
@@ -915,16 +936,14 @@ GetOutFor:
                 strcat (&pos[0], (char *) check_stats (team.batters[i].fielding[y].games, 'l'));
             }
         strcpy (&bavg[0], (char *) do_average (team.batters[i].hitting.hits, team.batters[i].hitting.atbats));
-        strcpy (&savg[0], (char *) do_average (((team.batters[i].hitting.homers * 4) + (team.batters[i].hitting.triples * 3) +
-                                     (team.batters[i].hitting.doubles * 2) + singles), team.batters[i].hitting.atbats));
+        strcpy (&savg[0], (char *) do_average (((team.batters[i].hitting.homers * 4) + (team.batters[i].hitting.triples * 3) + (team.batters[i].hitting.doubles * 2) + singles), team.batters[i].hitting.atbats));
         strcpy (&oba[0], (char *) do_average ((team.batters[i].hitting.hits + team.batters[i].hitting.bb + team.batters[i].hitting.hbp),
                              (team.batters[i].hitting.atbats + team.batters[i].hitting.bb + sf + team.batters[i].hitting.hbp)));
 
         gtk_list_store_append (store, &iter);
-        gtk_list_store_set (store, &iter, PNAME, team.batters[i].id.name, HOMERUNS, team.batters[i].hitting.homers,
-                            BAVG, bavg, SAVG, savg, OBAVG, oba, SB, team.batters[i].hitting.sb, POS, pos, -1);
+        gtk_list_store_set (store, &iter, PNAME, team.batters[i].id.name, HOMERUNS, team.batters[i].hitting.homers, BAVG, bavg, SAVG, savg, OBAVG, oba, SB, team.batters[i].hitting.sb, POS, pos, -1);
         i++;
-        if (i == 25)
+        if (i == 28)
             break;
     }
 
@@ -937,7 +956,7 @@ GetOutFor:
                             SO, team.pitchers[i].pitching.so, BB, team.pitchers[i].pitching.walks, GAMES, team.pitchers[i].pitching.games, GSTARTED,
                             team.pitchers[i].pitching.games_started, SAVES, team.pitchers[i].pitching.saves, -1);
         i++;
-        if (i == 11)
+        if (i == 13)
             break;
     }
 }
@@ -956,10 +975,10 @@ RLPlyPicked (GtkTreeSelection *selection) {
     path = gtk_tree_model_get_path (model, &iter) ;
     i = gtk_tree_path_get_indices (path);
 
-    for (ply = 0; ply < 25; ply++)
+    for (ply = 0; ply < 28; ply++)
         if (team2.batters[ply].id.name[0] == ' ' || !strlen (&team2.batters[ply].id.name[0]))
             break;
-    if (ply == 25) {
+    if (ply == 28) {
         gchar NoRoom[256] = "The roster of the team being created is full.", *msg[5];
         gint x;
 
@@ -971,9 +990,9 @@ RLPlyPicked (GtkTreeSelection *selection) {
 
         return;
     }
-    for (z = 0; z < 11; z++)
+    for (z = 0; z < 13; z++)
         if (!strcmp (&team.batters[i[0]].id.name[0], &team.pitchers[z].id.name[0])) {
-            for (pit = 0; pit < 11; pit++)
+            for (pit = 0; pit < 13; pit++)
                 if (team2.pitchers[pit].id.name[0] == ' ' || !strlen (&team2.pitchers[pit].id.name[0])) {
                     team2.pitchers[pit] = team.pitchers[z];
                     pitstats = 1;
@@ -981,7 +1000,7 @@ RLPlyPicked (GtkTreeSelection *selection) {
                 }
             if (pitstats)
                 break;
-            if (pit == 11) {
+            if (pit == 13) {
                 gchar NoRoom[256] = "The player you chose has pitching stats.  There is no more room for pitchers on your team.",
                       *msg[5];
                 gint x;
@@ -995,7 +1014,7 @@ RLPlyPicked (GtkTreeSelection *selection) {
                 return;
             }
         }
-    if (z == 11)
+    if (z == 13)
         pitstats = 0;
     team2.batters[ply] = team.batters[i[0]];
     changesw = 1;
@@ -1035,20 +1054,16 @@ RLPlyPicked (GtkTreeSelection *selection) {
                       (team2.batters[ply].hitting.atbats + team2.batters[ply].hitting.bb + sf + team2.batters[ply].hitting.hbp)));
 
     gtk_list_store_append (ustore1, &uiter1);
-    gtk_list_store_set (ustore1, &uiter1, UPNAME, team2.batters[ply].id.name, UTNAME1, name,
-                        UYEAR1, team2.batters[ply].id.year, UHOMERUNS, team2.batters[ply].hitting.homers, UBAVG, bavg, USAVG, savg,
+    gtk_list_store_set (ustore1, &uiter1, UPNAME, team2.batters[ply].id.name, UTNAME1, name, UYEAR1, team2.batters[ply].id.year, UHOMERUNS, team2.batters[ply].hitting.homers, UBAVG, bavg, USAVG, savg,
                         UOBAVG, oba, USB, team2.batters[ply].hitting.sb, UPOS, pos, -1);
 
     if (pitstats) {
         strcpy (&name[0], &rltname[5]);
 
         gtk_list_store_append (ustore2, &uiter2);
-        gtk_list_store_set (ustore2, &uiter2, UPITNAME, team2.pitchers[pit].id.name, UTNAME2, name,
-                            UYEAR2, team2.pitchers[pit].id.year, UIP, team2.pitchers[pit].pitching.innings,
-                            UERA, (char *) do_era (team2.pitchers[pit].pitching.er * 9, team2.pitchers[pit].pitching.innings,
-                                                   team2.pitchers[pit].pitching.thirds),
-                            USO, team2.pitchers[pit].pitching.so, UBB, team2.pitchers[pit].pitching.walks,
-                            UGAMES, team2.pitchers[pit].pitching.games, UGSTARTED, team2.pitchers[pit].pitching.games_started,
+        gtk_list_store_set (ustore2, &uiter2, UPITNAME, team2.pitchers[pit].id.name, UTNAME2, name, UYEAR2, team2.pitchers[pit].id.year, UIP, team2.pitchers[pit].pitching.innings,
+                            UERA, (char *) do_era (team2.pitchers[pit].pitching.er * 9, team2.pitchers[pit].pitching.innings, team2.pitchers[pit].pitching.thirds),
+                            USO, team2.pitchers[pit].pitching.so, UBB, team2.pitchers[pit].pitching.walks, UGAMES, team2.pitchers[pit].pitching.games, UGSTARTED, team2.pitchers[pit].pitching.games_started,
                             USAVES, team2.pitchers[pit].pitching.saves, -1);
     }
 }
@@ -1067,10 +1082,10 @@ RLPitPicked (GtkTreeSelection *selection) {
     path = gtk_tree_model_get_path (model, &iter) ;
     i = gtk_tree_path_get_indices (path);
 
-    for (pit = 0; pit < 11; pit++)
+    for (pit = 0; pit < 13; pit++)
         if (team2.pitchers[pit].id.name[0] == ' ' || !strlen (&team2.pitchers[pit].id.name[0]))
             break;
-    if (pit == 11) {
+    if (pit == 13) {
         gchar NoRoom[256] = "There is no more room for pitchers on your roster.", *msg[5];
         gint x;
 
@@ -1082,9 +1097,9 @@ RLPitPicked (GtkTreeSelection *selection) {
 
         return;
     }
-    for (z = 0; z < 25; z++)
+    for (z = 0; z < 28; z++)
         if (!strcmp (&team.pitchers[i[0]].id.name[0], &team.batters[z].id.name[0])) {
-            for (ply = 0; ply < 25; ply++)
+            for (ply = 0; ply < 28; ply++)
                 if (team2.batters[ply].id.name[0] == ' ' || !strlen (&team2.batters[ply].id.name[0])) {
                     team2.batters[ply] = team.batters[z];
                     plystats = 1;
@@ -1092,7 +1107,7 @@ RLPitPicked (GtkTreeSelection *selection) {
                 }
             if (plystats)
                 break;
-            if (ply == 25) {
+            if (ply == 28) {
                 gchar NoRoom[256] = "There is no more room for players on your team.  The roster is full.",
                       *msg[5];
                 gint x;
@@ -1106,7 +1121,7 @@ RLPitPicked (GtkTreeSelection *selection) {
                 return;
             }
         }
-    if (z == 25)
+    if (z == 28)
         plystats = 0;
     team2.pitchers[pit] = team.pitchers[i[0]];
     changesw = 1;
@@ -1116,19 +1131,15 @@ RLPitPicked (GtkTreeSelection *selection) {
     strcpy (&name[0], &rltname[5]);
 
     gtk_list_store_append (ustore2, &uiter2);
-    gtk_list_store_set (ustore2, &uiter2, UPITNAME, team2.pitchers[pit].id.name, UTNAME2, name,
-                        UYEAR2, team2.pitchers[pit].id.year, UIP, team2.pitchers[pit].pitching.innings,
-                        UERA, (char *) do_era (team2.pitchers[pit].pitching.er * 9, team2.pitchers[pit].pitching.innings,
-                                               team2.pitchers[pit].pitching.thirds),
-                        USO, team2.pitchers[pit].pitching.so, UBB, team2.pitchers[pit].pitching.walks,
-                        UGAMES, team2.pitchers[pit].pitching.games, UGSTARTED, team2.pitchers[pit].pitching.games_started,
+    gtk_list_store_set (ustore2, &uiter2, UPITNAME, team2.pitchers[pit].id.name, UTNAME2, name, UYEAR2, team2.pitchers[pit].id.year, UIP, team2.pitchers[pit].pitching.innings,
+                        UERA, (char *) do_era (team2.pitchers[pit].pitching.er * 9, team2.pitchers[pit].pitching.innings, team2.pitchers[pit].pitching.thirds),
+                        USO, team2.pitchers[pit].pitching.so, UBB, team2.pitchers[pit].pitching.walks, UGAMES, team2.pitchers[pit].pitching.games, UGSTARTED, team2.pitchers[pit].pitching.games_started,
                         USAVES, team2.pitchers[pit].pitching.saves, -1);
 
     if (plystats) {
         strcpy (&name[0], &rltname[5]);
 
-        singles = team2.batters[ply].hitting.hits - (team2.batters[ply].hitting.homers +
-                  team2.batters[ply].hitting.triples + team2.batters[ply].hitting.doubles);
+        singles = team2.batters[ply].hitting.hits - (team2.batters[ply].hitting.homers + team2.batters[ply].hitting.triples + team2.batters[ply].hitting.doubles);
         if (team2.batters[ply].hitting.sf == -1)
             sf = 0;
         else
@@ -1446,7 +1457,7 @@ RemovePlayer (GtkWidget *widget, gpointer *pdata) {
         gtk_list_store_remove (ustore1, &iter);
 
         /* if entry in pitchers matches name remove that, too */
-        for (x = 0; x < 11; x++)
+        for (x = 0; x < 13; x++)
             if (!strcmp (&team2.batters[row_count].id.name[0], &team2.pitchers[x].id.name[0])) {
                 gtk_tree_model_iter_nth_child (GTK_TREE_MODEL (ustore2), &iter2, NULL, x);
                 gtk_list_store_remove (ustore2, &iter2);
@@ -1454,13 +1465,13 @@ RemovePlayer (GtkWidget *widget, gpointer *pdata) {
             }
 
         /* remove db entry(s) and move up following entries */
-        for (; row_count < 24; row_count++)
+        for (; row_count < 27; row_count++)
             team2.batters[row_count] = team2.batters[row_count + 1];
-        team2.batters[24].id.name[0] = ' ';
-        if (x < 11) {
-            for (; x < 10; x++)
+        team2.batters[27].id.name[0] = ' ';
+        if (x < 13) {
+            for (; x < 12; x++)
                 team2.pitchers[x] = team2.pitchers[x + 1];
-            team2.pitchers[10].id.name[0] = ' ';
+            team2.pitchers[12].id.name[0] = ' ';
         }
 
         changesw = 1;
@@ -1485,7 +1496,7 @@ RemovePlayer (GtkWidget *widget, gpointer *pdata) {
         gtk_list_store_remove (ustore2, &iter);
 
         /* if entry in players matches name remove that, too */
-        for (x = 0; x < 25; x++)
+        for (x = 0; x < 28; x++)
             if (!strcmp (&team2.pitchers[row_count].id.name[0], &team2.batters[x].id.name[0])) {
                 /* check if this player did more than just pitch, and if he did ask the user if he wants to remove just the pitching stats or everything */
                 for (y = 0; y < 10; y++) {
@@ -1525,14 +1536,14 @@ RemovePlayer (GtkWidget *widget, gpointer *pdata) {
             }
 
         /* remove db entry(s) and move up following entries */
-        for (; row_count < 10; row_count++)
+        for (; row_count < 12; row_count++)
             team2.pitchers[row_count] = team2.pitchers[row_count + 1];
-        team2.pitchers[10].id.name[0] = ' ';
+        team2.pitchers[12].id.name[0] = ' ';
         if (resp) {
-            if (x < 25) {
-                for (; x < 24; x++)
+            if (x < 28) {
+                for (; x < 27; x++)
                     team2.batters[x] = team2.batters[x + 1];
-                team2.batters[24].id.name[0] = ' ';
+                team2.batters[27].id.name[0] = ' ';
             }
         }
         else {

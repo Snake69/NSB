@@ -15,9 +15,9 @@ determine_starters (char ah) {
     int which, what, pitcher, hora, x, y;
     struct {
         int p, gs;
-    } sort[12];
+    } sort[14];
 
-    for (x = 0; x < 12; x++)
+    for (x = 0; x < 14; x++)
         sort[x].p = sort[x].gs = 0;
 
     if (ah == 'h') {
@@ -43,9 +43,9 @@ determine_starters (char ah) {
     for (x = 0; x < (maxpitchers[hora] - 1); x++)
         for (y = x + 1; y < maxpitchers[hora]; y++)
             if (sort[x].gs < sort[y].gs) {
-                sort[11] = sort[x];
+                sort[13] = sort[x];
                 sort[x] = sort[y];
-                sort[y] = sort[11];
+                sort[y] = sort[13];
             }
 
     for (which = 99, pitcher = 0; pitcher < maxpitchers[hora]; pitcher++) {
@@ -78,7 +78,7 @@ PitcherWithMostRest:
                 continue;
             if (team.pitchers[pitcher].pitching.games_started > 0 && team2.pitchers[pitcher].id.starts_rest > what)
                 /* check for injury */
-                for (x = 0; x < 25; x++)
+                for (x = 0; x < 28; x++)
                     if (!strcmp (&team.pitchers[pitcher].id.name[0], &team.batters[x].id.name[0])) {
                         if (!team2.batters[x].id.injury) {
                             what = team2.pitchers[pitcher].id.starts_rest;
@@ -94,7 +94,7 @@ PitcherWithMostRest:
     if (which == 99)
         /* still no pitcher selected ... pick the first uninjured pitcher */
         for (pitcher = 0; pitcher < maxpitchers[hora]; pitcher++)
-            for (x = 0; x < 25; x++)
+            for (x = 0; x < 28; x++)
                 if (!strcmp (&team.pitchers[pitcher].id.name[0], &team.batters[x].id.name[0])) {
                     if (!team2.batters[x].id.injury) {
                         what = team2.pitchers[pitcher].id.starts_rest;
@@ -205,23 +205,18 @@ select_player (int pos, int hora) {
             if (pos > 6 || pos == 2 || pos == 3)
                 if (team.batters[player].fielding[7].po == -1)
                     /* sometimes the stats for all three outfield positions are combined into one */
-                    games = team.batters[player].fielding[10].games +
-                            team.batters[player].fielding[2].games + team.batters[player].fielding[3].games;
+                    games = team.batters[player].fielding[10].games + team.batters[player].fielding[2].games + team.batters[player].fielding[3].games;
                 else
-                    games = team.batters[player].fielding[7].games + team.batters[player].fielding[8].games +
-                            team.batters[player].fielding[9].games +
+                    games = team.batters[player].fielding[7].games + team.batters[player].fielding[8].games + team.batters[player].fielding[9].games +
                             team.batters[player].fielding[2].games + team.batters[player].fielding[3].games;
             else
-                games = team.batters[player].fielding[4].games + team.batters[player].fielding[5].games +
-                        team.batters[player].fielding[6].games;
+                games = team.batters[player].fielding[4].games + team.batters[player].fielding[5].games + team.batters[player].fielding[6].games;
             if (!pos) {
                 if (team.batters[player].fielding[7].po == -1)
                     /* sometimes the stats for all three outfield positions are combined into one */
-                    games += (team.batters[player].fielding[10].games +
-                             team.batters[player].fielding[2].games + team.batters[player].fielding[3].games);
+                    games += (team.batters[player].fielding[10].games + team.batters[player].fielding[2].games + team.batters[player].fielding[3].games);
                 else
-                    games += (team.batters[player].fielding[7].games + team.batters[player].fielding[8].games +
-                             team.batters[player].fielding[9].games +
+                    games += (team.batters[player].fielding[7].games + team.batters[player].fielding[8].games + team.batters[player].fielding[9].games +
                              team.batters[player].fielding[2].games + team.batters[player].fielding[3].games);
             }
 
@@ -429,20 +424,13 @@ determine_battingorder (char ah) {
             /* skip if player already selected */
             continue;
 
-        if ((float) ((float) team.batters[starters[hora][player]].hitting.atbats /
-                     (float) (team.batters[starters[hora][player]].hitting.so * 10.0)) + 
-
+        if ((float) ((float) team.batters[starters[hora][player]].hitting.atbats / (float) (team.batters[starters[hora][player]].hitting.so * 10.0)) + 
                      (float) (float) ((team.batters[starters[hora][player]].hitting.sb * 2.0) /
-                            (float) (team.batters[starters[hora][player]].hitting.hits +
-                                         team.batters[starters[hora][player]].hitting.bb +
-                                          team.batters[starters[hora][player]].hitting.hbp)) > whatf) {
+                            (float) (team.batters[starters[hora][player]].hitting.hits + team.batters[starters[hora][player]].hitting.bb + team.batters[starters[hora][player]].hitting.hbp)) > whatf) {
 
-            whatf = (float) ((float) team.batters[starters[hora][player]].hitting.atbats /
-                            (float) (team.batters[starters[hora][player]].hitting.so * 10.0) + 
+            whatf = (float) ((float) team.batters[starters[hora][player]].hitting.atbats / (float) (team.batters[starters[hora][player]].hitting.so * 10.0) + 
                     (float) (float) (team.batters[starters[hora][player]].hitting.sb * 2.0) /
-                            (float) (team.batters[starters[hora][player]].hitting.hits +
-                                     team.batters[starters[hora][player]].hitting.bb +
-                                     team.batters[starters[hora][player]].hitting.hbp));
+                            (float) (team.batters[starters[hora][player]].hitting.hits + team.batters[starters[hora][player]].hitting.bb + team.batters[starters[hora][player]].hitting.hbp));
             which = starters[hora][player];
             pos = player;
         }
@@ -584,7 +572,7 @@ void
 clear_stats () {
     int b, s;
 
-    for (b = 0; b < 25; b++) {
+    for (b = 0; b < 28; b++) {
         team.batters[b].hitting.games = 0;
         team.batters[b].hitting.atbats = 0;
         team.batters[b].hitting.runs = 0;
@@ -612,7 +600,7 @@ clear_stats () {
         }
     }
 
-    for (b = 0; b < 11; b++) {
+    for (b = 0; b < 13; b++) {
         /* calculate inn_target (tired factor) while rounding up */
         team.pitchers[b].id.inn_target = (float) team.pitchers[b].pitching.innings / (float) team.pitchers[b].pitching.games + 0.5;
 
@@ -656,7 +644,7 @@ zero_visitor_season () {
 
     visitor_season = visitor;
 
-    for (b = 0; b < 25; b++) {
+    for (b = 0; b < 28; b++) {
         visitor_season.batters[b].id.injury = 0;
         visitor_season.batters[b].hitting.games = 0;
         visitor_season.batters[b].hitting.atbats = 0;
@@ -685,7 +673,7 @@ zero_visitor_season () {
         }
     }
 
-    for (b = 0; b < 11; b++) {
+    for (b = 0; b < 13; b++) {
         visitor_season.pitchers[b].id.starts_rest = 100;
         for (x = 0; x < 4; x++)
             visitor_season.pitchers[b].id.ip_last4g[x] = 0;
@@ -733,7 +721,7 @@ zero_home_season () {
 
     home_season = home;
 
-    for (b = 0; b < 25; b++) {
+    for (b = 0; b < 28; b++) {
         home_season.batters[b].id.injury = 0;
         home_season.batters[b].hitting.games = 0;
         home_season.batters[b].hitting.atbats = 0;
@@ -762,7 +750,7 @@ zero_home_season () {
         }
     }
 
-    for (b = 0; b < 11; b++) {
+    for (b = 0; b < 13; b++) {
         home_season.pitchers[b].id.starts_rest = 100;
         for (x = 0; x < 4; x++)
             home_season.pitchers[b].id.ip_last4g[x] = 0;
@@ -836,7 +824,7 @@ send_stats (int sock, char which) {
     /* send stats to client */
     sock_puts (sock, &buffer1[0]);
 
-    for (x = 0; x < 25; x++) {
+    for (x = 0; x < 28; x++) {
         sprintf (buffer1, "%s\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n", team.batters[x].id.name, team.batters[x].id.teamid,
                  team.batters[x].id.batslr, team.batters[x].id.throwslr, team.batters[x].id.year, team.batters[x].id.injury,
                  team.batters[x].id.starts_rest, team.batters[x].id.ip_last4g[0], team.batters[x].id.ip_last4g[1], team.batters[x].id.ip_last4g[2],
@@ -858,12 +846,11 @@ send_stats (int sock, char which) {
         sock_puts (sock, &buffer1[0]);
         for (y = 0; y < 11; y++) {
             sprintf (buffer1, "%d\n%d\n%d\n%d\n%d\n%d\n", team.batters[x].fielding[y].games, team.batters[x].fielding[y].po,
-                     team.batters[x].fielding[y].dp, team.batters[x].fielding[y].a, team.batters[x].fielding[y].pb,
-                     team.batters[x].fielding[y].e);
+                     team.batters[x].fielding[y].dp, team.batters[x].fielding[y].a, team.batters[x].fielding[y].pb, team.batters[x].fielding[y].e);
             sock_puts (sock, &buffer1[0]);
         }
     }
-    for (x = 0; x < 11; x++) {
+    for (x = 0; x < 13; x++) {
         sprintf (buffer1, "%s\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n%d\n", team.pitchers[x].id.name, team.pitchers[x].id.teamid,
                  team.pitchers[x].id.batslr, team.pitchers[x].id.throwslr, team.pitchers[x].id.year, team.pitchers[x].id.injury,
                  team.pitchers[x].id.starts_rest, team.pitchers[x].id.ip_last4g[0], team.pitchers[x].id.ip_last4g[1], team.pitchers[x].id.ip_last4g[2],
@@ -872,12 +859,10 @@ send_stats (int sock, char which) {
         sock_puts (sock, &buffer1[0]);
 
         sprintf (buffer1, "%d\n%d\n%d\n%d\n%d\n%d\n%d\n", team.pitchers[x].pitching.games, team.pitchers[x].pitching.games_started,
-                 team.pitchers[x].pitching.innings, team.pitchers[x].pitching.thirds, team.pitchers[x].pitching.wins,
-                 team.pitchers[x].pitching.losses, team.pitchers[x].pitching.saves);
+                 team.pitchers[x].pitching.innings, team.pitchers[x].pitching.thirds, team.pitchers[x].pitching.wins, team.pitchers[x].pitching.losses, team.pitchers[x].pitching.saves);
         sock_puts (sock, &buffer1[0]);
         sprintf (buffer1, "%d\n%d\n%d\n%d\n%d\n%d\n", team.pitchers[x].pitching.bfp, team.pitchers[x].pitching.hits,
-                 team.pitchers[x].pitching.doubles, team.pitchers[x].pitching.triples, team.pitchers[x].pitching.homers,
-                 team.pitchers[x].pitching.runs);
+                 team.pitchers[x].pitching.doubles, team.pitchers[x].pitching.triples, team.pitchers[x].pitching.homers, team.pitchers[x].pitching.runs);
         sock_puts (sock, &buffer1[0]);
         sprintf (buffer1, "%d\n%d\n%d\n%d\n%d\n%d\n", team.pitchers[x].pitching.er, team.pitchers[x].pitching.rbi, team.pitchers[x].pitching.cg,
                  team.pitchers[x].pitching.gf, team.pitchers[x].pitching.sho, team.pitchers[x].pitching.svopp);
@@ -886,8 +871,7 @@ send_stats (int sock, char which) {
                  team.pitchers[x].pitching.walks, team.pitchers[x].pitching.so, team.pitchers[x].pitching.ibb, team.pitchers[x].pitching.sh);
         sock_puts (sock, &buffer1[0]);
         sprintf (buffer1, "%d\n%d\n%d\n%d\n%d\n%d\n", team.pitchers[x].pitching.sf, team.pitchers[x].pitching.wp,
-                 team.pitchers[x].pitching.balks, team.pitchers[x].pitching.hb, team.pitchers[x].pitching.opp_ab,
-                 team.pitchers[x].pitching.statsind);
+                 team.pitchers[x].pitching.balks, team.pitchers[x].pitching.hb, team.pitchers[x].pitching.opp_ab, team.pitchers[x].pitching.statsind);
         sock_puts (sock, &buffer1[0]);
     }
 }
@@ -1114,7 +1098,7 @@ void
 combine_stats () {
     int x, y;
 
-    for (x = 0; x < 25; x++) {
+    for (x = 0; x < 28; x++) {
         team.batters[x].hitting.games += team2.batters[x].hitting.games;
         team.batters[x].hitting.atbats += team2.batters[x].hitting.atbats;
         team.batters[x].hitting.runs += team2.batters[x].hitting.runs;
@@ -1145,7 +1129,7 @@ combine_stats () {
         }
     }
 
-    for (x = 0; x < 11; x++) {
+    for (x = 0; x < 13; x++) {
         team.pitchers[x].id.starts_rest = 0;
 
         team.pitchers[x].id.ip_last4g[3] = team.pitchers[x].id.ip_last4g[2] = team.pitchers[x].id.ip_last4g[1] =
@@ -1220,7 +1204,7 @@ get_stats (int sock) {
     sock_gets (sock, &buffer[0], sizeof (buffer));
     team.division = buffer[0];
 
-    for (x = 0; x < 25; x++) {
+    for (x = 0; x < 28; x++) {
         sock_gets (sock, &buffer[0], sizeof (buffer));
         strcpy (&team.batters[x].id.name[0], &buffer[0]);
         sock_gets (sock, &buffer[0], sizeof (buffer));
@@ -1294,7 +1278,7 @@ get_stats (int sock) {
             team.batters[x].fielding[y].e = atoi (&buffer[0]);
         }
     }
-    for (x = 0; x < 11; x++) {
+    for (x = 0; x < 13; x++) {
         sock_gets (sock, &buffer[0], sizeof (buffer));
         strcpy (&team.pitchers[x].id.name[0], &buffer[0]);
         sock_gets (sock, &buffer[0], sizeof (buffer));
@@ -1422,10 +1406,10 @@ send_DOB () {
     buffer1[0] = '\0';
 
     /* determine the number of players on the two teams */
-    for (plyrs[0] = 0; plyrs[0] < 25; plyrs[0]++)
+    for (plyrs[0] = 0; plyrs[0] < 28; plyrs[0]++)
         if (home.batters[plyrs[0]].id.name[0] == ' ' || !strlen (&home.batters[plyrs[0]].id.name[0]))
             break;
-    for (plyrs[1] = 0; plyrs[1] < 25; plyrs[1]++)
+    for (plyrs[1] = 0; plyrs[1] < 28; plyrs[1]++)
         if (visitor.batters[plyrs[1]].id.name[0] == ' ' || !strlen (&visitor.batters[plyrs[1]].id.name[0]))
             break;
 

@@ -30,8 +30,7 @@ OffensiveCommand (gchar *valid) {
           N - normal, batter swings away
           A - computer manages from here on out
     */
-    GtkWidget *box, *hbox, *but1, *but2, *but3, *but4, *but5, *but6, *but7, *but8, *but9, *but10, *but11, *but12,
-              *but13;
+    GtkWidget *box, *hbox, *but1, *but2, *but3, *but4, *but5, *but6, *but7, *but8, *but9, *but10, *but11, *but12, *but13;
     GtkLabel *lab;
 
     cresp = ' ';
@@ -225,8 +224,7 @@ ReturnOff (GtkWidget *widget, gpointer pdata) {
 }
 
 GtkWidget *swin, *batterbutton, *br1button, *br2button, *br3button, *lubutton[10];
-gint batter, br[3], brind[3], batterind, newbatter, newbr[3], t, plyr[10], pos[10], bonum[10], roster[2][25],
-     lubutind[10], newlu[10], which[2][25], dhind;
+gint batter, br[3], brind[3], batterind, newbatter, newbr[3], t, plyr[10], pos[10], bonum[10], roster[2][28], lubutind[10], newlu[10], which[2][28], dhind;
 struct {
     gint player[30],
          pos[30];
@@ -240,7 +238,7 @@ SeeLineup (int sock) {
     GtkWidget *vbox, *hbox, *vbox1, *vbox2, *vbox3, *vbox4, *but1, *but2, *but3, *plytable, *scrolled_window, *labp;
     GtkLabel *lab;
     GSList *group, *grouplu = NULL;
-    gint ha, bcol, x, y, z, zz, used[2][25], singles, sf, gp;
+    gint ha, bcol, x, y, z, zz, used[2][28], singles, sf, gp;
     gchar buf[500], work[500], *cc;
 
     lineupsw = 2;    /* set to indicate we're processing this dialog */
@@ -293,7 +291,7 @@ SeeLineup (int sock) {
                 bo[z][x].player[y] = bo[z][x].pos[y] = 99;
         for (x = 0; x < 15; x++)
             p[z].pitcher[x] = 99;
-        for (x = 0; x < 25; x++)
+        for (x = 0; x < 28; x++)
             roster[z][x] = which[z][x] = used[z][x] = 99;
     }
 
@@ -371,10 +369,10 @@ SeeLineup (int sock) {
             for (zz = 0; zz < 15; zz++) {
                 if (p[z].pitcher[zz] == 99)
                     continue;
-                for (x = 0; x < 25; x++)
+                for (x = 0; x < 28; x++)
                     if (!strcmp (&team.batters[x].id.name[0], &team.pitchers[p[z].pitcher[zz]].id.name[0]))
                         break;
-                for (y = 0; y < 25; y++)
+                for (y = 0; y < 28; y++)
                     if (used[z][y] == 99) {
                         used[z][y] = x;
                         break;
@@ -389,7 +387,7 @@ SeeLineup (int sock) {
                     continue;
                 if (bo[z][zz].player[x] == bo[z][zz].player[x - 1])  /* same player, different positions? */
                     continue;
-                for (y = 0; y < 25; y++)
+                for (y = 0; y < 28; y++)
                     if (used[z][y] == 99) {
                         used[z][y] = bo[z][zz].player[x];
                         break;
@@ -402,7 +400,7 @@ SeeLineup (int sock) {
             roster[z][x] = bo[z][x].player[0];
             which[z][x] = 0;
         }
-        for (x = 0, y = 9; x < 25; x++, y++)
+        for (x = 0, y = 9; x < 28; x++, y++)
             if (used[z][x] != 99) {
                 roster[z][y] = used[z][x];
                 if (dhind && y == 9)
@@ -412,8 +410,8 @@ SeeLineup (int sock) {
             }
             else
                 break;
-        for (y = 0; y < 25; y++)
-            for (zz = 0; zz < 25; zz++)
+        for (y = 0; y < 28; y++)
+            for (zz = 0; zz < 28; zz++)
                 if (y == roster[z][zz])
                     break;
                 else
@@ -479,7 +477,7 @@ SeeLineup (int sock) {
 
         /* add some stats */
         if (batter == 99 && bo[t][x].pos[0] == 1) {
-            for (y = 0; y < 11; y++)
+            for (y = 0; y < 13; y++)
                 if (!strcmp (&team.batters[roster[t][x]].id.name[0], &team.pitchers[y].id.name[0]))
                     break;
             strcat (&work[0], "; IP-");
@@ -556,7 +554,7 @@ SeeLineup (int sock) {
         work[y++] = '\0';
 
         /* add some stats */
-        for (y = 0; y < 11; y++)
+        for (y = 0; y < 13; y++)
             if (!strcmp (&team.batters[roster[t][x]].id.name[0], &team.pitchers[y].id.name[0]))
                 break;
         strcat (&work[0], "; IP-");
@@ -698,7 +696,7 @@ SeeLineup (int sock) {
     gtk_table_set_col_spacings (GTK_TABLE (plytable), 2);
     gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled_window), plytable);
 
-    for (x = 0, y = 0; x < 25; x++)
+    for (x = 0, y = 0; x < 28; x++)
         if (which[t][x] > 1 && !team2.batters[roster[t][x]].id.injury) {
             cc = index (&team.batters[roster[t][x]].id.name[0], ',');
             if (cc == NULL)
@@ -754,7 +752,7 @@ SeeLineup (int sock) {
             }
             if (team.batters[roster[t][x]].fielding[1].games) {
                 /* this player [also] pitched */
-                for (zz = 0; zz < 11; zz++)
+                for (zz = 0; zz < 13; zz++)
                     if (!strcmp (&team.batters[roster[t][x]].id.name[0], &team.pitchers[zz].id.name[0]))
                         break;
                 strcat (&work[0], "; IP-");
@@ -798,7 +796,7 @@ SeeLineup (int sock) {
     gtk_table_set_col_spacings (GTK_TABLE (plytable), 2);
     gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled_window), plytable);
 
-    for (x = 0, y = 0; x < 25; x++)
+    for (x = 0, y = 0; x < 28; x++)
         if (which[t][x] == 1 || team2.batters[roster[t][x]].id.injury) {
             cc = index (&team.batters[roster[t][x]].id.name[0], ',');
             if (cc == NULL)
@@ -883,7 +881,7 @@ ResetLDsp (GtkWidget *widget, gpointer pdata) {
 
             /* add some stats */
             if (batter == 99 && bo[t][x].pos[0] == 1) {
-                for (y = 0; y < 11; y++)
+                for (y = 0; y < 13; y++)
                     if (!strcmp (&team.batters[roster[t][x]].id.name[0], &team.pitchers[y].id.name[0]))
                         break;
                 strcat (&work[0], "; IP-");
@@ -937,7 +935,7 @@ ResetLDsp (GtkWidget *widget, gpointer pdata) {
             work[y++] = '\0';
 
             /* add some stats */
-            for (y = 0; y < 11; y++)
+            for (y = 0; y < 13; y++)
                 if (!strcmp (&team.batters[roster[t][x]].id.name[0], &team.pitchers[y].id.name[0]))
                     break;
             strcat (&work[0], "; IP-");
@@ -1419,7 +1417,7 @@ void
 ChangeLineup (gint sock) {
     GtkWidget *vbox, *hbox, *vbox1, *vbox2, *vbox3, *vbox4, *but2, *but3, *plytable, *scrolled_window, *labp, *sep;
     GtkLabel *lab;
-    gint bcol, x, y, z, zz, used[25], ha, singles, sf, gp;
+    gint bcol, x, y, z, zz, used[28], ha, singles, sf, gp;
     gchar work[500], work1[100], *cc, inji;
     struct {
         int pitcher[15];
@@ -1434,7 +1432,7 @@ ChangeLineup (gint sock) {
             cbo[x].player[y] = cbo[x].pos[y] = 99;
     for (x = 0; x < 15; x++)
         p.pitcher[x] = 99;
-    for (x = 0; x < 25; x++)
+    for (x = 0; x < 28; x++)
         roster[0][x] = which[0][x] = used[x] = 99;
 
     work[0] = buffer[2];
@@ -1484,10 +1482,10 @@ ChangeLineup (gint sock) {
         for (zz = 0; zz < 15; zz++) {
             if (p.pitcher[zz] == 99)
                 continue;
-            for (x = 0; x < 25; x++)
+            for (x = 0; x < 28; x++)
                 if (!strcmp (&team.batters[x].id.name[0], &team.pitchers[p.pitcher[zz]].id.name[0]))
                     break;
-            for (y = 0; y < 25; y++)
+            for (y = 0; y < 28; y++)
                 if (used[y] == 99) {
                     used[y] = x;
                     break;
@@ -1501,7 +1499,7 @@ ChangeLineup (gint sock) {
                 continue;
             if (cbo[zz].player[x] == cbo[zz].player[x - 1])  /* same player, different positions? */
                 continue;
-            for (y = 0; y < 25; y++)
+            for (y = 0; y < 28; y++)
                 if (used[y] == 99) {
                     used[y] = cbo[zz].player[x];
                     break;
@@ -1513,7 +1511,7 @@ ChangeLineup (gint sock) {
         roster[0][x] = cbo[x].player[0];
         which[0][x] = 0;
     }
-    for (x = 0, y = 9; x < 25; x++, y++)
+    for (x = 0, y = 9; x < 28; x++, y++)
         if (used[x] != 99) {
             roster[0][y] = used[x];
             if (dhind && y == 9)
@@ -1523,8 +1521,8 @@ ChangeLineup (gint sock) {
         }
         else
             break;
-    for (y = 0; y < 25; y++)
-        for (zz = 0; zz < 25; zz++)
+    for (y = 0; y < 28; y++)
+        for (zz = 0; zz < 28; zz++)
             if (y == roster[0][zz])
                 break;
             else
@@ -1583,7 +1581,7 @@ ChangeLineup (gint sock) {
 
         /* add some stats */
         if (cbo[x].pos[0] == 1) {
-            for (y = 0; y < 11; y++)
+            for (y = 0; y < 13; y++)
                 if (!strcmp (&team.batters[roster[t][x]].id.name[0], &team.pitchers[y].id.name[0]))
                     break;
             strcat (&work[0], "; IP-");
@@ -1703,7 +1701,7 @@ ChangeLineup (gint sock) {
     gtk_table_set_col_spacings (GTK_TABLE (plytable), 2);
     gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled_window), plytable);
 
-    for (x = 0, y = 0; x < 25; x++)
+    for (x = 0, y = 0; x < 28; x++)
         if (which[t][x] > 1 && !team2.batters[roster[t][x]].id.injury) {
             cc = index (&team.batters[roster[t][x]].id.name[0], ',');
             if (cc == NULL)
@@ -1760,7 +1758,7 @@ ChangeLineup (gint sock) {
 
             if (team.batters[roster[t][x]].fielding[1].games) {
                 /* this player [also] pitched */
-                for (zz = 0; zz < 11; zz++)
+                for (zz = 0; zz < 13; zz++)
                     if (!strcmp (&team.batters[roster[t][x]].id.name[0], &team.pitchers[zz].id.name[0]))
                         break;
                 strcat (&work[0], "; IP-");
@@ -1804,7 +1802,7 @@ ChangeLineup (gint sock) {
     gtk_table_set_col_spacings (GTK_TABLE (plytable), 2);
     gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled_window), plytable);
 
-    for (x = 0, y = 0; x < 25; x++)
+    for (x = 0, y = 0; x < 28; x++)
         if (which[t][x] == 1 || team2.batters[roster[t][x]].id.injury) {
             cc = index (&team.batters[roster[t][x]].id.name[0], ',');
             if (cc == NULL)

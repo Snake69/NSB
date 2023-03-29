@@ -2,6 +2,9 @@
 
         American League                   National League
 
+2022    Justin Verlander Houston          Sandy Alcantara     Miami
+2021    Robbie Ray       Toronto          Corbin Burnes       Milwaukee
+2020    Shane Bieber     Cleveland        Trevor Bauer        Cincinnati
 2019    Justin Verlander Houston          Jacob deGrom        New York
 2018    Blake Snell      Tampa Bay        Jacob deGrom        New York
 2017    Corey Kluber     Cleveland        Max Scherzer        Washington

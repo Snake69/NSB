@@ -30,9 +30,7 @@ CreateNSBID (int chgid) {
         strcat (&labelmsg[0], ":");
     }
 
-    dlgCNSBID = gtk_dialog_new_with_buttons ("Create an NSB ID", GTK_WINDOW (mainwin),
-                GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT, GTK_STOCK_OK, GTK_RESPONSE_OK, GTK_STOCK_CANCEL,
-                GTK_RESPONSE_CANCEL, NULL);
+    dlgCNSBID = gtk_dialog_new_with_buttons ("Create an NSB ID", GTK_WINDOW (mainwin), GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT, GTK_STOCK_OK, GTK_RESPONSE_OK, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL, NULL);
 
     hbox = gtk_hbox_new (FALSE, 8);
     gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);

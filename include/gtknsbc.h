@@ -16,7 +16,7 @@
 #define WINSIZEY 480
 
 #define APPTITLE "GTK NetStatsBaseball Client"
-#define APPVERSION "V0.9.9.7"
+#define APPVERSION "V0.9.9.8"
 #define APPAUTHOR "Marshall Lake"
 
 gchar hs[256];  /* name of NSB server */
@@ -79,8 +79,7 @@ struct autoplayparms {
             int games, atbats, runs, hits, doubles, triples, homers, rbis, bb, so, hbp, dp, sb, cs, ibb, sh, sf, ba, sa, oba;
         } hitting;
         struct {
-            int games, gs, ip, wins, losses, sv, bfp, hits, db, tp, hr, runs, er, rbi, cg, gf, sho, svopp, sb, cs, bb, so, ibb, sh, sf, wp, b, hb, ab, era,
-                pct, oppba;
+            int games, gs, ip, wins, losses, sv, bfp, hits, db, tp, hr, runs, er, rbi, cg, gf, sho, svopp, sb, cs, bb, so, ibb, sh, sf, wp, b, hb, ab, era, pct, oppba;
         } pitching;
         struct {
             struct {
@@ -96,7 +95,7 @@ struct {
     struct {
         gchar pname[50], bmonth[3], bday[3], byear[5];
         GdkPixbuf *pic;
-    } plyr[25];
+    } plyr[28];
 } ppics[2];     /* instance 0 = home team, instance 1 = visitor */
 
 #endif

@@ -132,6 +132,7 @@ CF - Cy Seymour, 1905 Cincinnati Reds
      Fred Lynn, 1979 Boston Red Sox
      Willie McGee, 1985 St Louis Cardinals
      Ken Griffey, 1997 Seattle Mariners
+     Aaron Judge, 2022 New York Yankees
 RF - Ty Cobb, 1909 Detroit Tigers
      Joe Jackson, 1911 Cleveland Naps
      Joe Jackson, 1912 Cleveland Naps
@@ -169,7 +170,8 @@ DH - Hal McRae, 1976 Kansas City Royals
      Edgar Martinez, 2000 Seattle Mariners
      David Ortiz, 2005 Boston Red Sox
      David Ortiz, 2006 Boston Red Sox
-SP - Rube Waddell, 1905 Philadelphia Athletics
+SP - Cy Young, 1901 Boston Americans
+     Rube Waddell, 1905 Philadelphia Athletics
      Cy Young, 1908 Boston Red Sox
      Ed Walsh, 1908 Chicago White Sox
      Addie Joss, 1908 Cleveland Naps
@@ -181,6 +183,8 @@ SP - Rube Waddell, 1905 Philadelphia Athletics
      Dutch Leonard, 1914 Boston Red Sox
      Pete Alexander, 1915 Philadephia Phillies
      Babe Ruth, 1916 Boston Red Sox
+     Dolph Luque, 1923 Cincinnati Reds
+     Dazzy Vance, 1924 Brooklyn Robins
      Lefty Grove, 1931 Philadelphia Athletics
      Carl Hubbell, 1933 New York Giants
      Hal Newhouser, 1945 Detroit Tigers
@@ -211,6 +215,7 @@ SP - Rube Waddell, 1905 Philadelphia Athletics
      Fernando Valenzuela, 1985 Los Angeles Dodgers
      Dwight Gooden, 1985 New York Mets
      John Tudor, 1985 St Louis Cardinals
+     Roger Clemens, 1986 Boston Red Sox
      Orel Hershiser, 1988 Los Angeles Dodgers
      Roger Clemens, 1990 Boston Red Sox
      Greg Maddux, 1994 Atlanta Braves

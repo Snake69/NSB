@@ -82,7 +82,7 @@ DoStartingLineup (gchar which) {
     gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled_window), teamtable);
 
     /* fill in table */
-    for (x = 0; x < 25; x++) {
+    for (x = 0; x < 28; x++) {
         if (team.batters[x].id.name[0] == ' ' || !strlen (&team.batters[x].id.name[0]))
             break;
 
@@ -130,7 +130,7 @@ DoStartingLineup (gchar which) {
         }
         if (team.batters[x].fielding[1].games) {
             /* this player [also] pitched */
-            for (y = 0; y < 11; y++)
+            for (y = 0; y < 13; y++)
                 if (!strcmp (&team.batters[x].id.name[0], &team.pitchers[y].id.name[0]))
                     break;
             if (gp != team.batters[x].fielding[1].games)

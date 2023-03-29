@@ -1,7 +1,7 @@
 #ifndef _TEAMS_H_
 #define _TEAMS_H_
 
-#define NUMBER_OF_TEAMS 67   /* number of possible team names */
+#define NUMBER_OF_TEAMS 68   /* number of possible team names */
 
 struct {
     int  id, yrspan[4];
@@ -15,8 +15,8 @@ struct {
                  year;
     char         league,        /* A = American, N = National */
                  division;      /* E = Eastern, C = Central, W = Western, or space for none */
-    struct bttr  batters[25];
-    struct ptchr pitchers[11];
+    struct bttr  batters[28];
+    struct ptchr pitchers[13];
 } team, team2, visitor, home, visitor_cur, home_cur, visitor_season, home_season, dteam;
 
 #endif

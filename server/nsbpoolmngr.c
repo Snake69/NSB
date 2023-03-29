@@ -38,7 +38,7 @@ usage () {
 */
 void
 version () {
-    fprintf (stderr, "\nVersion info:  nsbpoolmngr v0.9.9.7\n\n");
+    fprintf (stderr, "\nVersion info:  nsbpoolmngr v0.9.9.8\n\n");
 }
 
 /*

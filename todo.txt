@@ -1,15 +1,70 @@
-add Preference ... specify NSB server to connect to at startup
+add to league set-up file:
+  number of games each team plays: 1901-1903 140; 1904-1918 154; 1919 140; 1920-1961 154; 1962-2019 162; 2020 60
+  number of games each team plays ...
+    within league: 1901-1903 140; 1904-1918 154; 1919 140; 1920-1961 154; 1962-1996 162; 1997 west divisions 146, all other 147; 1998 146; 1999-2012 AL 144, 4 NL teams 144, 12 NL teams 147; 2013-2019 142; 2020 40
+    within division: 1901-1903 140; 1904-1918 154; 1919 140; 1920-1961 154; 1962-1968 162; 1969-2012 18 X team; 2013-2019 19 X team; 2020 40
+    interleague:  1901-1996 0; 1997 west divisions 16, all other 15; 1998 16; 1999-2012 AL 18, 4 NL teams 18, 12 NL teams 15; 2013-2020 20
+for 2020 only
+  NL has DH
+  postseason
+    the top two teams from each division, plus the teams from each league with the next two best records
+    Wild Card Series (all 16 teams play) will be best of 3, Division Series best of 5, League Championship Series best of 7,
+      World Series best of 7
+for 2020 going forward
+  pitcher must face at least 3 batters or end half-inning
+  in double-headers games are 7 innings
+  all extra innings (NOT post-season)
+    start with player at 2nd base (player in batting order immediately preceding 1st batter up;
+      if pitcher then may be pitcher or player preceding pitcher in batting order)
+    in calculating ER, player placed on 2nd base is there because of an error (but it's not an error in the boxscore)
+for 2021:
+  max # of pitchers on active roster - 13
+  active roster size 26 players
+  another team added to post-season
+  wild card game best of 3
+
+allow number to be entered in alert asking for # of games in series
+add factor to Evaluate Team Seasons ... MUST win WS to qualify -and/or- add a factor strength for winning WS
+add options to Evaluate Team Seasons
+  include selected team name(s)
+  exclude selected team name(s)
+  display results Worst-2-Best (would need to change some factors in dialog, and would need to change calculations)
+calculating "Evaluate Team Seasons":
+  "number of games finishing ahead of the second-place team in the
+    division/league" - adjust for number of games played and number of
+    teams in the division/league
+
+for HOF rather than display HOF.txt, take user to https://en.wikipedia.org/wiki/List_of_members_of_the_Baseball_Hall_of_Fame
+add INFO to main screen when sox or espeak not installed
+HR cycle (solo HR, 2-run HR, 3-run HR & bases loaded HR by same person in 1 game)
+  never been done in MLB
+  if done, do something outrageous
+some stats too far off, especially ERA (moreso pitchers with low IPs like closers)
+  maybe factor out stats to a baseline (like 1000 PA & 2000 BFP) when calculating action
+comparison of real life stats and stats produced from NSB -
+  too many total ABs in NSB (is that because players don't miss games?)
+  too many total IPs in NSB (this may account for the previous mis-comparison)
+  too many runs scored in NSB (caused by too many IPs and ABs above?)
+  stats need to be spread out (standard deviation) a little (good players need to be better and bad players need to be worse)
+  2020 season - way too many errors when a full 162-game season played
+  need further comparison for various years
+
+add command line option and Preference ... specify NSB server to connect to at startup
+  add note to man entry for gtknsbclient that command line option takes precedence over value in Preferences
+  add note to manual that command line option takes precedence over value in Preferences
+say name of batter as he comes to plate
+say name of pitcher at the beginning of half-inning
+add backup & restore of data
+allow user to send an email (using Administration->Users...) to another to set up a time for a user vs user game
 auto-play - allow ability to get post-season category leaders
 add play-by-play option to AutoPlay setup (this will make for large emails; maybe allow it only for post-season games?)
 sometimes pitchers (only starting pitchers ?) pitch too many innings
-add option to nsbserver command line to disallow Waiting Pool
-write program to check if there's a more suitable player available for 25-man roster for each team
-for 2020 the real-life roster is increasing to 26 players
-         pitcher must face at least 3 batters or end half-inning
-         max 13 pitchers on roster
+write program to check if there's a more suitable player available for 25-man (or 28-man for 2020, or 26 for 2021 & later) roster for each team
 WAR formula - https://en.wikipedia.org/wiki/Wins_Above_Replacement#Calculation
 allow computer to choose starting position players randomly based upon percentage of games played at a position
 when user deletes a UC team check if it is involved in a currently ongoing season & if so delete season (warn user first)
+use real life active roster sizes
+  active roster sizes: 1901-1907 14; 1908-1913 17; 1914-2019 25; 2020 28; 2021-current 26
 provide an option to nsbserver to kill any running processes
   https://stackoverflow.com/questions/6744979/kill-a-process-from-linux-application
   https://www.linuxquestions.org/questions/programming-9/c-program-to-kill-process-4175444948/
@@ -22,7 +77,6 @@ include a progress bar when playing portion of league (it appears the only way
   but then the server algorithm would need to be changed)
     maybe display a box showing "Day xxx in schedule, Game: xxx" where xxx changes
       after each day and each game
-add a "List U-C Teams" button to the Create Team dialog
 add post-season game scores to Results files for NSB play
 allow user to see the NSB regular season schedule at any time, and game scores for games already played
 any playoff games which are part of the regular season should be added dynamically
@@ -35,6 +89,7 @@ auto-playing a season with no PS (e.g., 1901), 2 teams end up tied for 1st, ther
 double-check all season ending possibilities are handled properly (in one example, currently if 3 teams tie for 2 WC slots,
   team x plays team y & winner plays team z; it should be loser plays team z)
 allow user to formulate queries (see queryplan.txt)
+add another factor when calculating fielding (fielding range?)
 
 allow user to create a season comprised of:
   teams in results from running of Extras->Evaluate Team Seasons
@@ -60,15 +115,18 @@ allow user to use lifetime stats when determining players to add to team when au
 allow user to edit/create stats/players
 add date of first connection to nsbdb[] and USERS display
   include a conversion program to convert the old format to the new format so a user doesn't have to lose his USER file
-think about leaving the stats for traded players broken up on the teams (or perhaps give the user the option of one or the other)
+add all players who played in a season
+  active roster size will stay the same
+  players can be sent down and brought up
+  a player can be brought up when a player on active roster is injured
+  use all players when calculating stats which include league averages (league averages will now be more accurate for real life)
+consider leaving the stats for traded players broken up on the teams (or perhaps give the user the option of one or the other)
   they played on rather than all the player's stats on one team
     give user option of playing with player real-life stats split on multiple teams
       (because of real-life trades which occurred) or player stats combined onto one team
     splitting up stats may be weird if going to a "bring up player when there's an injury" system
         see for 40-man roster - https://www.baseball-almanac.com/articles/baseball_rosters.shtml
     there will be times where position players pitched; those pitching (and fielding) stats should remain in the 25-man roster
-some stats too far off, especially ERA (moreso pitchers with low IPs like closers)
-  maybe factor out stats to a base (like 1000 PA & 2000 BFP)
 improve/redo schedule algorithm
   MLB constraints:
         Each club plays 162 games and 52 series, including 13 at home on weekends.
@@ -99,13 +157,6 @@ whenever there is a playoff round where the teams are unknown (usually the 2nd r
   when there are 2 WC teams), after the previous round completes, the next round teams
   should be shown in the standings display
 auto-creation of league by year - 1981, special case:  split season + special post-season
-add option to display results Worst-2-Best in Evaluate Team Seasons
-  (would need to change some factors in dialog, and would need to change calculations)
-add to league set-up file:  number of games each team plays in season
-  active roster size by years - https://www.baseball-almanac.com/articles/baseball_rosters.shtml
-  also, auto-creating a league by season, the number of games each team plays should be dictated by the number of games they played
-    that season in real life
-    https://en.wikipedia.org/wiki/Major_League_Baseball_schedule
 allow user to generate team lifetime stats based upon Season Results factors:
     team or city
     years
@@ -134,6 +185,9 @@ auto-create team
   add a selection for results of formula "best to worst" or "worst to best"
   allow separate formulas for each Position Player
   allow formulas for minimum requirements
+  add option for roster size
+    # pitchers
+    # position players
   validate "years to include" against years team is available if user selecting
     1 team to use
 Evaluate Player Seasons ...
@@ -181,11 +235,6 @@ add STOP SPEECH and START SPEECH buttons to gameplay dialog
 enhance computer play with true AI (use fann?)
 allow stats to be sorted dynamically by any particular field for "By Team" and
   "Team Totals" (user clicks on a column heading to re-sort and re-display)
-calculating "Evaluate Team Seasons":
-  "number of games finishing ahead of the second-place team in the
-    division/league" - adjust for number of games played and number of teams in
-    the division/league
-  allow user to include or exclude certain teamnames
 add menu items for saving (loading will be done from season set-up dialog)
   a league set-up ... change the way the client and server communicate
   when setting up a league (now the server sends team names rather than team
@@ -301,14 +350,6 @@ outfielders should have occasional assists from more than just failed
 if hit & run is on and the batter lines out to an infielder with less
   than 2 outs then the runner should be doubled up
   also, if batter strikes out then baserunner(s) will attempt a steal
-comparison of real life stats and stats produced from NSB - too many
-  total ABs in NSB (is that because players don't miss games?)
-  too many total IPs in NSB (this may account for the previous
-    mis-comparison)
-  too many runs scored in NSB (caused by too many IPs and ABs above?)
-  stats need to be spread out (standard deviation) a little (good players
-    need to be better and bad players need to be worse)
-  need further comparison for various years
 add button to gameplay dialog to allow user to take over managing from
   computer
 add a PAUSE button to the gameplay dialog which will be sensitive only
@@ -349,9 +390,6 @@ add option to server to disallow certain users, or to allow only
   certain users
 more records ... total bases, extra base hits
 add context help
-if user quits client while sound is playing the terminal needs resetting
-  (if executed from the command line) - may have to fork and kill the
-  mplayer or sox process before quitting
 category leaders - if a player does not have the minimum requirement to
   qualify for the lead in BA, SLGPCT or OBA but if a number of hitless
   ABs is added to qualify and the player still leads in the category
@@ -496,6 +534,9 @@ run its4, flawfinder, rats, pscan & splint against the C source
 change all "atoi" to "strtol"
 make all strxxx calls strnxxx calls
 re-emplement email interface? (either that or remove email code from server)
+MLB data for download, see ...
+  https://sabr.org/sabermetrics/data
+  https://sabr.org/how-to/statistical-databases-and-websites
 
 
 known bugs, don't know how to fix -

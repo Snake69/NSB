@@ -57,7 +57,7 @@ populate () {
                 strcpy (&teaminfo[x].teamabbrev[0], "Cle");
                 strcpy (&teaminfo[x].teamname[0], "Cleveland Indians");
                 teaminfo[x].yrspan[0] = 1915;
-                teaminfo[x].yrspan[1] = MAX_YEAR;
+                teaminfo[x].yrspan[1] = 2021;
                 teaminfo[x].yrspan[2] = teaminfo[x].yrspan[3] = 0;
                 break;
             case 6:
@@ -537,6 +537,14 @@ populate () {
                 strcpy (&teaminfo[x].teamabbrev[0], "Mia");
                 strcpy (&teaminfo[x].teamname[0], "Miami Marlins");
                 teaminfo[x].yrspan[0] = 2012;
+                teaminfo[x].yrspan[1] = MAX_YEAR;
+                teaminfo[x].yrspan[2] = teaminfo[x].yrspan[3] = 0;
+                break;
+            case 68:
+                strcpy (&teaminfo[x].filename[0], "ClevelandGuardians");
+                strcpy (&teaminfo[x].teamabbrev[0], "CleGua");
+                strcpy (&teaminfo[x].teamname[0], "Cleveland Guardians");
+                teaminfo[x].yrspan[0] = 2022;
                 teaminfo[x].yrspan[1] = MAX_YEAR;
                 teaminfo[x].yrspan[2] = teaminfo[x].yrspan[3] = 0;
         }

@@ -5,13 +5,12 @@
 
 #define NO 0
 #define YES 1
-#define MAX_YEAR 2019
+#define MAX_YEAR 2022
 #define YEAR_SPREAD (MAX_YEAR - 1901) + 1
 
-int sock, wsock, sockhvh, ThreadRunning, netgame, challenger_ind, countsel, pbpcnt, dh, RLCatLeadersMY, curbeg, Speaking, fdlock;
-char buffer[1000000], buffer1[1000000], *env_logname, *env_user, cname[100], sname[100], sid[256], nsbid[256], lct[10],
-     resultstr[10], visiting_team[50], home_team[50], teamyr[5], vteamyr[5], hteamyr[5], game_time[6], playbyplay[100000],
-     currentd, currenttype, RequesteeID[30], tfname[256], tfnewname[256], usercreatedtname[256], DefSetPath[1024];
+int sock, wsock, sockhvh, poolmngr, ThreadRunning, netgame, challenger_ind, countsel, pbpcnt, dh, RLCatLeadersMY, curbeg, Speaking, fdlock;
+char buffer[1000000], buffer1[1000000], *env_logname, *env_user, cname[100], sname[100], sid[256], nsbid[256], lct[10], resultstr[10], visiting_team[50], home_team[50], teamyr[5], vteamyr[5], hteamyr[5],
+     game_time[6], playbyplay[100000], currentd, currenttype, RequesteeID[30], tfname[256], tfnewname[256], usercreatedtname[256], DefSetPath[1024];
 int prtbutrlrespnt, prtbutcatpnt, prtbuttmpnt, prtbutttpnt, prtbutrlppnt, prtbuttdibpnt, prtbutBSpnt, prtbutBTpnt, whichcatl[4096], whichur[4096];
 char prtbutrlrescmd[256][1024], prtbutcatcmd[4096][1024], prtbuttmcmd[4096][1024], prtbutttcmd[4096][1024], prtbuttdibcmd[4096][6], prtuctm[4096][50],
      prtbutrlpcmd[4096][1024], prtbutBScmd[4096][1024], prtbutBTcmd[4096][1024], whichpsorrs[4096];

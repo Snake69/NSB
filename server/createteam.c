@@ -17,8 +17,7 @@
 
 int stack, tpit, tply, piter[14], multiplyr, closer1, closer1compare;
 int tg, tab, tr, th, t2b, t3b, thr, trbi, tbb, tk, thbp, tgidp, tsb, tcs, tibb, tsh, tsf, tpo, ta, tpb, te;
-int tpg, tgs, tip, tthirds, tw, tl, ts, tbfp, tph, tp2b, tp3b, tphr, tpr, ter, tprbi, tcg, tgf, tsho, tsvopp, tpsb, tpcs, tpbb, tpk, tpibb, tpsh, tpsf,
-    twp, tb, thb, toppab, pscore[10];
+int tpg, tgs, tip, tthirds, tw, tl, ts, tbfp, tph, tp2b, tp3b, tphr, tpr, ter, tprbi, tcg, tgf, tsho, tsvopp, tpsb, tpcs, tpbb, tpk, tpibb, tpsh, tpsf, twp, tb, thb, toppab, pscore[10];
 struct {
     struct bttr batter;
     struct ptchr pitcher;
@@ -1048,9 +1047,9 @@ CreateTeam () {
     /* set a couple of values for this user-created team */
     dteam.id = dteam.year = 0;
     dteam.league = dteam.division = ' ';
-    for (x = 0; x < 25; x++)
+    for (x = 0; x < 28; x++)
         strcpy (&dteam.batters[x].id.name[0], " ");
-    for (x = 0; x < 11; x++)
+    for (x = 0; x < 13; x++)
         strcpy (&dteam.pitchers[x].id.name[0], " ");
 
     /* get formulas */
@@ -1217,14 +1216,14 @@ CreateTeam () {
                         fread (&team.year, sizeof team.year, 1, in);
                         fread (&team.league, sizeof team.league, 1, in);
                         fread (&team.division, sizeof team.division, 1, in);
-                        for (x = 0; x < 25; x++) {
+                        for (x = 0; x < 28; x++) {
                             fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                             fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                             fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                             for (y = 0; y < 11; y++)
                                 fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                         }
-                        for (x = 0; x < 11; x++) {
+                        for (x = 0; x < 13; x++) {
                             fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                             fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                         }
@@ -1236,10 +1235,10 @@ CreateTeam () {
                         return -1;
                     }
                     /* determine the number of players and pitchers this team has */
-                    for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                    for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                         if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                             break;
-                    for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                    for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                         if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                             break;
                     /* cum total players and pitchers in league */
@@ -1424,14 +1423,14 @@ CreateTeam () {
                             fread (&team.year, sizeof team.year, 1, in);
                             fread (&team.league, sizeof team.league, 1, in);
                             fread (&team.division, sizeof team.division, 1, in);
-                            for (x = 0; x < 25; x++) {
+                            for (x = 0; x < 28; x++) {
                                 fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                                 fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                                 fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                                 for (y = 0; y < 11; y++)
                                     fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                             }
-                            for (x = 0; x < 11; x++) {
+                            for (x = 0; x < 13; x++) {
                                 fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                                 fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                             }
@@ -1451,10 +1450,10 @@ CreateTeam () {
                             }
 
                         /* determine the number of batters and pitchers this team has */
-                        for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                        for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                             if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                                 break;
-                        for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                        for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                             if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                                 break;
 
@@ -1649,8 +1648,8 @@ CreateTeam () {
         for (saves = 10; saves >= 0; saves -= 5) {
             for (x = 0; x < 2000; x++) {
                 if (players[2][x].pitcher.pitching.saves > saves) {
-                    dteam.pitchers[10] = players[2][x].pitcher;
-                    dteam.batters[24] = players[2][x].batter;
+                    dteam.pitchers[12] = players[2][x].pitcher;
+                    dteam.batters[27] = players[2][x].batter;
                     break;
                 }
                 if (players[2][x].score == -99999.0)
@@ -1670,7 +1669,7 @@ CreateTeam () {
             if (players[1][x].score == -99999.0)
                 break;
             if (multiplyr) {
-                for (y = 0; y < 25; y++)
+                for (y = 0; y < 28; y++)
                     if (!strcmp (&players[1][x].batter.id.name[0], &dteam.batters[y].id.name[0]) &&
                                   players[1][x].batter.dob.month == dteam.batters[y].dob.month &&
                                   players[1][x].batter.dob.day == dteam.batters[y].dob.day &&
@@ -1679,7 +1678,7 @@ CreateTeam () {
                         matchSP = 1;
             }
             else
-                for (y = 0; y < 25; y++)
+                for (y = 0; y < 28; y++)
                     if (!strcmp (&players[1][x].batter.id.name[0], &dteam.batters[y].id.name[0]) &&
                                   players[1][x].batter.dob.month == dteam.batters[y].dob.month &&
                                   players[1][x].batter.dob.day == dteam.batters[y].dob.day &&
@@ -1698,19 +1697,19 @@ CreateTeam () {
             return -1;
         }
 
-        /* find 4 relief pitchers */
+        /* find 6 relief pitchers */
         if (!closer1)
             /* user does not want to have more than 1 closer-type pitcher on the roster */
-            closer1compare = 11;
+            closer1compare = 13;
         else
             /* okay to have more than 1 closer-type pitcher on the roster */
             closer1compare = 2000;
-        for (matchSP = 0, pplace = 6, bplace = 20, x = 0; x < 2000 && pplace < 10; x++, matchSP = 0) {
+        for (matchSP = 0, pplace = 6, bplace = 21, x = 0; x < 2000 && pplace < 12; x++, matchSP = 0) {
             if (players[2][x].score == -99999.0)
                 break;
             if (players[2][x].pitcher.pitching.saves < closer1compare) {
                 if (multiplyr) {
-                    for (y = 0; y < 25; y++)
+                    for (y = 0; y < 28; y++)
                         if (!strcmp (&players[2][x].batter.id.name[0], &dteam.batters[y].id.name[0]) &&
                                       players[2][x].batter.dob.month == dteam.batters[y].dob.month &&
                                       players[2][x].batter.dob.day == dteam.batters[y].dob.day &&
@@ -1719,7 +1718,7 @@ CreateTeam () {
                             matchSP = 1;
                 }
                 else
-                    for (y = 0; y < 25; y++)
+                    for (y = 0; y < 28; y++)
                         if (!strcmp (&players[2][x].batter.id.name[0], &dteam.batters[y].id.name[0]) &&
                                       players[2][x].batter.dob.month == dteam.batters[y].dob.month &&
                                       players[2][x].batter.dob.day == dteam.batters[y].dob.day &&
@@ -1733,7 +1732,7 @@ CreateTeam () {
                 bplace++;
             }
         }
-        if (x == 2000 || pplace < 10) {
+        if (x == 2000 || pplace < 12) {
             /* if this happens then we couldn't find enough relief pitchers */
             sock_puts (sock, "ERRFORMR\n");
             return -1;
@@ -1792,7 +1791,7 @@ CreateTeam () {
             }
         }
         /* fill in the remaining position player spots with the highest ranking players on the list */
-        for (spot = 8; spot < 14; spot++) {
+        for (spot = 8; spot < 15; spot++) {
             for (x = 0; x < 2000; x++) {
                 if (players[0][x].score == -99999.0) {
                     x = 1999;
@@ -1869,14 +1868,14 @@ CreateTeam () {
             fwrite (&dteam.year, sizeof dteam.year, 1, out);
             fwrite (&dteam.league, sizeof dteam.league, 1, out);
             fwrite (&dteam.division, sizeof dteam.division, 1, out);
-            for (x = 0; x < 25; x++) {
+            for (x = 0; x < 28; x++) {
                 fwrite (&dteam.batters[x].id, sizeof dteam.batters[x].id, 1, out);
                 fwrite (&dteam.batters[x].dob, sizeof dteam.batters[x].dob, 1, out);
                 fwrite (&dteam.batters[x].hitting, sizeof dteam.batters[x].hitting, 1, out);
                 for (y = 0; y < 11; y++)
                     fwrite (&dteam.batters[x].fielding[y], sizeof dteam.batters[x].fielding[y], 1, out);
             }
-            for (x = 0; x < 11; x++) {
+            for (x = 0; x < 13; x++) {
                 fwrite (&dteam.pitchers[x].id, sizeof dteam.pitchers[x].id, 1, out);
                 fwrite (&dteam.pitchers[x].pitching, sizeof dteam.pitchers[x].pitching, 1, out);
             }

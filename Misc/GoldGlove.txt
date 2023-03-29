@@ -2,6 +2,39 @@
 
      American League                 National League
 
+2022
+P    Shane Bieber       Cleveland    Max Fried         Atlanta
+C    Jose Trevino       New York     J. T. Realmuto    Philadelphia
+1B   Vladimir Guerrero  Toronto      Christian Walker  Arizona
+2B   Andres Gimenez     Cleveland    Brendan Rodgers   Colorado
+3B   Ramon Urias        Baltimore    Nolan Arenado     St Louis
+SS   Jeremy Pena        Houston      Dansby Swanson    Atlanta
+LF   Steven Kwan        Cleveland    Ian Happ          Chicago
+CF   Myles Straw        Cleveland    Trent Grishom     San Diego
+RF   Kyle Tucker        Houston      Mookie Betts      Los Angeles
+
+2021
+P    Dallas Keuchel     Chicago      Max Fried         Atlanta
+C    Sean Murphy        Oakland      Jacob Stallings   Pittsburgh
+1B   Yuli Gurriel       Houston      Paul Goldschmidt  St Louis
+2B   Marcus Semien      Toronto      Tommy Edman       St Louis
+3B   Matt Chapman       Oakland      Nolan Arenado     St Louis
+SS   Carlos Correa      Houston      Brandon Crawford  San Francisco
+LF   Andrew Benintendi  Kansas City  Tyler O'Neill     St Louis
+CF   Michael Taylor     Kansas City  Harrison Bader    St Louis
+RF   Joey Gallo         New York     Adam Duvall       Milwaukee
+
+2020
+P    Griffin Canning    Los Angeles  Max Fried         Atlanta
+C    Roberto Perez      Cleveland    Tucker Barnhart   Cincinnati
+1B   Evan White         Seattle      Anthony Rizzo     Chicago
+2B   Cesar Hernandez    Cleveland    Kolten Wong       St Louis
+3B   Isiah Kiner-Falefa Texas        Nolan Arenado     Colorado
+SS   J.P. Crawford      Seattle      Javier Baez       Chicago
+LF   Alex Gordon        Kansas City  Tyler O'Neill     St Louis
+CF   Luis Robert        Chicago      Trent Grisham     San Diego
+RF   Joey Gallo         Texas        Mookie Betts      Los Angeles
+
 2019
 P    Mike Leake         Seattle      Zack Greinke      Arizona
 C    Roberto Perez      Cleveland    JT Realmuto       Philadelphia

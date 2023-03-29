@@ -311,8 +311,7 @@ send_lineup_info (int od) {
                 }
                 else {
                     for (z = 29; z > 0; z--) {
-                        border[!field][game_status.batter[!field]].player[z] =
-                                                                         border[!field][game_status.batter[!field]].player[z - 1];
+                        border[!field][game_status.batter[!field]].player[z] = border[!field][game_status.batter[!field]].player[z - 1];
                         border[!field][game_status.batter[!field]].pos[z] = border[!field][game_status.batter[!field]].pos[z - 1];
                     }
 
@@ -348,7 +347,7 @@ send_lineup_info (int od) {
                         pitching[field].thirds[z] = pitching[field].thirds[z - 1];
                     }
 
-                    for (z = 0; z < 11; z++)
+                    for (z = 0; z < 13; z++)
                         if (!field) {
                             if (!strcmp (&visitor_cur.batters[y].id.name[0], &visitor_cur.pitchers[z].id.name[0]))
                                 break;
@@ -586,7 +585,7 @@ send_lineup_info2 (int ha, int pl, int inji) {
             pitching[ha].thirds[z] = pitching[ha].thirds[z - 1];
         }
 
-        for (z = 0; z < 11; z++)
+        for (z = 0; z < 13; z++)
             if (!ha) {
                 if (!strcmp (&visitor_cur.batters[border[ha][x].player[0]].id.name[0], &visitor_cur.pitchers[z].id.name[0]))
                     break;

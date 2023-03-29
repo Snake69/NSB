@@ -14,8 +14,13 @@ Connect2Server () {
     if (sock == -1)
         return (0);
     else {
+        /* send NSB client ID */
+        sock_puts (sock, "NSBCLIENT\n");
+
         sock_gets (sock, &buffer[0], sizeof (buffer));
         strcpy (&sname[0], &buffer[0]);
+        sock_gets (sock, &buffer[0], sizeof (buffer));
+        poolmngr = buffer[0] - '0';
         return (1);
     }
 }
@@ -129,14 +134,15 @@ Connect2NSBServer (int boot) {
     /* try to connect to server running NSB */
     connected = Connect2Server ();
 
-    /* get some user info from the server */
-    if (connected)
+    if (connected) {
+        /* get some user info from the server */
         if (GetUserInfo ()) {
             sname[0] = '\0';
             close (sock);
             cansw = 1;
             connected = 0;
         }
+    }
 
     DisplayTopHalf (boot);
 

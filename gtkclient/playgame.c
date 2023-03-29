@@ -1249,7 +1249,7 @@ FillBoxInfo () {
     strcpy (&boxinfo[0], "\n");
 
     /* accumulate runs and determine who won game */
-    for (x = truns[0] = truns[1] = 0; x < 25; x++) {
+    for (x = truns[0] = truns[1] = 0; x < 28; x++) {
         truns[0] += visitor_cur.batters[x].hitting.runs;
         truns[1] += home_cur.batters[x].hitting.runs;
     }
@@ -1440,7 +1440,7 @@ FillBoxInfo () {
     strcat (&work[line + 1][0], (char *) cnvt_int2str (truns[1], 'l'));
 
     /* move total hits */
-    for (x = thits[0] = thits[1] = 0; x < 25; x++) {
+    for (x = thits[0] = thits[1] = 0; x < 28; x++) {
         thits[0] += visitor_cur.batters[x].hitting.hits;
         thits[1] += home_cur.batters[x].hitting.hits;
     }
@@ -1456,7 +1456,7 @@ FillBoxInfo () {
     strcat (&work[line + 1][0], (char *) cnvt_int2str (thits[1], 'l'));
 
     /* move total errors */
-    for (x = terrs[0] = terrs[1] = 0; x < 25; x++)
+    for (x = terrs[0] = terrs[1] = 0; x < 28; x++)
         for (y = 0; y < 11; y++) {
             terrs[0] += visitor_cur.batters[x].fielding[y].e;
             terrs[1] += home_cur.batters[x].fielding[y].e;
@@ -1688,24 +1688,24 @@ dup2:
 
     /* put out totals */
     strcat (&boxinfo[0], "TOTALS                              ");
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.atbats;
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.runs;
     if (z > 9)
         strcat (&boxinfo[0], " ");
     else
         strcat (&boxinfo[0], "  ");
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.hits;
     if (z > 9)
         strcat (&boxinfo[0], " ");
     else
         strcat (&boxinfo[0], "  ");
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.rbi;
     if (z > 9)
         strcat (&boxinfo[0], " ");
@@ -1717,7 +1717,7 @@ dup2:
     else
         strcat (&boxinfo[0], "  ");
     strcat (&boxinfo[0], (char *) cnvt_int2str (ttb, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.bb;
     strcat (&boxinfo[0], " ");
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
@@ -1725,7 +1725,7 @@ dup2:
         strcat (&boxinfo[0], " ");
     else
         strcat (&boxinfo[0], "  ");
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += visitor_cur.batters[x].hitting.so;
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
 
@@ -1936,24 +1936,24 @@ dup4:
 
     /* put out totals */
     strcat (&boxinfo[0], "TOTALS                              ");
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.atbats;
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.runs;
     if (z > 9)
         strcat (&boxinfo[0], " ");
     else
         strcat (&boxinfo[0], "  ");
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.hits;
     if (z > 9)
         strcat (&boxinfo[0], " ");
     else
         strcat (&boxinfo[0], "  ");
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.rbi;
     if (z > 9)
         strcat (&boxinfo[0], " ");
@@ -1965,7 +1965,7 @@ dup4:
     else
         strcat (&boxinfo[0], "  ");
     strcat (&boxinfo[0], (char *) cnvt_int2str (ttb, 'l'));
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.bb;
     strcat (&boxinfo[0], " ");
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
@@ -1973,7 +1973,7 @@ dup4:
         strcat (&boxinfo[0], " ");
     else
         strcat (&boxinfo[0], "  ");
-    for (x = z = 0; x < 25; x++)
+    for (x = z = 0; x < 28; x++)
         z += home_cur.batters[x].hitting.so;
     strcat (&boxinfo[0], (char *) cnvt_int2str (z, 'l'));
 
@@ -2249,14 +2249,14 @@ do_era (int dividend, int divisor, int thirds) {
 
 void
 put_details (gint which) {
-    gint w, x, y, z, limit, perrs[4][25];
+    gint w, x, y, z, limit, perrs[4][28];
     gchar work[80], work1[5], workcur[100];
 
     for (x = 0; x < 4; x++)
-        for (y = 0; y < 25; y++)
+        for (y = 0; y < 28; y++)
             perrs[x][y] = 0;
 
-    for (x = y = z = 0; x < 25; x++)
+    for (x = y = z = 0; x < 28; x++)
         switch (which) {
             case 2:
                 y += visitor_cur.batters[x].hitting.doubles;
@@ -2310,7 +2310,7 @@ put_details (gint which) {
         }
 
     if (which == 12)
-        for (x = 0; x < 11; x++) {
+        for (x = 0; x < 13; x++) {
             y += visitor_cur.pitchers[x].pitching.wp;
             z += home_cur.pitchers[x].pitching.wp;
         }
@@ -2392,9 +2392,9 @@ put_details (gint which) {
     if (y != 0) {
         strcat (&workcur[0], ":  ");
         if (which == 12)
-            limit = 11;
+            limit = 13;
         else
-            limit = 25;
+            limit = 28;
         for (x = 0; x < limit; x++) {
             if ((which == 2 && visitor_cur.batters[x].hitting.doubles != 0) || (which == 3 && visitor_cur.batters[x].hitting.triples != 0) ||
                       (which == 4 && visitor_cur.batters[x].hitting.homers != 0) || (which == 5 && visitor_cur.batters[x].hitting.sf != 0) ||
@@ -2531,9 +2531,9 @@ put_details (gint which) {
     if (z != 0) {
         strcat (&workcur[0], ":  ");
         if (which == 12)
-            limit = 11;
+            limit = 13;
         else
-            limit = 25;
+            limit = 28;
         for (x = 0; x < limit; x++) {
             if ((which == 2 && home_cur.batters[x].hitting.doubles != 0) ||
                                                           (which == 3 && home_cur.batters[x].hitting.triples != 0) ||

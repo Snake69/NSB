@@ -9,7 +9,7 @@
 
 struct {
     int pitcher, stat[2];
-} work[12];
+} work[14];
 
 void
 compai () {
@@ -229,7 +229,7 @@ eb_def_checks (int ha) {
         int pinj;
 
         pinj = 0;
-        for (r = 0; r < 25; r++)
+        for (r = 0; r < 28; r++)
             if (ha) {
                 if (!strcmp (&home_cur.pitchers[pitching[ha].pitcher[0]].id.name[0], &home_cur.batters[r].id.name[0]))
                     break;
@@ -237,7 +237,7 @@ eb_def_checks (int ha) {
             else
                 if (!strcmp (&visitor_cur.pitchers[pitching[ha].pitcher[0]].id.name[0], &visitor_cur.batters[r].id.name[0]))
                     break;
-        if (r < 25) {
+        if (r < 28) {
             if (ha) {
                 if (home_cur.batters[r].id.injury) {
                     x = 1;
@@ -491,14 +491,12 @@ chk_inj_def:
                     if (do_divide (visitor.batters[border[0][game_status.baserunners[0]].player[0]].hitting.sb,
                                    visitor.batters[border[0][game_status.baserunners[0]].player[0]].hitting.sb + cs) > .50) {
                         /* rarely ever more than a 50% chance of a pickoff attempt */
-                        x = (int) ((float) (do_divide (200, (visitor.batters[border[0][game_status.baserunners[0]].player[0]].hitting.sb + 1))) *
-                                            rand () / (RAND_MAX + 1.0));
+                        x = (int) ((float) (do_divide (200, (visitor.batters[border[0][game_status.baserunners[0]].player[0]].hitting.sb + 1))) * rand () / (RAND_MAX + 1.0));
                         if (!x) 
                             game_status.status[1] = 1;
                         /* decide to throw a pitchout */
                         /* rarely ever more than a 25% chance for a pitchout */
-                        x = (int) ((float) (do_divide (400, (visitor.batters[border[0][game_status.baserunners[0]].player[0]].hitting.sb + 1))) *
-                                            rand () / (RAND_MAX + 1.0));
+                        x = (int) ((float) (do_divide (400, (visitor.batters[border[0][game_status.baserunners[0]].player[0]].hitting.sb + 1))) * rand () / (RAND_MAX + 1.0));
                         if (!x) 
                             game_status.status[5] = 1;
                     }
@@ -512,14 +510,12 @@ chk_inj_def:
                     if (do_divide (home.batters[border[1][game_status.baserunners[0]].player[0]].hitting.sb,
                                    home.batters[border[1][game_status.baserunners[0]].player[0]].hitting.sb + cs) > .50) {
                         /* never more than a 25% chance of a pickoff attempt */
-                        x = (int) ((float) (do_divide (400, (home.batters[border[1][game_status.baserunners[0]].player[0]].hitting.sb + 1))) *
-                                            rand () / (RAND_MAX + 1.0));
+                        x = (int) ((float) (do_divide (400, (home.batters[border[1][game_status.baserunners[0]].player[0]].hitting.sb + 1))) * rand () / (RAND_MAX + 1.0));
                         if (!x) 
                             game_status.status[1] = 1;
                         /* decide to throw a pitchout */
                         /* never more than a 10% chance for a pitchout */
-                        x = (int) ((float) (do_divide (1000, (home.batters[border[1][game_status.baserunners[0]].player[0]].hitting.sb + 1))) *
-                                            rand () / (RAND_MAX + 1.0));
+                        x = (int) ((float) (do_divide (1000, (home.batters[border[1][game_status.baserunners[0]].player[0]].hitting.sb + 1))) * rand () / (RAND_MAX + 1.0));
                         if (!x) 
                             game_status.status[5] = 1;
                     }
@@ -714,7 +710,7 @@ update_some_stats (int ha, int reppit1, int reppit2, int reppit3) {
 
     if (!ha) {
         /* find batter iteration number for pitcher */
-        for (x = 0; x < 25; x++)
+        for (x = 0; x < 28; x++)
             if (!strcmp (&visitor_cur.pitchers[pitching[ha].pitcher[0]].id.name[0], &visitor_cur.batters[x].id.name[0])) {
                 hitter = x;
                 break;
@@ -726,7 +722,7 @@ update_some_stats (int ha, int reppit1, int reppit2, int reppit3) {
     }
     else {
         /* find batter iteration number for pitcher */
-        for (x = 0; x < 25; x++)
+        for (x = 0; x < 28; x++)
             if (!strcmp (&home_cur.pitchers[pitching[ha].pitcher[0]].id.name[0], &home_cur.batters[x].id.name[0])) {
                 hitter = x;
                 break;
@@ -886,30 +882,30 @@ replace_pitcher (int ha, int i1, int i2, int i3, int r1, int r2, int reppit1, in
         for (y = x + 1; y < maxpitchers[ha]; y++) {
             if (inc[0]) {
                 if (work[x].stat[0] < work[y].stat[0]) {
-                    work[11] = work[x];
+                    work[13] = work[x];
                     work[x] = work[y];
-                    work[y] = work[11];
+                    work[y] = work[13];
                 }
             }
             else
                 if (work[x].stat[0] > work[y].stat[0]) {
-                    work[11] = work[x];
+                    work[13] = work[x];
                     work[x] = work[y];
-                    work[y] = work[11];
+                    work[y] = work[13];
                 }
             if (work[x].stat[0] == work[y].stat[0]) {
                 if (inc[1]) {
                     if (work[x].stat[1] < work[y].stat[1]) {
-                        work[11] = work[x];
+                        work[13] = work[x];
                         work[x] = work[y];
-                        work[y] = work[11];
+                        work[y] = work[13];
                     }
                 }
                 else
                     if (work[x].stat[1] > work[y].stat[1]) {
-                        work[11] = work[x];
+                        work[13] = work[x];
                         work[x] = work[y];
-                        work[y] = work[11];
+                        work[y] = work[13];
                     }
             }
         }
@@ -925,7 +921,7 @@ replace_pitcher (int ha, int i1, int i2, int i3, int r1, int r2, int reppit1, in
         }
         /* make sure he's not injured */
         if (!ha) {
-            for (y = 0; y < 25; y++)
+            for (y = 0; y < 28; y++)
                 if (!strcmp (&visitor_cur.pitchers[work[x].pitcher].id.name[0], &visitor_cur.batters[y].id.name[0]))
                     break;
             if (visitor_season.batters[y].id.injury || visitor_cur.batters[y].id.injury) {
@@ -934,7 +930,7 @@ replace_pitcher (int ha, int i1, int i2, int i3, int r1, int r2, int reppit1, in
             }
         }
         else {
-            for (y = 0; y < 25; y++)
+            for (y = 0; y < 28; y++)
                 if (!strcmp (&home_cur.pitchers[work[x].pitcher].id.name[0], &home_cur.batters[y].id.name[0]))
                     break;
             if (home_season.batters[y].id.injury || home_cur.batters[y].id.injury) {
@@ -1116,7 +1112,7 @@ eb_off_checks (int ha) {
     struct {
         int plyr;
         float stat;
-    } work[26];
+    } work[29];
 
     innings = game_status.half_inning / 2 + 1;
     for (runs[0] = runs[1] = x = 0; x < innings; x++) {
@@ -1296,9 +1292,9 @@ eb_off_checks (int ha) {
             for (x = 0; x < (maxplayers[ha] - 1); x++)
                 for (z = x + 1; z < maxplayers[ha]; z++)
                     if (work[x].stat < work[z].stat) {
-                        work[25] = work[x];
+                        work[28] = work[x];
                         work[x] = work[z];
-                        work[z] = work[25];
+                        work[z] = work[28];
                     }
 
             for (zind = y = 0; y < maxplayers[ha]; y++, zind = 0) {
@@ -1477,7 +1473,7 @@ replace_player (int ha, int st) {
     int x, y, pl, z, zz, zind, pind = 0, pospl;
     struct {
         int player, stat;
-    } work[26];
+    } work[29];
 
     for (pl = 0; pl < 9; pl++) {
         if (border[ha][pl].pos[0] != st)
@@ -1518,9 +1514,9 @@ replace_player (int ha, int st) {
         for (x = 0; x < maxplayers[ha]; x++)
             for (y = x + 1; y < maxplayers[ha]; y++)
                 if (work[x].stat < work[y].stat) {
-                    work[25] = work[x];
+                    work[28] = work[x];
                     work[x] = work[y];
-                    work[y] = work[25];
+                    work[y] = work[28];
                 }
 
         for (x = 0; x < maxplayers[ha]; x++) {
@@ -1590,7 +1586,7 @@ replace_player2 (int ha) {
     int x, y, pl, z, zz, zind, retcde = 0;
     struct {
         int player, stat;
-    } work[26];
+    } work[29];
 
     for (pl = 0; pl < 9; pl++) {
         if (ha) {
@@ -1635,9 +1631,9 @@ replace_player2 (int ha) {
         for (x = 0; x < maxplayers[ha]; x++)
             for (y = x + 1; y < maxplayers[ha]; y++)
                 if (work[x].stat < work[y].stat) {
-                    work[25] = work[x];
+                    work[28] = work[x];
                     work[x] = work[y];
-                    work[y] = work[25];
+                    work[y] = work[28];
                 }
 
         for (x = 0; x < maxplayers[ha]; x++) {
@@ -1852,13 +1848,13 @@ Send2BotHalf (int x) {
     if (dhpchg[x]) {
         strcpy (&action[0], "BD");
         if (x) {
-            for (y = 0; y < 25; y++)
+            for (y = 0; y < 28; y++)
                 if (!strcmp (&home_cur.batters[y].id.name[0], &home_cur.pitchers[pitching[x].pitcher[0]].id.name[0]))
                     break;
             switch_name (&action[0], &home_cur.batters[y].id.name[0]);
         }
         else {
-            for (y = 0; y < 25; y++)
+            for (y = 0; y < 28; y++)
                 if (!strcmp (&visitor_cur.batters[y].id.name[0], &visitor_cur.pitchers[pitching[x].pitcher[0]].id.name[0]))
                     break;
             switch_name (&action[0], &visitor_cur.batters[y].id.name[0]);

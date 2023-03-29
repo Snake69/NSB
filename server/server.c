@@ -27,6 +27,7 @@
      Q - establish series
      R - remove NSBID
      S - stats
+     u - list of user-created teams
      U - list of users
      v - find best player offensive seasons
      V - find best player pitching seasons
@@ -58,12 +59,10 @@
 #define AM       0
 #define NAT      1
 
-char *start1, *w1, *p, dummy[256], parent[256], yearv[5], yearh[5], yearhold[5], visiting_team[100], home_team[100], netport[100],
-     pol;
+char *start1, *w1, *p, dummy[256], parent[256], yearv[5], yearh[5], yearhold[5], visiting_team[100], home_team[100], netport[100], pol;
 int eb1, eb, ebb, ebuc, wperr, grand, win_id, lose_id, win_year, lose_year, actcnt, connected, ALWCteamID, ALWCteamYR, NLWCteamID,
     NLWCteamYR, ALWCswitch, NLWCswitch, ALEDswitch, ALCDswitch, ALWDswitch, NLEDswitch, NLCDswitch, NLWDswitch, ALEDteamID,
-    ALEDteamYR, ALCDteamID, ALCDteamYR, ALWDteamID, ALWDteamYR, NLEDteamID, NLEDteamYR, NLCDteamID, NLCDteamYR, NLWDteamID,
-    NLWDteamYR, AL2teamID, AL2teamYR, NL2teamID, NL2teamYR, AL2switch, NL2switch, ALdone;
+    ALEDteamYR, ALCDteamID, ALCDteamYR, ALWDteamID, ALWDteamYR, NLEDteamID, NLEDteamYR, NLCDteamID, NLCDteamYR, NLWDteamID, NLWDteamYR, AL2teamID, AL2teamYR, NL2teamID, NL2teamYR, AL2switch, NL2switch, ALdone;
 
 struct {
     int id, yr, wins, losses, windec;
@@ -149,10 +148,11 @@ sig_chld (int signal_type) {
 */
 void
 usage () {
-    fprintf (stderr, "\nUsage:  nsbserver [-hlv]\n");
-    fprintf (stderr, "Use the -h option to get this message\n");
-    fprintf (stderr, "Use the -l option if syslog entries are desired\n");
-    fprintf (stderr, "Use the -v option to show version info and exit\n\n");
+    fprintf (stderr, "\nUsage:  nsbserver [-hlnv]\n");
+    fprintf (stderr, "Use the h option to get this message and exit\n");
+    fprintf (stderr, "Use the l option if syslog entries are desired\n");
+    fprintf (stderr, "Use the n option to disallow network play\n");
+    fprintf (stderr, "Use the v option to show version info and exit\n\n");
 }
 
 /*
@@ -160,7 +160,7 @@ usage () {
 */
 void
 version () {
-    fprintf (stderr, "\nVersion info:  nsbserver v0.9.9.7\n\n");
+    fprintf (stderr, "\nVersion info:  nsbserver v0.9.9.8\n\n");
 }
 
 int
@@ -187,14 +187,14 @@ get_rl_vis () {
         fread (&visitor.year, sizeof visitor.year, 1, in);
         fread (&visitor.league, sizeof visitor.league, 1, in);
         fread (&visitor.division, sizeof visitor.division, 1, in);
-        for (x = 0; x < 25; x++) {
+        for (x = 0; x < 28; x++) {
             fread (&visitor.batters[x].id, sizeof visitor.batters[x].id, 1, in);
             fread (&visitor.batters[x].dob, sizeof visitor.batters[x].dob, 1, in);
             fread (&visitor.batters[x].hitting, sizeof visitor.batters[x].hitting, 1, in);
             for (y = 0; y < 11; y++)
                 fread (&visitor.batters[x].fielding[y], sizeof visitor.batters[x].fielding[y], 1, in);
         }
-        for (x = 0; x < 11; x++) {
+        for (x = 0; x < 13; x++) {
             fread (&visitor.pitchers[x].id, sizeof visitor.pitchers[x].id, 1, in);
             fread (&visitor.pitchers[x].pitching, sizeof visitor.pitchers[x].pitching, 1, in);
         }
@@ -212,10 +212,10 @@ get_rl_vis () {
                 return -1;
     }
     /* determine the number of players and pitchers this team has */
-    for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+    for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
         if (visitor.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&visitor.batters[maxplayers[0]].id.name[0]))
             break;
-    for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+    for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
         if (visitor.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&visitor.pitchers[maxpitchers[0]].id.name[0]))
             break;
     return 0;
@@ -245,14 +245,14 @@ get_rl_home () {
         fread (&home.year, sizeof home.year, 1, in);
         fread (&home.league, sizeof home.league, 1, in);
         fread (&home.division, sizeof home.division, 1, in);
-        for (x = 0; x < 25; x++) {
+        for (x = 0; x < 28; x++) {
             fread (&home.batters[x].id, sizeof home.batters[x].id, 1, in);
             fread (&home.batters[x].dob, sizeof home.batters[x].dob, 1, in);
             fread (&home.batters[x].hitting, sizeof home.batters[x].hitting, 1, in);
             for (y = 0; y < 11; y++)
                 fread (&home.batters[x].fielding[y], sizeof home.batters[x].fielding[y], 1, in);
         }
-        for (x = 0; x < 11; x++) {
+        for (x = 0; x < 13; x++) {
             fread (&home.pitchers[x].id, sizeof home.pitchers[x].id, 1, in);
             fread (&home.pitchers[x].pitching, sizeof home.pitchers[x].pitching, 1, in);
         }
@@ -265,10 +265,10 @@ get_rl_home () {
             return -1;
     }
     /* determine the number of players and pitchers this team has */
-    for (maxplayers[1] = 0; maxplayers[1] < 25; maxplayers[1]++)
+    for (maxplayers[1] = 0; maxplayers[1] < 28; maxplayers[1]++)
         if (home.batters[maxplayers[1]].id.name[0] == ' ' || !strlen (&home.batters[maxplayers[1]].id.name[0]))
             break;
-    for (maxpitchers[1] = 0; maxpitchers[1] < 11; maxpitchers[1]++)
+    for (maxpitchers[1] = 0; maxpitchers[1] < 13; maxpitchers[1]++)
         if (home.pitchers[maxpitchers[1]].id.name[0] == ' ' || !strlen (&home.pitchers[maxpitchers[1]].id.name[0]))
             break;
     return 0;
@@ -797,24 +797,19 @@ cmp_stat (int x, int y) {
             sf = team.batters[x].hitting.sf;
 
         if (buffer[7] == 'i')
-            if ((team.batters[x].hitting.atbats + team.batters[x].hitting.bb + team.batters[x].hitting.hbp +
-                                            sf + team.batters[x].hitting.sh) >= (totgames * 3.1) && totgames)
+            if ((team.batters[x].hitting.atbats + team.batters[x].hitting.bb + team.batters[x].hitting.hbp + sf + team.batters[x].hitting.sh) >= (totgames * 3.1) && totgames)
                 if (((int) (((float) team.batters[x].hitting.hits / (float) team.batters[x].hitting.atbats) * 1000.0)) >= leaders[y].stat[5])
                     return 1;
         if (buffer[7] == 'j')
-            if ((team.batters[x].hitting.atbats + team.batters[x].hitting.bb + team.batters[x].hitting.hbp +
-                                            sf + team.batters[x].hitting.sh) >= (totgames * 3.1) && totgames) {
+            if ((team.batters[x].hitting.atbats + team.batters[x].hitting.bb + team.batters[x].hitting.hbp + sf + team.batters[x].hitting.sh) >= (totgames * 3.1) && totgames) {
                 singles = team.batters[x].hitting.hits - (team.batters[x].hitting.homers + team.batters[x].hitting.triples + team.batters[x].hitting.doubles);
-                if (((int) ((((float) (team.batters[x].hitting.homers * 4) + (float) (team.batters[x].hitting.triples * 3) +
-                                                                    (float) (team.batters[x].hitting.doubles * 2) +
+                if (((int) ((((float) (team.batters[x].hitting.homers * 4) + (float) (team.batters[x].hitting.triples * 3) + (float) (team.batters[x].hitting.doubles * 2) +
                            (float) singles) / (float) team.batters[x].hitting.atbats) * 1000.0)) >= leaders[y].stat[5])
                     return 1;
             }
         if (buffer[7] == 'k')
-            if ((team.batters[x].hitting.atbats + team.batters[x].hitting.bb + team.batters[x].hitting.hbp +
-                                            sf + team.batters[x].hitting.sh) >= (totgames * 3.1) && totgames)
-                if (((int) (((float) team.batters[x].hitting.hits + (float) team.batters[x].hitting.bb +
-                                    (float) team.batters[x].hitting.hbp) / ((float) team.batters[x].hitting.atbats +
+            if ((team.batters[x].hitting.atbats + team.batters[x].hitting.bb + team.batters[x].hitting.hbp + sf + team.batters[x].hitting.sh) >= (totgames * 3.1) && totgames)
+                if (((int) (((float) team.batters[x].hitting.hits + (float) team.batters[x].hitting.bb + (float) team.batters[x].hitting.hbp) / ((float) team.batters[x].hitting.atbats +
                                     (float) team.batters[x].hitting.bb + (float) sf + (float) team.batters[x].hitting.hbp) * 1000.0)) >= leaders[y].stat[5])
                     return 1;
     }
@@ -913,13 +908,11 @@ cmp_stat (int x, int y) {
                 return 1;
         if (buffer[7] == 'u')
             if (team.pitchers[x].pitching.innings >= totgames && totgames)
-                if (((int) (((float) (team.pitchers[x].pitching.er * 9.0) / ((float) team.pitchers[x].pitching.innings +
-                                 (float) team.pitchers[x].pitching.thirds / 3.0)) * 100.0)) <= leaders[y].stat[5])
+                if (((int) (((float) (team.pitchers[x].pitching.er * 9.0) / ((float) team.pitchers[x].pitching.innings + (float) team.pitchers[x].pitching.thirds / 3.0)) * 100.0)) <= leaders[y].stat[5])
                     return 1;
         if (buffer[7] == 'v')
             if ((team.pitchers[x].pitching.wins + team.pitchers[x].pitching.losses) >= (totgames / 12) && totgames)
-                if (((int) (((float) team.pitchers[x].pitching.wins / ((float) team.pitchers[x].pitching.wins +
-                            (float) team.pitchers[x].pitching.losses)) * 1000.0)) >= leaders[y].stat[5])
+                if (((int) (((float) team.pitchers[x].pitching.wins / ((float) team.pitchers[x].pitching.wins + (float) team.pitchers[x].pitching.losses)) * 1000.0)) >= leaders[y].stat[5])
                     return 1;
         if (buffer[7] == 'w')
             if (team.pitchers[x].pitching.innings >= totgames && totgames)
@@ -1157,8 +1150,7 @@ cp_stat (int x, int y) {
         if (buffer[7] == 't')
             leaders[y].stat[5] = team.pitchers[x].pitching.opp_ab;
         if (buffer[7] == 'u') {
-            pct = ((float) (team.pitchers[x].pitching.er * 9.0) / ((float) team.pitchers[x].pitching.innings +
-                                              (float) team.pitchers[x].pitching.thirds / 3.0)) + 0.005;   /* round up */
+            pct = ((float) (team.pitchers[x].pitching.er * 9.0) / ((float) team.pitchers[x].pitching.innings + (float) team.pitchers[x].pitching.thirds / 3.0)) + 0.005;   /* round up */
             leaders[y].stat[5] = (int) (pct * 100.0);
             leaders[y].stat[0] = team.pitchers[x].pitching.innings;
             leaders[y].stat[1] = team.pitchers[x].pitching.thirds;
@@ -1166,8 +1158,7 @@ cp_stat (int x, int y) {
             leaders[y].stat[6] = totgames;
         }
         if (buffer[7] == 'v') {
-            pct =  ((float) team.pitchers[x].pitching.wins /
-                   ((float) team.pitchers[x].pitching.wins + (float) team.pitchers[x].pitching.losses)) + 0.0005;    /* round up */
+            pct =  ((float) team.pitchers[x].pitching.wins / ((float) team.pitchers[x].pitching.wins + (float) team.pitchers[x].pitching.losses)) + 0.0005;    /* round up */
             leaders[y].stat[5] = (int) (pct * 1000.0);
             leaders[y].stat[0] = team.pitchers[x].pitching.wins;
             leaders[y].stat[1] = team.pitchers[x].pitching.losses;
@@ -1250,7 +1241,7 @@ cp_stat (int x, int y) {
 */
 int
 main (int argc, char *argv[]) {
-    int port = -1, x, y, z, zz, zzz, w, l, pos, sgame, sday, holdc, pid;
+    int port = -1, x, y, z, zz, zzz, w, l, pos, sgame, sday, holdc, pid, opt;
     char *nxtbl, dummy2[256], dummyi[256], dummyo[256], lornl, let, work[2], *argwp[5];
     struct sigaction act, oldact;
     struct dirent *dir, *dir2;
@@ -1259,28 +1250,26 @@ main (int argc, char *argv[]) {
 
     listensock = connectsock = -1;
     AlreadySentData = 0;
-    syslog_ent = dhind = NO;
+    syslog_ent = no_pool = dhind = NO;
 
-    if (argc > 2) {
-        usage ();
-        exit (-1);
-    }
-    if (argc == 2) {
-        if (strlen (argv[1]) != 2) {
-            usage ();
-            exit (-1);
+    while ((opt = getopt (argc, argv, "vlhn")) != -1)
+        switch (opt) {
+            case 'v':
+                version ();
+                exit (0);
+            case 'h':
+                usage ();
+                exit (0);
+            case 'l':
+                syslog_ent = YES;
+                break;
+            case 'n':
+                no_pool = YES;
+                break;
+            default:
+                usage ();
+                exit (0);
         }
-        if (!strncmp (argv[1], "-v", 2)) {
-            version ();
-            exit (0);
-        }
-        if (!strncmp (argv[1], "-l", 2))
-            syslog_ent = YES;
-        else {
-            usage ();
-            exit (0);
-        }
-    }
 
     sigemptyset (&act.sa_mask);
     act.sa_flags = 0;
@@ -1317,18 +1306,24 @@ main (int argc, char *argv[]) {
         syslog (LOG_INFO, "accepting connections");
     }
 
-    /* start the server which controls the waiting pool for human versus human play over a network */
-    wperr = 0;
-    work[0] = 'X';
-    work[1] = '\0';
-
-    if ((out = fopen ("/tmp/nsbpoolmngr-ind", "w")) != NULL) {
-        fwrite (&work, sizeof work, 1, out);
-        fclose (out);
+    if (no_pool) {
+        syslog (LOG_INFO, "choosing not to invoke nsbpoolmngr");
+        wperr = 1;
     }
     else {
-        syslog (LOG_INFO, "could not invoke nsbpoolmngr - cannot create /tmp/nsbpoolmngr-ind");
-        wperr = 1;
+        /* start the server which controls the waiting pool for human versus human play over a network */
+        wperr = 0;
+        work[0] = 'X';
+        work[1] = '\0';
+
+        if ((out = fopen ("/tmp/nsbpoolmngr-ind", "w")) != NULL) {
+            fwrite (&work, sizeof work, 1, out);
+            fclose (out);
+        }
+        else {
+            syslog (LOG_INFO, "could not invoke nsbpoolmngr - cannot create /tmp/nsbpoolmngr-ind");
+            wperr = 1;
+        }
     }
 
     if (!wperr) {
@@ -1354,6 +1349,12 @@ main (int argc, char *argv[]) {
     /* wait for a client to connect */
     sock = get_connection (SOCK_STREAM, port, &listensock);
 
+    /* ensure client is an NSB client */
+    if (sock_gets (sock, &buffer[0], sizeof (buffer)) < 0)
+        close (sock);
+    if (strncmp (&buffer[0], "NSBCLIENT", 9))
+        close (sock);
+
     /* we have a client */
     connectsock = sock;
     user = 100;
@@ -1368,6 +1369,9 @@ main (int argc, char *argv[]) {
     if (strcmp (&domain[0], "(none)") && strncmp (&domain[0], "local", 5))
         strcat (&buffer[0], &domain[0]);
     strcat (&buffer[0], "\n");
+    sock_puts (sock, &buffer[0]);
+    /* let the client know whether or not pool manager is running */
+    sprintf (&buffer[0], "%d\n", wperr);
     sock_puts (sock, &buffer[0]);
 
     /* get user name from client
@@ -1518,14 +1522,14 @@ main (int argc, char *argv[]) {
                 fread (&team.year, sizeof team.year, 1, in);
                 fread (&team.league, sizeof team.league, 1, in);
                 fread (&team.division, sizeof team.division, 1, in);
-                for (x = 0; x < 25; x++) {
+                for (x = 0; x < 28; x++) {
                     fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                     fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                     fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                     for (y = 0; y < 11; y++)
                         fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                 }
-                for (x = 0; x < 11; x++) {
+                for (x = 0; x < 13; x++) {
                     fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                     fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                 }
@@ -1606,6 +1610,35 @@ main (int argc, char *argv[]) {
                 strcat (&buffer1[0], "\n");
                 sock_puts (sock, &buffer1[0]);
             }
+        }
+
+        if (buffer[0] == 'u') {
+            /* user wants a list of teams s/he created */
+            DIR *fnames;
+            struct dirent *dir;
+            char dirt[256];
+
+            buffer1[0] = '\0';
+
+            strcpy (&dirt[0], "/var/NSB/");
+            strcat (&dirt[0], &nsbdb[user].id[0]);
+            strcat (&dirt[0], "/UserTeams");
+            /* check if directory exists */
+            if ((fnames = opendir (&dirt[0])) == NULL) {
+                sock_puts (sock, "NONE\n");
+                continue;
+            }
+
+            while ((dir = readdir (fnames))) {
+                if (!strcmp (dir->d_name, ".") || !strcmp (dir->d_name, ".."))
+                    continue;
+
+                strcat (&buffer1[0], dir->d_name);
+                strcat (&buffer1[0], " ");
+            }
+            closedir (fnames);
+            strcat (&buffer1[0], "\n");
+            sock_puts (sock, &buffer1[0]);
         }
 
         if (buffer[0] == 'g') {
@@ -1726,14 +1759,14 @@ main (int argc, char *argv[]) {
                 fwrite (&team.year, sizeof team.year, 1, out);
                 fwrite (&team.league, sizeof team.league, 1, out);
                 fwrite (&team.division, sizeof team.division, 1, out);
-                for (x = 0; x < 25; x++) {
+                for (x = 0; x < 28; x++) {
                     fwrite (&team.batters[x].id, sizeof team.batters[x].id, 1, out);
                     fwrite (&team.batters[x].dob, sizeof team.batters[x].dob, 1, out);
                     fwrite (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, out);
                     for (y = 0; y < 11; y++)
                         fwrite (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, out);
                 }
-                for (x = 0; x < 11; x++) {
+                for (x = 0; x < 13; x++) {
                     fwrite (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, out);
                     fwrite (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, out);
                 }
@@ -2025,14 +2058,14 @@ main (int argc, char *argv[]) {
                         fread (&team.year, sizeof team.year, 1, in);
                         fread (&team.league, sizeof team.league, 1, in);
                         fread (&team.division, sizeof team.division, 1, in);
-                        for (x = 0; x < 25; x++) {
+                        for (x = 0; x < 28; x++) {
                             fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                             fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                             fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                             for (y = 0; y < 11; y++)
                                 fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                         }
-                        for (x = 0; x < 11; x++) {
+                        for (x = 0; x < 13; x++) {
                             fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                             fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                             totgames += team.pitchers[x].pitching.games_started;
@@ -2045,11 +2078,11 @@ main (int argc, char *argv[]) {
                         return -1;
                     }
                     /* determine number of non-pitchers this team has */
-                    for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                    for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                         if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                             break;
                     /* determine number of pitchers this team has */
-                    for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                    for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                         if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                             break;
 
@@ -2468,14 +2501,14 @@ main (int argc, char *argv[]) {
                                     fread (&team.year, sizeof team.year, 1, in);
                                     fread (&team.league, sizeof team.league, 1, in);
                                     fread (&team.division, sizeof team.division, 1, in);
-                                    for (x = 0; x < 25; x++) {
+                                    for (x = 0; x < 28; x++) {
                                         fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                                         fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                                         fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                                         for (y = 0; y < 11; y++)
                                             fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                                     }
-                                    for (x = 0; x < 11; x++) {
+                                    for (x = 0; x < 13; x++) {
                                         fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                                         fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                                     }
@@ -2488,10 +2521,10 @@ main (int argc, char *argv[]) {
                                 }
 
                                 /* determine the number of players and pitchers this team has */
-                                for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                                for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                                     if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                                         break;
-                                for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                                for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                                     if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                                         break;
 
@@ -2523,14 +2556,14 @@ main (int argc, char *argv[]) {
                                 fread (&team.year, sizeof team.year, 1, in);
                                 fread (&team.league, sizeof team.league, 1, in);
                                 fread (&team.division, sizeof team.division, 1, in);
-                                for (x = 0; x < 25; x++) {
+                                for (x = 0; x < 28; x++) {
                                     fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                                     fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                                     fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                                     for (y = 0; y < 11; y++)
                                         fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                                 }
-                                for (x = 0; x < 11; x++) {
+                                for (x = 0; x < 13; x++) {
                                     fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                                     fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                                 }
@@ -2553,10 +2586,10 @@ main (int argc, char *argv[]) {
                             }
 
                             /* determine the number of players and pitchers this team has */
-                            for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                            for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                                 if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                                     break;
-                            for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                            for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                                 if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                                     break;
 
@@ -2732,7 +2765,7 @@ main (int argc, char *argv[]) {
                 }
 
             for (buffer1[0] = '\0', x = 0; x < 100; x++)
-                if (teams[x].score != 0.0) {
+                if (teams[x].score != 0.0 && teams[x].score != 1.0) {
                     sprintf (work, "%d %d %10.10f ", teams[x].tyear, teams[x].tid, teams[x].score);
                     strcat (&buffer1[0], &work[0]);
                 }
@@ -2762,9 +2795,7 @@ main (int argc, char *argv[]) {
                S1 - NSB season standings
                S3YYYY - Real Life season results for year YYYY
                SXYYYYABCDE - stat category leaders
-                             X = 2 for Real Life, 4 for NSB current regular season, 5 for records,
-                                 a for lifetime regular season, b for NSB current post-season,
-                                 c for lifetime post-season
+                             X = 2 for Real Life, 4 for NSB current regular season, 5 for records, a for lifetime regular season, b for NSB current post-season, c for lifetime post-season
                              YYYY = year (if X = 2, there will be a span of years starting in position 12)
                              A = 1 for batting, 2 for pitching, 3 for fielding
                              B = X for stat category (see code)
@@ -2778,8 +2809,7 @@ main (int argc, char *argv[]) {
                S64 - all user-created teams available
                S6YYYY - names of Real Life teams available for year YYYY
                S6XYYYYZZ - team stats
-                           X = 2 for Real Life, 4 for NSB current regular season, 5 for NSB lifetime regular season,
-                               6 for NSB current post-season, 7 for NSB lifetime post-season
+                           X = 2 for Real Life, 4 for NSB current regular season, 5 for NSB lifetime regular season, 6 for NSB current post-season, 7 for NSB lifetime post-season
                            YYYY = year
                            ZZ = team ID
                S68teamname - user-created team stats
@@ -2789,8 +2819,7 @@ main (int argc, char *argv[]) {
                S691YYYY - team totals for real life regular season
                           YYYY = year
                S7 - check for the presence of a currently operating season
-               S71 - check for the presence of residuals left over from a season (in this case the post-season
-                     is completed and a new season has yet to be formed)
+               S71 - check for the presence of residuals left over from a season (in this case the post-season is completed and a new season has yet to be formed)
                S81 - check for the existence of records for this user
                S82 - check for the existence of records for all users
                S9playername - return all stats for the player matching playername
@@ -2874,14 +2903,14 @@ main (int argc, char *argv[]) {
                                     fread (&team.year, sizeof team.year, 1, in);
                                     fread (&team.league, sizeof team.league, 1, in);
                                     fread (&team.division, sizeof team.division, 1, in);
-                                    for (z = 0; z < 25; z++) {
+                                    for (z = 0; z < 28; z++) {
                                         fread (&team.batters[z].id, sizeof team.batters[z].id, 1, in);
                                         fread (&team.batters[z].dob, sizeof team.batters[z].dob, 1, in);
                                         fread (&team.batters[z].hitting, sizeof team.batters[z].hitting, 1, in);
                                         for (y = 0; y < 11; y++)
                                             fread (&team.batters[z].fielding[y], sizeof team.batters[z].fielding[y], 1, in);
                                     }
-                                    for (z = 0; z < 11; z++) {
+                                    for (z = 0; z < 13; z++) {
                                         fread (&team.pitchers[z].id, sizeof team.pitchers[z].id, 1, in);
                                         fread (&team.pitchers[z].pitching, sizeof team.pitchers[z].pitching, 1, in);
                                     }
@@ -3703,14 +3732,14 @@ EndStandings:
                                         fread (&team.year, sizeof team.year, 1, in);
                                         fread (&team.league, sizeof team.league, 1, in);
                                         fread (&team.division, sizeof team.division, 1, in);
-                                        for (x = 0; x < 25; x++) {
+                                        for (x = 0; x < 28; x++) {
                                             fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                                             fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                                             fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                                             for (y = 0; y < 11; y++)
                                                 fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                                         }
-                                        for (x = 0; x < 11; x++) {
+                                        for (x = 0; x < 13; x++) {
                                             fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                                             fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                                         }
@@ -3724,10 +3753,10 @@ EndStandings:
                                         return -1;
                                     }
                                     /* determine the number of players and pitchers this team has */
-                                    for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                                    for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                                         if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                                             break;
-                                    for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                                    for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                                         if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                                             break;
 
@@ -3821,14 +3850,14 @@ do_team:
                                 fread (&team.year, sizeof team.year, 1, in);
                                 fread (&team.league, sizeof team.league, 1, in);
                                 fread (&team.division, sizeof team.division, 1, in);
-                                for (x = 0; x < 25; x++) {
+                                for (x = 0; x < 28; x++) {
                                     fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                                     fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                                     fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                                     for (y = 0; y < 11; y++)
                                         fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                                 }
-                                for (x = 0; x < 11; x++) {
+                                for (x = 0; x < 13; x++) {
                                     fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                                     fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                                     if (buffer[1] != '2')
@@ -3842,10 +3871,10 @@ do_team:
                                 return -1;
                             }
                             /* determine the number of players and pitchers this team has */
-                            for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                            for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                                 if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                                     break;
-                            for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                            for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                                 if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                                     break;
 
@@ -4273,24 +4302,24 @@ TeamTotals:
                             fread (&team.year, sizeof team.year, 1, in);
                             fread (&team.league, sizeof team.league, 1, in);
                             fread (&team.division, sizeof team.division, 1, in);
-                            for (x = 0; x < 25; x++) {
+                            for (x = 0; x < 28; x++) {
                                 fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                                 fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                                 fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                                 for (y = 0; y < 11; y++)
                                     fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                             }
-                            for (x = 0; x < 11; x++) {
+                            for (x = 0; x < 13; x++) {
                                 fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                                 fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                             }
                             fclose (in);
                             /* determine the number of players this team has */
-                            for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                            for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                                 if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                                     break;
                             /* determine the number of pitchers this team has */
-                            for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+                            for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                                 if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                                     break;
 
@@ -4361,14 +4390,14 @@ readinstats:
                     fread (&team.year, sizeof team.year, 1, in);
                     fread (&team.league, sizeof team.league, 1, in);
                     fread (&team.division, sizeof team.division, 1, in);
-                    for (x = 0; x < 25; x++) {
+                    for (x = 0; x < 28; x++) {
                         fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                         fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                         fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                         for (y = 0; y < 11; y++)
                             fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                     }
-                    for (x = 0; x < 11; x++) {
+                    for (x = 0; x < 13; x++) {
                         fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                         fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                     }
@@ -4540,20 +4569,20 @@ readinstats:
                         fread (&team.year, sizeof team.year, 1, in);
                         fread (&team.league, sizeof team.league, 1, in);
                         fread (&team.division, sizeof team.division, 1, in);
-                        for (x = 0; x < 25; x++) {
+                        for (x = 0; x < 28; x++) {
                             fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                             fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                             fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                             for (y = 0; y < 11; y++)
                                 fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                         }
-                        for (x = 0; x < 11; x++) {
+                        for (x = 0; x < 13; x++) {
                             fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                             fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                         }
                         fclose (in);
 
-                        for (x = 0; x < 25; x++)
+                        for (x = 0; x < 28; x++)
                             if (!strcasecmp (&name[0], &team.batters[x].id.name[0])) {
                                  for (y = 0; y < dobct; y++)
                                      if (team.batters[x].dob.month == tdob[y].m && team.batters[x].dob.day == tdob[y].d &&
@@ -4646,20 +4675,20 @@ readinstats:
                         fread (&team.year, sizeof team.year, 1, in);
                         fread (&team.league, sizeof team.league, 1, in);
                         fread (&team.division, sizeof team.division, 1, in);
-                        for (x = 0; x < 25; x++) {
+                        for (x = 0; x < 28; x++) {
                             fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                             fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                             fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                             for (y = 0; y < 11; y++)
                                 fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                         }
-                        for (x = 0; x < 11; x++) {
+                        for (x = 0; x < 13; x++) {
                             fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                             fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                         }
                         fclose (in);
 
-                        for (x = 0; x < 25; x++) {
+                        for (x = 0; x < 28; x++) {
                             if (!strcasecmp (&name[0], &team.batters[x].id.name[0]) && team.batters[x].dob.month == dobm &&
                                                         team.batters[x].dob.day == dobd && team.batters[x].dob.year == doby) {
                                 strcpy (&work[0], "BSTATS");
@@ -4703,11 +4732,11 @@ readinstats:
                             }
                         }
 
-                        if (x == 25)
+                        if (x == 28)
                             /* if the player doesn't appear in the batters section then don't look for pitcher data */
                             continue;
 
-                        for (x = 0; x < 11; x++) {
+                        for (x = 0; x < 13; x++) {
                             if (!strcasecmp (&name[0], &team.pitchers[x].id.name[0])) {
                                 strcpy (&work[0], "PSTATS");
                                 strcat (&work[0], " ");
@@ -5115,14 +5144,14 @@ sendteams2client:
                         fread (&team.year, sizeof team.year, 1, in);
                         fread (&team.league, sizeof team.league, 1, in);
                         fread (&team.division, sizeof team.division, 1, in);
-                        for (x = 0; x < 25; x++) {
+                        for (x = 0; x < 28; x++) {
                             fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                             fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                             fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                             for (y = 0; y < 11; y++)
                                 fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                         }
-                        for (x = 0; x < 11; x++) {
+                        for (x = 0; x < 13; x++) {
                             fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                             fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                         }
@@ -5181,14 +5210,14 @@ sendteams2client:
                         fwrite (&team.year, sizeof team.year, 1, out);
                         fwrite (&team.league, sizeof team.league, 1, out);
                         fwrite (&team.division, sizeof team.division, 1, out);
-                        for (xx = 0; xx < 25; xx++) {
+                        for (xx = 0; xx < 28; xx++) {
                             fwrite (&team.batters[xx].id, sizeof team.batters[xx].id, 1, out);
                             fwrite (&team.batters[xx].dob, sizeof team.batters[xx].dob, 1, out);
                             fwrite (&team.batters[xx].hitting, sizeof team.batters[xx].hitting, 1, out);
                             for (yy = 0; yy < 11; yy++)
                                 fwrite (&team.batters[xx].fielding[yy], sizeof team.batters[xx].fielding[yy], 1, out);
                         }
-                        for (xx = 0; xx < 11; xx++) {
+                        for (xx = 0; xx < 13; xx++) {
                             fwrite (&team.pitchers[xx].id, sizeof team.pitchers[xx].id, 1, out);
                             fwrite (&team.pitchers[xx].pitching, sizeof team.pitchers[xx].pitching, 1, out);
                         }
@@ -5683,14 +5712,14 @@ figure_schedule:
                             fread (&team.year, sizeof team.year, 1, in);
                             fread (&team.league, sizeof team.league, 1, in);
                             fread (&team.division, sizeof team.division, 1, in);
-                            for (x = 0; x < 25; x++) {
+                            for (x = 0; x < 28; x++) {
                                 fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                                 fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                                 fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                                 for (y = 0; y < 11; y++)
                                     fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                             }
-                            for (x = 0; x < 11; x++) {
+                            for (x = 0; x < 13; x++) {
                                 fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                                 fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                             }
@@ -5707,14 +5736,14 @@ figure_schedule:
                             fwrite (&team.year, sizeof team.year, 1, out);
                             fwrite (&team.league, sizeof team.league, 1, out);
                             fwrite (&team.division, sizeof team.division, 1, out);
-                            for (xx = 0; xx < 25; xx++) {
+                            for (xx = 0; xx < 28; xx++) {
                                 fwrite (&team.batters[xx].id, sizeof team.batters[xx].id, 1, out);
                                 fwrite (&team.batters[xx].dob, sizeof team.batters[xx].dob, 1, out);
                                 fwrite (&team.batters[xx].hitting, sizeof team.batters[xx].hitting, 1, out);
                                 for (yy = 0; yy < 11; yy++)
                                     fwrite (&team.batters[xx].fielding[yy], sizeof team.batters[xx].fielding[yy], 1, out);
                             }
-                            for (xx = 0; xx < 11; xx++) {
+                            for (xx = 0; xx < 13; xx++) {
                                 fwrite (&team.pitchers[xx].id, sizeof team.pitchers[xx].id, 1, out);
                                 fwrite (&team.pitchers[xx].pitching, sizeof team.pitchers[xx].pitching, 1, out);
                             }
@@ -5852,14 +5881,14 @@ figure_schedule:
                                 fwrite (&team.year, sizeof team.year, 1, out);
                                 fwrite (&team.league, sizeof team.league, 1, out);
                                 fwrite (&team.division, sizeof team.division, 1, out);
-                                for (xx = 0; xx < 25; xx++) {
+                                for (xx = 0; xx < 28; xx++) {
                                     fwrite (&team.batters[xx].id, sizeof team.batters[xx].id, 1, out);
                                     fwrite (&team.batters[xx].dob, sizeof team.batters[xx].dob, 1, out);
                                     fwrite (&team.batters[xx].hitting, sizeof team.batters[xx].hitting, 1, out);
                                     for (yy = 0; yy < 11; yy++)
                                         fwrite (&team.batters[xx].fielding[yy], sizeof team.batters[xx].fielding[yy], 1, out);
                                 }
-                                for (xx = 0; xx < 11; xx++) {
+                                for (xx = 0; xx < 13; xx++) {
                                     fwrite (&team.pitchers[xx].id, sizeof team.pitchers[xx].id, 1, out);
                                     fwrite (&team.pitchers[xx].pitching, sizeof team.pitchers[xx].pitching, 1, out);
                                 }
@@ -5912,14 +5941,14 @@ figure_schedule:
                             fread (&team.year, sizeof team.year, 1, in);
                             fread (&team.league, sizeof team.league, 1, in);
                             fread (&team.division, sizeof team.division, 1, in);
-                            for (x = 0; x < 25; x++) {
+                            for (x = 0; x < 28; x++) {
                                 fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                                 fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                                 fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                                 for (y = 0; y < 11; y++)
                                     fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                             }
-                            for (x = 0; x < 11; x++) {
+                            for (x = 0; x < 13; x++) {
                                 fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                                 fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                             }
@@ -5947,14 +5976,14 @@ figure_schedule:
                             fwrite (&team.year, sizeof team.year, 1, out);
                             fwrite (&team.league, sizeof team.league, 1, out);
                             fwrite (&team.division, sizeof team.division, 1, out);
-                            for (xx = 0; xx < 25; xx++) {
+                            for (xx = 0; xx < 28; xx++) {
                                 fwrite (&team.batters[xx].id, sizeof team.batters[xx].id, 1, out);
                                 fwrite (&team.batters[xx].dob, sizeof team.batters[xx].dob, 1, out);
                                 fwrite (&team.batters[xx].hitting, sizeof team.batters[xx].hitting, 1, out);
                                 for (yy = 0; yy < 11; yy++)
                                     fwrite (&team.batters[xx].fielding[yy], sizeof team.batters[xx].fielding[yy], 1, out);
                             }
-                            for (xx = 0; xx < 11; xx++) {
+                            for (xx = 0; xx < 13; xx++) {
                                 fwrite (&team.pitchers[xx].id, sizeof team.pitchers[xx].id, 1, out);
                                 fwrite (&team.pitchers[xx].pitching, sizeof team.pitchers[xx].pitching, 1, out);
                             }
@@ -6051,20 +6080,20 @@ figure_schedule:
                     fread (&team.year, sizeof team.year, 1, in);
                     fread (&team.league, sizeof team.league, 1, in);
                     fread (&team.division, sizeof team.division, 1, in);
-                    for (x = 0; x < 25; x++) {
+                    for (x = 0; x < 28; x++) {
                         fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                         fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                         fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                         for (y = 0; y < 11; y++)
                             fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                     }
-                    for (x = 0; x < 11; x++) {
+                    for (x = 0; x < 13; x++) {
                         fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                         fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                     }
                     fclose (in);
                     /* determine the number of players this team has */
-                    for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+                    for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                         if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                             break;
 
@@ -7021,7 +7050,7 @@ SelectTeams:
                             if (!dhind) {
                                 if (border[1][x].pos[0] == 1) {
                                     starters[1][1] = border[1][x].player[0];
-                                    for (z = 0; z < 11; z++)
+                                    for (z = 0; z < 13; z++)
                                         if (!strcmp (&team.pitchers[z].id.name[0], &team.batters[border[1][x].player[0]].id.name[0])) {
                                             game_status.pitcher[1] = pitching[1].pitcher[0] = z;
                                             break;
@@ -7031,7 +7060,7 @@ SelectTeams:
                             else
                                 if (x == 9) {
                                     starters[1][1] = pdh;
-                                    for (z = 0; z < 11; z++)
+                                    for (z = 0; z < 13; z++)
                                         if (!strcmp (&team.pitchers[z].id.name[0], &team.batters[pdh].id.name[0])) {
                                             game_status.pitcher[1] = pitching[1].pitcher[0] = z;
                                             break;
@@ -7099,7 +7128,7 @@ SelectTeams:
                             if (!dhind) {
                                 if (border[0][x].pos[0] == 1) {
                                     starters[0][1] = border[0][x].player[0];
-                                    for (z = 0; z < 11; z++)
+                                    for (z = 0; z < 13; z++)
                                         if (!strcmp (&team.pitchers[z].id.name[0], &team.batters[border[0][x].player[0]].id.name[0])) {
                                             game_status.pitcher[0] = pitching[0].pitcher[0] = z;
                                             break;
@@ -7109,7 +7138,7 @@ SelectTeams:
                             else
                                 if (x == 9) {
                                     starters[0][1] = pdh;
-                                    for (z = 0; z < 11; z++)
+                                    for (z = 0; z < 13; z++)
                                         if (!strcmp (&team.pitchers[z].id.name[0], &team.batters[pdh].id.name[0])) {
                                             game_status.pitcher[0] = pitching[0].pitcher[0] = z;
                                             break;
@@ -7405,14 +7434,14 @@ sendteams2client3:
                 fwrite (&team.year, sizeof team.year, 1, out);
                 fwrite (&team.league, sizeof team.league, 1, out);
                 fwrite (&team.division, sizeof team.division, 1, out);
-                for (xx = 0; xx < 25; xx++) {
+                for (xx = 0; xx < 28; xx++) {
                     fwrite (&team.batters[xx].id, sizeof team.batters[xx].id, 1, out);
                     fwrite (&team.batters[xx].dob, sizeof team.batters[xx].dob, 1, out);
                     fwrite (&team.batters[xx].hitting, sizeof team.batters[xx].hitting, 1, out);
                     for (yy = 0; yy < 11; yy++)
                         fwrite (&team.batters[xx].fielding[yy], sizeof team.batters[xx].fielding[yy], 1, out);
                 }
-                for (xx = 0; xx < 11; xx++) {
+                for (xx = 0; xx < 13; xx++) {
                     fwrite (&team.pitchers[xx].id, sizeof team.pitchers[xx].id, 1, out);
                     fwrite (&team.pitchers[xx].pitching, sizeof team.pitchers[xx].pitching, 1, out);
                 }
@@ -7444,14 +7473,14 @@ sendteams2client3:
                 fwrite (&team.year, sizeof team.year, 1, out);
                 fwrite (&team.league, sizeof team.league, 1, out);
                 fwrite (&team.division, sizeof team.division, 1, out);
-                for (xx = 0; xx < 25; xx++) {
+                for (xx = 0; xx < 28; xx++) {
                     fwrite (&team.batters[xx].id, sizeof team.batters[xx].id, 1, out);
                     fwrite (&team.batters[xx].dob, sizeof team.batters[xx].dob, 1, out);
                     fwrite (&team.batters[xx].hitting, sizeof team.batters[xx].hitting, 1, out);
                     for (yy = 0; yy < 11; yy++)
                         fwrite (&team.batters[xx].fielding[yy], sizeof team.batters[xx].fielding[yy], 1, out);
                 }
-                for (xx = 0; xx < 11; xx++) {
+                for (xx = 0; xx < 13; xx++) {
                     fwrite (&team.pitchers[xx].id, sizeof team.pitchers[xx].id, 1, out);
                     fwrite (&team.pitchers[xx].pitching, sizeof team.pitchers[xx].pitching, 1, out);
                 }
@@ -7532,14 +7561,14 @@ play_league_game () {
         fread (&visitor.year, sizeof visitor.year, 1, in);
         fread (&visitor.league, sizeof visitor.league, 1, in);
         fread (&visitor.division, sizeof visitor.division, 1, in);
-        for (x = 0; x < 25; x++) {
+        for (x = 0; x < 28; x++) {
             fread (&visitor.batters[x].id, sizeof visitor.batters[x].id, 1, in);
             fread (&visitor.batters[x].dob, sizeof visitor.batters[x].dob, 1, in);
             fread (&visitor.batters[x].hitting, sizeof visitor.batters[x].hitting, 1, in);
             for (y = 0; y < 11; y++)
                 fread (&visitor.batters[x].fielding[y], sizeof visitor.batters[x].fielding[y], 1, in);
         }
-        for (x = 0; x < 11; x++) {
+        for (x = 0; x < 13; x++) {
             fread (&visitor.pitchers[x].id, sizeof visitor.pitchers[x].id, 1, in);
             fread (&visitor.pitchers[x].pitching, sizeof visitor.pitchers[x].pitching, 1, in);
         }
@@ -7553,10 +7582,10 @@ play_league_game () {
                 return -2;
     }
     /* determine the number of players and pitchers this team has */
-    for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+    for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
         if (visitor.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&visitor.batters[maxplayers[0]].id.name[0]))
             break;
-    for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+    for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
         if (visitor.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&visitor.pitchers[maxpitchers[0]].id.name[0]))
             break;
 
@@ -7575,14 +7604,14 @@ play_league_game () {
         fread (&visitor_season.year, sizeof visitor_season.year, 1, in);
         fread (&visitor_season.league, sizeof visitor_season.league, 1, in);
         fread (&visitor_season.division, sizeof visitor_season.division, 1, in);
-        for (x = 0; x < 25; x++) {
+        for (x = 0; x < 28; x++) {
             fread (&visitor_season.batters[x].id, sizeof visitor_season.batters[x].id, 1, in);
             fread (&visitor_season.batters[x].dob, sizeof visitor_season.batters[x].dob, 1, in);
             fread (&visitor_season.batters[x].hitting, sizeof visitor_season.batters[x].hitting, 1, in);
             for (y = 0; y < 11; y++)
                 fread (&visitor_season.batters[x].fielding[y], sizeof visitor_season.batters[x].fielding[y], 1, in);
         }
-        for (x = 0; x < 11; x++) {
+        for (x = 0; x < 13; x++) {
             fread (&visitor_season.pitchers[x].id, sizeof visitor_season.pitchers[x].id, 1, in);
             fread (&visitor_season.pitchers[x].pitching, sizeof visitor_season.pitchers[x].pitching, 1, in);
         }
@@ -7611,14 +7640,14 @@ play_league_game () {
         fread (&home.year, sizeof home.year, 1, in);
         fread (&home.league, sizeof home.league, 1, in);
         fread (&home.division, sizeof home.division, 1, in);
-        for (x = 0; x < 25; x++) {
+        for (x = 0; x < 28; x++) {
             fread (&home.batters[x].id, sizeof home.batters[x].id, 1, in);
             fread (&home.batters[x].dob, sizeof home.batters[x].dob, 1, in);
             fread (&home.batters[x].hitting, sizeof home.batters[x].hitting, 1, in);
             for (y = 0; y < 11; y++)
                 fread (&home.batters[x].fielding[y], sizeof home.batters[x].fielding[y], 1, in);
         }
-        for (x = 0; x < 11; x++) {
+        for (x = 0; x < 13; x++) {
             fread (&home.pitchers[x].id, sizeof home.pitchers[x].id, 1, in);
             fread (&home.pitchers[x].pitching, sizeof home.pitchers[x].pitching, 1, in);
         }
@@ -7632,10 +7661,10 @@ play_league_game () {
                 return -3;
     }
     /* determine the number of players and pitchers this team has */
-    for (maxplayers[1] = 0; maxplayers[1] < 25; maxplayers[1]++)
+    for (maxplayers[1] = 0; maxplayers[1] < 28; maxplayers[1]++)
         if (home.batters[maxplayers[1]].id.name[0] == ' ' || !strlen (&home.batters[maxplayers[1]].id.name[0]))
             break;
-    for (maxpitchers[1] = 0; maxpitchers[1] < 11; maxpitchers[1]++)
+    for (maxpitchers[1] = 0; maxpitchers[1] < 13; maxpitchers[1]++)
         if (home.pitchers[maxpitchers[1]].id.name[0] == ' ' || !strlen (&home.pitchers[maxpitchers[1]].id.name[0]))
             break;
 
@@ -7654,14 +7683,14 @@ play_league_game () {
         fread (&home_season.year, sizeof home_season.year, 1, in);
         fread (&home_season.league, sizeof home_season.league, 1, in);
         fread (&home_season.division, sizeof home_season.division, 1, in);
-        for (x = 0; x < 25; x++) {
+        for (x = 0; x < 28; x++) {
             fread (&home_season.batters[x].id, sizeof home_season.batters[x].id, 1, in);
             fread (&home_season.batters[x].dob, sizeof home_season.batters[x].dob, 1, in);
             fread (&home_season.batters[x].hitting, sizeof home_season.batters[x].hitting, 1, in);
             for (y = 0; y < 11; y++)
                 fread (&home_season.batters[x].fielding[y], sizeof home_season.batters[x].fielding[y], 1, in);
         }
-        for (x = 0; x < 11; x++) {
+        for (x = 0; x < 13; x++) {
             fread (&home_season.pitchers[x].id, sizeof home_season.pitchers[x].id, 1, in);
             fread (&home_season.pitchers[x].pitching, sizeof home_season.pitchers[x].pitching, 1, in);
         }
@@ -7743,7 +7772,7 @@ play_league_game () {
                 if (!dhind) {
                     if (border[1][x].pos[0] == 1) {
                         starters[1][1] = border[1][x].player[0];
-                        for (z = 0; z < 11; z++)
+                        for (z = 0; z < 13; z++)
                             if (!strcmp (&team.pitchers[z].id.name[0], &team.batters[border[1][x].player[0]].id.name[0])) {
                                 game_status.pitcher[1] = pitching[1].pitcher[0] = z;
                                 break;
@@ -7753,7 +7782,7 @@ play_league_game () {
                 else
                     if (x == 9) {
                         starters[1][1] = pdh;
-                        for (z = 0; z < 11; z++)
+                        for (z = 0; z < 13; z++)
                             if (!strcmp (&team.pitchers[z].id.name[0], &team.batters[pdh].id.name[0])) {
                                 game_status.pitcher[1] = pitching[1].pitcher[0] = z;
                                 break;
@@ -7821,7 +7850,7 @@ play_league_game () {
                 if (!dhind) {
                     if (border[0][x].pos[0] == 1) {
                         starters[0][1] = border[0][x].player[0];
-                        for (z = 0; z < 11; z++)
+                        for (z = 0; z < 13; z++)
                             if (!strcmp (&team.pitchers[z].id.name[0], &team.batters[border[0][x].player[0]].id.name[0])) {
                                 game_status.pitcher[0] = pitching[0].pitcher[0] = z;
                                 break;
@@ -7831,7 +7860,7 @@ play_league_game () {
                 else
                     if (x == 9) {
                         starters[0][1] = pdh;
-                        for (z = 0; z < 11; z++)
+                        for (z = 0; z < 13; z++)
                             if (!strcmp (&team.pitchers[z].id.name[0], &team.batters[pdh].id.name[0])) {
                                 game_status.pitcher[0] = pitching[0].pitcher[0] = z;
                                 break;
@@ -7872,14 +7901,14 @@ play_league_game () {
         fwrite (&visitor_season.year, sizeof visitor_season.year, 1, out);
         fwrite (&visitor_season.league, sizeof visitor_season.league, 1, out);
         fwrite (&visitor_season.division, sizeof visitor_season.division, 1, out);
-        for (xx = 0; xx < 25; xx++) {
+        for (xx = 0; xx < 28; xx++) {
             fwrite (&visitor_season.batters[xx].id, sizeof visitor_season.batters[xx].id, 1, out);
             fwrite (&visitor_season.batters[xx].dob, sizeof visitor_season.batters[xx].dob, 1, out);
             fwrite (&visitor_season.batters[xx].hitting, sizeof visitor_season.batters[xx].hitting, 1, out);
             for (yy = 0; yy < 11; yy++)
                 fwrite (&visitor_season.batters[xx].fielding[yy], sizeof visitor_season.batters[xx].fielding[yy], 1, out);
         }
-        for (xx = 0; xx < 11; xx++) {
+        for (xx = 0; xx < 13; xx++) {
             fwrite (&visitor_season.pitchers[xx].id, sizeof visitor_season.pitchers[xx].id, 1, out);
             fwrite (&visitor_season.pitchers[xx].pitching, sizeof visitor_season.pitchers[xx].pitching, 1, out);
         }
@@ -7905,14 +7934,14 @@ play_league_game () {
         fwrite (&home_season.year, sizeof home_season.year, 1, out);
         fwrite (&home_season.league, sizeof home_season.league, 1, out);
         fwrite (&home_season.division, sizeof home_season.division, 1, out);
-        for (xx = 0; xx < 25; xx++) {
+        for (xx = 0; xx < 28; xx++) {
             fwrite (&home_season.batters[xx].id, sizeof home_season.batters[xx].id, 1, out);
             fwrite (&home_season.batters[xx].dob, sizeof home_season.batters[xx].dob, 1, out);
             fwrite (&home_season.batters[xx].hitting, sizeof home_season.batters[xx].hitting, 1, out);
             for (yy = 0; yy < 11; yy++)
                 fwrite (&home_season.batters[xx].fielding[yy], sizeof home_season.batters[xx].fielding[yy], 1, out);
         }
-        for (xx = 0; xx < 11; xx++) {
+        for (xx = 0; xx < 13; xx++) {
             fwrite (&home_season.pitchers[xx].id, sizeof home_season.pitchers[xx].id, 1, out);
             fwrite (&home_season.pitchers[xx].pitching, sizeof home_season.pitchers[xx].pitching, 1, out);
         }
@@ -8031,14 +8060,14 @@ kill_league () {
                 fread (&team.year, sizeof team.year, 1, in);
                 fread (&team.league, sizeof team.league, 1, in);
                 fread (&team.division, sizeof team.division, 1, in);
-                for (x = 0; x < 25; x++) {
+                for (x = 0; x < 28; x++) {
                     fread (&team.batters[x].id, sizeof team.batters[x].id, 1, in);
                     fread (&team.batters[x].dob, sizeof team.batters[x].dob, 1, in);
                     fread (&team.batters[x].hitting, sizeof team.batters[x].hitting, 1, in);
                     for (y = 0; y < 11; y++)
                         fread (&team.batters[x].fielding[y], sizeof team.batters[x].fielding[y], 1, in);
                 }
-                for (x = 0; x < 11; x++) {
+                for (x = 0; x < 13; x++) {
                     fread (&team.pitchers[x].id, sizeof team.pitchers[x].id, 1, in);
                     fread (&team.pitchers[x].pitching, sizeof team.pitchers[x].pitching, 1, in);
                 }
@@ -8046,10 +8075,10 @@ kill_league () {
             }
 
             /* determine the number of players and pitchers this team has */
-            for (maxplayers[0] = 0; maxplayers[0] < 25; maxplayers[0]++)
+            for (maxplayers[0] = 0; maxplayers[0] < 28; maxplayers[0]++)
                 if (team.batters[maxplayers[0]].id.name[0] == ' ' || !strlen (&team.batters[maxplayers[0]].id.name[0]))
                     break;
-            for (maxpitchers[0] = 0; maxpitchers[0] < 11; maxpitchers[0]++)
+            for (maxpitchers[0] = 0; maxpitchers[0] < 13; maxpitchers[0]++)
                 if (team.pitchers[maxpitchers[0]].id.name[0] == ' ' || !strlen (&team.pitchers[maxpitchers[0]].id.name[0]))
                     break;
             totgames = 160;
@@ -8063,14 +8092,14 @@ kill_league () {
                 fread (&team2.year, sizeof team2.year, 1, in);
                 fread (&team2.league, sizeof team2.league, 1, in);
                 fread (&team2.division, sizeof team2.division, 1, in);
-                for (x = 0; x < 25; x++) {
+                for (x = 0; x < 28; x++) {
                     fread (&team2.batters[x].id, sizeof team2.batters[x].id, 1, in);
                     fread (&team2.batters[x].dob, sizeof team2.batters[x].dob, 1, in);
                     fread (&team2.batters[x].hitting, sizeof team2.batters[x].hitting, 1, in);
                     for (y = 0; y < 11; y++)
                         fread (&team2.batters[x].fielding[y], sizeof team2.batters[x].fielding[y], 1, in);
                 }
-                for (x = 0; x < 11; x++) {
+                for (x = 0; x < 13; x++) {
                     fread (&team2.pitchers[x].id, sizeof team2.pitchers[x].id, 1, in);
                     fread (&team2.pitchers[x].pitching, sizeof team2.pitchers[x].pitching, 1, in);
                 }
@@ -8087,14 +8116,14 @@ kill_league () {
                 fwrite (&team.year, sizeof team.year, 1, out);
                 fwrite (&team.league, sizeof team.league, 1, out);
                 fwrite (&team.division, sizeof team.division, 1, out);
-                for (xx = 0; xx < 25; xx++) {
+                for (xx = 0; xx < 28; xx++) {
                     fwrite (&team.batters[xx].id, sizeof team.batters[xx].id, 1, out);
                     fwrite (&team.batters[xx].dob, sizeof team.batters[xx].dob, 1, out);
                     fwrite (&team.batters[xx].hitting, sizeof team.batters[xx].hitting, 1, out);
                     for (yy = 0; yy < 11; yy++)
                         fwrite (&team.batters[xx].fielding[yy], sizeof team.batters[xx].fielding[yy], 1, out);
                 }
-                for (xx = 0; xx < 11; xx++) {
+                for (xx = 0; xx < 13; xx++) {
                     fwrite (&team.pitchers[xx].id, sizeof team.pitchers[xx].id, 1, out);
                     fwrite (&team.pitchers[xx].pitching, sizeof team.pitchers[xx].pitching, 1, out);
                 }
@@ -11041,14 +11070,14 @@ WritePSSchedule:
             fread (&team.year, sizeof team.year, 1, in);
             fread (&team.league, sizeof team.league, 1, in);
             fread (&team.division, sizeof team.division, 1, in);
-            for (z = 0; z < 25; z++) {
+            for (z = 0; z < 28; z++) {
                 fread (&team.batters[z].id, sizeof team.batters[z].id, 1, in);
                 fread (&team.batters[z].dob, sizeof team.batters[z].dob, 1, in);
                 fread (&team.batters[z].hitting, sizeof team.batters[z].hitting, 1, in);
                 for (n = 0; n < 11; n++)
                     fread (&team.batters[z].fielding[n], sizeof team.batters[z].fielding[n], 1, in);
             }
-            for (z = 0; z < 11; z++) {
+            for (z = 0; z < 13; z++) {
                 fread (&team.pitchers[z].id, sizeof team.pitchers[z].id, 1, in);
                 fread (&team.pitchers[z].pitching, sizeof team.pitchers[z].pitching, 1, in);
             }
@@ -11069,14 +11098,14 @@ WritePSSchedule:
             fwrite (&team.year, sizeof team.year, 1, out);
             fwrite (&team.league, sizeof team.league, 1, out);
             fwrite (&team.division, sizeof team.division, 1, out);
-            for (z = 0; z < 25; z++) {
+            for (z = 0; z < 28; z++) {
                 fwrite (&team.batters[z].id, sizeof team.batters[z].id, 1, out);
                 fwrite (&team.batters[z].dob, sizeof team.batters[z].dob, 1, out);
                 fwrite (&team.batters[z].hitting, sizeof team.batters[z].hitting, 1, out);
                 for (n = 0; n < 11; n++)
                     fwrite (&team.batters[z].fielding[n], sizeof team.batters[z].fielding[n], 1, out);
             }
-            for (z = 0; z < 11; z++) {
+            for (z = 0; z < 13; z++) {
                 fwrite (&team.pitchers[z].id, sizeof team.pitchers[z].id, 1, out);
                 fwrite (&team.pitchers[z].pitching, sizeof team.pitchers[z].pitching, 1, out);
             }
@@ -11731,14 +11760,14 @@ GetUCTeamname (int id) {
                 fread (&dteam.year, sizeof dteam.year, 1, in);
                 fread (&dteam.league, sizeof dteam.league, 1, in);
                 fread (&dteam.division, sizeof dteam.division, 1, in);
-                for (x = 0; x < 25; x++) {
+                for (x = 0; x < 28; x++) {
                     fread (&dteam.batters[x].id, sizeof dteam.batters[x].id, 1, in);
                     fread (&dteam.batters[x].dob, sizeof dteam.batters[x].dob, 1, in);
                     fread (&dteam.batters[x].hitting, sizeof dteam.batters[x].hitting, 1, in);
                     for (y = 0; y < 11; y++)
                         fread (&dteam.batters[x].fielding[y], sizeof dteam.batters[x].fielding[y], 1, in);
                 }
-                for (x = 0; x < 11; x++) {
+                for (x = 0; x < 13; x++) {
                     fread (&dteam.pitchers[x].id, sizeof dteam.pitchers[x].id, 1, in);
                     fread (&dteam.pitchers[x].pitching, sizeof dteam.pitchers[x].pitching, 1, in);
                 }

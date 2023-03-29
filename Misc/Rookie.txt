@@ -2,6 +2,9 @@
 
         American League                   National League
 
+2022   Julio Rodríguez     Seattle        Michael Harris       Atlanta
+2021   Randy Arozarena     Tampa Bay      Jonathan India       Cincinnati
+2020   Kyle Lewis          Seattle        Devin Williams       Milwaukee
 2019   Yordan Alvarez      Houston        Pete Alonso          New York
 2018   Shohei Ohtani       Los Angeles    Ronald Acuna         Atlanta
 2017   Aaron Judge         New York       Cody Bellinger       Los Angeles

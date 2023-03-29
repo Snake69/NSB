@@ -129,8 +129,7 @@ build_game_status () {
 void
 send_tophalf () {
     int inning, x, y, tot[2];
-    char *statuses[] = { "holding runner on first", "infield in at corners", "infield in",
-                         "outfield shallow", "third baseman playing the line", "first baseman playing the line",
+    char *statuses[] = { "holding runner on first", "infield in at corners", "infield in", "outfield shallow", "third baseman playing the line", "first baseman playing the line",
                          "both first and third basemen playing the lines" };
 
     inning = game_status.half_inning / 2 + (game_status.half_inning % 2);
@@ -151,7 +150,7 @@ send_tophalf () {
     }
 
     /* total hits */
-    for (x = tot[0] = tot[1] = 0; x < 25; x++) {
+    for (x = tot[0] = tot[1] = 0; x < 28; x++) {
         if (x < maxplayers[0])
             tot[0] += visitor_cur.batters[x].hitting.hits;
         if (x < maxplayers[1])
@@ -161,7 +160,7 @@ send_tophalf () {
     strcat (&buffer[0], (char *) cnvt_int2str (2, tot[1]));
 
     /* total errors */
-    for (x = tot[0] = tot[1] = 0; x < 25; x++)
+    for (x = tot[0] = tot[1] = 0; x < 28; x++)
         for (y = 0; y < 11; y++) {
             if (x < maxplayers[0])
                 tot[0] += visitor_cur.batters[x].fielding[y].e;
@@ -180,10 +179,10 @@ send_tophalf () {
 
     /* pitcher birthdate */
     if ((game_status.half_inning % 2) == 0) {
-        for (x = 0; x < 25; x++)
+        for (x = 0; x < 28; x++)
             if (!strcmp (&home_cur.pitchers[game_status.pitcher[1]].id.name[0], &home_cur.batters[x].id.name[0]))
                 break;
-        if (x < 25) {
+        if (x < 28) {
             strcat (&buffer[0], (char *) cnvt_int2str (2, home_cur.batters[x].dob.month));
             strcat (&buffer[0], (char *) cnvt_int2str (2, home_cur.batters[x].dob.day));
             strcat (&buffer[0], (char *) cnvt_int2str (4, home_cur.batters[x].dob.year));
@@ -192,10 +191,10 @@ send_tophalf () {
             strcat (&buffer[0], "00000000");
     }
     else {
-        for (x = 0; x < 25; x++)
+        for (x = 0; x < 28; x++)
             if (!strcmp (&visitor_cur.pitchers[game_status.pitcher[0]].id.name[0], &visitor_cur.batters[x].id.name[0]))
                 break;
-        if (x < 25) {
+        if (x < 28) {
             strcat (&buffer[0], (char *) cnvt_int2str (2, visitor_cur.batters[x].dob.month));
             strcat (&buffer[0], (char *) cnvt_int2str (2, visitor_cur.batters[x].dob.day));
             strcat (&buffer[0], (char *) cnvt_int2str (4, visitor_cur.batters[x].dob.year));
@@ -370,13 +369,13 @@ action () {
                     syslog (LOG_INFO, "Team %d %s forfeited a game", visitor.year, (char *) GetTeamName (visitor.id));
             }
             /* change a couple of statuses of some players even though the game was forfeited */
-            for (x = 0; x < 25; x++) {
+            for (x = 0; x < 28; x++) {
                 if (visitor_season.batters[x].id.injury)
                     visitor_season.batters[x].id.injury--;
                 if (home_season.batters[x].id.injury)
                     home_season.batters[x].id.injury--;
             }
-            for (x = 0; x < 11; x++) {
+            for (x = 0; x < 13; x++) {
                 home_season.pitchers[x].id.starts_rest++;
                 visitor_season.pitchers[x].id.starts_rest++;
             }
@@ -387,13 +386,13 @@ action () {
             else
                 winners = 'h';
             /* change a couple of statuses of some players even though the we didn't play the game */
-            for (x = 0; x < 25; x++) {
+            for (x = 0; x < 28; x++) {
                 if (visitor_season.batters[x].id.injury)
                     visitor_season.batters[x].id.injury--;
                 if (home_season.batters[x].id.injury)
                     home_season.batters[x].id.injury--;
             }
-            for (x = 0; x < 11; x++) {
+            for (x = 0; x < 13; x++) {
                 home_season.pitchers[x].id.starts_rest++;
                 visitor_season.pitchers[x].id.starts_rest++;
             }
@@ -1112,14 +1111,19 @@ sb_attempt:
 
     /* adjust some actions
      * if action is GIDP then make sure there's less than 2 outs and a baserunner on first
+     * if action is GIDP & it's the 9th inning or later & there are 0 outs & there are runners on 1st and 3rd, change action to GROUNDOUT
      * if action is SF then make sure there is less than 2 outs and a baserunner on third
      * if action is SINGLE then determine if runners should advance one or two bases
      * if action is DOUBLE then determine if runners should advance two or three bases
     */
 adjust_action:
-    if (action_ind == 11) /* GIDP */
+    if (action_ind == 11) {    /* GIDP */
+        int inning = (game_status.half_inning - 1) / 2 + 1;
         if (game_status.outs == 2 || game_status.baserunners[0] == 99)
             action_ind = 9;
+        if (inning >= 9 && vruns == hruns && game_status.outs == 0 && game_status.baserunners[2] != 99 && game_status.baserunners[0] != 99)
+            action_ind = 9;
+    }
     if (action_ind == 12) /* SF */
         if (game_status.outs == 2 || game_status.baserunners[2] == 99)
             action_ind = 10;
@@ -1290,13 +1294,13 @@ send_bothalf () {
             if (dhpchg[x]) {
                 strcpy (&action[0], "BD");
                 if (x) {
-                    for (y = 0; y < 25; y++)
+                    for (y = 0; y < 28; y++)
                         if (!strcmp (&home_cur.batters[y].id.name[0], &home_cur.pitchers[pitching[x].pitcher[0]].id.name[0]))
                             break;
                     switch_name (&action[0], &home_cur.batters[y].id.name[0]);
                 }
                 else {
-                    for (y = 0; y < 25; y++)
+                    for (y = 0; y < 28; y++)
                         if (!strcmp (&visitor_cur.batters[y].id.name[0], &visitor_cur.pitchers[pitching[x].pitcher[0]].id.name[0]))
                             break;
                     switch_name (&action[0], &visitor_cur.batters[y].id.name[0]);
@@ -1356,7 +1360,7 @@ send_bothalf () {
                 }
             if (dhpchg[x]) {
                 if (x) {
-                    for (y = 0; y < 25; y++)
+                    for (y = 0; y < 28; y++)
                         if (!strcmp (&home_cur.batters[y].id.name[0], &home_cur.pitchers[pitching[x].pitcher[0]].id.name[0]))
                             break;
                     if (home_cur.batters[y].id.injury) {
@@ -1365,7 +1369,7 @@ send_bothalf () {
                     }
                 }
                 else {
-                    for (y = 0; y < 25; y++)
+                    for (y = 0; y < 28; y++)
                         if (!strcmp (&visitor_cur.batters[y].id.name[0], &visitor_cur.pitchers[pitching[x].pitcher[0]].id.name[0]))
                             break;
                     if (visitor_cur.batters[y].id.injury) {
@@ -1722,19 +1726,19 @@ send_bothalf () {
                         strcat (&action[0], (char *) cnvt_int2str (1, x));
                     switch (x % 10) {
                         case 1:
-                            if (x != 11)
+                            if (x < 10)
                                 strcat (&action[0], "st ");
                             else
                                 strcat (&action[0], "th ");
                             break;
                         case 2:
-                            if (x != 11)
+                            if (x < 10)
                                 strcat (&action[0], "nd ");
                             else
                                 strcat (&action[0], "th ");
                             break;
                         case 3:
-                            if (x != 11)
+                            if (x < 10)
                                 strcat (&action[0], "rd ");
                             else
                                 strcat (&action[0], "th ");
@@ -1853,7 +1857,7 @@ send_bothalf () {
             switch_name (&action[0], &home_cur.batters[border[1][pre_act.batter[1]].player[0]].id.name[0]);
         else
             switch_name (&action[0], &visitor_cur.batters[border[0][pre_act.batter[0]].player[0]].id.name[0]);
-        x = (int) ((float) 9 * rand () / (RAND_MAX + 1.0));
+        x = (int) ((float) 10 * rand () / (RAND_MAX + 1.0));
         switch (x) {
             case 1:
                 strcat (&action[0], " strikes out");
@@ -1878,6 +1882,9 @@ send_bothalf () {
                 break;
             case 8:
                 strcat (&action[0], " goes down looking");
+                break;
+            case 9:
+                strcat (&action[0], " called out on strikes");
                 break;
             default:
                 strcat (&action[0], " strikes out swinging");
@@ -2363,19 +2370,19 @@ send_bothalf () {
             strcat (&action[0], (char *) cnvt_int2str (1, x));
         switch (x % 10) {
             case 1:
-                if (x != 11)
+                if (x < 10)
                     strcat (&action[0], "st ");
                 else
                     strcat (&action[0], "th ");
                 break;
             case 2:
-                if (x != 11)
+                if (x < 10)
                     strcat (&action[0], "nd ");
                 else
                     strcat (&action[0], "th ");
                 break;
             case 3:
-                if (x != 11)
+                if (x < 10)
                     strcat (&action[0], "rd ");
                 else
                     strcat (&action[0], "th ");
@@ -2410,19 +2417,19 @@ send_bothalf () {
                     strcat (&action[0], (char *) cnvt_int2str (1, x));
                 switch (x % 10) {
                     case 1:
-                        if (x != 11)
+                        if (x < 10)
                             strcat (&action[0], "st ");
                         else
                             strcat (&action[0], "th ");
                         break;
                     case 2:
-                        if (x != 11)
+                        if (x < 10)
                             strcat (&action[0], "nd ");
                         else
                             strcat (&action[0], "th ");
                         break;
                     case 3:
-                        if (x != 11)
+                        if (x < 10)
                             strcat (&action[0], "rd ");
                         else
                             strcat (&action[0], "th ");
@@ -2449,9 +2456,10 @@ send_bothalf () {
 /* determine where the ball is hit to */
 void
 find_fielder () {
-    int x;
+    int x, inning;
     char side;
 
+    inning = (game_status.half_inning - 1) / 2 + 1;
     whereto = 99;
 
     /* determine which side of the plate the batter is hitting from */
@@ -2583,6 +2591,9 @@ find_fielder () {
                 whereto = 7;
         }
     }
+
+    if (action_ind == 9 && inning >= 9 && vruns == hruns && game_status.outs < 2 && game_status.baserunners[2] != 99)
+        whereto = 2;
 }
 
 /* check for an error */
@@ -2612,7 +2623,7 @@ check_for_errors () {
             }
     /* ensure pitcher position is filled in */
     if (dhind)
-        for (y = 0; y < 25; y++) {
+        for (y = 0; y < 28; y++) {
             if (ha) {
                 if (!strcmp (&home.pitchers[game_status.pitcher[ha]].id.name[0], &home.batters[y].id.name[0])) {
                     pos[1] = y;
@@ -2669,8 +2680,7 @@ check_for_errors () {
                         }
                     }
                     else {
-                        result = (int) ((float) ((home.batters[pos[y]].fielding[y].a +
-                          home.batters[pos[y]].fielding[y].po + home.batters[pos[y]].fielding[y].e) * 4) * rand () / (RAND_MAX + 1.0));
+                        result = (int) ((float) ((home.batters[pos[y]].fielding[y].a + home.batters[pos[y]].fielding[y].po + home.batters[pos[y]].fielding[y].e) * 4) * rand () / (RAND_MAX + 1.0));
                         if (result <= home.batters[pos[y]].fielding[y].e) {
                             action_ind = 18;
                             whereto = y;
@@ -2705,8 +2715,7 @@ check_for_errors () {
                     }
                 }
                 else {
-                    result = (int) ((float) ((visitor.batters[pos[1]].fielding[1].a +
-                      visitor.batters[pos[1]].fielding[1].po + visitor.batters[pos[1]].fielding[1].e) * 4) * rand () / (RAND_MAX + 1.0));
+                    result = (int) ((float) ((visitor.batters[pos[1]].fielding[1].a + visitor.batters[pos[1]].fielding[1].po + visitor.batters[pos[1]].fielding[1].e) * 4) * rand () / (RAND_MAX + 1.0));
                     if (result <= visitor.batters[pos[1]].fielding[1].e) {
                         action_ind = 18;
                         whereto = 1;
@@ -2724,8 +2733,7 @@ check_for_errors () {
                         }
                     }
                     else {
-                        result = (int) ((float) ((visitor.batters[pos[y]].fielding[y].a +
-                                 visitor.batters[pos[y]].fielding[y].po + visitor.batters[pos[y]].fielding[y].e) * 4) * rand () / (RAND_MAX + 1.0));
+                        result = (int) ((float) ((visitor.batters[pos[y]].fielding[y].a + visitor.batters[pos[y]].fielding[y].po + visitor.batters[pos[y]].fielding[y].e) * 4) * rand () / (RAND_MAX + 1.0));
                         if (result <= visitor.batters[pos[y]].fielding[y].e) {
                             action_ind = 18;
                             whereto = y;
@@ -2763,15 +2771,13 @@ check_for_errors () {
                     else
                         ps = whereto;
 
-                    if (!(home.batters[pos[whereto]].fielding[ps].a + home.batters[pos[whereto]].fielding[ps].po +
-                                                                        home.batters[pos[whereto]].fielding[ps].e)) {
+                    if (!(home.batters[pos[whereto]].fielding[ps].a + home.batters[pos[whereto]].fielding[ps].po + home.batters[pos[whereto]].fielding[ps].e)) {
                         /* if the fielder played games at the position in real life but had no chances then give them a 10% chance of committing an error */
                         if (!(10 * rand () / (RAND_MAX + 1.0)))
                             action_ind = 18;
                     }
                     else {
-                        result = (int) ((float) (home.batters[pos[whereto]].fielding[ps].a + home.batters[pos[whereto]].fielding[ps].po +
-                                            home.batters[pos[whereto]].fielding[ps].e) * rand () / (RAND_MAX + 1.0));
+                        result = (int) ((float) (home.batters[pos[whereto]].fielding[ps].a + home.batters[pos[whereto]].fielding[ps].po + home.batters[pos[whereto]].fielding[ps].e) * rand () / (RAND_MAX + 1.0));
                         if (result <= home.batters[pos[whereto]].fielding[ps].e)
                             action_ind = 18;
                     }
@@ -2782,8 +2788,7 @@ check_for_errors () {
             }
             else {
                 if (home.batters[pos[whereto]].fielding[whereto].games) {
-                    if (!(home.batters[pos[whereto]].fielding[whereto].a + home.batters[pos[whereto]].fielding[whereto].po +
-                                                                             home.batters[pos[whereto]].fielding[whereto].e)) {
+                    if (!(home.batters[pos[whereto]].fielding[whereto].a + home.batters[pos[whereto]].fielding[whereto].po + home.batters[pos[whereto]].fielding[whereto].e)) {
                         /* if the fielder played games at the position in real life but had no chances then give them a 10% chance of committing an error */
                         if (!(10 * rand () / (RAND_MAX + 1.0)))
                             action_ind = 18;
@@ -2811,8 +2816,7 @@ check_for_errors () {
                     else
                         ps = whereto;
 
-                    if (!(visitor.batters[pos[whereto]].fielding[ps].a + visitor.batters[pos[whereto]].fielding[ps].po +
-                                                                           visitor.batters[pos[whereto]].fielding[ps].e)) {
+                    if (!(visitor.batters[pos[whereto]].fielding[ps].a + visitor.batters[pos[whereto]].fielding[ps].po + visitor.batters[pos[whereto]].fielding[ps].e)) {
                         /* if the fielder played games at the position in real life but had no chances then give them a 10% chance of committing an error */
                         if (!(10 * rand () / (RAND_MAX + 1.0)))
                             action_ind = 18;
@@ -2830,8 +2834,7 @@ check_for_errors () {
             }
             else {
                 if (visitor.batters[pos[whereto]].fielding[whereto].games) {
-                    if (!(visitor.batters[pos[whereto]].fielding[whereto].a + visitor.batters[pos[whereto]].fielding[whereto].po +
-                                                                                visitor.batters[pos[whereto]].fielding[whereto].e)) {
+                    if (!(visitor.batters[pos[whereto]].fielding[whereto].a + visitor.batters[pos[whereto]].fielding[whereto].po + visitor.batters[pos[whereto]].fielding[whereto].e)) {
                         /* if the fielder played games at the position in real life but had no chances then give them a 10% chance of committing an error */
                         if (!(10 * rand () / (RAND_MAX + 1.0)))
                             action_ind = 18;
@@ -2871,7 +2874,7 @@ upd_fielding_stats () {
                 break;
             }
     if (dhind)
-        for (y = 0; y < 25; y++) {
+        for (y = 0; y < 28; y++) {
             if (ha) {
                 if (!strcmp (&home.pitchers[game_status.pitcher[ha]].id.name[0], &home.batters[y].id.name[0])) {
                     pos[1] = y;
@@ -3857,8 +3860,7 @@ update_status () {
     }
 
     /* add to outs if appropriate, go to next inning if 3 outs & check for end of game */
-    if (action_ind == 7 || action_ind == 9 || action_ind == 10 || action_ind == 11 || action_ind == 12 ||
-        action_ind == 20 || action_ind == 19 || action_ind == 22 || action_ind == 23) {
+    if (action_ind == 7 || action_ind == 9 || action_ind == 10 || action_ind == 11 || action_ind == 12 || action_ind == 20 || action_ind == 19 || action_ind == 22 || action_ind == 23) {
         if ((action_ind == 11 || action_ind == 23) && game_status.outs < 2) {
             game_status.outs++;
             earned.outs++;
@@ -4826,7 +4828,7 @@ check_for_injury () {
             if (grel < 0)
                 grel = 0;
             /* find batter iteration number for pitcher */
-            for (x = 0; x < 25; x++)
+            for (x = 0; x < 28; x++)
                 if (!strcmp (&visitor_cur.pitchers[pitching[0].pitcher[0]].id.name[0], &visitor_cur.batters[x].id.name[0]))
                     break;
 
@@ -4844,7 +4846,7 @@ check_for_injury () {
             if (grel < 0)
                 grel = 0;
             /* find batter iteration number for pitcher */
-            for (x = 0; x < 25; x++)
+            for (x = 0; x < 28; x++)
                 if (!strcmp (&home_cur.pitchers[pitching[1].pitcher[0]].id.name[0], &home_cur.batters[x].id.name[0]))
                     break;
 
@@ -4882,7 +4884,7 @@ check_for_injury () {
                         break;
                     }
             if (dhind)
-                for (y = 0; y < 25; y++) {
+                for (y = 0; y < 28; y++) {
                     if (ha) {
                         if (!strcmp (&home.pitchers[game_status.pitcher[ha]].id.name[0], &home.batters[y].id.name[0])) {
                             pos[1] = y;

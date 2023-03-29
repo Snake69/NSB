@@ -1,3 +1,16 @@
+0.9.9.8 -
+. (NOTE - many of the rule changes since 2020 not incorporated yet)
+. added 2022 Real Life data
+. added 2021 Real Life data
+. added 2020 Real Life data
+. increased maximum size of team rosters to 28 players (including 13 pitchers)
+. tightened network security
+. added option to nsbserver to disallow Waiting Pool (network play)
+. various bugs squashed
+. various minor improvements
+. minor editorial improvements
+
+
 0.9.9.7 -
 . added 2019 Real Life data
 . introduced availability of an open NSB server

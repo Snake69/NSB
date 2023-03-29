@@ -290,8 +290,7 @@ update_records (int sday, int vid, int hid, char *tn) {
                         if (cmp_rec (x, y, st, hpf, gs, pi)) {
                             for (z = 48; z >= y; z--)
                                 if (!team.year) {
-                                    if (gs == 1 && !strcmp (&records[gs].fielding[pi][st][z].uctname[0], &teamname[0]) &&
-                                                  !strcmp (&records[gs].fielding[pi][st][z].name[0], &team.batters[x].id.name[0]))
+                                    if (gs == 1 && !strcmp (&records[gs].fielding[pi][st][z].uctname[0], &teamname[0]) && !strcmp (&records[gs].fielding[pi][st][z].name[0], &team.batters[x].id.name[0]))
                                         for (zz = z; zz < 49; zz++)
                                             records[gs].fielding[pi][st][zz] = records[gs].fielding[pi][st][zz + 1];
                                     records[gs].fielding[pi][st][z + 1] = records[gs].fielding[pi][st][z];
@@ -508,13 +507,11 @@ cmp_rec (int x, int y, int st, int hpf, int gs, int pi) {
                     return 1;
         if (st == 30)
             if ((team.pitchers[x].pitching.wins + team.pitchers[x].pitching.losses) >= (totgames / 12) && totgames)
-                if (((int) (((float) team.pitchers[x].pitching.wins / ((float) team.pitchers[x].pitching.wins +
-                        (float) team.pitchers[x].pitching.losses)) * 1000.0)) >= records[gs].pitching[st][y].stat[5])
+                if (((int) (((float) team.pitchers[x].pitching.wins / ((float) team.pitchers[x].pitching.wins + (float) team.pitchers[x].pitching.losses)) * 1000.0)) >= records[gs].pitching[st][y].stat[5])
                     return 1;
         if (st == 31)
             if (team.pitchers[x].pitching.innings >= totgames && totgames)
-                if (((int) (((float) team.pitchers[x].pitching.hits / (float) team.pitchers[x].pitching.opp_ab) *
-                                                                     1000.0)) <= records[gs].pitching[st][y].stat[5])
+                if (((int) (((float) team.pitchers[x].pitching.hits / (float) team.pitchers[x].pitching.opp_ab) * 1000.0)) <= records[gs].pitching[st][y].stat[5])
                     return 1;
     }
 
@@ -642,8 +639,7 @@ cp_rec (int x, int y, int st, int hpf, int gs, int pi) {
         }
         if (st == 18) {
             singles = team.batters[x].hitting.hits - (team.batters[x].hitting.homers + team.batters[x].hitting.triples + team.batters[x].hitting.doubles);
-            pct = (((float) (team.batters[x].hitting.homers * 4) +
-                                (float) (team.batters[x].hitting.triples * 3) + (float) (team.batters[x].hitting.doubles * 2) +
+            pct = (((float) (team.batters[x].hitting.homers * 4) + (float) (team.batters[x].hitting.triples * 3) + (float) (team.batters[x].hitting.doubles * 2) +
                                                             (float) singles) / (float) team.batters[x].hitting.atbats) + 0.0005;    /* round up */
             records[gs].hitting[st][y].stat[5] = (int) (pct * 1000.0);
             records[gs].hitting[st][y].stat[0] = team.batters[x].hitting.atbats;
@@ -655,8 +651,7 @@ cp_rec (int x, int y, int st, int hpf, int gs, int pi) {
         }
         if (st == 19) {
             pct = ((float) team.batters[x].hitting.hits + (float) team.batters[x].hitting.bb + (float) team.batters[x].hitting.hbp) /
-                                         ((float) team.batters[x].hitting.atbats + (float) team.batters[x].hitting.bb +
-                                          (float) team.batters[x].hitting.sf + (float) team.batters[x].hitting.sh +
+                                         ((float) team.batters[x].hitting.atbats + (float) team.batters[x].hitting.bb + (float) team.batters[x].hitting.sf + (float) team.batters[x].hitting.sh +
                                                                       (float) team.batters[x].hitting.hbp) + 0.0005;   /* round up */
             records[gs].hitting[st][y].stat[5] = (int) (pct * 1000.0);
             records[gs].hitting[st][y].stat[0] = team.batters[x].hitting.atbats + team.batters[x].hitting.bb +
@@ -727,8 +722,7 @@ cp_rec (int x, int y, int st, int hpf, int gs, int pi) {
         if (st == 28)
             records[gs].pitching[st][y].stat[5] = team.pitchers[x].pitching.opp_ab;
         if (st == 29) {
-            pct = ((float) (team.pitchers[x].pitching.er * 9.0) / ((float) team.pitchers[x].pitching.innings +
-                                                               (float) team.pitchers[x].pitching.thirds / 3.0)) + 0.005;   /* round up */
+            pct = ((float) (team.pitchers[x].pitching.er * 9.0) / ((float) team.pitchers[x].pitching.innings + (float) team.pitchers[x].pitching.thirds / 3.0)) + 0.005;   /* round up */
             records[gs].pitching[st][y].stat[5] = (int) (pct * 100.0);
             records[gs].pitching[st][y].stat[0] = team.pitchers[x].pitching.innings;
             records[gs].pitching[st][y].stat[1] = team.pitchers[x].pitching.thirds;
@@ -736,8 +730,7 @@ cp_rec (int x, int y, int st, int hpf, int gs, int pi) {
             records[gs].pitching[st][y].stat[6] = totgames;
         }
         if (st == 30) {
-            pct = ((float) team.pitchers[x].pitching.wins / ((float) team.pitchers[x].pitching.wins +
-                                                                    (float) team.pitchers[x].pitching.losses)) + 0.0005;   /* round up */
+            pct = ((float) team.pitchers[x].pitching.wins / ((float) team.pitchers[x].pitching.wins + (float) team.pitchers[x].pitching.losses)) + 0.0005;   /* round up */
             records[gs].pitching[st][y].stat[5] = (int) (pct * 1000.0);
             records[gs].pitching[st][y].stat[0] = team.pitchers[x].pitching.wins;
             records[gs].pitching[st][y].stat[1] = team.pitchers[x].pitching.losses;

@@ -2,6 +2,40 @@
 
     American League         National League
 
+2022
+1B  Nathaniel Lowe          Paul Goldschmidt 
+2B  Jose Altuve             Jeff McNeil
+3B  José Ramírez            Nolan Arenado
+SS  Xander Bogaerts         Trea Turner
+OF  Aaron Judge             Mookie Betts
+OF  Julio Rodríguez         Kyle Schwarber
+OF  Mike Trout              Juan Soto
+C   Alejandro Kirk          J.T. Realmuto
+DH  Yordan Alvarez          Josh Bell
+UT  Luis Arraez             Brandon Drury
+
+2021
+1B  Vladimir Guerrero       Freddie Freeman
+2B  Marcus Semien           Ozzie Albies
+3B  Rafael Devers           Austin Riley
+SS  Xander Bogaerts         Fernando Tatis
+OF  Teoscar Herandez        Juan Soto
+OF  Cedric Mullins          Bryce Harper
+OF  Aaron Judge             Nick Castellanos
+C   Salvador Perez          Buster Posey
+DH  Shohei Ohtani        P  Max Fried
+
+2020
+1B  Jose Abreu              Freddie Freeman
+2B  D.J. LeMahieu           Donovan Solano
+3B  Jose Ramirez            Manny Machado
+SS  Tim Anderson            Fernando Tatis
+OF  Teoscar Herandez        Ronald Acuna
+OF  Eloy Jimenez            Mookie Betts
+OF  Mike Trout              Juan Soto
+C   Salvador Perez          Travis d'Arnaud
+DH  Nelson Cruz          P  Marcell Ozuna
+
 2019
 1B  Carlos Santana          Freddie Freeman
 2B  D.J. LeMahieu           Ozzie Albies

@@ -2,6 +2,9 @@
 
       American League                       National League
 
+2022  Aaron Judge       New York      OF    Paul Goldschmidt  St. Louis     1B
+2021  Shohei Ohtani     Los Angeles  P/DH   Bryce Harper      Philadelphia  OF
+2020  Jose Abreau       Chicago       1B    Freddie Freeman   Atlanta       1B
 2019  Mike Trout        Los Angeles   CF    Cody Bellinger    Los Angeles   RF
 2018  Mookie Betts      Boston        OF    Christian Yelich  Milwaukee     OF
 2017  Jose Altuve       Houston       2B    Giancarlo Stanton Miami         OF
