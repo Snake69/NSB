@@ -2,6 +2,42 @@
 
      American League                 National League
 
+2025
+P    Max Fried          New York     Logan Webb           San Francisco
+C    Dillon DIngler     Detroit      Patrick Bailey       San Francisco
+1B   Ty France          Minn/Tor     Matt Olson           Atlanta
+2B   Marcus Semien      Texas        Nico Hoerner         Chicago
+3B   Malkel Garcia      Kansas City  RKe'Bryan Hayes      Pitt/Cin
+SS   Bobby Witt         Kansas City  Masyn Winn           St Louis
+LF   Steven Kwan        Cleveland    Ian Happ             Chicago
+CF   Ceddanne Rafaela   Boston       Pete Crow-Armstrong  Chicago
+RF   Wilyer Abreu       Boston       Fernando Tatis       San Diego
+UT   Mauricio Dubon     Houston      Javier Sanoja        Miami
+
+2024
+P    Seth Lugo          Kansas City  Chris Sale        Atlanta
+C    Cal Raleigh        Seattle      Patrick Bailey    San Francisco
+1B   Carlos Santana     Minnesota    Christian Walker  Arizona
+2B   Andres Gimenez     Cleveland    Brice Turang      Milwaukee
+3B   Alex Bregman       Houston      Matt Chapman      San Francisco
+SS   Bobby Witt         Kansas City  Ezequiel Tovar    Colorado
+LF   Steven Kwan        Cleveland    Ian Happ          Chicago
+CF   Daulton Varsho     Toronto      Brenton Doyle     Colorado
+RF   Wilyer Abreu       Boston       Sal Frelick       Milwaukee
+UT   Dylan Moore        Seattle      Jared Triolo      Pittsburgh
+
+2023
+P    Jose Berrios       Toronto      Zack Wheeler      Philadelphia
+C    Jonah Heim         Texas        Gabriel Moreno    Arizona
+1B   Nathaniel Lowe     Texas        Christian Walker  Arizona
+2B   Andres Gimenez     Cleveland    Nico Hoerner      Atlanta
+3B   Matt Chapman       Toronto      Ke'Bryan Hayes    Pittsburgh
+SS   Anthony Volpe      New York     Dansby Swanson    Chicago
+LF   Steven Kwan        Cleveland    Ian Happ          Chicago
+CF   Kevin Kiermaier    Toronto      Brenton Doyle     Colorado
+RF   Adolis Garcia      Texas        Fernando Tatis    San Diego
+UT   Mauricio Dubon     Houston      Ha-Seong Kim      San Diego
+
 2022
 P    Shane Bieber       Cleveland    Max Fried         Atlanta
 C    Jose Trevino       New York     J. T. Realmuto    Philadelphia

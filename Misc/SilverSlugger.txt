@@ -2,13 +2,49 @@
 
     American League         National League
 
+2025
+1B  Nick Kurtz              Pete Alonzo
+2B  Jazz Chisholm           Ketel Marte
+3B  Jose Ramirez            Manny Machado
+SS  Bobby Witt              Geraldo Perdomo
+OF  Aaron Judge             Juan Soto
+OF  Byron Buxton            Corbin Carroll
+OF  Riley Greene            Kyle Tucker
+C   Cal Raleigh             Hunter Goodman
+DH  George Springer         Shohei Ohtani
+UT  Zach McKinstry          Alec Burleson
+
+2024
+1B  Vladimir Guerrero       Bryce Harper
+2B  Jose Altuve             Ketel Marte
+3B  Jose Ramirez            Manny Machado
+SS  Bobby Witt              Francisco Lindor
+OF  Aaron Judge             Teoscar Hernandez
+OF  Anthony Santander       Jackson Merrill
+OF  Juan Soto               Jurickson Profar
+C   Salvador Perez          William Contreras
+DH  Brent Rooker            Shohei Ohtani
+UT  Josh Smith              Mookie Betts
+
+2023
+1B  Yandy Diaz              Matt Olson
+2B  Marcus Semien           Luiz Arraez
+3B  Rafael Devers           Austin Riley
+SS  Corey Seager            Francisco Lindor
+OF  Luis Robert             Ronald Acuna
+OF  Julio Rodríguez         Mookie Betts
+OF  Kyle Tucker             Juan Soto
+C   Adley Rutschman         William Contreras
+DH  Shohei Ohtani           Bryce Harper
+UT  Gunnar Henderson        Cody Bellinger
+
 2022
 1B  Nathaniel Lowe          Paul Goldschmidt 
 2B  Jose Altuve             Jeff McNeil
 3B  José Ramírez            Nolan Arenado
 SS  Xander Bogaerts         Trea Turner
 OF  Aaron Judge             Mookie Betts
-OF  Julio Rodríguez         Kyle Schwarber
+OF  Julio Rodriguez         Kyle Schwarber
 OF  Mike Trout              Juan Soto
 C   Alejandro Kirk          J.T. Realmuto
 DH  Yordan Alvarez          Josh Bell

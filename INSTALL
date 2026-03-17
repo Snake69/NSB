@@ -1,6 +1,6 @@
 
-NSB v0.9.9.8
-1 Apr 2023
+NSB v0.9.9.9
+16 Mar 2026
 
 If you downloaded from github then from the NSB root directory (after
 unzipping) you may just need to enter:
@@ -62,7 +62,7 @@ of gtknsbclient.
 
 All three programs (nsbserver, nsbpoolmngr and gtknsbclient) will be
 installed into /usr/local/bin.  Also included in the installation are
-all the various team statistic files for the years 1901 through 2022, and
+all the various team statistic files for the years 1901 through 2025, and
 short manuals for the three programs.  The stats files will be installed
 into /var/NSB.  The manuals will be installed into /usr/local/man/man6.
 Some additional files will be installed into /usr/local/share/NSB.

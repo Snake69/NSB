@@ -547,6 +547,15 @@ populate () {
                 teaminfo[x].yrspan[0] = 2022;
                 teaminfo[x].yrspan[1] = MAX_YEAR;
                 teaminfo[x].yrspan[2] = teaminfo[x].yrspan[3] = 0;
+                break;
+            case 69:
+                strcpy (&teaminfo[x].filename[0], "Athletics");
+                strcpy (&teaminfo[x].teamabbrev[0], "Ath");
+                strcpy (&teaminfo[x].teamname[0], "Athletics");
+                teaminfo[x].yrspan[0] = 2025;
+                teaminfo[x].yrspan[1] = MAX_YEAR;
+                teaminfo[x].yrspan[2] = teaminfo[x].yrspan[3] = 0;
+                break;
         }
     }
 }

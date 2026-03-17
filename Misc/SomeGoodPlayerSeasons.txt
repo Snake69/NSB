@@ -133,6 +133,7 @@ CF - Cy Seymour, 1905 Cincinnati Reds
      Willie McGee, 1985 St Louis Cardinals
      Ken Griffey, 1997 Seattle Mariners
      Aaron Judge, 2022 New York Yankees
+     Aaron Judge, 2024 New York Yankees
 RF - Ty Cobb, 1909 Detroit Tigers
      Joe Jackson, 1911 Cleveland Naps
      Joe Jackson, 1912 Cleveland Naps
@@ -162,6 +163,8 @@ RF - Ty Cobb, 1909 Detroit Tigers
      Magglio Ordonez, 2007 Detroit Tigers
      Bryce Harper, 2015 Washington Nationals
      Mookie Betts, 2018 Boston Red Sox
+     Ronald Acuna, 2023 Atlanta Braves
+     Aaron Judge, 2025 New York Yankees
 DH - Hal McRae, 1976 Kansas City Royals
      Don Baylor, 1983 New York Yankees
      Paul Molitor, 1987 Milwaukee Brewers
@@ -170,6 +173,7 @@ DH - Hal McRae, 1976 Kansas City Royals
      Edgar Martinez, 2000 Seattle Mariners
      David Ortiz, 2005 Boston Red Sox
      David Ortiz, 2006 Boston Red Sox
+     Shohei Ohtani, 2024 Los Angeles Dodgers
 SP - Cy Young, 1901 Boston Americans
      Rube Waddell, 1905 Philadelphia Athletics
      Cy Young, 1908 Boston Red Sox
@@ -224,6 +228,7 @@ SP - Cy Young, 1901 Boston Americans
      Mike Hampton, 1999 Houston Astros
      Pedro Martinez, 1999 Boston Red Sox
      Pedro Martinez, 2000 Boston Red Sox
+     Randy Johnson, 2001 Arizona Diamondbacks
      Randy Johnson, 2002 Arizona Diamondbacks
      Clayton Kershaw, 2014 Los Angeles Dodgers
      Jake Arrieta, 2015 Chicago Cubs
@@ -263,6 +268,7 @@ RP - Ferdie Schupp, 1916 New York Giants
      Eric Gagne, 2003 Los Angeles Dodgers
      Keith Foulke, 2003 Oakland Athletics
      Armando Benitez, 2004 Florida Marlins
+     Mariano Rivera, 2004 New York Yankees
      Mariano Rivera, 2005 New York Yankees
      Billy Wagner, 2005 Philadelphia Phillies
      Jonathan Papelbon, 2006 Boston Red Sox
@@ -276,5 +282,6 @@ RP - Ferdie Schupp, 1916 New York Giants
      Fernando Rodney, 2012 Tampa Bay Rays
      Wade Davis, 2014 Kansas City Royals
      Wade Davis, 2015 Kansas City Royals
+     Zack Britton, 2016 Baltimore Orioles
      Kenley Jansen, 2017 Los Angeles Dodgers
 

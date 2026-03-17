@@ -1,7 +1,7 @@
 #ifndef _TEAMS_H_
 #define _TEAMS_H_
 
-#define NUMBER_OF_TEAMS 68   /* number of possible team names */
+#define NUMBER_OF_TEAMS 69   /* number of possible team names */
 
 struct {
     int  id, yrspan[4];

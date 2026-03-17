@@ -38,6 +38,7 @@ any one player appear only once in any one season.  In the case where a
 player played for more than one team in any one season the stats for that
 player have been combined so that his stats for the entire season show up
 on whichever team for which he played the most games (most of the time).
+This may change in the future.
 
 Please advise me if you see where I may have missed some cases, or if
 you see any other problems with the stats.

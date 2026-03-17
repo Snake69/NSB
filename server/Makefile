@@ -1,4 +1,4 @@
-CFLAGS          = -I../include -Wall -g
+CFLAGS          = -fcommon -I../include -Wall -g
 all:	nsbserver nsbpoolmngr
 
 nsbserver: server.o ../common/net.o smisc.o game.o ../common/init.o records.o ai.o human.o formula.o createteam.o

@@ -99,6 +99,11 @@ PlayTakeMeOut2TheBallgame (gpointer callback_data, guint callback_action, GtkWid
 }
 
 void
+PlayVintage (gpointer callback_data, guint callback_action, GtkWidget *widget) {
+    g_thread_new (NULL, play_snd, (gpointer) "/usr/local/share/NSB/VintageTakeMeOutToTheBallgame.wav");
+}
+
+void
 PlayAbbottAndCostello (gpointer callback_data, guint callback_action, GtkWidget *widget) {
     g_thread_new (NULL, play_snd, (gpointer) "/usr/local/share/NSB/AbbottAndCostello.wav");
 }
@@ -749,6 +754,7 @@ static GtkItemFactoryEntry menu_items[] = {
 
    { "/Xtras", NULL, 0, 0, "<Branch>" },
    { "/Xtras/Play \"Take Me Out to the Ballgame\"", NULL, PlayTakeMeOut2TheBallgame, 0 },
+   { "/Xtras/Play \"Vintage Take Me Out to the Ballgame\"", NULL, PlayVintage, 0 },
    { "/Xtras/Play Abbott & Costello's \"Who's On First?\"", NULL, PlayAbbottAndCostello, 0 },
    { "/Xtras/Play Jackie Gleason's \"Casey at the Bat\"", NULL, PlayJackieGleason, 0 },
    { "/Xtras/Play John Fogerty's \"Centerfield\"", NULL, PlayCenterfield, 0 },
@@ -770,7 +776,7 @@ CreateMenus (GtkWidget *window) {
 
     accel_group = gtk_accel_group_new ();
     item_factory = gtk_item_factory_new (GTK_TYPE_MENU_BAR, "<menu>", accel_group);
-    gtk_item_factory_create_items (item_factory, 83, menu_items, NULL);
+    gtk_item_factory_create_items (item_factory, 84, menu_items, NULL);
     gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
     gtk_window_set_title (GTK_WINDOW (window), "GTK Client for NSB");
     gtk_container_border_width (GTK_CONTAINER (window), 0);

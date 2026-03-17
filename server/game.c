@@ -42,7 +42,7 @@ char *grounders[] = { "taps the ball to", "grounds to", "hits a high bounder to"
                    "hits a tape measure home run", "rips it ... kiss it goodbye", "plants it in the stands", "crushes it ... gone", "mashes a homer",
                    "nails the ball into the cheap seats", "blasts the ball over the fence", "gives the cowhide a ride ... it's not coming back",
                    "... get up! Get up! Get outa here! Gone!", "connects ... no doubt", "tags the ball ... just over the fence", "blasts a towering homerun",
-                   "hits a tater out of the park", "tattooes the ball out" };
+                   "hits a tater way out of here", "tattooes the ball out" };
 
 void
 playthegame () {

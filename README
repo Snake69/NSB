@@ -1,6 +1,6 @@
 
-NSB v0.9.9.8
-1 Apr 2023
+NSB v0.9.9.9
+16 Mar 2026
 
 NetStats Baseball (NSB) is a simulation of Major League Baseball.
 NSB is a client/server application.
@@ -19,7 +19,8 @@ The text file "todo.txt" lists items to be done in future releases.
 
 If anyone needs help, finds any bugs or has any comments, questions,
 or suggestions for improvements feel free to send me an email at
-<marshallelake@gmail.com>.  I'm open to _any_ feedback, good or bad.
+<marshallelake@gmail.com>.  I'm open to _any_ feedback, good, bad, or
+indifferent.
 
 See the text file "INSTALL" for installation instructions.
 

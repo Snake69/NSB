@@ -8,6 +8,7 @@ MGR = manager
 UMP = umpire
 EXEC = executive
 COB = Contemporary Baseball Era Committee 
+CLB = Classic Baseball Era Committee 
 
                                    Hall of Fame
 
@@ -463,5 +464,18 @@ Year  Name               Primary  Team inducted as       Career  Induction Vote%
 2022  Tony Oliva            RF   Minnesota Twins         1962-1976  VC    75%
 2023  Scott Rolen           3B   Philadelphia Phillies   1996-2012  BBWAA 76.3%
 2023  Fred McGriff          1B   Atlanta Braves          1986-2004  VC    100%
-                                                                    (COB)
+                                                                    COB
+2024  Adrian Beltre         3B   Texas Rangers           1998-2018  BBWAA 95.1%
+2024  Todd Helton           1B   Colorado Rockies        1997-2013  BBWAA 79.7%
+2024  Joe Mauer             C    Minnesota Twins         2004-2018  BBWAA 76.1%
+2024  Jim Leyland          MGR   Pittsburgh Pirates      1986-1999  VC    93.8%
+                                                         2006-2013  COB
+2025  Dick Allen            1B   Philadelphia Phillies   1963-1977  VC    81.3%
+                                                                    CLB
+2025  Dave Parker           RF   Pittsburgh Pirates      1973-1991  VC    87.5% 
+                                                                    CLB
+2026  Carlos Beltran        CF   New York Mets           1998-2017  BBWAA 84.2%
+2026  Andruw Jones          CF   Atlanta Braves          1996-2012  BBWAA 78.4%
+2026  Jeff Kent             2B   San Francisco Giants    1992-2008  VC    87.5%
+                                                                    COB
 

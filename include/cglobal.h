@@ -5,7 +5,7 @@
 
 #define NO 0
 #define YES 1
-#define MAX_YEAR 2022
+#define MAX_YEAR 2025
 #define YEAR_SPREAD (MAX_YEAR - 1901) + 1
 
 int sock, wsock, sockhvh, poolmngr, ThreadRunning, netgame, challenger_ind, countsel, pbpcnt, dh, RLCatLeadersMY, curbeg, Speaking, fdlock;

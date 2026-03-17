@@ -4,7 +4,7 @@ OBJS = gtknsbc.o about.o init.o misc.o creatensbid.o getservername.o help.o user
        awards.o preferences.o bestteams.o getyear.o setupleaguechoices.o series.o tdib.o bestseasons.o autoplay.o setupteamchoices.o \
        ../common/net.o ../common/init.o
 
-CFLAGS = -g -O2 -I../include -Wall `pkg-config --cflags gtk+-2.0`
+CFLAGS = -g -O2 -I../include -Wall -fcommon `pkg-config --cflags gtk+-2.0`
 
 gtknsbclient: $(OBJS)
 	$(CC) $(CFLAGS) -o gtknsbclient $(OBJS) `pkg-config --libs gtk+-2.0 gthread-2.0`

@@ -2,6 +2,9 @@
 
         American League                   National League
 
+2025   Nick Kurtz          Oakland        Drake Baldwin        Atlanta
+2024   Luis Gil            New York       Paul Skenes          Pittsburgh
+2023   Gunnar Henderson    Baltimore      Corbin Carroll       Arizona
 2022   Julio Rodríguez     Seattle        Michael Harris       Atlanta
 2021   Randy Arozarena     Tampa Bay      Jonathan India       Cincinnati
 2020   Kyle Lewis          Seattle        Devin Williams       Milwaukee

@@ -1,9 +1,18 @@
+fielding - when specifying position or name of fielder, add a third option to specify both (e.g., "... flies out to right fielder, Al Kaline")
+
+need to create a utility program that will handle the stats-creation process (download, reformat, cut roster to 26, etc)
+  that is, perform all the steps in utils/README.txt
+
+Category Leaders, fielding, outfield, games played - break it up into LF, CF, RF
+
 add to league set-up file:
   number of games each team plays: 1901-1903 140; 1904-1918 154; 1919 140; 1920-1961 154; 1962-2019 162; 2020 60
   number of games each team plays ...
     within league: 1901-1903 140; 1904-1918 154; 1919 140; 1920-1961 154; 1962-1996 162; 1997 west divisions 146, all other 147; 1998 146; 1999-2012 AL 144, 4 NL teams 144, 12 NL teams 147; 2013-2019 142; 2020 40
     within division: 1901-1903 140; 1904-1918 154; 1919 140; 1920-1961 154; 1962-1968 162; 1969-2012 18 X team; 2013-2019 19 X team; 2020 40
     interleague:  1901-1996 0; 1997 west divisions 16, all other 15; 1998 16; 1999-2012 AL 18, 4 NL teams 18, 12 NL teams 15; 2013-2020 20
+DH for league play - AL, 1973-current; NL, 2020, 2022-current
+P can also DH in same game, 2022-current
 for 2020 only
   NL has DH
   postseason
@@ -11,6 +20,7 @@ for 2020 only
     Wild Card Series (all 16 teams play) will be best of 3, Division Series best of 5, League Championship Series best of 7,
       World Series best of 7
 for 2020 going forward
+  active roster size 26 players
   pitcher must face at least 3 batters or end half-inning
   in double-headers games are 7 innings
   all extra innings (NOT post-season)
@@ -19,7 +29,6 @@ for 2020 going forward
     in calculating ER, player placed on 2nd base is there because of an error (but it's not an error in the boxscore)
 for 2021:
   max # of pitchers on active roster - 13
-  active roster size 26 players
   another team added to post-season
   wild card game best of 3
 
@@ -29,12 +38,13 @@ add options to Evaluate Team Seasons
   include selected team name(s)
   exclude selected team name(s)
   display results Worst-2-Best (would need to change some factors in dialog, and would need to change calculations)
+  length of results list (currently fixed at 100)
 calculating "Evaluate Team Seasons":
   "number of games finishing ahead of the second-place team in the
     division/league" - adjust for number of games played and number of
     teams in the division/league
 
-for HOF rather than display HOF.txt, take user to https://en.wikipedia.org/wiki/List_of_members_of_the_Baseball_Hall_of_Fame
+for HOF, rather than display HOF.txt, take user to https://en.wikipedia.org/wiki/List_of_members_of_the_Baseball_Hall_of_Fame
 add INFO to main screen when sox or espeak not installed
 HR cycle (solo HR, 2-run HR, 3-run HR & bases loaded HR by same person in 1 game)
   never been done in MLB
@@ -101,6 +111,8 @@ add inside the park homer
   real life, 1951-2000 - 1 in 158 HRs were inside-the-park
   before 1951 the percentage is higher
 program to compare NSB real life stats to stats on baseball-reference.com and/or mlb.com
+  on baseball-reference.com use "Share & Export" -> CSV to get stats; compare stats in CSV output to appropriate team stats
+  see ~/Dev/NSB-MiscStuff/utils/getstats.txt
 can certain items in the drop down menu (e.g., the audio) be moved to pop-up menus
   so as to be able to execute them at any time?
 add all real life teams (i.e., teams before 1901)

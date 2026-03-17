@@ -2,6 +2,9 @@
 
         American League                   National League
 
+2025    Tarik Skubal     Detroit          Paul Skenes         Pittsburgh
+2024    Tarik Skubal     Detroit          Chris Sale          Atlanta
+2023    Gerrit Cole      New York         Blake Snell         San Diego
 2022    Justin Verlander Houston          Sandy Alcantara     Miami
 2021    Robbie Ray       Toronto          Corbin Burnes       Milwaukee
 2020    Shane Bieber     Cleveland        Trevor Bauer        Cincinnati

@@ -25,6 +25,7 @@ Roy Halladay, 29 May 2010, Philadelphia Phillies 1, Florida Marlins 0
 Philip Humber, 21 Apr 2012, Chicago White Sox 4, Seattle Mariners 0
 Matt Cain, 13 Jun 2012, San Francisco Giants 10, Houston Astros 0
 Felix Hernandez, 15 Aug 2012, Seattle Mariners 1, Tampa Bay Rays 0
+Domingo German, 28 Jun 2023, New York Yankees 11, Oakland Athletics 0
 
 
 Pitchers With Multiple No-Hitters Since 1900 ...
@@ -49,8 +50,8 @@ Bill Stoneman (2) - 17 Apr 1969, 2 Oct 1972
 Ken Holtzman (2) - 19 Aug 1969, 3 Jun 1971
 Don Wilson (2) - 18 Jun 1967, 1 May 1969
 Jim Maloney (2) - 19 Aug 1965, 30 Apr 1969
-Warren Spahn (2) - 16 Sep 1960, 28 Apr 1961
 Jim Bunning (2) - 20 Jul 1958, 21 Jun 1964
+Warren Spahn (2) - 16 Sep 1960, 28 Apr 1961
 Carl Erskine (2) - 19 Jun 1952, 12 May 1956
 Virgil Trucks (2) - 15 May 1952, 25 Aug 1952
 Allie Reynolds (2) - 12 Jul 1951, 28 Sep 1951
@@ -89,6 +90,8 @@ Corbin Burnes, Josh Hader; 11 Sep 2021, Milwaukee Brewers 3, Cleveland Indians 0
 Tyler Megill, Drew Smith, Joely Rodríguez, Seth Lugo, Edwin Díaz; 29 Apr 2022, New York Mets 3, Philadelphia Phillies 0
 Cristian Javier, Hector Neris, Ryan Pressly, 25 Jun 2022, Houston Astros 2, New York Yankees 0
 Cristian Javier, Bryan Abreu, Rafael Montero, Ryan Pressly; 2 Nov 2022, Houston Astros 5, Philadelphia Phillies 0
+Matt Manning, Jason Foley, Alex Lange; 8 Jul 2023, Detroit Tigers 2, Toronto Blue Jays 0
+Shota Imanaga, Nate Pearson, Porter Hodge; 4 Sep 2024, Chicago Cubs 12, Pittsburgh Pirates 0
 
 
 Holding the Opponent Hitless and Losing
@@ -116,8 +119,11 @@ Mike Cameron, 2 May 2002, Seattle Mariners 15, Chicago White Sox 4
 Shawn Green, 23 May 2002, Los Angeles Dodgers 16, Milwaukee Brewers 3
 Carlos Delgado, 25 Sep 2003, Toronto Blue Jays 10, Tampa Bay Devil Rays 8
 Josh Hamilton, 8 May 2012, Texas Rangers 10, Baltimore Orioles 3
-Scotter Gennett, 6 Jun 2017, Cincinnati Reds 13, St Louis Cardinals 1
+Scooter Gennett, 6 Jun 2017, Cincinnati Reds 13, St Louis Cardinals 1
 J.D. Martinez, 4 Sep 2017, Arizona Diamondbacks 13, Los Angeles Dodgers 0
+Eugenio Suarez, 26 Apr 2025, Arizona Diamondbacks 7, Atlanta Braves 8
+Nick Kurtz, 25 Jul 2025, Oakland Athletics 15, Houston Astros 3
+Kyle Schwarber, 28 Aug 2025, Philadelphia Phillies 19, Atlanta Braves 4
 
 
 Batting Triple Crowns Since 1900 ...
@@ -172,7 +178,14 @@ Johan Santana, 2006, Minnesota Twins, 2.77, 19 W, 245 SO
 Jake Peavy, 2007, San Diego Padres, 2.54, 19 W, 240 SO
 Clayton Kershaw, 2011, Los Angeles Dodgers (NL), 2.28, 21 W, 248 SO
 Justin Verlander, 2011, Detroit Tigers (AL), 2.40, 24 W, 250 SO
-Shane Bieber, 2020, Cleveland Indians (AL), 1.63, 8 W, 122 SO)
+Shane Bieber, 2020, Cleveland Indians (AL), 1.63, 8 W, 122 SO
+Chris Sale, 2024, Atlanta Braves (NL), 2.38, 18 W, 225 SO
+Tarik Skubal, 2024, Detroit Tigers (AL), 2.29, 18 W, 228 SO
+
+
+Players Since 1900 With 50+ Home Runs and 50+ Stolen Bases in Same Season ...
+
+Shohei Ohtani, 2024, Los Angeles Dodgers, 54 HR, 59 SB
 
 
 Players Since 1900 With 40+ Home Runs and 40+ Stolen Bases in Same Season ...
@@ -181,6 +194,7 @@ Jose Canseco, 1988, Oakland Athletics, 42 HR, 40 SB
 Barry Bonds, 1996, San Francisco Giants, 42 HR, 40 SB
 Alex Rodriguez, 1998, Seattle Mariners, 42 HR, 46 SB
 Alfonso Soriano, 2006, Washington Nationals, 46 HR, 41 SB
+Ronald Acuna, 2023, Atlanta Braves, 41 HR, 73 SB
 
 
 Players Since 1900 With 30+ Home Runs and 30+ Stolen Bases in Same Season Multiple Times ...
@@ -220,6 +234,17 @@ Ian Kinsler, 2009, Texas Rangers, 31 HR, 30 SB
              2011, Texas Rangers, 32 HR, 30 SB
 Ryan Braun, 2011, Milwaukee Brewers, 33 HR, 33 SB
             2012, Milwaukee Brewers, 41 HR, 30 SB
+Ronald Acuna, 2019, Atlanta Braves, 41 HR, 37 SB
+              2023, Atlanta Braves, 41 HR, 73 SB
+Bobby Witt, 2023, Kansas City Royals, 30 HR, 49 SB
+            2024, Kansas City Royals, 32 HR, 31 SB
+Francisco Lindor, 2023, New York Mets, 31 HR, 31 SB
+                  2025, New York Mets, 31 HR, 31 SB
+Jose Ramirez, 2018, Cleveland Indians, 39 HR, 34 SB
+              2024, Cleveland Guardians, 39 HR, 41 SB
+              2025, Cleveland Guardians, 30 HR, 44 SB
+Julio Rodriguez, 2023, Seattle Mariners, 32 HR, 37 SB
+                 2025, Seattle Mariners, 32 HR, 30 SB
 
 
 Players Since 1900 With 20+ Doubles, 20+ Triples, 20+ Home Runs and 20+ Stolen Bases in Same Season ...
