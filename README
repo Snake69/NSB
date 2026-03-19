@@ -8,10 +8,10 @@ NSB is a client/server application.
 There are plenty of improvements to be made, and I know there are lots
 of bugs to be fixed and adjustments to be made.
 
-Network play is supported, however be advised that I'm certain there
-are security faults present in the program.  Making NSB accessible over
-a network currently is risky business.  Future releases of NSB will pay
-more attention to security.
+CLI support.  Network play is supported, however be advised that I'm certain
+there are security faults present in the program.  Making NSB accessible
+over a network currently is risky business.  Future releases of NSB will
+pay more attention to security.
 
 There *may* be a NSB server running at mlake.net
 
